@@ -1,0 +1,14 @@
+{
+  "name": "glyph-check",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare-fonts": "node scripts/prepare-fonts.mjs",
+    "serve": "node scripts/server.mjs"
+  },
+  "devDependencies": {
+    "@fontsource/noto-sans": "^5.0.0",
+    "@fontsource/noto-sans-jp": "^5.0.0",
+    "@fontsource/noto-sans-khmer": "^5.0.0"
+  }
+}

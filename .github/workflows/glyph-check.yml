@@ -1,0 +1,86 @@
+name: glyph-check
+
+on:
+  workflow_dispatch:
+  push:
+    paths: ["tools/glyph-check/**", ".github/workflows/glyph-check.yml"]
+  pull_request:
+    paths: ["tools/glyph-check/**", ".github/workflows/glyph-check.yml"]
+
+defaults:
+  run:
+    working-directory: tools/glyph-check
+
+jobs:
+  ios:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm prepare-fonts
+      - name: Start static server
+        run: nohup pnpm serve > server.log 2>&1 &
+      - name: Boot iPhone simulator
+        run: |
+          UDID=$(xcrun simctl list devices available -j | python3 -c "
+          import json,sys
+          d=json.load(sys.stdin)['devices']
+          c=[x for k,v in d.items() if 'iOS' in k for x in v if x['name'].startswith('iPhone')]
+          print(c[-1]['udid'])")
+          echo "UDID=$UDID" >> "$GITHUB_ENV"
+          xcrun simctl boot "$UDID"
+          xcrun simctl bootstatus "$UDID" -b
+      - name: Open page in Safari and capture
+        run: |
+          mkdir -p artifacts
+          for mode in sys merged; do
+            xcrun simctl openurl "$UDID" "http://localhost:8000/?platform=ios-$mode&mode=$mode"
+            for i in $(seq 1 60); do [ -f "artifacts/report-ios-$mode.json" ] && break; sleep 1; done
+            sleep 4
+            xcrun simctl io "$UDID" screenshot "artifacts/ios-$mode.png"
+            test -f "artifacts/report-ios-$mode.json"
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: ios, path: "tools/glyph-check/artifacts/*\ntools/glyph-check/server.log" }
+      - run: node scripts/assert-report.mjs
+        continue-on-error: true
+
+  android:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        api-level: [29, 34]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm prepare-fonts
+      - name: Start static server
+        run: nohup pnpm serve > server.log 2>&1 &
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - uses: reactivecircus/android-emulator-runner@v2
+        env:
+          API_LEVEL: ${{ matrix.api-level }}
+        with:
+          api-level: ${{ matrix.api-level }}
+          target: google_apis
+          arch: x86_64
+          profile: pixel_6
+          working-directory: tools/glyph-check
+          script: bash scripts/android-run.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: "android-api${{ matrix.api-level }}", path: "tools/glyph-check/artifacts/*\ntools/glyph-check/server.log" }
+      - run: node scripts/assert-report.mjs
+        continue-on-error: true
