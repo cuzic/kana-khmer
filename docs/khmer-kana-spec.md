@@ -1,0 +1,320 @@
+# khmer-kana 実装仕様 (v0.3 案)
+
+`packages/khmer-kana` を実装するための詳細設計。元にした資料は次のとおり。
+
+- カナ表記システム設計書 v0.2(Claude Docs)
+- [docs/design.md](design.md) の §2(決定済み事項を含む)
+- 使い捨てのプロトタイプ(Python)での検算
+
+**検算の結果**: この仕様の表と規則から、v0.2 の変換例と規則例の 19 件、例文「要りません」、テストケース 9 件のコードポイント列が
+すべて再現できた(ライトの `◌̯` 保持による差分は §7 に記載)。仕様が未定義の場所は §11 に集めた。
+
+## 1. v0.2 からの変更点
+
+| # | 変更 | 理由 |
+|---|---|---|
+| 1 | ライト表記でも `◌̯` を残す(削除する修飾文字は8種) | 母音を足して読まれるのを防ぐ。design.md §2.3 で承認済み |
+| 2 | 音節構造(`Syllable`)を仕様に含める | v0.2 は「後述」のまま未定義だった |
+| 3 | IPA の音節境界は `.`、語境界は半角スペース。**1語=1トークン** | `ʔɑː.kun` のように語を1つにそろえる |
+| 4 | ライトの導出は**文字列置換でなくトークン単位**で行う | 半濁点の誤削除(`ㇷ゚` → `ㇷ`)を型で防ぐ |
+| 5 | 出力を `Rendered`(文字列+役割つき span)にする | UI の色分け・タップ説明に必要 |
+| 6 | 「1記号1意味」を「逆変換は保証しない」に弱める | `゚`・小書き `ィ` の多義性を認める(design.md §2.5) |
+
+## 2. IPA 入力
+
+### 2.1 文法
+
+```
+utterance  = word { " " word }
+word       = syllable { "." syllable }
+syllable   = onset nucleus [ coda ]
+onset      = cons [ cons [ cons ] ]                  ; 最大3。最後が主子音
+cons       = base [ "ʰ" ]                            ; 有気音は1トークン
+base       = "p"|"t"|"c"|"k"|"ʔ"|"m"|"n"|"ɲ"|"ŋ"|"j"|"r"|"l"|"ʋ"|"s"|"h"|"ɓ"|"ɗ"|"g"|"f"|"ʃ"|"z"
+nucleus    = v1 [ BREVE ] [ "ː" ] [ v2 ]             ; 制約は §2.2
+coda       = "p"|"t"|"k"|"c"|"ʔ"|"m"|"n"|"ŋ"|"ɲ"|"j"|"w"|"l"|"h"
+```
+
+- 別名: `b → ɓ`、`d → ɗ` を受理して正規化する。
+- 正規化: 入力を **NFD** に分解して解析する。ĭ = `i` + U+0306(NFC では U+012D の1文字になる。実測で NFC 3 / NFD 4 コードポイント)。出力に IPA を返すときは NFC。
+- `.` がない語は1音節として解析する。**多音節語で `.` を省くと解析エラー**にする(自動の音節分割はしない。
+  綴りが不規則で誤分割の原因になるため)。
+- `r` は coda として**受理しない**(標準語で発音しない。データ側で省く)。
+- 空の語、連続スペース、前後の空白は `EMPTY` エラー。
+
+### 2.2 母音核の制約
+
+```ts
+const DIPHTHONG = new Set(["iə","ɨə","uə","eə","oə","ɔə","aə", "ae","ao","ei","ou"]);
+```
+
+- `v2` は `(v1, v2)` が `DIPHTHONG` にあるときだけ許す。
+- 長さの決め方:
+  - 単母音: `ː` があれば `long = true`。
+  - `v2 = ə` の二重母音: `short` でなければ `long = true`(`ː` は書かない)。
+  - `ae ao ei ou`: `long = false`。ブレーヴ(短い二重母音)も不可。
+  - ブレーヴは `ĭə ŭə ĕə ŏə` のみ(`short = true`, `long = false`)。
+- `ː` とブレーヴの併用、`ː` の連続は `BAD_NUCLEUS`。
+
+## 3. 型(公開 API)
+
+型は design.md §2.1 の `Consonant / Vowel / Coda / Nucleus / Syllable / Word / Utterance`(`packages/khmer-kana/src/types.ts` に実装済み)。
+出力は次の型を追加する。
+
+```ts
+type NotationLevel = "full" | "lite";
+
+/** UI の色分け・タップ説明の単位。基底カナと結合文字は必ず同じ span に入れる(§6.3) */
+type SpanKind =
+  | "kana"          // 通常のカナ(小書きカナ・ㇷ゚ を含む)
+  | "kana-nonsyl"   // ◌̯ 付き(母音なし。チ̯)
+  | "kana-nasal"    // ゚ 付き(ŋ の鼻濁音。カ゚ ン゚)
+  | "cons-mod"      // ʰ ˡ ʳ
+  | "vowel-mod"     // ᵋ ᵓ ᵅ ᵊ ᶤ
+  | "long"          // ー
+  | "space";        // 語境界
+
+interface Span { kind: SpanKind; text: string; ipa?: string /* 由来の IPA(説明表示用) */ }
+interface Rendered { text: string; spans: Span[] }       // text = spans の連結
+
+function parseIpa(input: string): Utterance;              // KhmerKanaError を投げる
+function toIpa(u: Utterance): string;                     // NFC・正規形。parseIpa の逆
+function renderFull(u: Utterance): Rendered;
+function renderLite(u: Utterance): Rendered;              // renderFull の spans から導出(§7)
+function renderKana(u: Utterance, level: NotationLevel): Rendered;
+function graphemes(s: string): string[];                  // Intl.Segmenter があれば使い、なければ代替(§6.3)
+```
+
+エラー:
+
+```ts
+type ErrorCode =
+  | "EMPTY" | "UNKNOWN_SYMBOL" | "BAD_ONSET" | "NO_VOWEL" | "BAD_NUCLEUS" | "BAD_CODA" | "TRAILING"
+  | "NO_VOWELLESS_FORM"   // 子音連続の先頭に置く形が §5.4 に未定義
+  | "NO_TABLE_ENTRY";     // 表にない組み合わせ
+class KhmerKanaError extends Error { code: ErrorCode; input: string; index?: number }
+```
+
+## 4. 表記の記号(定数)
+
+```ts
+const NONSYL = "̯";   // ◌̯   母音なし(小書きカナがない子音用)
+const HANDAKUTEN = "゚"; // ゚   ŋ の鼻濁音 / ㇷ゚ の一部
+const CONS_MODS = ["ʰ","ˡ","ʳ"];
+const VOWEL_MODS = ["ᵋ","ᵓ","ᵅ","ᵊ","ᶤ"];
+// NFKC/NFKD は禁止(修飾文字が通常の文字に置き換わる)。テストで固定する(§9)
+```
+
+## 5. 変換表(データ。コードは表を引くだけにする)
+
+### 5.1 頭子音 × 母音の段
+
+段の添字は `[ア, イ, ウ, エ, オ]`。
+
+```ts
+const ONSET_ROWS: Record<string, [string,string,string,string,string]> = {
+  p:  ["パ","ピ","プ","ペ","ポ"],     ɓ: ["バ","ビ","ブ","ベ","ボ"],
+  t:  ["タ","ティ","トゥ","テ","ト"],  ɗ: ["ダ","ディ","ドゥ","デ","ド"],
+  c:  ["チャ","チ","チュ","チェ","チョ"],
+  k:  ["カ","キ","ク","ケ","コ"],     ʔ: ["ア","イ","ウ","エ","オ"],
+  m:  ["マ","ミ","ム","メ","モ"],     n: ["ナ","ニ","ヌ","ネ","ノ"],
+  ɲ:  ["ニャ","ニ","ニュ","ニェ","ニョ"],
+  ŋ:  ["カ゚","キ゚","ク゚","ケ゚","コ゚"],   // 各カナ + U+309A
+  j:  ["ヤ","イ","ユ","イェ","ヨ"],
+  r:  ["ラ","リ","ル","レ","ロ"],     l: ["ラ","リ","ル","レ","ロ"],   // 印は §5.3
+  ʋ:  ["ヴァ","ヴィ","ヴ","ヴェ","ヴォ"],
+  s:  ["サ","スィ","ス","セ","ソ"],   h: ["ハ","ヒ","フ","ヘ","ホ"],
+  // 外来語のみ
+  g:  ["ガ","ギ","グ","ゲ","ゴ"],     f: ["ファ","フィ","フ","フェ","フォ"],
+  ʃ:  ["シャ","シ","シュ","シェ","ショ"], z: ["ザ","ジ","ズ","ゼ","ゾ"],
+};
+```
+
+有気音は、無気音と同じ行のカナに `ʰ` を足す(`kʰ → カʰ`)。`ɓ/ɗ` の入破性、語頭の `ʔ` は表記しない。
+
+### 5.2 母音 → 段と修飾文字
+
+```ts
+const VOWEL: Record<Vowel, { row: 0|1|2|3|4; mod: string }> = {
+  i:{row:1,mod:""}, e:{row:3,mod:""}, ɛ:{row:3,mod:"ᵋ"},
+  ɨ:{row:2,mod:"ᶤ"}, ə:{row:0,mod:"ᵊ"}, a:{row:0,mod:""},
+  ɑ:{row:4,mod:"ᵅ"}, u:{row:2,mod:""}, o:{row:4,mod:""}, ɔ:{row:4,mod:"ᵓ"},
+};
+```
+
+### 5.3 子音の修飾
+
+`r → ʳ`、`l → ˡ`(**必ず付ける**。無印のラ行は使わない)。有気音は `ʰ`。`r/l` と `ʰ` は同時に現れない。
+
+### 5.4 子音連続の先頭(母音なし)
+
+```ts
+// 有気音は ʰ を付けずに無気の形を使う(kʰ → ㇰ)。この位置では有気かどうかで意味が変わらない
+const PREFIX: Record<string, string> = {
+  k: "ㇰ", t: "ㇳ", p: "ㇷ゚" /* ㇷ + U+309A */, s: "ㇲ", m: "ㇺ",
+  l: "ㇽˡ", c: "チ̯",
+};
+```
+
+**未定義の先頭子音**(v0.2 に規則がない): `ɓ ɗ ʔ n ɲ ŋ h r j ʋ`。実装は `NO_VOWELLESS_FORM` を投げる(黙って誤った形を出さない)。
+暫定案を §11-1 に示した。**実データで必要になるまで決めない**。
+
+### 5.5 末子音
+
+```ts
+const CODA_KANA: Record<Coda, string> = {
+  p: "ㇷ゚", t: "ㇳ", k: "ㇰ",
+  c: "ィチ̯",           // 直前の母音がイ寄りになる
+  ʔ: "ッ", m: "ㇺ", n: "ン", ŋ: "ン゚" /* ン + U+309A */, ɲ: "ィン",
+  j: "ィ", w: "ゥ", l: "ㇽˡ", h: "ㇹ",
+};
+```
+
+### 5.6 二重母音の後半
+
+| v2 | 長い | 短い(ブレーヴ) | 修飾 |
+|---|---|---|---|
+| ə | ア | ァ | ᵊ |
+| e | エ | — | なし |
+| o | オ | — | なし |
+| i | イ | — | なし |
+| u | ウ | — | なし |
+
+## 6. 詳細表記の生成
+
+### 6.1 アルゴリズム
+
+```
+renderSyllable(s):
+  for p in s.onset[0..-1]:                       # 母音なしの先頭子音
+      emit PREFIX[strip(p)] or throw NO_VOWELLESS_FORM
+  m = s.onset.last;  base = strip(m, "ʰ");  asp = m has "ʰ"
+  kana = ONSET_ROWS[base][VOWEL[s.nucleus.v1].row]
+  emit kana                      # ŋ の行は kana-nasal、c の ◌̯ 付きは kana-nonsyl(先頭子音の場合)
+  if asp:               emit "ʰ"                 # cons-mod
+  if base in {r,l}:     emit "ʳ" / "ˡ"          # cons-mod
+  emit VOWEL[v1].mod    (空でなければ)           # vowel-mod
+  if v2 == undefined and long: emit "ー"        # long
+  if v2:  emit SECOND[v2][short ? "short":"long"]  # kana
+          if v2 == "ə": emit "ᵊ"                 # vowel-mod
+  if coda: emit CODA_KANA[coda]
+renderWord = 音節の連結;  renderUtterance = 語を " "(space span)でつなぐ
+```
+
+**並び順の正規形**: 子音+母音のカナ(`◌̯`/`゚` はこの直後)→ 子音修飾(ʰ ˡ ʳ)→ 母音修飾 → `ー` →
+二重母音後半(+その母音修飾)→ 末子音。例: `kʰɑːŋ → コ ʰ ᵅ ー ン゚ = コʰᵅーン゚`。
+
+### 6.2 例(検算済み)
+
+| IPA | 詳細 | 導出 |
+|---|---|---|
+| `ʔɑː.kun` | オᵅークン | ʔ+ɑ→オ+ᵅ、ː→ー / k+u→ク、coda n→ン |
+| `tɨw` | トゥᶤゥ | t+ɨ→トゥ+ᶤ、coda w→ゥ |
+| `ciəŋ` | チアᵊン゚ | c+i→チ、v2 ə→ア+ᵊ、coda ŋ→ン゚ |
+| `srəj` | ㇲラʳᵊィ | prefix s→ㇲ、r+ə→ラ+ʳ+ᵊ、coda j→ィ |
+| `cʰkae` | チ̯カエ | prefix cʰ→チ̯(ʰ なし)、k+a→カ、v2 e→エ |
+| `strəj` | ㇲㇳラʳᵊィ | 3子音連続。prefix が2つ |
+| `kĭə` | キァᵊ | 短い二重母音 → ァ+ᵊ |
+
+### 6.3 結合文字の扱い(UI への注意)
+
+- `kana-nonsyl` / `kana-nasal` の span には、**基底のカナと結合文字を一緒に入れる**(`"チ̯"`)。
+  検証で分かったとおり、Android の Chrome は基底と結合文字を1つのフォントで持たないと欠字にする。
+  DOM 上でも、基底と結合文字を別の要素に分けると結合が崩れるおそれがある。**未検証なので `tools/glyph-check` に項目を足して確かめる**(§10 T-6)。
+- 文字数・カーソルは書記素単位で数える。`Intl.Segmenter` がない環境(Chrome 74 系)では、
+  `[カナ or 修飾文字以外] + 後続の結合文字/修飾文字*` で分ける代替実装を使う。
+- 表示側で、色分けの対象は `cons-mod` `vowel-mod` `kana-nonsyl` `kana-nasal`(記号10種すべて)。
+
+## 7. ライト表記の導出
+
+**`renderLite` は `renderFull` の span 列に対して、次の2つだけを行う。**
+
+1. `cons-mod` と `vowel-mod` の span を捨てる(8種: `ʰ ˡ ʳ ᵋ ᵓ ᵅ ᵊ ᶤ`)。`◌̯` は残す。
+2. `kana-nasal` の span を、通常のカナに置き換える。
+   - onset の `カ゚ キ゚ ク゚ ケ゚ コ゚` → `ガ ギ グ ゲ ゴ`
+   - coda の `ン゚` → `ン`
+
+`ㇷ゚`(語末 p、先頭子音 p)は `kana`(半濁点も文字の一部)なので**触らない**。文字列の正規表現による置換は使わない。
+
+**v0.2 とのテストケースの差分**
+
+| IPA | v0.2 のライト | v0.3 のライト |
+|---|---|---|
+| `cʰkae` | チカエ(30C1 30AB 30A8) | **チ̯カエ**(30C1 032F 30AB 30A8) |
+| 上記以外の8件 | — | 変更なし |
+
+**性質(テストで固定)**: 任意の `Utterance` について、
+`renderLite(u).text` = `renderFull(u).text` から「修飾文字8種を除き、`カ゚キ゚ク゚ケ゚コ゚ン゚` の6パターンを置換した」文字列。
+トークン単位の結果と、この文字列単位の結果が一致すること(`ㇷ゚` を含む入力を必ず含める)。
+
+**ライトで失われる区別**: 有気/無気、r/l、母音の音色(ɨ ə ɛ ɔ ɑ)、語末 n/ŋ、語頭 ŋ→ガ(音価が変わる)。
+`tɨw → トゥゥ` は既知の弱点(design.md §2.3)。
+
+## 8. モジュール構成
+
+```
+packages/khmer-kana/src/
+  types.ts        型(実装済み)
+  symbols.ts      §4 の定数
+  tables.ts       §5 の表(データのみ)
+  errors.ts       KhmerKanaError
+  parse.ts        parseIpa / normalize
+  ipa.ts          toIpa
+  render.ts       renderFull / renderLite / renderKana / Span
+  graphemes.ts    書記素分割(Segmenter + 代替)
+  index.ts
+  cli.ts          khmer-kana render "ʔɑː.kun" / check phrases.yaml(Phase 1 で使用)
+```
+
+## 9. テスト計画
+
+`vitest`。ゴールデンは `test/golden.json`(IPA、詳細、ライト、コードポイント列、音節構造)に集める。
+
+| 区分 | 内容 | 件数 |
+|---|---|---|
+| G-1 頭子音 | §5.1 の全行 × a段(+ 特殊行は全段) | 約25 |
+| G-2 母音 | 単母音10 × 長短 | 20 |
+| G-3 二重母音 | 長い11種 + 短い4種 | 15 |
+| G-4 子音連続 | §5.4 の7種、3連続(str-, skr-)、有気の先頭 | 12 |
+| G-5 末子音 | §5.5 の13種 + 語末 r の省略 | 14 |
+| G-6 変換例 | v0.2 の変換例・規則例 19件 + 例文(語が複数) | 20 |
+| G-7 コードポイント | v0.2 の9件(ライトは §7 の差分を反映) | 9 |
+| P 属性 | `parse(toIpa(x)) = x`、ライトの一致性(§7)、NFC 不変、`renderFull` の並び順、`.` あり/なし | — |
+| E 異常系 | `kar`(coda r)、`kʰʰa`、`k`(母音なし)、`kaːː`、未知記号 `x`、多音節語の `.` 省略、未定義の先頭子音(§5.4) | 10 |
+| N 正規化 | ブレーヴの NFC/NFD、`b/d` 別名、NFKC を通した出力は**一致しない**こと | 6 |
+
+合計 **130 件前後**。Phase 0 の完了条件は「G・P・E・N がすべて通る」。
+
+**検証の切り分け**: 表示(フォント・描画)は Vitest では確かめられない。`tools/glyph-check` の目視で見る。
+- T-6(新規): 色分け用に `<span>` を分けたときの、基底+結合文字の描画(Android/iOS)。
+
+## 10. 実装タスク(順序つき)
+
+| # | タスク | 依存 | 完了条件 |
+|---|---|---|---|
+| 1 | `symbols.ts` `tables.ts` `errors.ts` | — | 表を型で検査(全子音が全段を持つ) |
+| 2 | `parse.ts`(§2)+ E/N テスト | 1 | G-2, G-3 の音節構造、E, N が通る |
+| 3 | `render.ts` の `renderFull` | 1, 2 | G-1〜G-6 の詳細表記が通る |
+| 4 | `renderLite`(§7)+ P テスト | 3 | ライト・コードポイント G-7 が通る |
+| 5 | `toIpa` + 往復テスト | 2 | P の往復が通る |
+| 6 | `graphemes.ts` | — | Segmenter あり/なし両方でテスト |
+| 7 | `cli.ts` | 3, 4 | `check` が phrases.yaml を検証 |
+| 8 | T-6: glyph-check に span 分割の描画を追加 | 3 | iOS/Android の目視で崩れがない |
+
+タスク 1〜5 が Phase 0b の中心。6・8 は並行できる。
+
+## 11. 仕様の抜け・要判断
+
+1. **子音連続の先頭子音**(§5.4): `ɓ ɗ ʔ n ɲ ŋ h r j ʋ` が未定義。暫定案:
+   - 小書きカナがある: `n → ㇴ`、`h → ㇹ`、`r → ㇽʳ`(`l → ㇽˡ` の対)
+   - 小書きカナがない(`ɓ ɗ ʔ ɲ ŋ j ʋ`): `◌̯` 付きの通常カナで書く。基底は c(`チ̯`=イ段)に合わせるとイ段(`ビ̯` `ディ̯` …)。ただし `ɲ` は `ニ̯`、`ŋ` は `キ゚̯` のように重なり、字形が複雑
+   - **推奨**: 実データで必要になった子音だけ、ネイティブ確認後に決める。それまで `NO_VOWELLESS_FORM`。
+   - `◌̯` を付ける基底が増えるたびに、`tools/glyph-check/scripts/build-kana-font.py` で結合フォントに基底を足す必要がある。
+2. **`ɲ`/`n`、`ʔi`/`ji` の衝突**(どちらも同じカナになる): 音節構造を正とするので、表示には支障がない。逆変換不可を明記するだけでよい。
+3. **語頭 ŋ のライト**: `ŋaɲ → ガィン`。日本語の語頭ガ行は鼻濁音でないことが多く、音価が変わる。
+   MVP で該当語があるかを確認する(ឆ្ងាញ់ `cʰŋaɲ` が該当)。
+4. **`tɨw → トゥゥ`**: 既知の弱点として残す(承認済み)。ネイティブ確認後に、語末 w のライト表記を見直す。
+5. **IPA の粒度**: 音素表記(語末 r・語末 s→h を IPA 側で反映済み)を正とする。綴りに近い IPA を入れると規則が破綻する。
+6. **強勢**: 語の最終音節に固定。データには持たない。UI で語末を強調するかは別途。
+7. **`◌̯` の意味**: U+032F は IPA では「非音節」の記号で、母音の非音節化に使う。本表記では「母音なしの子音」に転用している。
+   説明文では「IPA の記号とは意味が違う」と1行断っておく。
