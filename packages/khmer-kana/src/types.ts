@@ -50,6 +50,8 @@ export interface Span {
   text: string;
   /** IPA the span stands for (for explanations), when meaningful. */
   ipa?: string;
+  /** Text to use in the lite notation instead of `text` (exceptions only; e.g. tɨ: full ト+ᶤ, lite トゥ). */
+  lite?: string;
 }
 
 export interface Rendered {

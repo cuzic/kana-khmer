@@ -15,7 +15,7 @@ const CONVERSIONS: [string, string, string][] = [
   ["ɲam", "ニャㇺ", "ニャㇺ"],
   ["sʔaːt", "ㇲアーㇳ", "ㇲアーㇳ"],
   ["ɗaə", "ダアᵊ", "ダア"],
-  ["tɨw", "トゥᶤゥ", "トゥゥ"],
+  ["tɨw", "トᶤゥ", "トゥゥ"],
   ["pʰsaː", `ㇷ${H}サー`, `ㇷ${H}サー`],
   ["tʰom", "トʰㇺ", "トㇺ"],
   ["cʰap", `チャʰㇷ${H}`, `チャㇷ${H}`],
@@ -38,7 +38,7 @@ const CODEPOINTS: [string, string, string][] = [
   ["cʰkae", "30C1 032F 30AB 30A8", "30C1 032F 30AB 30A8"], // v0.2 lite dropped 032F
   ["ciəŋ", "30C1 30A2 1D4A 30F3 309A", "30C1 30A2 30F3"],
   ["tʰom", "30C8 02B0 31FA", "30C8 31FA"],
-  ["tɨw", "30C8 30A5 1DA4 30A5", "30C8 30A5 30A5"],
+  ["tɨw", "30C8 1DA4 30A5", "30C8 30A5 30A5"],
   ["cʰap", "30C1 30E3 02B0 31F7 309A", "30C1 30E3 31F7 309A"], // ㇷ゚ keeps its handakuten in lite
   ["loːk", "30ED 02E1 30FC 31F0", "30ED 30FC 31F0"],
 ];

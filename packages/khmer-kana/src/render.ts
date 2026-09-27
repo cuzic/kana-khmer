@@ -4,6 +4,7 @@ import {
   CODA_KANA,
   CONS_MOD_OF,
   DENASAL,
+  ONSET_EXCEPTIONS,
   ONSET_ROWS,
   PREFIX,
   SECOND,
@@ -30,8 +31,13 @@ function renderSyllable(sy: Syllable, out: Span[]): void {
   const base = baseOf(main);
   const row = ONSET_ROWS[base];
   const v = VOWEL[sy.nucleus.v1];
-  const kana = row[v.row];
-  out.push({ kind: base === "ŋ" ? "kana-nasal" : "kana", text: kana, ipa: base });
+  const exception = ONSET_EXCEPTIONS[base + sy.nucleus.v1];
+  out.push({
+    kind: base === "ŋ" ? "kana-nasal" : "kana",
+    text: exception?.full ?? row[v.row],
+    ipa: base,
+    ...(exception ? { lite: exception.lite } : {}),
+  });
   if (main.endsWith("ʰ")) out.push({ kind: "cons-mod", text: "ʰ", ipa: main });
   const cm = CONS_MOD_OF[base];
   if (cm) out.push({ kind: "cons-mod", text: cm, ipa: base });
@@ -76,6 +82,11 @@ export function liteFromFull(full: Rendered): Rendered {
   const spans: Span[] = [];
   for (const s of full.spans) {
     if (s.kind === "cons-mod" || s.kind === "vowel-mod") continue;
+    if (s.lite !== undefined) {
+      const { lite, ...rest } = s;
+      spans.push({ ...rest, text: lite });
+      continue;
+    }
     if (s.kind === "kana-nasal") {
       const plain = DENASAL[s.text];
       if (plain === undefined) {

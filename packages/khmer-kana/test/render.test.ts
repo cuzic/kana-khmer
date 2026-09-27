@@ -8,7 +8,7 @@ const N = "̯";
 
 /** The v0.2 rule as a string operation: drop 8 modifier letters, replace the 6 nasal patterns. Kept ◌̯. */
 function liteByString(full: string): string {
-  const stripped = full.replace(/[ʰˡʳᵋᵓᵅᵊᶤ]/g, "");
+  const stripped = full.replace(/ト(ʰ?)ᶤ/g, "トゥ$1").replace(/[ʰˡʳᵋᵓᵅᵊᶤ]/g, ""); // tɨ exception: full ト+ᶤ, lite トゥ
   return stripped.replace(/([カキクケコン])゚/g, (_m, k: string) => ({ カ: "ガ", キ: "ギ", ク: "グ", ケ: "ゲ", コ: "ゴ", ン: "ン" })[k]!);
 }
 
@@ -80,6 +80,18 @@ describe("spans", () => {
   it("carries the IPA of each span for explanations", () => {
     const r = renderFull(parseIpa("tɨw"));
     expect(r.spans.find((s) => s.kind === "vowel-mod")).toMatchObject({ text: "ᶤ", ipa: "ɨ" });
+  });
+});
+
+describe("tɨ exception", () => {
+  it("t+ɨ is ト+ᶤ in full and トゥ in lite; other consonants keep their row", () => {
+    expect(renderFull(parseIpa("tɨ")).text).toBe("トᶤ");
+    expect(renderLite(parseIpa("tɨ")).text).toBe("トゥ");
+    expect(renderLite(parseIpa("tɨ")).spans.every((x) => x.lite === undefined)).toBe(true);
+    expect(renderLite(parseIpa("tʰɨ")).text).toBe("トゥ");
+    expect(renderFull(parseIpa("tʰɨ")).text).toBe("トʰᶤ");
+    expect(renderFull(parseIpa("tu")).text).toBe("トゥ");
+    expect(renderFull(parseIpa("kɨ")).text).toBe("クᶤ");
   });
 });
 

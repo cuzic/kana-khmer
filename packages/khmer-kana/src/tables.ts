@@ -43,6 +43,15 @@ export const ONSET_ROWS: Record<BaseConsonant, Row> = {
   z: ["ザ", "ジ", "ズ", "ゼ", "ゾ"],
 };
 
+/**
+ * Exceptions to ONSET_ROWS[consonant][vowel row], keyed by consonant + vowel: { full, lite } kana.
+ * `tɨ`: トゥ+ᶤ puts a small ゥ next to the modifier (トゥᶤ) and is hard to read, so the detailed notation
+ * is ト+ᶤ. Lite drops ᶤ and would read as `to`, so it keeps トゥ (the row's own kana). Accepted as a special case.
+ */
+export const ONSET_EXCEPTIONS: Partial<Record<string, { full: string; lite: string }>> = {
+  "tɨ": { full: "ト", lite: "トゥ" },
+};
+
 /** Consonant modifiers that always accompany the kana (l and r are never written bare). */
 export const CONS_MOD_OF: Partial<Record<BaseConsonant, string>> = { r: "ʳ", l: "ˡ" };
 
