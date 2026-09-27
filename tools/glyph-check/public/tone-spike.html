@@ -10,7 +10,7 @@
   body { margin:0; padding:10px 12px; background:#fff; color:#111; font:12px/1.4 sans-serif; }
   h1 { font-size:14px; margin:0 0 2px; }
   #status { font-size:11px; margin-bottom:6px; color:#555; }
-  .row { display:flex; gap:6px; align-items:flex-end; border-bottom:1px solid #ddd; }
+  .row { display:flex; flex-wrap:wrap; gap:0 6px; align-items:flex-end; border-bottom:1px solid #ddd; }
   .cell { flex:1 1 0; min-width:0; font-size:22px; line-height:3; white-space:nowrap; overflow:visible; }
   .cell.full { flex:1 0 100%; }
   .head .cell { font-size:10px; line-height:1.4; color:#555; }
@@ -44,7 +44,7 @@ function withWidth(syl, marker, hint) {
 }
 const build = (text, marker, hint) => text.split(" ").map(s => withWidth(s, marker, hint)).join(" ");
 const cols = view === "plain" ? ["ref", "gpos", "gsub"] : ["gpos", "gsub"];
-const label = { ref: "system font", gpos: "GPOS", gsub: "GSUB(線を音節の幅に合わせる)" };
+const label = { ref: "system font", gpos: "GPOS", gsub: "GSUB(幅に合わせる・上限あり)" };
 document.getElementById("title").textContent = `Tone Spike — ${view}`;
 
 const out = document.getElementById("out");

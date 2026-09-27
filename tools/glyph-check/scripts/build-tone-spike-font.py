@@ -15,7 +15,7 @@ U+2060, U+200B, U+E000) and glyph is F (full-width kana, advance 1000) or S (sup
   - The syllable width W = 1000*nF + 480*nS is known from the glyphs between B and the tone, so the contour is moved left by
     dx = -(W-1000)/2. Two ways, chosen with --mode:
       gpos: chained contextual GPOS (kern) adjusts the placement of the tone glyph.
-      gsub: chained contextual GSUB (calt) swaps the tone glyph for a copy stretched over the whole syllable.
+      gsub: chained contextual GSUB (calt) swaps the tone glyph for a copy stretched over the syllable (at most SPAN_MAX long).
   - Rules are enumerated over every F/S pattern that starts with F (1<=nF<=5, 0<=nS<=4, at most 9 glyphs), anchored on B.
 
 usage: uv run scripts/build-tone-spike-font.py NotoSansJP-VF.ttf NotoSans-Regular.ttf out.woff2 --mode=gpos|gsub
@@ -35,6 +35,7 @@ SUP_SCALE, SUP_RAISE, SUP_ADV = 0.62, 400, 480
 STROKE = 58
 TONE_X0, TONE_X1 = -900, -100   # a one-kana syllable: 100 units of margin each side (centre stays at -500)
 SPAN_MARGIN = 100
+SPAN_MAX = 2400      # longest tone line: a long syllable keeps the line centred instead of flattening the height differences
 TONE_Y = {1: 1000, 2: 1115, 3: 1230, 4: 1345, 5: 1460}
 TONE_LETTERS = {0x02E5: 5, 0x02E6: 4, 0x02E7: 3, 0x02E8: 2, 0x02E9: 1}
 MARKERS = (0x2060, 0x200B, 0xE000)
@@ -164,8 +165,9 @@ def main(jp_path, latin_path, out, mode):
         else:
             for c in combos:
                 key = "".join(c)
-                # stretch the line over the whole syllable (pen is at its right end): x = -(W - margin) .. -margin
-                put(f"c_{key}_w{w}", contour_glyph([int(x) for x in c], -(w - SPAN_MARGIN), -SPAN_MARGIN), 0)
+                # stretch the line over the syllable (the pen is at its right end, so the syllable is x = -W..0), at most SPAN_MAX long
+                half = min(w - 2 * SPAN_MARGIN, SPAN_MAX) / 2
+                put(f"c_{key}_w{w}", contour_glyph([int(x) for x in c], round(-w / 2 - half), round(-w / 2 + half)), 0)
             body = " ".join(f"sub c_{''.join(c)} by c_{''.join(c)}_w{w};" for c in combos)
             lookups.append(f"lookup SUB_{w} {{ {body} }} SUB_{w};")
     for nf, ns, pat in seqs:
