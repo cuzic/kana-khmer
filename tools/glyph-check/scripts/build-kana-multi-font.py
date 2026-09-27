@@ -228,15 +228,18 @@ def main(jp_path, latin_path, out):
     tone_pairs = [(bar_name[a], bar_name[b], shape((a, b))) for levels in TONE_LEGACY_CP.values() if len(levels) == 2
                   for a, b in [levels]]
 
+    # The format-12 subtable (needed for any code point above the BMP, e.g. U+107A5) must exist *before* the merge
+    # loop below, seeded only from what's already in the font -- otherwise a supplementary-plane entry in new_cmap
+    # has nowhere to go (the loop skips it for every non-format-12 table) and is silently dropped.
+    if not any(st.format == 12 and st.isUnicode() for st in t["cmap"].tables):
+        st12 = cmap_format_12(12); st12.platformID, st12.platEncID, st12.language = 3, 10, 0
+        st12.cmap = {cp: n for st in t["cmap"].tables if st.isUnicode() for cp, n in st.cmap.items()}
+        t["cmap"].tables.append(st12)
     for st in t["cmap"].tables:
         if not st.isUnicode(): continue
         for cp, name in new_cmap.items():
             if cp > 0xFFFF and st.format != 12: continue
             st.cmap[cp] = name
-    if not any(st.format == 12 and st.isUnicode() for st in t["cmap"].tables):
-        st12 = cmap_format_12(12); st12.platformID, st12.platEncID, st12.language = 3, 10, 0
-        st12.cmap = {cp: n for st in t["cmap"].tables if st.isUnicode() for cp, n in st.cmap.items()}
-        t["cmap"].tables.append(st12)
 
     t.setGlyphOrder(order); glyf.glyphOrder = order
     t["post"].formatType = 3.0
