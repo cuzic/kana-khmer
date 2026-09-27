@@ -30,7 +30,8 @@ const view = params.get("view") || "wj";
 const platform = params.get("platform") || "unknown";
 const MARK = { wj: "\u2060", zwsp: "\u200b", pua: "\ue000", plain: "", hint: "", both: "\ue000" };   // both: PUA start marker + width hint
 const HINT = view === "hint" || view === "both";
-const CASES = ["カ˨˩", "カ˧", "カ˥", "カʰ˦˥", "カㇰ˧˥˧", "キァᵊ˥˩", "コʰᵅーン˨˦˩", "ㇲㇳラʳᵊィ˨˩", "ㇲㇳラʳᵊィㇰ˦˥", "カˀ˥˩"];
+// long syllables first: on iOS a Safari tip covers the lower rows of the first screen
+const CASES = ["ㇲㇳラʳᵊィ˨˩", "ㇲㇳラʳᵊィㇰ˦˥", "コʰᵅーン˨˦˩", "キァᵊ˥˩", "カㇰ˧˥˧", "カʰ˦˥", "カˀ˥˩", "カ˨˩", "カ˧", "カ˥"];
 const MULTI = "カ˨˩ キァᵊ˥˩ ㇲㇳラʳᵊィ˦˥ カʰ˧";
 const SUP = new Set("ʰʱʲʷⁿˣˠʶˀˤʳˡᵓᵊᵋᵅᶤ");
 const isTone = ch => ch >= "˥" && ch <= "˩";
