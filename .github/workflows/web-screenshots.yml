@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  SHOTS: "|scene=thanks-sorry|scene=thanks-sorry&notation=full|scene=thanks-sorry&gender=female"
+  SHOTS: "|scene=thanks-sorry&notation=full|scene=intro&notation=full|scene=oneliners&notation=full|guide&notation=full"
 
 jobs:
   ios:
