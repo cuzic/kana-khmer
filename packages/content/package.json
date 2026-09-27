@@ -1,0 +1,22 @@
+{
+  "name": "content",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsx src/cli.ts build --profile prod",
+    "build:preview": "tsx src/cli.ts build --profile preview",
+    "check": "tsx src/cli.ts check",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "khmer-kana": "workspace:*",
+    "yaml": "^2.9.1",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.3",
+    "tsx": "^4.23.15"
+  }
+}

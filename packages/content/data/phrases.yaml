@@ -1,0 +1,46 @@
+# 仮データ。クメール文字・IPA・用法はすべて未確認(review: すべて false)。ネイティブ確認後に true にする。
+- id: hello
+  scene: greetings
+  ja: こんにちは
+  usage: 一般的な挨拶
+  variants:
+    - { speaker: any, khmer: សួស្តី, ipa: "suə.sdəj", audio: hello.m4a }
+  words:
+    - { khmer: សួស្តី, ipa: "suə.sdəj", ja: こんにちは }
+  review: { ipa: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: yes
+  scene: thanks-sorry
+  ja: はい
+  usage: 丁寧な返事。話者の性別で語が変わる
+  variants:
+    - { speaker: male,   khmer: បាទ, ipa: "ɓaːt", audio: yes-m.m4a }
+    - { speaker: female, khmer: ចាស, ipa: "caːh", audio: yes-f.m4a }
+  words:
+    - { khmer: បាទ, ipa: "ɓaːt", ja: はい(男性) }
+    - { khmer: ចាស, ipa: "caːh", ja: はい(女性) }
+  review: { ipa: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: thanks
+  scene: thanks-sorry
+  ja: ありがとう
+  usage: お礼
+  variants:
+    - { speaker: any, khmer: អរគុណ, ipa: "ʔɑː.kun", audio: thanks.m4a }
+  words:
+    - { khmer: អរគុណ, ipa: "ʔɑː.kun", ja: ありがとう }
+  review: { ipa: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: sorry
+  scene: thanks-sorry
+  ja: すみません
+  usage: 謝るとき、声をかけるとき
+  variants:
+    - { speaker: any, khmer: សុំទោស, ipa: "som.toːh", audio: sorry.m4a }
+  words:
+    - { khmer: សុំទោស, ipa: "som.toːh", ja: すみません }
+  review: { ipa: false, audio: false, usage: false }
+  audioSource: tts
