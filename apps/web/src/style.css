@@ -24,3 +24,5 @@ ul { list-style: none; padding: 0; margin: 0; }
 .tag, .badge { font-size: 12px; border: 1px solid var(--line); border-radius: 4px; padding: 0 6px; }
 .badge { margin-left: 8px; color: var(--accent); border-color: var(--accent); }
 .sub { color: var(--muted); font-size: 14px; margin-top: 4px; }
+.ipa { color: var(--muted); font-family: "Noto Sans", system-ui, sans-serif; font-size: 15px; }
+.hint { flex-basis: 100%; }

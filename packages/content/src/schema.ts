@@ -3,7 +3,16 @@ import { z } from "zod";
 
 const slug = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, "kebab-case の id");
 
+/** A sound-alike in another language to help memorize the form. Sound only; meaning and origin are unrelated. */
+export const MnemonicInput = z.object({
+  lang: z.string().min(1),   // 例: イタリア語
+  word: z.string().min(1),   // 例: ciao
+  reading: z.string().min(1),// 例: チャオ
+  note: z.string().default(""),
+});
+
 export const VariantInput = z.object({
+  mnemonic: MnemonicInput.optional(),
   speaker: z.enum(["any", "male", "female"]),
   register: z.enum(["polite", "casual"]).default("polite"),
   khmer: z.string().min(1),

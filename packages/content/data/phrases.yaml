@@ -16,7 +16,11 @@
   usage: 丁寧な返事。話者の性別で語が変わる
   variants:
     - { speaker: male,   khmer: បាទ, ipa: "ɓaːt", audio: yes-m.m4a }
-    - { speaker: female, khmer: ចាស, ipa: "caːh", audio: yes-f.m4a }
+    - speaker: female
+      khmer: ចាស
+      ipa: "caːh"
+      audio: yes-f.m4a
+      mnemonic: { lang: イタリア語, word: ciao, reading: チャオ, note: 音が似ているだけ。意味(はい)は無関係 }
   words:
     - { khmer: បាទ, ipa: "ɓaːt", ja: はい(男性) }
     - { khmer: ចាស, ipa: "caːh", ja: はい(女性) }
