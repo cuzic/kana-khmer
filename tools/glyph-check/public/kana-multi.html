@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glyph Check: kana-multi</title>
+<link rel="stylesheet" href="fonts/noto-sans/400.css">
+<link rel="stylesheet" href="fonts/noto-sans-jp/400.css">
+<style>
+  @font-face { font-family: "Kana Multi"; src: url("kana-font/kana-multi.woff2") format("woff2"); }
+  :root { --bg:#fff; --fg:#111; --line:#ccc; --ng:#c00; --ok:#080; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#111; --fg:#eee; --line:#444; --ng:#f66; --ok:#6c6; } }
+  body { margin:0; padding:12px 16px; background:var(--bg); color:var(--fg); font:14px/1.5 sans-serif; }
+  h1 { font-size:16px; margin:0 0 4px; }
+  h2 { font-size:14px; margin:16px 0 4px; }
+  #status { font-weight:bold; margin-bottom:8px; }
+  .ok { color:var(--ok); } .ng { color:var(--ng); }
+  .sys { font-family: sans-serif; }
+  .kana { font-family: "Kana Multi", "Noto Sans JP", "Noto Sans", sans-serif; }
+  .row { display:flex; gap:12px; align-items:baseline; border-bottom:1px solid var(--line); padding:4px 0; }
+  .row .k { flex:0 0 8em; font-size:11px; opacity:.7; word-break:break-all; }
+  .row .v { font-size:34px; }
+  pre { font-size:11px; white-space:pre-wrap; word-break:break-all; }
+</style>
+</head>
+<body>
+<h1>Glyph Check: kana-multi</h1>
+<p style="font-size:12px;opacity:.75">
+  ヒンディー・ベンガル・タイ・アラビア・ミャンマー語向けの右肩記号、下の記号、声調。合否は目視。自動判定は tofu(欠字)検出のみの補助。
+</p>
+<div id="status">running…</div>
+
+<h2>sys (font-family: sans-serif、フォント同梱なし)</h2>
+<div id="sys" class="sys"></div>
+<h2>kana (font-family: Kana Multi 同梱)</h2>
+<div id="kana" class="kana"></div>
+<h2>report</h2>
+<pre id="report"></pre>
+
+<script>
+const params = new URLSearchParams(location.search);
+const platform = params.get("platform") || "unknown";
+
+// ---- test data ----
+// [label, text] pairs. Combining marks written as \uXXXX so the source stays readable.
+const MODIFIERS = [
+  ["ʰ 無声有気", "ʰ"], ["ʱ 有声有気", "ʱ"], ["ʲ 口蓋化", "ʲ"], ["ʷ 唇音化", "ʷ"],
+  ["ⁿ 鼻母音", "ⁿ"], ["ˣ x", "ˣ"], ["ˠ ɣ", "ˠ"], ["ʶ ʁ", "ʶ"], ["ˀ ʔ", "ˀ"],
+  ["ˤ ʕ/強調音", "ˤ"], ["𐞥 q", "\u{107A5}"], ["ʳ r", "ʳ"], ["ˡ l", "ˡ"],
+  ["ᶿ θ", "ᶿ"], ["ᶞ ð", "ᶞ"], ["ᵑ ŋ", "ᵑ"],
+  ["ᵓ ɔ", "ᵓ"], ["ᵊ ə", "ᵊ"], ["ᵋ ɛ", "ᵋ"], ["ᵅ ɑ", "ᵅ"], ["ᶤ ɨ", "ᶤ"],
+];
+// [label, base+mark(es), note]
+const COMBOS = [
+  ["ハ+ʰ+0335 → ħ (合字)", "ハʰ̵", "ʰ に横線。合字が効かなければ ʰ に線が乗るだけ"],
+  ["タ+U+0323 (下の点)", "タ̣", "そり舌・強調音。ゼロ幅で下に来るはず"],
+  ["カ+U+0330 (下付きチルダ)", "カ̰", "ミャンマー語のきしみ声"],
+  ["ㇷ+゚ → ㇷ゚ (合字)", "ㇷ゚", "半濁点が小さい ㇷ の上に来るはず"],
+  ["ン+゚ → ン゚ (合字、ŋ の別案)", "ン゚", "ᵑ の代わりの案。どちらが読みやすいか比較"],
+  ["ガ+ᵑ (ŋ 本命)", "ガᵑ", "語頭 ŋ。ン゚ 案と並べて比較"],
+];
+// [label, text over マ, note]
+const TONES = [
+  ["中 (単独 ˧、矢じりなし)", "マ˧", "平らな声調。矢じりが付いていたら不具合"],
+  ["低 ˨˩", "マ˨˩", ""],
+  ["下降 ˥˩", "マ˥˩", ""],
+  ["高 ˦˥", "マ˦˥", ""],
+  ["上昇 ˩˦", "マ˩˦", ""],
+  ["旧別名 U+0301 (高と同じ形のはず)", "マ́", "˦˥ の行と同じ形に見えるべき"],
+];
+
+const FAMILIES = { sys: "sans-serif", kana: '"Kana Multi","Noto Sans JP","Noto Sans",sans-serif' };
+
+// ---- rendering ----
+function row(target, key, text, note) {
+  const d = document.createElement("div"); d.className = "row";
+  d.innerHTML = `<span class="k"></span><span class="v"></span><span class="k"></span>`;
+  d.children[0].textContent = key; d.children[1].textContent = text; d.children[2].textContent = note ?? "";
+  document.getElementById(target).appendChild(d);
+}
+const modeParam = params.get("mode");
+const MODES = modeParam ? [modeParam] : ["sys", "kana"];
+for (const t of ["sys", "kana"]) {
+  if (!MODES.includes(t)) { document.getElementById(t).previousElementSibling.remove(); document.getElementById(t).remove(); continue; }
+  for (const [label, text] of MODIFIERS) row(t, label, "マ" + text);
+  for (const [label, text, note] of COMBOS) row(t, label, text, note);
+  for (const [label, text, note] of TONES) row(t, label, text, note);
+}
+
+// ---- self check (tofu detection only; judgement is by eye) ----
+const cv = document.createElement("canvas"); cv.width = 160; cv.height = 90;
+const ctx = cv.getContext("2d", { willReadFrequently: true });
+const SIZE = 48;
+function pixels(text, family) {
+  ctx.clearRect(0, 0, cv.width, cv.height);
+  ctx.font = `${SIZE}px ${family}`; ctx.textBaseline = "alphabetic";
+  ctx.fillStyle = "#000"; ctx.fillText(text, 8, 60);
+  return ctx.getImageData(0, 0, cv.width, cv.height).data;
+}
+function same(a, b) { for (let i = 3; i < a.length; i += 4) if (a[i] !== b[i]) return false; return true; }
+// Loose match for "same glyph, different input sequence": exact pixel equality is too strict, since canvas can
+// hint/antialias two code-point sequences that resolve to one glyph a hair differently. Compare dark-pixel counts.
+function roughlySame(a, b) {
+  const count = d => { let n = 0; for (let i = 3; i < d.length; i += 4) if (d[i] > 0) n++; return n; };
+  const ca = count(a), cb = count(b);
+  return Math.abs(ca - cb) <= Math.max(ca, cb, 1) * 0.1;
+}
+function width(text, family) { ctx.font = `${SIZE}px ${family}`; return ctx.measureText(text).width / SIZE; }
+const cp = s => [...s].map(c => c.codePointAt(0).toString(16).toUpperCase().padStart(4, "0")).join(" ");
+
+function check(mode) {
+  const f = FAMILIES[mode], res = [];
+  const missing = pixels("\u{10FFFE}", f);
+  for (const [label, text] of MODIFIERS) {
+    const p = pixels("マ" + text, f), bare = pixels("マ", f);
+    const tofu = same(p, missing) || same(p, bare);
+    res.push({ mode, item: label, cp: cp(text), tofu, ok: !tofu });
+  }
+  for (const [label, text] of COMBOS) {
+    const p = pixels(text, f);
+    const tofu = same(p, missing);
+    res.push({ mode, item: label, cp: cp(text), tofu, ok: !tofu });
+  }
+  for (const [label, text] of TONES) {
+    const p = pixels(text, f), bare = pixels(text[0], f);
+    const tofu = same(p, missing) || same(p, bare); // no visible tone glyph drawn above the base
+    res.push({ mode, item: label, cp: cp(text), tofu, ok: !tofu });
+  }
+  // ˦˥ and its legacy alias U+0301 should look identical (docs/tone-notation.md §2.3)
+  const high = pixels("マ˦˥", f), alias = pixels("マ́", f);
+  res.push({ mode, item: "tone alias U+0301 == ˦˥", ok: mode !== "kana" || roughlySame(high, alias) });
+  return res;
+}
+
+(async () => {
+  try {
+    await Promise.all([
+      document.fonts.load('400 48px "Noto Sans JP"', "マハタカガンㇷ゚"),
+      document.fonts.load('400 48px "Noto Sans"', "abc"),
+      document.fonts.load('400 48px "Kana Multi"', "マハタカガンㇷ̵゚゚̣̰"),
+    ]);
+    await document.fonts.ready;
+    const results = MODES.flatMap(check);
+    const failed = results.filter(r => !r.ok);
+    const report = {
+      platform, ua: navigator.userAgent, dpr: devicePixelRatio,
+      fontsLoaded: [...document.fonts].filter(x => x.status === "loaded").map(x => x.family),
+      failed: failed.length, results,
+    };
+    const st = document.getElementById("status");
+    st.textContent = failed.length ? `FAILED ${failed.length}/${results.length}` : `ALL OK ${results.length}`;
+    st.className = failed.length ? "ng" : "ok";
+    document.getElementById("report").textContent = JSON.stringify(report.results.filter(r => !r.ok), null, 1) || "";
+    await fetch(`/report?platform=${encodeURIComponent(platform)}`, {
+      method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(report),
+    });
+    document.title = "DONE";
+  } catch (e) {
+    document.getElementById("status").textContent = "ERROR " + e;
+    await fetch(`/report?platform=${encodeURIComponent(platform)}`, {
+      method: "POST", body: JSON.stringify({ platform, error: String(e) }),
+    }).catch(() => {});
+  }
+})();
+</script>
+</body>
+</html>
