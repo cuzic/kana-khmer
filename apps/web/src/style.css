@@ -1,0 +1,26 @@
+/* ◌̯ needs the combined 'チ̯' glyph on Android; modifier letters need the support subset (see tools/glyph-check). */
+@font-face { font-family: "Kana C"; src: url("/fonts/kana-c.woff2") format("woff2"); unicode-range: U+30C1, U+032F; }
+@font-face { font-family: "Kana Support"; src: url("/fonts/kana-support.woff2") format("woff2");
+  unicode-range: U+032F, U+02B0-02B3, U+02E1, U+1D45, U+1D4A, U+1D4B, U+1D53, U+1D9C, U+1DA4; }
+
+:root { --bg: #fff; --fg: #111; --line: #ccc; --muted: #666; --accent: #0b6; }
+@media (prefers-color-scheme: dark) { :root { --bg: #111; --fg: #eee; --line: #444; --muted: #aaa; --accent: #3d9; } }
+
+body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 "Kana C", "Kana Support", system-ui, sans-serif; }
+main { max-width: 640px; margin: 0 auto; padding: 12px 16px 48px; }
+h1 { font-size: 18px; margin: 0 0 8px; }
+h2 { font-size: 16px; margin: 16px 0 8px; }
+.controls { display: flex; gap: 16px; flex-wrap: wrap; font-size: 14px; }
+.controls select { margin-left: 6px; }
+ul { list-style: none; padding: 0; margin: 0; }
+.scenes button, .back { font: inherit; color: inherit; background: none; border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; cursor: pointer; }
+.scenes li + li { margin-top: 8px; }
+.scenes button { width: 100%; display: flex; justify-content: space-between; text-align: left; }
+.card { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; margin-top: 10px; }
+.ja { font-weight: 600; }
+.variant { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.kana { font-size: 24px; }
+.khmer { color: var(--muted); font-family: "Noto Sans Khmer", system-ui, sans-serif; }
+.tag, .badge { font-size: 12px; border: 1px solid var(--line); border-radius: 4px; padding: 0 6px; }
+.badge { margin-left: 8px; color: var(--accent); border-color: var(--accent); }
+.sub { color: var(--muted); font-size: 14px; margin-top: 4px; }

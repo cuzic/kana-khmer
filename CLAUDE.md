@@ -10,6 +10,6 @@
 
 ## 構成
 - `packages/khmer-kana`  表記ライブラリ(IPA → 音節構造 → カナ詳細/ライト)
-- `packages/content`      フレーズデータ(未作成)
-- `apps/web`              PWA(未作成)
+- `packages/content`      フレーズデータ(phrases.yaml → phrases.json、prod/preview)
+- `apps/web`              PWA(土台のみ: シーン一覧とフレーズカード。学習機能は未着手)
 - `tools/glyph-check`     iOS/Android での描画検証とフォント生成
