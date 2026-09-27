@@ -11,6 +11,7 @@ if adb root >/dev/null 2>&1; then
 fi
 adb shell settings put global window_animation_scale 0 || true
 adb shell pm grant com.android.chrome android.permission.POST_NOTIFICATIONS >/dev/null 2>&1 || true
+adb logcat -c || true
 
 i=0
 for q in "" "?scene=thanks-sorry" "?scene=thanks-sorry&notation=full" "?scene=thanks-sorry&gender=female"; do
@@ -18,5 +19,12 @@ for q in "" "?scene=thanks-sorry" "?scene=thanks-sorry&notation=full" "?scene=th
   adb shell am force-stop com.android.chrome
   adb shell am start -a android.intent.action.VIEW -d "'http://10.0.2.2:8000/${q}'" com.android.chrome
   sleep 12
+  # a crashed Chrome leaves the launcher in front; record it and retry once
+  if ! adb shell dumpsys activity activities | grep -E "topResumedActivity|mResumedActivity" | grep -q chrome; then
+    echo "chrome not in front for shot $i, retrying"
+    adb shell am start -a android.intent.action.VIEW -d "'http://10.0.2.2:8000/${q}'" com.android.chrome
+    sleep 12
+  fi
   adb exec-out screencap -p > "$OUT/android-api${API_LEVEL}-$i.png"
 done
+adb logcat -d -t 600 > "$OUT/android-api${API_LEVEL}-logcat.txt" || true
