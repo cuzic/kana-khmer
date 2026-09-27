@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tone Spike</title>
+<style>
+  @font-face { font-family: "Tone Spike GPOS"; src: url("kana-font/tone-spike-gpos.woff2") format("woff2"); }
+  @font-face { font-family: "Tone Spike GSUB"; src: url("kana-font/tone-spike-gsub.woff2") format("woff2"); }
+  body { margin:0; padding:10px 12px; background:#fff; color:#111; font:12px/1.4 sans-serif; }
+  h1 { font-size:14px; margin:0 0 2px; }
+  #status { font-size:11px; margin-bottom:6px; color:#555; }
+  .row { display:flex; gap:6px; align-items:flex-end; border-bottom:1px solid #ddd; }
+  .cell { flex:1 1 0; min-width:0; font-size:22px; line-height:3; white-space:nowrap; overflow:visible; }
+  .cell.full { flex:1 0 100%; }
+  .head .cell { font-size:10px; line-height:1.4; color:#555; }
+  .gpos { font-family:"Tone Spike GPOS", sans-serif; }
+  .gsub { font-family:"Tone Spike GSUB", sans-serif; }
+  .ref  { font-family:sans-serif; }
+  .w { display:inline-block; }
+</style>
+</head>
+<body>
+<h1 id="title">Tone Spike</h1>
+<div id="status">loading…</div>
+<div id="out"></div>
+<script>
+const params = new URLSearchParams(location.search);
+const view = params.get("view") || "wj";
+const platform = params.get("platform") || "unknown";
+const MARK = { wj: "\u2060", zwsp: "\u200b", pua: "\ue000", plain: "", hint: null };
+const CASES = ["カ˨˩", "カ˧", "カ˥", "カʰ˦˥", "カㇰ˧˥˧", "キァᵊ˥˩", "コʰᵅーン˨˦˩", "ㇲㇳラʳᵊィ˨˩", "ㇲㇳラʳᵊィㇰ˦˥", "カˀ˥˩"];
+const MULTI = "カ˨˩ キァᵊ˥˩ ㇲㇳラʳᵊィ˦˥ カʰ˧";
+const SUP = new Set("ʰʱʲʷⁿˣˠʶˀˤʳˡᵓᵊᵋᵅᶤ");
+const isTone = ch => ch >= "˥" && ch <= "˩";
+const advance = s => [...s].reduce((a, ch) => a + (isTone(ch) ? 0 : SUP.has(ch) ? 0.48 : ch === " " ? 0 : 1), 0);
+// hint: (nF-1) x U+2062 and nS x U+2063 right before the tone letters; marker: a start marker before the syllable
+function withWidth(syl, marker) {
+  if (marker !== null) return marker + syl;
+  const body = [...syl].filter(c => !isTone(c)).join(""), tones = [...syl].filter(isTone).join("");
+  const ns = [...body].filter(c => SUP.has(c)).length;
+  return body + "\u2062".repeat([...body].length - ns - 1) + "\u2063".repeat(ns) + tones;
+}
+const build = (text, marker) => text.split(" ").map(s => withWidth(s, marker)).join(" ");
+const cols = view === "plain" ? ["ref", "gpos", "gsub"] : ["gpos", "gsub"];
+const label = { ref: "system font", gpos: "GPOS", gsub: "GSUB" };
+document.getElementById("title").textContent = `Tone Spike — ${view}`;
+
+const out = document.getElementById("out");
+const head = document.createElement("div"); head.className = "row head";
+for (const c of cols) { const d = document.createElement("div"); d.className = "cell"; d.textContent = label[c]; head.append(d); }
+out.append(head);
+const measured = [];
+function addRow(text, full) {
+  const row = document.createElement("div"); row.className = "row";
+  for (const c of cols) {
+    const cell = document.createElement("div"); cell.className = "cell " + c + (full ? " full" : "");
+    const w = document.createElement("span"); w.className = "w";
+    w.textContent = build(text, c === "ref" ? "" : MARK[view]);
+    cell.append(w); row.append(cell);
+    measured.push({ col: c, text, el: w });
+  }
+  out.append(row);
+}
+for (const c of CASES) addRow(c, false);
+addRow(MULTI, true);
+
+const fams = ["Tone Spike GPOS", "Tone Spike GSUB"];
+Promise.all(fams.map(f => document.fonts.load(`22px "${f}"`, "カ˨˩"))).catch(() => {}).then(() => document.fonts.ready).then(async () => {
+  await new Promise(r => setTimeout(r, 300));
+  const px = 22;
+  // with the font working, the tone letters take no width: rendered width == sum of advances
+  const widths = measured.filter(m => m.col !== "ref").map(m => ({
+    col: m.col, text: m.text, got: +(m.el.getBoundingClientRect().width / px).toFixed(2), want: +advance(m.text).toFixed(2),
+  }));
+  const bad = widths.filter(w => Math.abs(w.got - w.want) > 0.05 * Math.max(1, w.want) + 0.1 * (w.text.split(" ").length - 1));
+  document.getElementById("status").textContent =
+    `${platform} · fonts ${fams.map(f => document.fonts.check(`22px "${f}"`, "カ")).join("/")} · width mismatch ${bad.length}/${widths.length}`;
+  const report = { platform, view, ua: navigator.userAgent, fontsOk: fams.map(f => document.fonts.check(`22px "${f}"`, "カ")), widths, bad };
+  try { await fetch(`/report?platform=${encodeURIComponent(platform)}`, { method: "POST", body: JSON.stringify(report) }); } catch (e) {}
+});
+</script>
+</body>
+</html>
