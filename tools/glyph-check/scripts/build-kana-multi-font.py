@@ -9,7 +9,7 @@ Why one font: on Android a base and its combining mark must be covered by a sing
 Contents
   - Katakana U+30A0-30FF from Noto Sans JP (wght 400, OFL).
   - The small final-consonant kana ㇰ..ㇿ (U+31F0-31FF), redrawn smaller and set on the baseline, and ㇷ + U+309A
-    ligated to one glyph (the same treatment as kana-c.woff2), and ン + ゚ likewise.
+    ligated to one glyph (the same treatment as kana-c.woff2).
   - Superscript letters, all drawn here from Noto Sans Latin letters at one scale so they look like one family:
       ʰ ʱ ʲ ʷ ⁿ ˣ ˠ ʶ ˀ ˤ 𐞥(U+107A5, q) ʳ ˡ ᶿ ᶞ ᵑ  and the vowel-quality set ᵓ ᵊ ᵋ ᵅ ᶤ.
   - ħ: the sequence ʰ + U+0335 (combining short stroke) ligates to one superscript ħ. Without GSUB it degrades to ʰ
@@ -189,15 +189,6 @@ def main(jp_path, latin_path, out):
     r2.replay(TransformPen(pen, (hs, 0, 0, hs, 1000 + mx1 - mx1 * hs, small_top[0x31F7] + HANDAKUTEN_GAP - my0 * hs)))
     put("uni31F7_309A", pen.glyph(), 1000)
     fu_name, h_name = cmap0[0x31F7], cmap0[MARK_H]
-    # ン + ゚ (coda ŋ, the alternative to ンᵑ): Noto has no precomposed glyph, and a bare zero-advance ゚ would be
-    # placed by the shaper's fallback over the base's left part, so compose one. ゚ is drawn left of the pen at the base's advance.
-    pen = TTGlyphPen(None)
-    r1 = DecomposingRecordingPen(fgs); fgs[cmap0[0x30F3]].draw(r1); r1.replay(pen)
-    r2 = DecomposingRecordingPen(gs); gs[h_name].draw(r2)
-    r2.replay(TransformPen(pen, (1, 0, 0, 1, 1000, 0)))
-    put("uni30F3_309A", pen.glyph(), 1000)
-    n_name = cmap0[0x30F3]
-
 
     def sup(letter):
         name = lcmap[ord(letter)]
@@ -264,7 +255,6 @@ table GDEF {{ GlyphClassDef , , [{marks}], ; }} GDEF;
 feature liga {{
   sub sup_2B0 uni0335 by sup_hbar;
   sub {fu_name} {h_name} by uni31F7_309A;
-  sub {n_name} {h_name} by uni30F3_309A;
 {tone_rules}
 }} liga;
 """
