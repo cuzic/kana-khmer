@@ -28,20 +28,21 @@
 const params = new URLSearchParams(location.search);
 const view = params.get("view") || "wj";
 const platform = params.get("platform") || "unknown";
-const MARK = { wj: "\u2060", zwsp: "\u200b", pua: "\ue000", plain: "", hint: null };
+const MARK = { wj: "\u2060", zwsp: "\u200b", pua: "\ue000", plain: "", hint: "", both: "\ue000" };   // both: PUA start marker + width hint
+const HINT = view === "hint" || view === "both";
 const CASES = ["カ˨˩", "カ˧", "カ˥", "カʰ˦˥", "カㇰ˧˥˧", "キァᵊ˥˩", "コʰᵅーン˨˦˩", "ㇲㇳラʳᵊィ˨˩", "ㇲㇳラʳᵊィㇰ˦˥", "カˀ˥˩"];
 const MULTI = "カ˨˩ キァᵊ˥˩ ㇲㇳラʳᵊィ˦˥ カʰ˧";
 const SUP = new Set("ʰʱʲʷⁿˣˠʶˀˤʳˡᵓᵊᵋᵅᶤ");
 const isTone = ch => ch >= "˥" && ch <= "˩";
 const advance = s => [...s].reduce((a, ch) => a + (isTone(ch) ? 0 : SUP.has(ch) ? 0.48 : ch === " " ? 0 : 1), 0);
 // hint: (nF-1) x U+2062 and nS x U+2063 right before the tone letters; marker: a start marker before the syllable
-function withWidth(syl, marker) {
-  if (marker !== null) return marker + syl;
+function withWidth(syl, marker, hint) {
+  if (!hint) return marker + syl;
   const body = [...syl].filter(c => !isTone(c)).join(""), tones = [...syl].filter(isTone).join("");
   const ns = [...body].filter(c => SUP.has(c)).length;
-  return body + "\u2062".repeat([...body].length - ns - 1) + "\u2063".repeat(ns) + tones;
+  return marker + body + "\u2062".repeat([...body].length - ns - 1) + "\u2063".repeat(ns) + tones;
 }
-const build = (text, marker) => text.split(" ").map(s => withWidth(s, marker)).join(" ");
+const build = (text, marker, hint) => text.split(" ").map(s => withWidth(s, marker, hint)).join(" ");
 const cols = view === "plain" ? ["ref", "gpos", "gsub"] : ["gpos", "gsub"];
 const label = { ref: "system font", gpos: "GPOS", gsub: "GSUB" };
 document.getElementById("title").textContent = `Tone Spike — ${view}`;
@@ -56,7 +57,7 @@ function addRow(text, full) {
   for (const c of cols) {
     const cell = document.createElement("div"); cell.className = "cell " + c + (full ? " full" : "");
     const w = document.createElement("span"); w.className = "w";
-    w.textContent = build(text, c === "ref" ? "" : MARK[view]);
+    w.textContent = c === "ref" ? build(text, "", false) : build(text, MARK[view], HINT);
     cell.append(w); row.append(cell);
     measured.push({ col: c, text, el: w });
   }

@@ -15,7 +15,7 @@ adb shell pm grant com.android.chrome android.permission.POST_NOTIFICATIONS >/de
 adb logcat -c || true
 
 rc=0
-for view in hint wj zwsp pua plain; do
+for view in both; do
   name="android-api${API_LEVEL}-${view}"
   adb shell am force-stop com.android.chrome
   adb shell am start -a android.intent.action.VIEW -d "'http://10.0.2.2:8000/tone-spike.html?view=${view}&platform=${name}'" com.android.chrome

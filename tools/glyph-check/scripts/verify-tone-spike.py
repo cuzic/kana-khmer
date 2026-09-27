@@ -11,7 +11,7 @@ import uharfbuzz as hb
 from fontTools.ttLib import TTFont
 
 DIR = sys.argv[1] if len(sys.argv) > 1 else "public/kana-font"
-MARKERS = {"WJ": "\u2060", "ZWSP": "\u200b", "PUA": "\ue000", "HINT": None}
+MARKERS = {"WJ": "\u2060", "ZWSP": "\u200b", "PUA": "\ue000", "HINT": None, "BOTH": "both"}
 SUP = set("ʰʱʲʷⁿˣˠʶˀˤʳˡᵓᵊᵋᵅᶤ")
 CASES = [
     "カ˨˩", "カ˧", "カ˥", "カʰ˦˥", "カㇰ˧˥˧", "キァᵊ˥˩", "コʰᵅーン˨˦˩", "ㇲㇳラʳᵊィ˨˩", "ㇲㇳラʳᵊィㇰ˦˥", "カˀ˥˩",
@@ -20,12 +20,13 @@ CASES = [
 
 
 def with_width(syllable, marker):
-    if marker is not None:
+    lead = "\ue000" if marker == "both" else ""
+    if marker not in (None, "both"):
         return marker + syllable
     body = "".join(c for c in syllable if not ("\u02e5" <= c <= "\u02e9"))
     tones = syllable[len(body):]
     ns = sum(c in SUP for c in body)
-    return body + "\u2062" * (len(body) - ns - 1) + "\u2063" * ns + tones
+    return lead + body + "\u2062" * (len(body) - ns - 1) + "\u2063" * ns + tones
 
 
 def shape(path, text):

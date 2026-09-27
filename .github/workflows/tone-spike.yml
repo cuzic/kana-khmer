@@ -16,7 +16,7 @@ defaults:
     working-directory: tools/glyph-check
 
 env:
-  VIEWS: "hint wj zwsp pua plain"
+  VIEWS: "both"
 
 jobs:
   ios:
