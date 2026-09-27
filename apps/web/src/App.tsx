@@ -1,5 +1,8 @@
 import { useState } from "react";
+import { Breakdown } from "./Breakdown";
 import { data, type Phrase } from "./data";
+import { Guide } from "./Guide";
+import { Practice } from "./Practice";
 import { useSettings } from "./settings";
 import { pickVariants } from "./variants";
 
@@ -22,6 +25,12 @@ function Card({ phrase, notation, gender }: { phrase: Phrase; notation: "lite" |
           {notation === "full" && <span className="ipa">/{v.ipa}/</span>}
         </div>
       ))}
+      {main.some((v) => v.parts) && (
+        <details className="how">
+          <summary>単語のしくみ</summary>
+          {main.map((v) => <Breakdown key={`${v.speaker}/${v.register}`} variant={v} notation={notation} />)}
+        </details>
+      )}
       {other.length > 0 && (
         <div className="sub">
           {other.map((v) => `${speakerLabel[v.speaker]}: ${kana(v)}${notation === "full" ? ` /${v.ipa}/` : ""}`).join(" / ")}
@@ -36,6 +45,8 @@ function Card({ phrase, notation, gender }: { phrase: Phrase; notation: "lite" |
 export function App() {
   const [settings, setSettings] = useSettings();
   const [sceneId, setSceneId] = useState<string | null>(() => new URLSearchParams(location.search).get("scene"));
+  const [practicing, setPracticing] = useState(() => new URLSearchParams(location.search).has("practice"));
+  const [guide, setGuide] = useState(() => new URLSearchParams(location.search).has("guide"));
   const scene = data.scenes.find((s) => s.id === sceneId);
   const phrases = scene ? scene.phraseIds.map((id) => data.phrases.find((p) => p.id === id)!) : [];
 
@@ -61,7 +72,11 @@ export function App() {
           </label>
         </div>
       </header>
-      {scene ? (
+      {guide ? (
+        <Guide onBack={() => setGuide(false)} />
+      ) : practicing ? (
+        <Practice settings={settings} onBack={() => setPracticing(false)} />
+      ) : scene ? (
         <section>
           <button className="back" onClick={() => setSceneId(null)}>← シーン一覧</button>
           <h2>{scene.title}</h2>
@@ -71,6 +86,8 @@ export function App() {
         </section>
       ) : (
         <section>
+          <button className="reveal" onClick={() => setPracticing(true)}>今日の練習</button>
+          <button className="back" onClick={() => setGuide(true)}>表記の読み方</button>
           <h2>シーン</h2>
           {data.scenes.length === 0 && <p>公開できるフレーズがありません。</p>}
           <ul className="scenes">

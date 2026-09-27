@@ -56,3 +56,22 @@ describe("buildBundle", () => {
     expect(r.bundle.phrases.map((p) => p.id)).toEqual(["a", "b", "c", "d"]);
   });
 });
+
+describe("parts(分かち書き)", () => {
+  const part = (khmer: string, ipa: string) => ({ khmer, ipa, ja: "x", pos: "noun" as const });
+  const withParts = (khmer: string, ipa: string, parts: ReturnType<typeof part>[]) =>
+    phrase("p", { variants: [{ speaker: "any", register: "polite", khmer, ipa, audio: "p.m4a", parts }] });
+
+  it("単語ごとのカナを生成する", () => {
+    const r = buildBundle([withParts("កក", "ɓaːt.ɓaːt", [part("ក", "ɓaːt"), part("ក", "ɓaːt")])], scenes, { profile: "preview" });
+    expect(r.errors).toEqual([]);
+    const parts = r.bundle.phrases[0]!.variants[0]!.parts!;
+    expect(parts.map((x) => x.kanaLite)).toEqual(["バーㇳ", "バーㇳ"]);
+  });
+  it("連結したクメール文字・IPA がフレーズと違えばエラー", () => {
+    const r = buildBundle([withParts("កក", "ɓaːt.ɓaːt", [part("ក", "ɓaːt"), part("ខ", "ɓaːt")])], scenes, { profile: "preview" });
+    expect(r.errors.some((e) => e.includes("khmer"))).toBe(true);
+    const r2 = buildBundle([withParts("កក", "ɓaːt.ɓaːt", [part("ក", "ɓaːt"), part("ក", "caːh")])], scenes, { profile: "preview" });
+    expect(r2.errors.some((e) => e.includes("ipa"))).toBe(true);
+  });
+});

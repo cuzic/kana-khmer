@@ -1,5 +1,5 @@
-/* ◌̯ needs the combined 'チ̯' glyph on Android; modifier letters need the support subset (see tools/glyph-check). */
-@font-face { font-family: "Kana C"; src: url("/fonts/kana-c.woff2") format("woff2"); unicode-range: U+30C1, U+032F; }
+/* Kana C: チ+◌̯ → small チ (ligature), Ainu small consonants ㇰ..ㇿ redrawn smaller, and カ゚ etc. bundled with ゚ (Android needs base+mark in one font); modifier letters need the support subset (see tools/glyph-check). */
+@font-face { font-family: "Kana C"; src: url("/fonts/kana-c.woff2") format("woff2"); unicode-range: U+30C1, U+032F, U+309A, U+30AB, U+30AD, U+30AF, U+30B1, U+30B3, U+30F3, U+31F0-31FF; }
 @font-face { font-family: "Kana Support"; src: url("/fonts/kana-support.woff2") format("woff2");
   unicode-range: U+032F, U+02B0-02B3, U+02E1, U+1D45, U+1D4A, U+1D4B, U+1D53, U+1D9C, U+1DA4; }
 
@@ -26,3 +26,35 @@ ul { list-style: none; padding: 0; margin: 0; }
 .sub { color: var(--muted); font-size: 14px; margin-top: 4px; }
 .ipa { color: var(--muted); font-family: "Noto Sans", system-ui, sans-serif; font-size: 15px; }
 .usage { margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--line); }
+
+.practice .ja { font-size: 1.3rem; margin: 0.5rem 0 1rem; }
+.reveal { width: 100%; padding: 0.8rem; font-size: 1rem; margin-bottom: 1rem; }
+.rating { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.4rem; margin-top: 1rem; }
+.rating button { padding: 0.7rem 0.2rem; font-size: 0.9rem; }
+
+.how { margin-top: 8px; font-size: 14px; }
+.how summary { cursor: pointer; color: var(--accent); }
+.breakdown { margin-top: 8px; }
+.split { display: flex; flex-wrap: wrap; gap: 4px 12px; }
+.split .kana { font-size: 22px; }
+.parts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.parts li { border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; display: flex; flex-direction: column; min-width: 4.5em; }
+.parts .kana { font-size: 18px; }
+.parts .khmer { font-size: 13px; }
+.gloss { font-size: 14px; }
+.pos { font-size: 11px; color: var(--muted); }
+.pos b { margin-left: 6px; font-weight: 600; color: var(--accent); }
+.parts li[class^="role-"] { border-color: var(--accent); }
+.order { margin-top: 6px; }
+
+.guide h3 { font-size: 15px; margin: 20px 0 6px; }
+.guide p, .guide .plain li { font-size: 14px; margin: 6px 0; }
+.guide .plain { list-style: disc; padding-left: 1.2em; }
+.ex { margin: 8px 0; }
+.ex li { border-bottom: 1px solid var(--line); padding: 6px 0; }
+.ex .pair { display: flex; gap: 24px; flex-wrap: wrap; }
+.ex .pair > span { display: flex; flex-direction: column; }
+.ex small { font-size: 11px; color: var(--muted); }
+.ex .kana { font-size: 22px; white-space: nowrap; }
+.mark { font-size: 18px; padding: 0 4px; border-radius: 4px; background: color-mix(in srgb, var(--accent) 15%, transparent); white-space: nowrap; }
+.ex .sym { font-size: 18px; min-width: 4.5em; align-self: center; color: var(--muted); font-family: "Noto Sans", system-ui, sans-serif; }

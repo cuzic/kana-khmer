@@ -3,12 +3,25 @@ import { z } from "zod";
 
 const slug = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, "kebab-case の id");
 
+export const POS = ["noun", "pron", "verb", "adj", "adv", "particle", "prep", "question", "interj"] as const;
+/** 分かち書きの1単語。ja は直訳(意訳ではなく、その語単体の意味)。role は SVO の位置(あれば) */
+export const PartInput = z.object({
+  khmer: z.string().min(1),
+  ipa: z.string().min(1),
+  ja: z.string().min(1),
+  pos: z.enum(POS),
+  role: z.enum(["S", "V", "O"]).optional(),
+});
+export type PartInput = z.infer<typeof PartInput>;
+
 export const VariantInput = z.object({
   speaker: z.enum(["any", "male", "female"]),
   register: z.enum(["polite", "casual"]).default("polite"),
   khmer: z.string().min(1),
   ipa: z.string().min(1),
   audio: z.string().min(1),
+  /** 単語ごとの分割。連結するとフレーズ全体(khmer/ipa)と一致すること */
+  parts: z.array(PartInput).optional(),
 });
 
 export const WordInput = z.object({ khmer: z.string().min(1), ipa: z.string().min(1), ja: z.string().min(1) });
