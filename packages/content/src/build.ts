@@ -15,7 +15,6 @@ export interface Variant {
   kanaFull: string;
   kanaLite: string;
   audio: string;
-  mnemonic?: { lang: string; word: string; reading: string; note: string };
 }
 export interface Phrase extends Omit<PhraseInput, "variants" | "words"> {
   variants: Variant[];

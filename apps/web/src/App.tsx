@@ -20,11 +20,6 @@ function Card({ phrase, notation, gender }: { phrase: Phrase; notation: "lite" |
           <span className="kana">{kana(v)}</span>
           <span className="khmer" lang="km">{v.khmer}</span>
           {notation === "full" && <span className="ipa">/{v.ipa}/</span>}
-          {v.mnemonic && (
-            <div className="sub hint">
-              覚え方: {v.mnemonic.lang}の {v.mnemonic.word}({v.mnemonic.reading})に似た音。{v.mnemonic.note}
-            </div>
-          )}
         </div>
       ))}
       {other.length > 0 && (
@@ -33,7 +28,7 @@ function Card({ phrase, notation, gender }: { phrase: Phrase; notation: "lite" |
         </div>
       )}
       {casual.length > 0 && <div className="sub">くだけた形: {casual.map(kana).join(" / ")}</div>}
-      {phrase.usage && <div className="sub">{phrase.usage}</div>}
+      {phrase.usage && <div className="sub usage">{phrase.usage}</div>}
     </li>
   );
 }

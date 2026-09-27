@@ -2,7 +2,7 @@
 - id: hello
   scene: greetings
   ja: こんにちは
-  usage: 一般的な挨拶
+  usage: 朝昼晩いつでも使える、一番ふつうの挨拶。店に入るときや人に会ったときの最初のひとこと
   variants:
     - { speaker: any, khmer: សួស្តី, ipa: "suə.sdəj", audio: hello.m4a }
   words:
@@ -13,14 +13,10 @@
 - id: yes
   scene: thanks-sorry
   ja: はい
-  usage: 丁寧な返事。話者の性別で語が変わる
+  usage: 丁寧な「はい」。話す人が男性なら「バーㇳ」、女性なら「チャーホ」。呼びかけへの返事や、相づちにも使う
   variants:
     - { speaker: male,   khmer: បាទ, ipa: "ɓaːt", audio: yes-m.m4a }
-    - speaker: female
-      khmer: ចាស
-      ipa: "caːh"
-      audio: yes-f.m4a
-      mnemonic: { lang: イタリア語, word: ciao, reading: チャオ, note: 音が似ているだけ。意味(はい)は無関係 }
+    - { speaker: female, khmer: ចាស, ipa: "caːh", audio: yes-f.m4a }
   words:
     - { khmer: បាទ, ipa: "ɓaːt", ja: はい(男性) }
     - { khmer: ចាស, ipa: "caːh", ja: はい(女性) }
@@ -30,7 +26,7 @@
 - id: thanks
   scene: thanks-sorry
   ja: ありがとう
-  usage: お礼
+  usage: 場面を選ばない基本のお礼。買い物、食事、道を教えてもらったときなど
   variants:
     - { speaker: any, khmer: អរគុណ, ipa: "ʔɑː.kun", audio: thanks.m4a }
   words:
@@ -41,7 +37,7 @@
 - id: sorry
   scene: thanks-sorry
   ja: すみません
-  usage: 謝るとき、声をかけるとき
+  usage: 軽く謝るとき。人にぶつかったときや、話しかけるときの「すみません」にも使える
   variants:
     - { speaker: any, khmer: សុំទោស, ipa: "som.toːh", audio: sorry.m4a }
   words:

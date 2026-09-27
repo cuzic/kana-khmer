@@ -19,7 +19,6 @@ describe("data/", () => {
     const yes = r.bundle.phrases.find((p) => p.id === "yes")!;
     expect(yes.variants.map((v) => v.kanaLite)).toEqual(["バーㇳ", "チャーㇹ"]);
     expect(yes.unreviewed).toBe(true);
-    expect(yes.variants[1]?.mnemonic?.word).toBe("ciao");
   });
   it("未確認の仮データは prod に出ない", () => {
     const r = buildBundle(phrases, sc, { profile: "prod" });

@@ -25,4 +25,4 @@ ul { list-style: none; padding: 0; margin: 0; }
 .badge { margin-left: 8px; color: var(--accent); border-color: var(--accent); }
 .sub { color: var(--muted); font-size: 14px; margin-top: 4px; }
 .ipa { color: var(--muted); font-family: "Noto Sans", system-ui, sans-serif; font-size: 15px; }
-.hint { flex-basis: 100%; }
+.usage { margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--line); }
