@@ -36,7 +36,7 @@ describe("lite derivation property", () => {
   });
 
   it("lite never contains modifier letters", () => {
-    for (const g of golden) expect(renderLite(parseIpa(g.ipa)).text).not.toMatch(/[ʰˡʳᵋᵓᵅᵊᶤ]/);
+    for (const g of golden) expect(renderLite(parseIpa(g.ipa)).text).not.toMatch(/[ʰˡʳᵋᵓᵅᵊᶤᵑ]/);
   });
 
   it("lite is derived from full's spans only (idempotent shape)", () => {
