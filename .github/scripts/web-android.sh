@@ -10,6 +10,7 @@ if adb root >/dev/null 2>&1; then
   adb shell chmod 755 /data/local/tmp/chrome-command-line
 fi
 adb shell settings put global window_animation_scale 0 || true
+adb shell settings put global hide_error_dialogs 1 || true  # emulator "System UI/Launcher isn't responding" dialogs cover the page
 adb shell pm grant com.android.chrome android.permission.POST_NOTIFICATIONS >/dev/null 2>&1 || true
 adb logcat -c || true
 
