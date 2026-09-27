@@ -1,9 +1,7 @@
 import { KhmerKanaError } from "./errors";
-import { HANDAKUTEN } from "./symbols";
 import {
   CODA_KANA,
   CONS_MOD_OF,
-  DENASAL,
   ONSET_EXCEPTIONS,
   ONSET_ROWS,
   PREFIX,
@@ -33,7 +31,7 @@ function renderSyllable(sy: Syllable, out: Span[]): void {
   const v = VOWEL[sy.nucleus.v1];
   const exception = ONSET_EXCEPTIONS[base + sy.nucleus.v1];
   out.push({
-    kind: base === "ŋ" ? "kana-nasal" : "kana",
+    kind: "kana",
     text: exception?.full ?? row[v.row],
     ipa: base,
     ...(exception ? { lite: exception.lite } : {}),
@@ -75,7 +73,7 @@ export function renderFull(u: Utterance): Rendered {
 
 /**
  * Lite notation, derived from the detailed notation's spans (never by string replacement):
- * modifier letters are dropped (◌̯ stays), and ゚-marked kana become plain kana.
+ * modifier letters are dropped (◌̯ stays; ᵑ drops too, turning ŋ's カ゚→ガ-style detour into a plain kana automatically).
  * ㇷ゚ is a plain "kana" span, so its half-voiced mark is untouched.
  */
 export function liteFromFull(full: Rendered): Rendered {
@@ -87,15 +85,7 @@ export function liteFromFull(full: Rendered): Rendered {
       spans.push({ ...rest, text: lite });
       continue;
     }
-    if (s.kind === "kana-nasal") {
-      const plain = DENASAL[s.text];
-      if (plain === undefined) {
-        throw new KhmerKanaError("NO_TABLE_ENTRY", `no plain form for "${s.text}" (${HANDAKUTEN})`, s.text);
-      }
-      spans.push({ ...s, kind: "kana", text: plain });
-    } else {
-      spans.push(s);
-    }
+    spans.push(s);
   }
   return build(spans);
 }

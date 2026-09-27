@@ -1,5 +1,5 @@
 // Conversion tables (data only). Source: khmer kana notation v0.2 + docs/khmer-kana-spec.md §5.
-import { HANDAKUTEN, NONSYL } from "./symbols";
+import { HANDAKUTEN, NASAL_MOD, NONSYL } from "./symbols";
 import type { Coda, SpanKind, Vowel } from "./types";
 
 export type BaseConsonant =
@@ -15,8 +15,6 @@ export const CODAS = new Set<string>(["p", "t", "k", "c", "ʔ", "m", "n", "ŋ", 
 
 export type Row = readonly [string, string, string, string, string]; // [ア, イ, ウ, エ, オ]
 
-const nasal = (row: Row): Row => row.map((k) => k + HANDAKUTEN) as unknown as Row;
-
 /** Onset consonant × vowel row. Aspiration is not part of the kana (added as a modifier). */
 export const ONSET_ROWS: Record<BaseConsonant, Row> = {
   p: ["パ", "ピ", "プ", "ペ", "ポ"],
@@ -29,13 +27,13 @@ export const ONSET_ROWS: Record<BaseConsonant, Row> = {
   m: ["マ", "ミ", "ム", "メ", "モ"],
   n: ["ナ", "ニ", "ヌ", "ネ", "ノ"],
   ɲ: ["ニャ", "ニ", "ニュ", "ニェ", "ニョ"],
-  ŋ: nasal(["カ", "キ", "ク", "ケ", "コ"]),
   j: ["ヤ", "イ", "ユ", "イェ", "ヨ"],
   r: ["ラ", "リ", "ル", "レ", "ロ"],
   l: ["ラ", "リ", "ル", "レ", "ロ"],
   ʋ: ["ヴァ", "ヴィ", "ヴ", "ヴェ", "ヴォ"],
   s: ["サ", "スィ", "ス", "セ", "ソ"],
   h: ["ハ", "ヒ", "フ", "ヘ", "ホ"],
+  ŋ: ["ガ", "ギ", "グ", "ゲ", "ゴ"], // same row text as loanword g; CONS_MOD_OF adds ᵑ to mark it as ŋ (lite drops ᵑ, giving plain ガ行)
   // loanwords only
   g: ["ガ", "ギ", "グ", "ゲ", "ゴ"],
   f: ["ファ", "フィ", "フ", "フェ", "フォ"],
@@ -52,8 +50,8 @@ export const ONSET_EXCEPTIONS: Partial<Record<string, { full: string; lite: stri
   "tɨ": { full: "ト", lite: "トゥ" },
 };
 
-/** Consonant modifiers that always accompany the kana (l and r are never written bare). */
-export const CONS_MOD_OF: Partial<Record<BaseConsonant, string>> = { r: "ʳ", l: "ˡ" };
+/** Consonant modifiers that always accompany the kana (l, r and word-initial ŋ are never written bare). */
+export const CONS_MOD_OF: Partial<Record<BaseConsonant, string>> = { r: "ʳ", l: "ˡ", ŋ: NASAL_MOD };
 
 export const VOWEL: Record<Vowel, { row: 0 | 1 | 2 | 3 | 4; mod: string }> = {
   i: { row: 1, mod: "" },
@@ -94,7 +92,7 @@ export const CODA_KANA: Record<Coda, readonly Part[]> = {
   ʔ: [kana("ッ")],
   m: [kana("ㇺ")],
   n: [kana("ン")],
-  ŋ: [{ kind: "kana-nasal", text: "ン" + HANDAKUTEN }],
+  ŋ: [kana("ン"), modC(NASAL_MOD)],
   ɲ: [kana("ィ"), kana("ン")],
   j: [kana("ィ")],
   w: [kana("ゥ")],
@@ -115,13 +113,3 @@ export const SECOND: Record<string, { long: string; short?: string; mod?: string
 export const DIPHTHONG = new Set<string>(["iə", "ɨə", "uə", "eə", "oə", "ɔə", "aə", "ae", "ao", "ei", "ou"]);
 /** Breve diphthongs. */
 export const SHORT_DIPHTHONG = new Set<string>(["iə", "uə", "eə", "oə"]);
-
-/** Lite notation: nasal markers that are replaced by plain kana (never strip U+309A blindly: ㇷ゚ needs it). */
-export const DENASAL: Record<string, string> = {
-  ["カ" + HANDAKUTEN]: "ガ",
-  ["キ" + HANDAKUTEN]: "ギ",
-  ["ク" + HANDAKUTEN]: "グ",
-  ["ケ" + HANDAKUTEN]: "ゲ",
-  ["コ" + HANDAKUTEN]: "ゴ",
-  ["ン" + HANDAKUTEN]: "ン",
-};

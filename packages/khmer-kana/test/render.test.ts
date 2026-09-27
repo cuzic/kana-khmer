@@ -6,10 +6,9 @@ import golden from "./golden.json";
 const H = "゚";
 const N = "̯";
 
-/** The v0.2 rule as a string operation: drop 8 modifier letters, replace the 6 nasal patterns. Kept ◌̯. */
+/** The rule as a string operation: drop 9 modifier letters (ᵑ marks ŋ; dropping it alone yields plain ガ行/ン, no lookup table needed). Kept ◌̯. */
 function liteByString(full: string): string {
-  const stripped = full.replace(/ト(ʰ?)ᶤ/g, "トゥ$1").replace(/[ʰˡʳᵋᵓᵅᵊᶤ]/g, ""); // tɨ exception: full ト+ᶤ, lite トゥ
-  return stripped.replace(/([カキクケコン])゚/g, (_m, k: string) => ({ カ: "ガ", キ: "ギ", ク: "グ", ケ: "ゲ", コ: "ゴ", ン: "ン" })[k]!);
+  return full.replace(/ト(ʰ?)ᶤ/g, "トゥ$1").replace(/[ʰˡʳᵋᵓᵅᵊᶤᵑ]/g, ""); // tɨ exception: full ト+ᶤ, lite トゥ
 }
 
 describe("lite derivation property", () => {
@@ -45,7 +44,6 @@ describe("lite derivation property", () => {
     const kinds = renderLite(u).spans.map((s) => s.kind);
     expect(kinds).not.toContain("cons-mod");
     expect(kinds).not.toContain("vowel-mod");
-    expect(kinds).not.toContain("kana-nasal");
   });
 });
 
@@ -59,17 +57,20 @@ describe("spans", () => {
     }
   });
 
-  it("kinds: コʰᵅーン゚", () => {
+  it("kinds: コʰᵅーンᵑ", () => {
     const r = renderFull(parseIpa("kʰɑːŋ"));
-    expect(r.spans.map((s) => s.kind)).toEqual(["kana", "cons-mod", "vowel-mod", "long", "kana-nasal"]);
-    expect(r.spans.map((s) => s.text)).toEqual(["コ", "ʰ", "ᵅ", "ー", `ン${H}`]);
+    expect(r.spans.map((s) => s.kind)).toEqual(["kana", "cons-mod", "vowel-mod", "long", "kana", "cons-mod"]);
+    expect(r.spans.map((s) => s.text)).toEqual(["コ", "ʰ", "ᵅ", "ー", "ン", "ᵑ"]);
   });
 
   it("base kana and its combining mark share one span", () => {
     const r = renderFull(parseIpa("cʰkae"));
     expect(r.spans[0]).toMatchObject({ kind: "kana-nonsyl", text: `チ${N}` });
-    const nasal = renderFull(parseIpa("ŋa")).spans[0];
-    expect(nasal).toMatchObject({ kind: "kana-nasal", text: `カ${H}` });
+  });
+
+  it("ŋ is a plain kana plus a cons-mod, like r and l (never a bare row)", () => {
+    const r = renderFull(parseIpa("ŋa"));
+    expect(r.spans).toMatchObject([{ kind: "kana", text: "ガ" }, { kind: "cons-mod", text: "ᵑ" }]);
   });
 
   it("word boundary is a space span", () => {

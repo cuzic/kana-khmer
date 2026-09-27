@@ -22,10 +22,10 @@ const CONVERSIONS: [string, string, string][] = [
   ["cʰkae", `チ${N}カエ`, `チ${N}カエ`],
   ["srəj", "ㇲラʳᵊィ", "ㇲラィ"],
   ["miən", "ミアᵊン", "ミアン"],
-  ["ciəŋ", `チアᵊン${H}`, "チアン"],
+  ["ciəŋ", "チアᵊンᵑ", "チアン"],
   ["loːk", "ロˡーㇰ", "ローㇰ"],
   ["ɓaːt", "バーㇳ", "バーㇳ"],
-  ["kʰɑːŋ", `コʰᵅーン${H}`, "コーン"],
+  ["kʰɑːŋ", "コʰᵅーンᵑ", "コーン"],
   ["mɗaːj", "ㇺダーィ", "ㇺダーィ"],
   ["lʔɑː", "ㇽˡオᵅー", "ㇽオー"],
 ];
@@ -36,7 +36,7 @@ const CODEPOINTS: [string, string, string][] = [
   ["tʰlaj", "31F3 30E9 02E1 30A3", "31F3 30E9 30A3"],
   ["srəj", "31F2 30E9 02B3 1D4A 30A3", "31F2 30E9 30A3"],
   ["cʰkae", "30C1 032F 30AB 30A8", "30C1 032F 30AB 30A8"], // v0.2 lite dropped 032F
-  ["ciəŋ", "30C1 30A2 1D4A 30F3 309A", "30C1 30A2 30F3"],
+  ["ciəŋ", "30C1 30A2 1D4A 30F3 1D51", "30C1 30A2 30F3"],
   ["tʰom", "30C8 02B0 31FA", "30C8 31FA"],
   ["tɨw", "30C8 1DA4 30A5", "30C8 30A5 30A5"],
   ["cʰap", "30C1 30E3 02B0 31F7 309A", "30C1 30E3 31F7 309A"], // ㇷ゚ keeps its handakuten in lite
@@ -54,7 +54,7 @@ describe("v0.2 conversion examples", () => {
 
   it("sentence: 要りません", () => {
     const u = parseIpa("kʰɲom mɨn cɑŋ baːn teː");
-    expect(renderFull(u).text).toBe(`ㇰニョㇺ ムᶤン チョᵅン${H} バーン テー`);
+    expect(renderFull(u).text).toBe("ㇰニョㇺ ムᶤン チョᵅンᵑ バーン テー");
     expect(renderLite(u).text).toBe("ㇰニョㇺ ムン チョン バーン テー");
   });
 
