@@ -34,7 +34,7 @@ function Card({ phrase, notation, gender }: { phrase: Phrase; notation: "lite" |
 
 export function App() {
   const [settings, setSettings] = useSettings();
-  const [sceneId, setSceneId] = useState<string | null>(null);
+  const [sceneId, setSceneId] = useState<string | null>(() => new URLSearchParams(location.search).get("scene"));
   const scene = data.scenes.find((s) => s.id === sceneId);
   const phrases = scene ? scene.phraseIds.map((id) => data.phrases.find((p) => p.id === id)!) : [];
 
