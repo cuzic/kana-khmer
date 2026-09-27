@@ -1,0 +1,1028 @@
+[
+ {
+  "group": "G-1",
+  "ipa": "pa",
+  "full": "パ",
+  "lite": "パ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "pi",
+  "full": "ピ",
+  "lite": "ピ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "pu",
+  "full": "プ",
+  "lite": "プ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "pe",
+  "full": "ペ",
+  "lite": "ペ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "po",
+  "full": "ポ",
+  "lite": "ポ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ɓa",
+  "full": "バ",
+  "lite": "バ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ɓi",
+  "full": "ビ",
+  "lite": "ビ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ɓu",
+  "full": "ブ",
+  "lite": "ブ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ɓe",
+  "full": "ベ",
+  "lite": "ベ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ɓo",
+  "full": "ボ",
+  "lite": "ボ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ta",
+  "full": "タ",
+  "lite": "タ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ti",
+  "full": "ティ",
+  "lite": "ティ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "tu",
+  "full": "トゥ",
+  "lite": "トゥ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "te",
+  "full": "テ",
+  "lite": "テ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "to",
+  "full": "ト",
+  "lite": "ト"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ɗa",
+  "full": "ダ",
+  "lite": "ダ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ɗi",
+  "full": "ディ",
+  "lite": "ディ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ɗu",
+  "full": "ドゥ",
+  "lite": "ドゥ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ɗe",
+  "full": "デ",
+  "lite": "デ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ɗo",
+  "full": "ド",
+  "lite": "ド"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ca",
+  "full": "チャ",
+  "lite": "チャ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ci",
+  "full": "チ",
+  "lite": "チ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "cu",
+  "full": "チュ",
+  "lite": "チュ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ce",
+  "full": "チェ",
+  "lite": "チェ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "co",
+  "full": "チョ",
+  "lite": "チョ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ka",
+  "full": "カ",
+  "lite": "カ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ki",
+  "full": "キ",
+  "lite": "キ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ku",
+  "full": "ク",
+  "lite": "ク"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ke",
+  "full": "ケ",
+  "lite": "ケ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ko",
+  "full": "コ",
+  "lite": "コ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ʔa",
+  "full": "ア",
+  "lite": "ア"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ʔi",
+  "full": "イ",
+  "lite": "イ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ʔu",
+  "full": "ウ",
+  "lite": "ウ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ʔe",
+  "full": "エ",
+  "lite": "エ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ʔo",
+  "full": "オ",
+  "lite": "オ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ma",
+  "full": "マ",
+  "lite": "マ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "mi",
+  "full": "ミ",
+  "lite": "ミ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "mu",
+  "full": "ム",
+  "lite": "ム"
+ },
+ {
+  "group": "G-1",
+  "ipa": "me",
+  "full": "メ",
+  "lite": "メ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "mo",
+  "full": "モ",
+  "lite": "モ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "na",
+  "full": "ナ",
+  "lite": "ナ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ni",
+  "full": "ニ",
+  "lite": "ニ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "nu",
+  "full": "ヌ",
+  "lite": "ヌ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ne",
+  "full": "ネ",
+  "lite": "ネ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "no",
+  "full": "ノ",
+  "lite": "ノ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ɲa",
+  "full": "ニャ",
+  "lite": "ニャ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ɲi",
+  "full": "ニ",
+  "lite": "ニ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ɲu",
+  "full": "ニュ",
+  "lite": "ニュ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ɲe",
+  "full": "ニェ",
+  "lite": "ニェ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ɲo",
+  "full": "ニョ",
+  "lite": "ニョ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ŋa",
+  "full": "カ゚",
+  "lite": "ガ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ŋi",
+  "full": "キ゚",
+  "lite": "ギ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ŋu",
+  "full": "ク゚",
+  "lite": "グ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ŋe",
+  "full": "ケ゚",
+  "lite": "ゲ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ŋo",
+  "full": "コ゚",
+  "lite": "ゴ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ja",
+  "full": "ヤ",
+  "lite": "ヤ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ji",
+  "full": "イ",
+  "lite": "イ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ju",
+  "full": "ユ",
+  "lite": "ユ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "je",
+  "full": "イェ",
+  "lite": "イェ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "jo",
+  "full": "ヨ",
+  "lite": "ヨ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ra",
+  "full": "ラʳ",
+  "lite": "ラ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ri",
+  "full": "リʳ",
+  "lite": "リ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ru",
+  "full": "ルʳ",
+  "lite": "ル"
+ },
+ {
+  "group": "G-1",
+  "ipa": "re",
+  "full": "レʳ",
+  "lite": "レ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ro",
+  "full": "ロʳ",
+  "lite": "ロ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "la",
+  "full": "ラˡ",
+  "lite": "ラ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "li",
+  "full": "リˡ",
+  "lite": "リ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "lu",
+  "full": "ルˡ",
+  "lite": "ル"
+ },
+ {
+  "group": "G-1",
+  "ipa": "le",
+  "full": "レˡ",
+  "lite": "レ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "lo",
+  "full": "ロˡ",
+  "lite": "ロ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ʋa",
+  "full": "ヴァ",
+  "lite": "ヴァ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ʋi",
+  "full": "ヴィ",
+  "lite": "ヴィ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ʋu",
+  "full": "ヴ",
+  "lite": "ヴ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ʋe",
+  "full": "ヴェ",
+  "lite": "ヴェ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ʋo",
+  "full": "ヴォ",
+  "lite": "ヴォ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "sa",
+  "full": "サ",
+  "lite": "サ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "si",
+  "full": "スィ",
+  "lite": "スィ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "su",
+  "full": "ス",
+  "lite": "ス"
+ },
+ {
+  "group": "G-1",
+  "ipa": "se",
+  "full": "セ",
+  "lite": "セ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "so",
+  "full": "ソ",
+  "lite": "ソ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ha",
+  "full": "ハ",
+  "lite": "ハ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "hi",
+  "full": "ヒ",
+  "lite": "ヒ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "hu",
+  "full": "フ",
+  "lite": "フ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "he",
+  "full": "ヘ",
+  "lite": "ヘ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ho",
+  "full": "ホ",
+  "lite": "ホ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ga",
+  "full": "ガ",
+  "lite": "ガ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "gi",
+  "full": "ギ",
+  "lite": "ギ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "gu",
+  "full": "グ",
+  "lite": "グ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ge",
+  "full": "ゲ",
+  "lite": "ゲ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "go",
+  "full": "ゴ",
+  "lite": "ゴ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "fa",
+  "full": "ファ",
+  "lite": "ファ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "fi",
+  "full": "フィ",
+  "lite": "フィ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "fu",
+  "full": "フ",
+  "lite": "フ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "fe",
+  "full": "フェ",
+  "lite": "フェ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "fo",
+  "full": "フォ",
+  "lite": "フォ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ʃa",
+  "full": "シャ",
+  "lite": "シャ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ʃi",
+  "full": "シ",
+  "lite": "シ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ʃu",
+  "full": "シュ",
+  "lite": "シュ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ʃe",
+  "full": "シェ",
+  "lite": "シェ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ʃo",
+  "full": "ショ",
+  "lite": "ショ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "za",
+  "full": "ザ",
+  "lite": "ザ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "zi",
+  "full": "ジ",
+  "lite": "ジ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "zu",
+  "full": "ズ",
+  "lite": "ズ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "ze",
+  "full": "ゼ",
+  "lite": "ゼ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "zo",
+  "full": "ゾ",
+  "lite": "ゾ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "pʰa",
+  "full": "パʰ",
+  "lite": "パ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "tʰa",
+  "full": "タʰ",
+  "lite": "タ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "cʰa",
+  "full": "チャʰ",
+  "lite": "チャ"
+ },
+ {
+  "group": "G-1",
+  "ipa": "kʰa",
+  "full": "カʰ",
+  "lite": "カ"
+ },
+ {
+  "group": "G-2",
+  "ipa": "ki",
+  "full": "キ",
+  "lite": "キ"
+ },
+ {
+  "group": "G-2",
+  "ipa": "kiː",
+  "full": "キー",
+  "lite": "キー"
+ },
+ {
+  "group": "G-2",
+  "ipa": "ke",
+  "full": "ケ",
+  "lite": "ケ"
+ },
+ {
+  "group": "G-2",
+  "ipa": "keː",
+  "full": "ケー",
+  "lite": "ケー"
+ },
+ {
+  "group": "G-2",
+  "ipa": "kɛ",
+  "full": "ケᵋ",
+  "lite": "ケ"
+ },
+ {
+  "group": "G-2",
+  "ipa": "kɛː",
+  "full": "ケᵋー",
+  "lite": "ケー"
+ },
+ {
+  "group": "G-2",
+  "ipa": "kɨ",
+  "full": "クᶤ",
+  "lite": "ク"
+ },
+ {
+  "group": "G-2",
+  "ipa": "kɨː",
+  "full": "クᶤー",
+  "lite": "クー"
+ },
+ {
+  "group": "G-2",
+  "ipa": "kə",
+  "full": "カᵊ",
+  "lite": "カ"
+ },
+ {
+  "group": "G-2",
+  "ipa": "kəː",
+  "full": "カᵊー",
+  "lite": "カー"
+ },
+ {
+  "group": "G-2",
+  "ipa": "ka",
+  "full": "カ",
+  "lite": "カ"
+ },
+ {
+  "group": "G-2",
+  "ipa": "kaː",
+  "full": "カー",
+  "lite": "カー"
+ },
+ {
+  "group": "G-2",
+  "ipa": "kɑ",
+  "full": "コᵅ",
+  "lite": "コ"
+ },
+ {
+  "group": "G-2",
+  "ipa": "kɑː",
+  "full": "コᵅー",
+  "lite": "コー"
+ },
+ {
+  "group": "G-2",
+  "ipa": "ku",
+  "full": "ク",
+  "lite": "ク"
+ },
+ {
+  "group": "G-2",
+  "ipa": "kuː",
+  "full": "クー",
+  "lite": "クー"
+ },
+ {
+  "group": "G-2",
+  "ipa": "ko",
+  "full": "コ",
+  "lite": "コ"
+ },
+ {
+  "group": "G-2",
+  "ipa": "koː",
+  "full": "コー",
+  "lite": "コー"
+ },
+ {
+  "group": "G-2",
+  "ipa": "kɔ",
+  "full": "コᵓ",
+  "lite": "コ"
+ },
+ {
+  "group": "G-2",
+  "ipa": "kɔː",
+  "full": "コᵓー",
+  "lite": "コー"
+ },
+ {
+  "group": "G-3",
+  "ipa": "kiə",
+  "full": "キアᵊ",
+  "lite": "キア"
+ },
+ {
+  "group": "G-3",
+  "ipa": "kɨə",
+  "full": "クᶤアᵊ",
+  "lite": "クア"
+ },
+ {
+  "group": "G-3",
+  "ipa": "kuə",
+  "full": "クアᵊ",
+  "lite": "クア"
+ },
+ {
+  "group": "G-3",
+  "ipa": "keə",
+  "full": "ケアᵊ",
+  "lite": "ケア"
+ },
+ {
+  "group": "G-3",
+  "ipa": "koə",
+  "full": "コアᵊ",
+  "lite": "コア"
+ },
+ {
+  "group": "G-3",
+  "ipa": "kɔə",
+  "full": "コᵓアᵊ",
+  "lite": "コア"
+ },
+ {
+  "group": "G-3",
+  "ipa": "kaə",
+  "full": "カアᵊ",
+  "lite": "カア"
+ },
+ {
+  "group": "G-3",
+  "ipa": "kae",
+  "full": "カエ",
+  "lite": "カエ"
+ },
+ {
+  "group": "G-3",
+  "ipa": "kao",
+  "full": "カオ",
+  "lite": "カオ"
+ },
+ {
+  "group": "G-3",
+  "ipa": "kei",
+  "full": "ケイ",
+  "lite": "ケイ"
+ },
+ {
+  "group": "G-3",
+  "ipa": "kou",
+  "full": "コウ",
+  "lite": "コウ"
+ },
+ {
+  "group": "G-3",
+  "ipa": "kĭə",
+  "full": "キァᵊ",
+  "lite": "キァ"
+ },
+ {
+  "group": "G-3",
+  "ipa": "kŭə",
+  "full": "クァᵊ",
+  "lite": "クァ"
+ },
+ {
+  "group": "G-3",
+  "ipa": "kĕə",
+  "full": "ケァᵊ",
+  "lite": "ケァ"
+ },
+ {
+  "group": "G-3",
+  "ipa": "kŏə",
+  "full": "コァᵊ",
+  "lite": "コァ"
+ },
+ {
+  "group": "G-4",
+  "ipa": "kraː",
+  "full": "ㇰラʳー",
+  "lite": "ㇰラー"
+ },
+ {
+  "group": "G-4",
+  "ipa": "kʰraː",
+  "full": "ㇰラʳー",
+  "lite": "ㇰラー"
+ },
+ {
+  "group": "G-4",
+  "ipa": "traː",
+  "full": "ㇳラʳー",
+  "lite": "ㇳラー"
+ },
+ {
+  "group": "G-4",
+  "ipa": "tʰraː",
+  "full": "ㇳラʳー",
+  "lite": "ㇳラー"
+ },
+ {
+  "group": "G-4",
+  "ipa": "praː",
+  "full": "ㇷ゚ラʳー",
+  "lite": "ㇷ゚ラー"
+ },
+ {
+  "group": "G-4",
+  "ipa": "pʰraː",
+  "full": "ㇷ゚ラʳー",
+  "lite": "ㇷ゚ラー"
+ },
+ {
+  "group": "G-4",
+  "ipa": "sraː",
+  "full": "ㇲラʳー",
+  "lite": "ㇲラー"
+ },
+ {
+  "group": "G-4",
+  "ipa": "mraː",
+  "full": "ㇺラʳー",
+  "lite": "ㇺラー"
+ },
+ {
+  "group": "G-4",
+  "ipa": "lraː",
+  "full": "ㇽˡラʳー",
+  "lite": "ㇽラー"
+ },
+ {
+  "group": "G-4",
+  "ipa": "craː",
+  "full": "チ̯ラʳー",
+  "lite": "チ̯ラー"
+ },
+ {
+  "group": "G-4",
+  "ipa": "cʰraː",
+  "full": "チ̯ラʳー",
+  "lite": "チ̯ラー"
+ },
+ {
+  "group": "G-4",
+  "ipa": "strəj",
+  "full": "ㇲㇳラʳᵊィ",
+  "lite": "ㇲㇳラィ"
+ },
+ {
+  "group": "G-4",
+  "ipa": "skraː",
+  "full": "ㇲㇰラʳー",
+  "lite": "ㇲㇰラー"
+ },
+ {
+  "group": "G-5",
+  "ipa": "kap",
+  "full": "カㇷ゚",
+  "lite": "カㇷ゚"
+ },
+ {
+  "group": "G-5",
+  "ipa": "kat",
+  "full": "カㇳ",
+  "lite": "カㇳ"
+ },
+ {
+  "group": "G-5",
+  "ipa": "kak",
+  "full": "カㇰ",
+  "lite": "カㇰ"
+ },
+ {
+  "group": "G-5",
+  "ipa": "kac",
+  "full": "カィチ̯",
+  "lite": "カィチ̯"
+ },
+ {
+  "group": "G-5",
+  "ipa": "kaʔ",
+  "full": "カッ",
+  "lite": "カッ"
+ },
+ {
+  "group": "G-5",
+  "ipa": "kam",
+  "full": "カㇺ",
+  "lite": "カㇺ"
+ },
+ {
+  "group": "G-5",
+  "ipa": "kan",
+  "full": "カン",
+  "lite": "カン"
+ },
+ {
+  "group": "G-5",
+  "ipa": "kaŋ",
+  "full": "カン゚",
+  "lite": "カン"
+ },
+ {
+  "group": "G-5",
+  "ipa": "kaɲ",
+  "full": "カィン",
+  "lite": "カィン"
+ },
+ {
+  "group": "G-5",
+  "ipa": "kaj",
+  "full": "カィ",
+  "lite": "カィ"
+ },
+ {
+  "group": "G-5",
+  "ipa": "kaw",
+  "full": "カゥ",
+  "lite": "カゥ"
+ },
+ {
+  "group": "G-5",
+  "ipa": "kal",
+  "full": "カㇽˡ",
+  "lite": "カㇽ"
+ },
+ {
+  "group": "G-5",
+  "ipa": "kah",
+  "full": "カㇹ",
+  "lite": "カㇹ"
+ },
+ {
+  "group": "G-5",
+  "ipa": "kaː",
+  "full": "カー",
+  "lite": "カー"
+ }
+]

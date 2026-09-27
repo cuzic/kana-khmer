@@ -32,3 +32,28 @@ export interface Syllable {
 export type Word = Syllable[];
 /** An utterance is a sequence of words (space separated in IPA). */
 export type Utterance = Word[];
+
+export type NotationLevel = "full" | "lite";
+
+/** Unit for coloring / tap explanations. A base kana and its combining mark always share one span. */
+export type SpanKind =
+  | "kana" // plain kana (including small kana and ㇷ゚)
+  | "kana-nonsyl" // kana with ◌̯ (vowelless), e.g. チ̯
+  | "kana-nasal" // kana with ゚ (ŋ), e.g. カ゚ ン゚
+  | "cons-mod" // ʰ ˡ ʳ
+  | "vowel-mod" // ᵋ ᵓ ᵅ ᵊ ᶤ
+  | "long" // ー
+  | "space"; // word boundary
+
+export interface Span {
+  kind: SpanKind;
+  text: string;
+  /** IPA the span stands for (for explanations), when meaningful. */
+  ipa?: string;
+}
+
+export interface Rendered {
+  /** Concatenation of the spans' text. */
+  text: string;
+  spans: Span[];
+}
