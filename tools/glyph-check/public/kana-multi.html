@@ -75,16 +75,18 @@ const FAMILIES = { sys: "sans-serif", kana: '"Kana Multi","Noto Sans JP","Noto S
 function row(target, key, text, note) {
   const d = document.createElement("div"); d.className = "row";
   d.innerHTML = `<span class="k"></span><span class="v"></span><span class="k"></span>`;
-  d.children[0].textContent = key; d.children[1].textContent = text; d.children[2].textContent = note ?? "";
+  d.children[0].textContent = key; d.children[1].textContent = text; d.children[2].textContent = note || ""; // ?? unsupported on old Android WebView (API 29)
   document.getElementById(target).appendChild(d);
 }
 const modeParam = params.get("mode");
 const MODES = modeParam ? [modeParam] : ["sys", "kana"];
 for (const t of ["sys", "kana"]) {
   if (!MODES.includes(t)) { document.getElementById(t).previousElementSibling.remove(); document.getElementById(t).remove(); continue; }
-  for (const [label, text] of MODIFIERS) row(t, label, "マ" + text);
-  for (const [label, text, note] of COMBOS) row(t, label, text, note);
+  // Tones and combos first: a device screenshot only captures the first viewport, and these are the new,
+  // unverified glyphs. The already-proven right-shoulder modifiers (from khmer-kana) go last.
   for (const [label, text, note] of TONES) row(t, label, text, note);
+  for (const [label, text, note] of COMBOS) row(t, label, text, note);
+  for (const [label, text] of MODIFIERS) row(t, label, "マ" + text);
 }
 
 // ---- self check (tofu detection only; judgement is by eye) ----
@@ -100,9 +102,9 @@ function pixels(text, family) {
 function same(a, b) { for (let i = 3; i < a.length; i += 4) if (a[i] !== b[i]) return false; return true; }
 // Loose match for "same glyph, different input sequence": exact pixel equality is too strict, since canvas can
 // hint/antialias two code-point sequences that resolve to one glyph a hair differently. Compare dark-pixel counts.
+function countDark(d) { let n = 0; for (let i = 3; i < d.length; i += 4) if (d[i] > 0) n++; return n; }
 function roughlySame(a, b) {
-  const count = d => { let n = 0; for (let i = 3; i < d.length; i += 4) if (d[i] > 0) n++; return n; };
-  const ca = count(a), cb = count(b);
+  const ca = countDark(a), cb = countDark(b);
   return Math.abs(ca - cb) <= Math.max(ca, cb, 1) * 0.1;
 }
 function width(text, family) { ctx.font = `${SIZE}px ${family}`; return ctx.measureText(text).width / SIZE; }
@@ -128,7 +130,8 @@ function check(mode) {
   }
   // ˦˥ and its legacy alias U+0301 should look identical (docs/tone-notation.md §2.3)
   const high = pixels("マ˦˥", f), alias = pixels("マ́", f);
-  res.push({ mode, item: "tone alias U+0301 == ˦˥", ok: mode !== "kana" || roughlySame(high, alias) });
+  res.push({ mode, item: "tone alias U+0301 == ˦˥", ok: mode !== "kana" || roughlySame(high, alias),
+    darkPixels: { bars: countDark(high), alias: countDark(alias) } });
   return res;
 }
 
