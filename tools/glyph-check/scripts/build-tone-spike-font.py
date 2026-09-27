@@ -15,7 +15,7 @@ U+2060, U+200B, U+E000) and glyph is F (full-width kana, advance 1000) or S (sup
   - The syllable width W = 1000*nF + 480*nS is known from the glyphs between B and the tone, so the contour is moved left by
     dx = -(W-1000)/2. Two ways, chosen with --mode:
       gpos: chained contextual GPOS (kern) adjusts the placement of the tone glyph.
-      gsub: chained contextual GSUB (calt) swaps the tone glyph for a copy whose outline is already shifted.
+      gsub: chained contextual GSUB (calt) swaps the tone glyph for a copy stretched over the whole syllable.
   - Rules are enumerated over every F/S pattern that starts with F (1<=nF<=5, 0<=nS<=4, at most 9 glyphs), anchored on B.
 
 usage: uv run scripts/build-tone-spike-font.py NotoSansJP-VF.ttf NotoSans-Regular.ttf out.woff2 --mode=gpos|gsub
@@ -33,7 +33,8 @@ from fontTools.varLib import instancer
 
 SUP_SCALE, SUP_RAISE, SUP_ADV = 0.62, 400, 480
 STROKE = 58
-TONE_X0, TONE_X1 = -800, -200
+TONE_X0, TONE_X1 = -900, -100   # a one-kana syllable: 100 units of margin each side (centre stays at -500)
+SPAN_MARGIN = 100
 TONE_Y = {1: 1000, 2: 1115, 3: 1230, 4: 1345, 5: 1460}
 TONE_LETTERS = {0x02E5: 5, 0x02E6: 4, 0x02E7: 3, 0x02E8: 2, 0x02E9: 1}
 MARKERS = (0x2060, 0x200B, 0xE000)
@@ -65,11 +66,11 @@ def segment(pen, p0, p1, w):
     poly(pen, cw([(p0[0] + nx, p0[1] + ny), (p1[0] + nx, p1[1] + ny), (p1[0] - nx, p1[1] - ny), (p0[0] - nx, p0[1] - ny)]))
 
 
-def contour_glyph(levels, shift=0):
-    """Polyline through the Chao levels (1-3 of them), moved right by `shift`. A contour (2+ levels) ends in an arrowhead."""
+def contour_glyph(levels, x0=TONE_X0, x1=TONE_X1):
+    """Polyline through the Chao levels (1-3 of them) from x0 to x1. A contour (2+ levels) ends in an arrowhead of fixed size."""
     n = len(levels)
-    xs = [TONE_X0, TONE_X1] if n <= 2 else [TONE_X0, (TONE_X0 + TONE_X1) // 2, TONE_X1]
-    pts = [(x + shift, TONE_Y[l]) for x, l in zip(xs, levels)] if n > 1 else [(TONE_X0 + shift, TONE_Y[levels[0]]), (TONE_X1 + shift, TONE_Y[levels[0]])]
+    xs = [x0, x1] if n <= 2 else [x0, (x0 + x1) // 2, x1]
+    pts = [(x, TONE_Y[l]) for x, l in zip(xs, levels)] if n > 1 else [(x0, TONE_Y[levels[0]]), (x1, TONE_Y[levels[0]])]
     pen = TTGlyphPen(None)
     last = len(pts) - 1
     head, half = 190, 105
@@ -163,7 +164,8 @@ def main(jp_path, latin_path, out, mode):
         else:
             for c in combos:
                 key = "".join(c)
-                put(f"c_{key}_w{w}", contour_glyph([int(x) for x in c], dx), 0)
+                # stretch the line over the whole syllable (pen is at its right end): x = -(W - margin) .. -margin
+                put(f"c_{key}_w{w}", contour_glyph([int(x) for x in c], -(w - SPAN_MARGIN), -SPAN_MARGIN), 0)
             body = " ".join(f"sub c_{''.join(c)} by c_{''.join(c)}_w{w};" for c in combos)
             lookups.append(f"lookup SUB_{w} {{ {body} }} SUB_{w};")
     for nf, ns, pat in seqs:

@@ -44,7 +44,7 @@ function withWidth(syl, marker, hint) {
 }
 const build = (text, marker, hint) => text.split(" ").map(s => withWidth(s, marker, hint)).join(" ");
 const cols = view === "plain" ? ["ref", "gpos", "gsub"] : ["gpos", "gsub"];
-const label = { ref: "system font", gpos: "GPOS", gsub: "GSUB" };
+const label = { ref: "system font", gpos: "GPOS", gsub: "GSUB(線を音節の幅に合わせる)" };
 document.getElementById("title").textContent = `Tone Spike — ${view}`;
 
 const out = document.getElementById("out");
