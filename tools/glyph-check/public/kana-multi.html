@@ -59,6 +59,19 @@ const COMBOS = [
   ["ガ+ᵑ (ŋ、語頭)", "ガᵑ", "2026-09-27 に ᵑ を採用(ン+゚ の合字案は不採用、フォントから削除済み)"],
   ["ン+ᵑ (ŋ、語末)", "ンᵑ", ""],
 ];
+// [label, text, note]. Syllable-wide tone (docs/tone-notation.md §3.1.1): U+E000 marker + body + width hint
+// (U+2062 x(nF-1), U+2063 xnS) + tone bars. New/unverified -- these go first (see the ordering note below).
+const M = "", HA = "⁢", HB = "⁣";
+const SYLLABLE_TONES = [
+  ["任意の2点 ˧˩ (旧4組の外)", "マ˧˩", "下降・上昇など旧5声調の4組以外の2点。以前は合成規則がなく別々に出た"],
+  ["3点(山型) ˩˥˩", "マ˩˥˩", "以前は未実装。1つの折れ線になるはず"],
+  ["3点(谷型) ˥˩˥", "マ˥˩˥", ""],
+  ["2音節ぶんカナ(nF=2)+ 声調", M + "ダア" + HA + "˨˩", "線がダアの幅いっぱいに伸びて中央に来るはず(1文字目のダだけに乗ったら不具合)"],
+  ["カナ+上付き(nF=1,nS=1)+ 声調", M + "カʰ" + HB + "˦˥", "線がカʰ全体の中央に来るはず"],
+  ["カナ2+小書き末子音(nF=2)+3点声調", M + "カㇰ" + HA + "˨˦˥", ""],
+  ["長い音節(nF=4,nS=2)+ 声調", M + "ストラʳᵊィ" + HA.repeat(3) + HB.repeat(2) + "˨˩", "SPAN_MAX(2.4カナ分)で線の長さが頭打ちになるはず"],
+  ["連続する2音節(位置調整が漏れないか)", M + "カ" + HA + "˨˩" + M + "タ" + "˧", "1音節目の伸長が2音節目(タ˧、伸長なし)に漏れたら不具合"],
+];
 // [label, text over マ, note]
 const TONES = [
   ["中 (単独 ˧、矢じりなし)", "マ˧", "平らな声調。矢じりが付いていたら不具合"],
@@ -82,8 +95,10 @@ const modeParam = params.get("mode");
 const MODES = modeParam ? [modeParam] : ["sys", "kana"];
 for (const t of ["sys", "kana"]) {
   if (!MODES.includes(t)) { document.getElementById(t).previousElementSibling.remove(); document.getElementById(t).remove(); continue; }
-  // Tones and combos first: a device screenshot only captures the first viewport, and these are the new,
-  // unverified glyphs. The already-proven right-shoulder modifiers (from khmer-kana) go last.
+  // Syllable-wide tone, then tones and combos: a device screenshot only captures the first viewport, and these
+  // are the new, unverified glyphs (syllable-wide is the newest). The already-proven right-shoulder modifiers
+  // (from khmer-kana) go last.
+  for (const [label, text, note] of SYLLABLE_TONES) row(t, label, text, note);
   for (const [label, text, note] of TONES) row(t, label, text, note);
   for (const [label, text, note] of COMBOS) row(t, label, text, note);
   for (const [label, text] of MODIFIERS) row(t, label, "マ" + text);
@@ -119,6 +134,11 @@ function check(mode) {
     res.push({ mode, item: label, cp: cp(text), tofu, ok: !tofu });
   }
   for (const [label, text] of COMBOS) {
+    const p = pixels(text, f);
+    const tofu = same(p, missing);
+    res.push({ mode, item: label, cp: cp(text), tofu, ok: !tofu });
+  }
+  for (const [label, text] of SYLLABLE_TONES) {
     const p = pixels(text, f);
     const tofu = same(p, missing);
     res.push({ mode, item: label, cp: cp(text), tofu, ok: !tofu });
