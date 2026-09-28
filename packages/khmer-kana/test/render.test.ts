@@ -97,7 +97,7 @@ describe("tɨ exception", () => {
 });
 
 describe("undefined vowelless forms", () => {
-  it.each(["ɓ", "ɗ", "ʔ", "n", "ɲ", "ŋ", "h", "r", "j", "ʋ"])("%s before another onset consonant", (c) => {
+  it.each(["ɓ", "ɗ", "n", "ɲ", "ŋ", "h", "r", "j", "ʋ"])("%s before another onset consonant", (c) => {
     try {
       renderFull(parseIpa(`${c}kaː`));
       throw new Error("expected NO_VOWELLESS_FORM");
@@ -105,5 +105,12 @@ describe("undefined vowelless forms", () => {
       expect(e).toBeInstanceOf(KhmerKanaError);
       expect((e as KhmerKanaError).code).toBe("NO_VOWELLESS_FORM");
     }
+  });
+});
+
+describe("ʔ prefix modifier", () => {
+  it("ʔ before another onset consonant is the ˀ modifier, placed before the following kana (khmer-kana-spec.md §5.4/§11-1)", () => {
+    expect(renderFull(parseIpa("ʔʋəj")).text).toBe("ˀヴァᵊィ");
+    expect(renderLite(parseIpa("ʔʋəj")).text).toBe("ヴァィ");
   });
 });

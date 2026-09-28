@@ -39,7 +39,7 @@ export type NotationLevel = "full" | "lite";
 export type SpanKind =
   | "kana" // plain kana (including small kana and ㇷ゚)
   | "kana-nonsyl" // kana with ◌̯ (vowelless), e.g. チ̯
-  | "cons-mod" // ʰ ˡ ʳ ᵑ (ŋ, word-initial and coda)
+  | "cons-mod" // ʰ ˡ ʳ ᵑ (ŋ, word-initial and coda) ˀ (ʔ, prefix position only)
   | "vowel-mod" // ᵋ ᵓ ᵅ ᵊ ᶤ
   | "long" // ー
   | "space"; // word boundary

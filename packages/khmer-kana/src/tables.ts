@@ -1,5 +1,5 @@
 // Conversion tables (data only). Source: khmer kana notation v0.2 + docs/khmer-kana-spec.md §5.
-import { HANDAKUTEN, NASAL_MOD, NONSYL } from "./symbols";
+import { GLOTTAL_MOD, HANDAKUTEN, NASAL_MOD, NONSYL } from "./symbols";
 import type { Coda, SpanKind, Vowel } from "./types";
 
 export type BaseConsonant =
@@ -73,7 +73,12 @@ export interface Part {
 const kana = (text: string): Part => ({ kind: "kana", text });
 const modC = (text: string): Part => ({ kind: "cons-mod", text });
 
-/** Vowelless form of a consonant that precedes the main onset (aspiration is not written here). */
+/**
+ * Vowelless form of a consonant that precedes the main onset (aspiration is not written here).
+ * ʔ is a special case: unlike the other undefined prefix consonants (see khmer-kana-spec.md §11-1),
+ * it is near-silent in this position, so a full kana+◌̯ would overstate it. It gets the same kind of
+ * lone modifier as ŋ's ᵑ instead (§5.4, 2026-09-28 addendum).
+ */
 export const PREFIX: Partial<Record<BaseConsonant, readonly Part[]>> = {
   k: [kana("ㇰ")],
   t: [kana("ㇳ")],
@@ -82,6 +87,7 @@ export const PREFIX: Partial<Record<BaseConsonant, readonly Part[]>> = {
   m: [kana("ㇺ")],
   l: [kana("ㇽ"), modC("ˡ")],
   c: [{ kind: "kana-nonsyl", text: "チ" + NONSYL }],
+  ʔ: [modC(GLOTTAL_MOD)],
 };
 
 export const CODA_KANA: Record<Coda, readonly Part[]> = {
