@@ -114,7 +114,7 @@ export function Guide({ onBack }: { onBack: () => void }) {
           {"のどをつめる音。母音で始まる語の頭に軽く入る。表記はしない(「ア」「イ」…のまま)。語末では「ッ」。"}
         </Sound>
         <Sound sym="ŋ" ipa="ŋaː">
-          {"「ん」の口で始める、鼻にかかったガ行(鼻濁音)。日本語では語中の「ガ」が近い。カナは「カ」+ ゚。ライトは「ガ」。"}
+          {"「ん」の口で始める、鼻にかかったガ行(鼻濁音)。日本語では語中の「ガ」が近い。カナは「ガ」+右肩の ᵑ。ライトは「ガ」。"}
         </Sound>
         <Sound sym="ɲ" ipa="ɲaː">
           {"舌の真ん中を上あごに当てる鼻音。「ニャ」に近い。"}
@@ -143,6 +143,7 @@ export function Guide({ onBack }: { onBack: () => void }) {
         <li><span className="mark">ʰ</span> 有気音(息を強く出す)。カʰ は「カ」に息を足した音。</li>
         <li><span className="mark">ʳ / ˡ</span> ラ行の子音。ʳ は巻き舌ぎみの r、ˡ は舌を上あごに付ける l。</li>
         <li><span className="mark">ᵊ ᵅ ᵓ ᵋ ᶤ</span> 母音の音色。日本語にない ə ɑ ɔ ɛ ɨ を、近いカナ + 印で書きます。</li>
+        <li><span className="mark">ᵑ</span> 鼻にかかった ŋ の印。語頭・語末どちらにも付きます(次の節)。</li>
       </ul>
       <Table rows={[
         { ipa: "pʰɑːŋ", note: "ʰ(息)と ᵅ(ɑ の音色)" },
@@ -167,8 +168,8 @@ export function Guide({ onBack }: { onBack: () => void }) {
       <Table rows={[{ ipa: "cʰkae", note: "チ̯ は母音なし" }]} />
 
       <h3>鼻にかかる音(ŋ)の印</h3>
-      <p><span className="mark">カ゚ ン゚</span> の小さい丸(゚)は、ng の鼻にかかった音(ŋ)の印です。ン゚ は語末の ng。ライトでは ガ行と ン に置き換わります。</p>
-      <Table rows={[{ ipa: "ciəŋ", note: "語末 ŋ → ン゚" }]} />
+      <p><span className="mark">ガᵑ ンᵑ</span> の右肩の小さい ᵑ は、ng の鼻にかかった音(ŋ)の印です。語頭は「ガ」行+ᵑ、語末は「ン」+ᵑ。ライトでは他の右肩の印と同じく外れ、ガ行と ン に置き換わります。</p>
+      <Table rows={[{ ipa: "ciəŋ", note: "語末 ŋ → ンᵑ" }]} />
 
       <h3>語末の小さい文字</h3>
       <p>語末の y は <span className="mark">ィ</span>、w は <span className="mark">ゥ</span>、声門閉鎖(のどをつめる音)は <span className="mark">ッ</span>、h は <span className="mark">ㇹ</span> で書きます。</p>

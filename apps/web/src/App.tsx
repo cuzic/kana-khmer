@@ -93,7 +93,19 @@ export function App() {
           <ul className="scenes">
             {data.scenes.map((s) => (
               <li key={s.id}>
-                <button onClick={() => setSceneId(s.id)}>{s.title}<span>{s.phraseIds.length}</span></button>
+                <button onClick={() => setSceneId(s.id)}>
+                  <img
+                    className="scene-img"
+                    src={`/images/scenes/${s.id}.webp`}
+                    alt=""
+                    loading="lazy"
+                    onError={(e) => e.currentTarget.remove()}
+                  />
+                  <span className="scene-meta">
+                    <span className="scene-title">{s.title}</span>
+                    <span className="scene-count">{s.phraseIds.length}</span>
+                  </span>
+                </button>
               </li>
             ))}
           </ul>

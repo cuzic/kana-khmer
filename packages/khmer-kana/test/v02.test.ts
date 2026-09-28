@@ -1,5 +1,8 @@
 // G-6 / G-7: examples fixed from the v0.2 design doc (conversion table, sentence, code-point test cases).
-// Light notation differs from v0.2 in one place: ◌̯ is kept (cʰkae → チ̯カエ).
+// Full notation differs from v0.2 in one more place: cʰap is チʰャㇷ゚, not チャʰㇷ゚ -- ʰ sits between the
+// digraph's base and its small-kana glide (2026-09-28), not after the whole cell.
+// Light notation differs from v0.2 in two places: ◌̯ is kept (cʰkae → チ̯カエ), and since 2026-09-28 the
+// high-functional-load modifiers ʰ ˡ ʳ ᵑ ᵅ ᵊ also survive into lite (khmer-kana-spec.md §7).
 import { describe, expect, it } from "vitest";
 import { parseIpa, renderFull, renderLite } from "../src";
 
@@ -9,38 +12,38 @@ const cps = (s: string) => [...s].map((c) => c.codePointAt(0)!.toString(16).toUp
 
 // [ipa, full, lite]
 const CONVERSIONS: [string, string, string][] = [
-  ["ʔɑː.kun", "オᵅークン", "オークン"],
+  ["ʔɑː.kun", "オᵅークン", "オᵅークン"],
   ["kʰɲom", "ㇰニョㇺ", "ㇰニョㇺ"],
-  ["tʰlaj", "ㇳラˡィ", "ㇳラィ"],
+  ["tʰlaj", "ㇳラˡィ", "ㇳラˡィ"],
   ["ɲam", "ニャㇺ", "ニャㇺ"],
   ["sʔaːt", "ㇲアーㇳ", "ㇲアーㇳ"],
-  ["ɗaə", "ダアᵊ", "ダア"],
+  ["ɗaə", "ダアᵊ", "ダアᵊ"],
   ["tɨw", "トᶤゥ", "トゥゥ"],
   ["pʰsaː", `ㇷ${H}サー`, `ㇷ${H}サー`],
-  ["tʰom", "トʰㇺ", "トㇺ"],
-  ["cʰap", `チャʰㇷ${H}`, `チャㇷ${H}`],
+  ["tʰom", "トʰㇺ", "トʰㇺ"],
+  ["cʰap", `チʰャㇷ${H}`, `チʰャㇷ${H}`],
   ["cʰkae", `チ${N}カエ`, `チ${N}カエ`],
-  ["srəj", "ㇲラʳᵊィ", "ㇲラィ"],
-  ["miən", "ミアᵊン", "ミアン"],
-  ["ciəŋ", `チアᵊン${H}`, "チアン"],
-  ["loːk", "ロˡーㇰ", "ローㇰ"],
+  ["srəj", "ㇲラʳᵊィ", "ㇲラʳᵊィ"],
+  ["miən", "ミアᵊン", "ミアᵊン"],
+  ["ciəŋ", "チアᵊンᵑ", "チアᵊンᵑ"],
+  ["loːk", "ロˡーㇰ", "ロˡーㇰ"],
   ["ɓaːt", "バーㇳ", "バーㇳ"],
-  ["kʰɑːŋ", `コʰᵅーン${H}`, "コーン"],
+  ["kʰɑːŋ", "コʰᵅーンᵑ", "コʰᵅーンᵑ"],
   ["mɗaːj", "ㇺダーィ", "ㇺダーィ"],
-  ["lʔɑː", "ㇽˡオᵅー", "ㇽオー"],
+  ["lʔɑː", "ㇽˡオᵅー", "ㇽˡオᵅー"],
 ];
 
 // [ipa, full code points, lite code points]
 const CODEPOINTS: [string, string, string][] = [
-  ["ʔɑː.kun", "30AA 1D45 30FC 30AF 30F3", "30AA 30FC 30AF 30F3"],
-  ["tʰlaj", "31F3 30E9 02E1 30A3", "31F3 30E9 30A3"],
-  ["srəj", "31F2 30E9 02B3 1D4A 30A3", "31F2 30E9 30A3"],
-  ["cʰkae", "30C1 032F 30AB 30A8", "30C1 032F 30AB 30A8"], // v0.2 lite dropped 032F
-  ["ciəŋ", "30C1 30A2 1D4A 30F3 309A", "30C1 30A2 30F3"],
-  ["tʰom", "30C8 02B0 31FA", "30C8 31FA"],
+  ["ʔɑː.kun", "30AA 1D45 30FC 30AF 30F3", "30AA 1D45 30FC 30AF 30F3"],
+  ["tʰlaj", "31F3 30E9 02E1 30A3", "31F3 30E9 02E1 30A3"],
+  ["srəj", "31F2 30E9 02B3 1D4A 30A3", "31F2 30E9 02B3 1D4A 30A3"],
+  ["cʰkae", "30C1 032F 30AB 30A8", "30C1 032F 30AB 30A8"], // v0.2 lite dropped 032F; ◌̯ is the one mark kept unconditionally
+  ["ciəŋ", "30C1 30A2 1D4A 30F3 1D51", "30C1 30A2 1D4A 30F3 1D51"],
+  ["tʰom", "30C8 02B0 31FA", "30C8 02B0 31FA"],
   ["tɨw", "30C8 1DA4 30A5", "30C8 30A5 30A5"],
-  ["cʰap", "30C1 30E3 02B0 31F7 309A", "30C1 30E3 31F7 309A"], // ㇷ゚ keeps its handakuten in lite
-  ["loːk", "30ED 02E1 30FC 31F0", "30ED 30FC 31F0"],
+  ["cʰap", "30C1 02B0 30E3 31F7 309A", "30C1 02B0 30E3 31F7 309A"], // ㇷ゚ keeps its handakuten in lite; ʰ sits between チ and ャ (2026-09-28)
+  ["loːk", "30ED 02E1 30FC 31F0", "30ED 02E1 30FC 31F0"],
 ];
 
 describe("v0.2 conversion examples", () => {
@@ -54,8 +57,8 @@ describe("v0.2 conversion examples", () => {
 
   it("sentence: 要りません", () => {
     const u = parseIpa("kʰɲom mɨn cɑŋ baːn teː");
-    expect(renderFull(u).text).toBe(`ㇰニョㇺ ムᶤン チョᵅン${H} バーン テー`);
-    expect(renderLite(u).text).toBe("ㇰニョㇺ ムン チョン バーン テー");
+    expect(renderFull(u).text).toBe("ㇰニョㇺ ムᶤン チョᵅンᵑ バーン テー");
+    expect(renderLite(u).text).toBe("ㇰニョㇺ ムン チョᵅンᵑ バーン テー");
   });
 
   it("two words: ʔɑː kun keeps the word space", () => {

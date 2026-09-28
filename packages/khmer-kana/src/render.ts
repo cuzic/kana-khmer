@@ -1,13 +1,13 @@
 import { KhmerKanaError } from "./errors";
-import { HANDAKUTEN } from "./symbols";
+import { LITE_DROP } from "./symbols";
 import {
   CODA_KANA,
   CONS_MOD_OF,
-  DENASAL,
   ONSET_EXCEPTIONS,
   ONSET_ROWS,
   PREFIX,
   SECOND,
+  SMALL_KANA_GLIDES,
   VOWEL,
   type BaseConsonant,
 } from "./tables";
@@ -32,13 +32,23 @@ function renderSyllable(sy: Syllable, out: Span[]): void {
   const row = ONSET_ROWS[base];
   const v = VOWEL[sy.nucleus.v1];
   const exception = ONSET_EXCEPTIONS[base + sy.nucleus.v1];
-  out.push({
-    kind: base === "ŋ" ? "kana-nasal" : "kana",
-    text: exception?.full ?? row[v.row],
-    ipa: base,
-    ...(exception ? { lite: exception.lite } : {}),
-  });
-  if (main.endsWith("ʰ")) out.push({ kind: "cons-mod", text: "ʰ", ipa: main });
+  const text = exception?.full ?? row[v.row];
+  const aspirated = main.endsWith("ʰ");
+  // ʰ sits right after the base consonant, before a digraph's glide (ティ/トゥ/チャ/チュ/チェ/チョ):
+  // the same place dakuten attaches on ぎゃ, not after the whole cell.
+  if (aspirated && !exception && text.length === 2 && SMALL_KANA_GLIDES.has(text[1]!)) {
+    out.push({ kind: "kana", text: text[0]!, ipa: base });
+    out.push({ kind: "cons-mod", text: "ʰ", ipa: main });
+    out.push({ kind: "kana", text: text[1]!, ipa: base });
+  } else {
+    out.push({
+      kind: "kana",
+      text,
+      ipa: base,
+      ...(exception ? { lite: exception.lite } : {}),
+    });
+    if (aspirated) out.push({ kind: "cons-mod", text: "ʰ", ipa: main });
+  }
   const cm = CONS_MOD_OF[base];
   if (cm) out.push({ kind: "cons-mod", text: cm, ipa: base });
   if (v.mod) out.push({ kind: "vowel-mod", text: v.mod, ipa: sy.nucleus.v1 });
@@ -75,27 +85,20 @@ export function renderFull(u: Utterance): Rendered {
 
 /**
  * Lite notation, derived from the detailed notation's spans (never by string replacement):
- * modifier letters are dropped (◌̯ stays), and ゚-marked kana become plain kana.
+ * modifier letters in LITE_DROP are dropped (◌̯ always stays; the rest of cons-mod/vowel-mod, chosen by
+ * corpus functional load, survive into lite — see LITE_DROP in symbols.ts and khmer-kana-spec.md §7).
  * ㇷ゚ is a plain "kana" span, so its half-voiced mark is untouched.
  */
 export function liteFromFull(full: Rendered): Rendered {
   const spans: Span[] = [];
   for (const s of full.spans) {
-    if (s.kind === "cons-mod" || s.kind === "vowel-mod") continue;
+    if ((s.kind === "cons-mod" || s.kind === "vowel-mod") && LITE_DROP.has(s.text)) continue;
     if (s.lite !== undefined) {
       const { lite, ...rest } = s;
       spans.push({ ...rest, text: lite });
       continue;
     }
-    if (s.kind === "kana-nasal") {
-      const plain = DENASAL[s.text];
-      if (plain === undefined) {
-        throw new KhmerKanaError("NO_TABLE_ENTRY", `no plain form for "${s.text}" (${HANDAKUTEN})`, s.text);
-      }
-      spans.push({ ...s, kind: "kana", text: plain });
-    } else {
-      spans.push(s);
-    }
+    spans.push(s);
   }
   return build(spans);
 }

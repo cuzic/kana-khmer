@@ -4,9 +4,9 @@
   ja: こんにちは
   usage: 朝昼晩いつでも使える、一番ふつうの挨拶。店に入るときや人に会ったときの最初のひとこと
   variants:
-    - { speaker: any, khmer: សួស្តី, ipa: "suə.sdəj", audio: hello.m4a }
+    - { speaker: any, khmer: សួស្តី, ipa: "suə.sɗəj", audio: hello.m4a }
   words:
-    - { khmer: សួស្តី, ipa: "suə.sdəj", ja: こんにちは }
+    - { khmer: សួស្តី, ipa: "suə.sɗəj", ja: こんにちは }
   review: { ipa: false, audio: false, usage: false }
   audioSource: tts
 
@@ -63,14 +63,14 @@
   variants:
     - speaker: any
       khmer: សុខសប្បាយជាទេ
-      ipa: "sok.sa.baːj.ciə.teː"
+      ipa: "sok.sap.ɓaːj.ciə.tei"
       audio: how-are-you.m4a
       parts:
-        - { khmer: សុខសប្បាយ, ipa: "sok.sa.baːj", ja: 元気・健康, pos: adj }
+        - { khmer: សុខសប្បាយ, ipa: "sok.sap.ɓaːj", ja: 元気・健康, pos: adj }
         - { khmer: ជា, ipa: "ciə", ja: 〜である, pos: verb }
-        - { khmer: ទេ, ipa: "teː", ja: 〜か(疑問), pos: particle }
+        - { khmer: ទេ, ipa: "tei", ja: 〜か(疑問), pos: particle }
   words:
-    - { khmer: សុខសប្បាយជាទេ, ipa: "sok.sa.baːj.ciə.teː", ja: お元気ですか }
+    - { khmer: សុខសប្បាយជាទេ, ipa: "sok.sap.ɓaːj.ciə.tei", ja: お元気ですか }
   review: { ipa: false, audio: false, usage: false }
   audioSource: tts
 
@@ -81,13 +81,13 @@
   variants:
     - speaker: any
       khmer: សុខសប្បាយ
-      ipa: "sok.sa.baːj"
+      ipa: "sok.sap.ɓaːj"
       audio: fine.m4a
       parts:
         - { khmer: សុខ, ipa: "sok", ja: 健康, pos: adj }
-        - { khmer: សប្បាយ, ipa: "sa.baːj", ja: 楽しい・うれしい, pos: adj }
+        - { khmer: សប្បាយ, ipa: "sap.ɓaːj", ja: 楽しい・うれしい, pos: adj }
   words:
-    - { khmer: សុខសប្បាយ, ipa: "sok.sa.baːj", ja: 元気です }
+    - { khmer: សុខសប្បាយ, ipa: "sok.sap.ɓaːj", ja: 元気です }
   review: { ipa: false, audio: false, usage: false }
   audioSource: tts
 
@@ -98,13 +98,13 @@
   variants:
     - speaker: any
       khmer: អរុណសួស្តី
-      ipa: "ʔaʔ.run.suə.sdəj"
+      ipa: "ʔaʔ.run.suə.sɗəj"
       audio: good-morning.m4a
       parts:
         - { khmer: អរុណ, ipa: "ʔaʔ.run", ja: 夜明け, pos: noun }
-        - { khmer: សួស្តី, ipa: "suə.sdəj", ja: 幸あれ, pos: interj }
+        - { khmer: សួស្តី, ipa: "suə.sɗəj", ja: 幸あれ, pos: interj }
   words:
-    - { khmer: អរុណសួស្តី, ipa: "ʔaʔ.run.suə.sdəj", ja: おはよう }
+    - { khmer: អរុណសួស្តី, ipa: "ʔaʔ.run.suə.sɗəj", ja: おはよう }
   review: { ipa: false, audio: false, usage: false }
   audioSource: tts
 
@@ -115,13 +115,13 @@
   variants:
     - speaker: any
       khmer: រាត្រីសួស្តី
-      ipa: "riə.trəj.suə.sdəj"
+      ipa: "riə.trəj.suə.sɗəj"
       audio: good-night.m4a
       parts:
         - { khmer: រាត្រី, ipa: "riə.trəj", ja: 夜, pos: noun }
-        - { khmer: សួស្តី, ipa: "suə.sdəj", ja: 幸あれ, pos: interj }
+        - { khmer: សួស្តី, ipa: "suə.sɗəj", ja: 幸あれ, pos: interj }
   words:
-    - { khmer: រាត្រីសួស្តី, ipa: "riə.trəj.suə.sdəj", ja: おやすみなさい }
+    - { khmer: រាត្រីសួស្តី, ipa: "riə.trəj.suə.sɗəj", ja: おやすみなさい }
   review: { ipa: false, audio: false, usage: false }
   audioSource: tts
 
@@ -132,15 +132,15 @@
   variants:
     - speaker: any
       khmer: រីករាយដែលបានស្គាល់
-      ipa: "riːk.riəj.dael.baːn.skɔl"
+      ipa: "riːk.riəj.ɗael.ɓaːn.skŏəl"
       audio: nice-to-meet.m4a
       parts:
         - { khmer: រីករាយ, ipa: "riːk.riəj", ja: うれしい, pos: adj }
-        - { khmer: ដែល, ipa: "dael", ja: 〜ということ, pos: particle }
-        - { khmer: បាន, ipa: "baːn", ja: 〜できた, pos: verb }
-        - { khmer: ស្គាល់, ipa: "skɔl", ja: 知り合う, pos: verb }
+        - { khmer: ដែល, ipa: "ɗael", ja: 〜ということ, pos: particle }
+        - { khmer: បាន, ipa: "ɓaːn", ja: 〜できた, pos: verb }
+        - { khmer: ស្គាល់, ipa: "skŏəl", ja: 知り合う, pos: verb }
   words:
-    - { khmer: រីករាយដែលបានស្គាល់, ipa: "riːk.riəj.dael.baːn.skɔl", ja: はじめまして }
+    - { khmer: រីករាយដែលបានស្គាល់, ipa: "riːk.riəj.ɗael.ɓaːn.skŏəl", ja: はじめまして }
   review: { ipa: false, audio: false, usage: false }
   audioSource: tts
 
@@ -151,13 +151,13 @@
   variants:
     - speaker: any
       khmer: សូមស្វាគមន៍
-      ipa: "soːm.ʋaː.kum"
+      ipa: "soum.sʋaː.kum"
       audio: welcome.m4a
       parts:
-        - { khmer: សូម, ipa: "soːm", ja: どうぞ・お願いする, pos: particle }
-        - { khmer: ស្វាគមន៍, ipa: "ʋaː.kum", ja: 歓迎, pos: noun }
+        - { khmer: សូម, ipa: "soum", ja: どうぞ・お願いする, pos: particle }
+        - { khmer: ស្វាគមន៍, ipa: "sʋaː.kum", ja: 歓迎, pos: noun }
   words:
-    - { khmer: សូមស្វាគមន៍, ipa: "soːm.ʋaː.kum", ja: ようこそ }
+    - { khmer: សូមស្វាគមន៍, ipa: "soum.sʋaː.kum", ja: ようこそ }
   review: { ipa: false, audio: false, usage: false }
   audioSource: tts
 
@@ -166,9 +166,9 @@
   ja: いいえ
   usage: 否定の返事。「〜ではない」と答えるとき
   variants:
-    - { speaker: any, khmer: ទេ, ipa: "teː", audio: no.m4a }
+    - { speaker: any, khmer: ទេ, ipa: "tei", audio: no.m4a }
   words:
-    - { khmer: ទេ, ipa: "teː", ja: いいえ }
+    - { khmer: ទេ, ipa: "tei", ja: いいえ }
   review: { ipa: false, audio: false, usage: false }
   audioSource: tts
 
@@ -179,14 +179,14 @@
   variants:
     - speaker: any
       khmer: អត់អីទេ
-      ipa: "ʔɑt.ʔəj.teː"
+      ipa: "ʔɑt.ʔəj.tei"
       audio: welcome-reply.m4a
       parts:
         - { khmer: អត់, ipa: "ʔɑt", ja: ない, pos: adv }
         - { khmer: អី, ipa: "ʔəj", ja: 何か, pos: pron }
-        - { khmer: ទេ, ipa: "teː", ja: 〜ない, pos: particle }
+        - { khmer: ទេ, ipa: "tei", ja: 〜ない, pos: particle }
   words:
-    - { khmer: អត់អីទេ, ipa: "ʔɑt.ʔəj.teː", ja: どういたしまして }
+    - { khmer: អត់អីទេ, ipa: "ʔɑt.ʔəj.tei", ja: どういたしまして }
   review: { ipa: false, audio: false, usage: false }
   audioSource: tts
 
@@ -212,9 +212,9 @@
   ja: 大丈夫です・いいですよ
   usage: 了承や「できます」の返事。軽い承諾にも使う
   variants:
-    - { speaker: any, khmer: បាន, ipa: "baːn", audio: ok.m4a }
+    - { speaker: any, khmer: បាន, ipa: "ɓaːn", audio: ok.m4a }
   words:
-    - { khmer: បាន, ipa: "baːn", ja: 大丈夫です・いいですよ }
+    - { khmer: បាន, ipa: "ɓaːn", ja: 大丈夫です・いいですよ }
   review: { ipa: false, audio: false, usage: false }
   audioSource: tts
 
@@ -225,14 +225,14 @@
   variants:
     - speaker: any
       khmer: ខ្ញុំសុំទោស
-      ipa: "kʰɲom.som.toːh"
+      ipa: "kɲom.som.toːh"
       audio: apologize.m4a
       parts:
-        - { khmer: ខ្ញុំ, ipa: "kʰɲom", ja: 私, pos: pron, role: S }
+        - { khmer: ខ្ញុំ, ipa: "kɲom", ja: 私, pos: pron, role: S }
         - { khmer: សុំ, ipa: "som", ja: 求める, pos: verb, role: V }
         - { khmer: ទោស, ipa: "toːh", ja: 罪・過ち, pos: noun, role: O }
   words:
-    - { khmer: ខ្ញុំសុំទោស, ipa: "kʰɲom.som.toːh", ja: ごめんなさい }
+    - { khmer: ខ្ញុំសុំទោស, ipa: "kɲom.som.toːh", ja: ごめんなさい }
   review: { ipa: false, audio: false, usage: false }
   audioSource: tts
 
@@ -254,9 +254,9 @@
   usage: 年下の人や若い店員に
   addressee: { gender: any, age: younger }
   variants:
-    - { speaker: any, khmer: អូន, ipa: "ʔoːn", audio: younger-sibling.m4a }
+    - { speaker: any, khmer: អូន, ipa: "ʔoun", audio: younger-sibling.m4a }
   words:
-    - { khmer: អូន, ipa: "ʔoːn", ja: (年下の人への呼びかけ) }
+    - { khmer: អូន, ipa: "ʔoun", ja: (年下の人への呼びかけ) }
   review: { ipa: false, audio: false, usage: false }
   audioSource: tts
 
@@ -321,14 +321,14 @@
   variants:
     - speaker: any
       khmer: អ្នកឈ្មោះអ្វី
-      ipa: "neək.cʰmuəh.ʔə.ʋiː"
+      ipa: "nĕəʔ.cʰmŭəh.ʔʋəj"
       audio: name-q.m4a
       parts:
-        - { khmer: អ្នក, ipa: "neək", ja: あなた, pos: pron, role: S }
-        - { khmer: ឈ្មោះ, ipa: "cʰmuəh", ja: 名前(である), pos: verb, role: V }
-        - { khmer: អ្វី, ipa: "ʔə.ʋiː", ja: 何, pos: question, role: O }
+        - { khmer: អ្នក, ipa: "nĕəʔ", ja: あなた, pos: pron, role: S }
+        - { khmer: ឈ្មោះ, ipa: "cʰmŭəh", ja: 名前(である), pos: verb, role: V }
+        - { khmer: អ្វី, ipa: "ʔʋəj", ja: 何, pos: question, role: O }
   words:
-    - { khmer: អ្នកឈ្មោះអ្វី, ipa: "neək.cʰmuəh.ʔə.ʋiː", ja: お名前は? }
+    - { khmer: អ្នកឈ្មោះអ្វី, ipa: "nĕəʔ.cʰmŭəh.ʔʋəj", ja: お名前は? }
   review: { ipa: false, audio: false, usage: false }
   audioSource: tts
 
@@ -339,16 +339,16 @@
   variants:
     - speaker: any
       khmer: ខ្ញុំមកពីប្រទេសជប៉ុន
-      ipa: "kʰɲom.mɑːk.pi.prɑ.teːh.cɑ.pun"
+      ipa: "kɲom.mɔːʔ.piː.prɑ.teih.cĕəʔ.pon"
       audio: from-japan.m4a
       parts:
-        - { khmer: ខ្ញុំ, ipa: "kʰɲom", ja: 私, pos: pron, role: S }
-        - { khmer: មក, ipa: "mɑːk", ja: 来る, pos: verb, role: V }
-        - { khmer: ពី, ipa: "pi", ja: 〜から, pos: prep }
-        - { khmer: ប្រទេស, ipa: "prɑ.teːh", ja: 国, pos: noun }
-        - { khmer: ជប៉ុន, ipa: "cɑ.pun", ja: 日本, pos: noun }
+        - { khmer: ខ្ញុំ, ipa: "kɲom", ja: 私, pos: pron, role: S }
+        - { khmer: មក, ipa: "mɔːʔ", ja: 来る, pos: verb, role: V }
+        - { khmer: ពី, ipa: "piː", ja: 〜から, pos: prep }
+        - { khmer: ប្រទេស, ipa: "prɑ.teih", ja: 国, pos: noun }
+        - { khmer: ជប៉ុន, ipa: "cĕəʔ.pon", ja: 日本, pos: noun }
   words:
-    - { khmer: ខ្ញុំមកពីប្រទេសជប៉ុន, ipa: "kʰɲom.mɑːk.pi.prɑ.teːh.cɑ.pun", ja: 日本から来ました }
+    - { khmer: ខ្ញុំមកពីប្រទេសជប៉ុន, ipa: "kɲom.mɔːʔ.piː.prɑ.teih.cĕəʔ.pon", ja: 日本から来ました }
   review: { ipa: false, audio: false, usage: false }
   audioSource: tts
 
@@ -359,15 +359,15 @@
   variants:
     - speaker: any
       khmer: ខ្ញុំជាជនជាតិជប៉ុន
-      ipa: "kʰɲom.ciə.cɔn.ciət.cɑ.pun"
+      ipa: "kɲom.ciə.cɔːn.ciət.cĕəʔ.pon"
       audio: japanese.m4a
       parts:
-        - { khmer: ខ្ញុំ, ipa: "kʰɲom", ja: 私, pos: pron, role: S }
+        - { khmer: ខ្ញុំ, ipa: "kɲom", ja: 私, pos: pron, role: S }
         - { khmer: ជា, ipa: "ciə", ja: 〜である, pos: verb, role: V }
-        - { khmer: ជនជាតិ, ipa: "cɔn.ciət", ja: 〜人(国民), pos: noun }
-        - { khmer: ជប៉ុន, ipa: "cɑ.pun", ja: 日本, pos: noun }
+        - { khmer: ជនជាតិ, ipa: "cɔːn.ciət", ja: 〜人(国民), pos: noun }
+        - { khmer: ជប៉ុន, ipa: "cĕəʔ.pon", ja: 日本, pos: noun }
   words:
-    - { khmer: ខ្ញុំជាជនជាតិជប៉ុន, ipa: "kʰɲom.ciə.cɔn.ciət.cɑ.pun", ja: 私は日本人です }
+    - { khmer: ខ្ញុំជាជនជាតិជប៉ុន, ipa: "kɲom.ciə.cɔːn.ciət.cĕəʔ.pon", ja: 私は日本人です }
   review: { ipa: false, audio: false, usage: false }
   audioSource: tts
 
@@ -378,16 +378,16 @@
   variants:
     - speaker: any
       khmer: ខ្ញុំកំពុងរៀនភាសាខ្មែរ
-      ipa: "kʰɲom.kɑm.poŋ.riən.pʰiə.saː.kʰmae"
+      ipa: "kɲom.kɑm.puŋ.riən.pʰiə.saː.kʰmae"
       audio: learning-khmer.m4a
       parts:
-        - { khmer: ខ្ញុំ, ipa: "kʰɲom", ja: 私, pos: pron, role: S }
-        - { khmer: កំពុង, ipa: "kɑm.poŋ", ja: 〜しているところ, pos: adv }
+        - { khmer: ខ្ញុំ, ipa: "kɲom", ja: 私, pos: pron, role: S }
+        - { khmer: កំពុង, ipa: "kɑm.puŋ", ja: 〜しているところ, pos: adv }
         - { khmer: រៀន, ipa: "riən", ja: 学ぶ, pos: verb, role: V }
         - { khmer: ភាសា, ipa: "pʰiə.saː", ja: 言語, pos: noun, role: O }
         - { khmer: ខ្មែរ, ipa: "kʰmae", ja: クメール, pos: noun }
   words:
-    - { khmer: ខ្ញុំកំពុងរៀនភាសាខ្មែរ, ipa: "kʰɲom.kɑm.poŋ.riən.pʰiə.saː.kʰmae", ja: クメール語を勉強しています }
+    - { khmer: ខ្ញុំកំពុងរៀនភាសាខ្មែរ, ipa: "kɲom.kɑm.puŋ.riən.pʰiə.saː.kʰmae", ja: クメール語を勉強しています }
   review: { ipa: false, audio: false, usage: false }
   audioSource: tts
 
@@ -398,14 +398,14 @@
   variants:
     - speaker: any
       khmer: ខ្ញុំចូលចិត្តកម្ពុជា
-      ipa: "kʰɲom.coːl.cət.kam.pu.ciə"
+      ipa: "kɲom.coul.cət.kam.pu.ciə"
       audio: like-cambodia.m4a
       parts:
-        - { khmer: ខ្ញុំ, ipa: "kʰɲom", ja: 私, pos: pron, role: S }
-        - { khmer: ចូលចិត្ត, ipa: "coːl.cət", ja: 好む, pos: verb, role: V }
+        - { khmer: ខ្ញុំ, ipa: "kɲom", ja: 私, pos: pron, role: S }
+        - { khmer: ចូលចិត្ត, ipa: "coul.cət", ja: 好む, pos: verb, role: V }
         - { khmer: កម្ពុជា, ipa: "kam.pu.ciə", ja: カンボジア, pos: noun, role: O }
   words:
-    - { khmer: ខ្ញុំចូលចិត្តកម្ពុជា, ipa: "kʰɲom.coːl.cət.kam.pu.ciə", ja: カンボジアが好きです }
+    - { khmer: ខ្ញុំចូលចិត្តកម្ពុជា, ipa: "kɲom.coul.cət.kam.pu.ciə", ja: カンボジアが好きです }
   review: { ipa: false, audio: false, usage: false }
   audioSource: tts
 
@@ -416,14 +416,14 @@
   variants:
     - speaker: any
       khmer: ខ្ញុំមកលេង
-      ipa: "kʰɲom.mɑːk.leːŋ"
+      ipa: "kɲom.mɔːʔ.leːŋ"
       audio: came-to-visit.m4a
       parts:
-        - { khmer: ខ្ញុំ, ipa: "kʰɲom", ja: 私, pos: pron, role: S }
-        - { khmer: មក, ipa: "mɑːk", ja: 来る, pos: verb, role: V }
+        - { khmer: ខ្ញុំ, ipa: "kɲom", ja: 私, pos: pron, role: S }
+        - { khmer: មក, ipa: "mɔːʔ", ja: 来る, pos: verb, role: V }
         - { khmer: លេង, ipa: "leːŋ", ja: 遊ぶ・訪れる, pos: verb }
   words:
-    - { khmer: ខ្ញុំមកលេង, ipa: "kʰɲom.mɑːk.leːŋ", ja: 旅行に来ました }
+    - { khmer: ខ្ញុំមកលេង, ipa: "kɲom.mɔːʔ.leːŋ", ja: 旅行に来ました }
   review: { ipa: false, audio: false, usage: false }
   audioSource: tts
 
@@ -434,15 +434,15 @@
   variants:
     - speaker: any
       khmer: ខ្ញុំមិនយល់ទេ
-      ipa: "kʰɲom.mən.jul.teː"
+      ipa: "kɲom.mɨn.jŭəl.tei"
       audio: dont-understand.m4a
       parts:
-        - { khmer: ខ្ញុំ, ipa: "kʰɲom", ja: 私, pos: pron, role: S }
-        - { khmer: មិន, ipa: "mən", ja: 〜ない, pos: adv }
-        - { khmer: យល់, ipa: "jul", ja: わかる, pos: verb, role: V }
-        - { khmer: ទេ, ipa: "teː", ja: (否定を締める), pos: particle }
+        - { khmer: ខ្ញុំ, ipa: "kɲom", ja: 私, pos: pron, role: S }
+        - { khmer: មិន, ipa: "mɨn", ja: 〜ない, pos: adv }
+        - { khmer: យល់, ipa: "jŭəl", ja: わかる, pos: verb, role: V }
+        - { khmer: ទេ, ipa: "tei", ja: (否定を締める), pos: particle }
   words:
-    - { khmer: ខ្ញុំមិនយល់ទេ, ipa: "kʰɲom.mən.jul.teː", ja: わかりません }
+    - { khmer: ខ្ញុំមិនយល់ទេ, ipa: "kɲom.mɨn.jŭəl.tei", ja: わかりません }
   review: { ipa: false, audio: false, usage: false }
   audioSource: tts
 
@@ -453,14 +453,14 @@
   variants:
     - speaker: any
       khmer: ខ្ញុំយល់ហើយ
-      ipa: "kʰɲom.jul.haəj"
+      ipa: "kɲom.jŭəl.haəj"
       audio: understand.m4a
       parts:
-        - { khmer: ខ្ញុំ, ipa: "kʰɲom", ja: 私, pos: pron, role: S }
-        - { khmer: យល់, ipa: "jul", ja: わかる, pos: verb, role: V }
+        - { khmer: ខ្ញុំ, ipa: "kɲom", ja: 私, pos: pron, role: S }
+        - { khmer: យល់, ipa: "jŭəl", ja: わかる, pos: verb, role: V }
         - { khmer: ហើយ, ipa: "haəj", ja: もう(済んだ), pos: adv }
   words:
-    - { khmer: ខ្ញុំយល់ហើយ, ipa: "kʰɲom.jul.haəj", ja: わかりました }
+    - { khmer: ខ្ញុំយល់ហើយ, ipa: "kɲom.jŭəl.haəj", ja: わかりました }
   review: { ipa: false, audio: false, usage: false }
   audioSource: tts
 
@@ -471,15 +471,15 @@
   variants:
     - speaker: any
       khmer: សូមនិយាយម្តងទៀត
-      ipa: "soːm.ni.jiəj.mdɑːŋ.tiət"
+      ipa: "soum.ni.jiəj.mdɑːŋ.tiət"
       audio: say-again.m4a
       parts:
-        - { khmer: សូម, ipa: "soːm", ja: どうぞ・お願いする, pos: particle }
+        - { khmer: សូម, ipa: "soum", ja: どうぞ・お願いする, pos: particle }
         - { khmer: និយាយ, ipa: "ni.jiəj", ja: 言う, pos: verb, role: V }
         - { khmer: ម្តង, ipa: "mdɑːŋ", ja: 1回, pos: noun }
         - { khmer: ទៀត, ipa: "tiət", ja: もっと・また, pos: adv }
   words:
-    - { khmer: សូមនិយាយម្តងទៀត, ipa: "soːm.ni.jiəj.mdɑːŋ.tiət", ja: もう一度言ってください }
+    - { khmer: សូមនិយាយម្តងទៀត, ipa: "soum.ni.jiəj.mdɑːŋ.tiət", ja: もう一度言ってください }
   review: { ipa: false, audio: false, usage: false }
   audioSource: tts
 
@@ -490,14 +490,14 @@
   variants:
     - speaker: any
       khmer: សូមនិយាយយឺតៗ
-      ipa: "soːm.ni.jiəj.jɨːt.jɨːt"
+      ipa: "soum.ni.jiəj.jɨːt.jɨːt"
       audio: slowly.m4a
       parts:
-        - { khmer: សូម, ipa: "soːm", ja: どうぞ・お願いする, pos: particle }
+        - { khmer: សូម, ipa: "soum", ja: どうぞ・お願いする, pos: particle }
         - { khmer: និយាយ, ipa: "ni.jiəj", ja: 言う, pos: verb, role: V }
         - { khmer: យឺតៗ, ipa: "jɨːt.jɨːt", ja: 遅く遅く(ゆっくり), pos: adv }
   words:
-    - { khmer: សូមនិយាយយឺតៗ, ipa: "soːm.ni.jiəj.jɨːt.jɨːt", ja: ゆっくり話してください }
+    - { khmer: សូមនិយាយយឺតៗ, ipa: "soum.ni.jiəj.jɨːt.jɨːt", ja: ゆっくり話してください }
   review: { ipa: false, audio: false, usage: false }
   audioSource: tts
 
@@ -525,13 +525,13 @@
   variants:
     - speaker: any
       khmer: ថ្លៃពេក
-      ipa: "tʰlaj.peːk"
+      ipa: "tʰlaj.peik"
       audio: too-expensive.m4a
       parts:
         - { khmer: ថ្លៃ, ipa: "tʰlaj", ja: 高い, pos: adj }
-        - { khmer: ពេក, ipa: "peːk", ja: 〜すぎる, pos: adv }
+        - { khmer: ពេក, ipa: "peik", ja: 〜すぎる, pos: adv }
   words:
-    - { khmer: ថ្លៃពេក, ipa: "tʰlaj.peːk", ja: 高すぎます }
+    - { khmer: ថ្លៃពេក, ipa: "tʰlaj.peik", ja: 高すぎます }
   review: { ipa: false, audio: false, usage: false }
   audioSource: tts
 
@@ -542,14 +542,14 @@
   variants:
     - speaker: any
       khmer: បង្គន់នៅឯណា
-      ipa: "ɓɑŋ.kun.nəw.ʔae.naː"
+      ipa: "ɓɑŋ.kŭən.nɨw.ʔae.naː"
       audio: toilet.m4a
       parts:
-        - { khmer: បង្គន់, ipa: "ɓɑŋ.kun", ja: トイレ, pos: noun, role: S }
-        - { khmer: នៅ, ipa: "nəw", ja: いる・ある, pos: verb, role: V }
+        - { khmer: បង្គន់, ipa: "ɓɑŋ.kŭən", ja: トイレ, pos: noun, role: S }
+        - { khmer: នៅ, ipa: "nɨw", ja: いる・ある, pos: verb, role: V }
         - { khmer: ឯណា, ipa: "ʔae.naː", ja: どこ, pos: question }
   words:
-    - { khmer: បង្គន់នៅឯណា, ipa: "ɓɑŋ.kun.nəw.ʔae.naː", ja: トイレはどこですか }
+    - { khmer: បង្គន់នៅឯណា, ipa: "ɓɑŋ.kŭən.nɨw.ʔae.naː", ja: トイレはどこですか }
   review: { ipa: false, audio: false, usage: false }
   audioSource: tts
 
@@ -560,13 +560,13 @@
   variants:
     - speaker: any
       khmer: ល្អណាស់
-      ipa: "laʔ.nah"
+      ipa: "lʔɑː.nah"
       audio: very-good.m4a
       parts:
-        - { khmer: ល្អ, ipa: "laʔ", ja: よい, pos: adj }
+        - { khmer: ល្អ, ipa: "lʔɑː", ja: よい, pos: adj }
         - { khmer: ណាស់, ipa: "nah", ja: とても, pos: adv }
   words:
-    - { khmer: ល្អណាស់, ipa: "laʔ.nah", ja: とてもいいです }
+    - { khmer: ល្អណាស់, ipa: "lʔɑː.nah", ja: とてもいいです }
   review: { ipa: false, audio: false, usage: false }
   audioSource: tts
 
@@ -577,13 +577,13 @@
   variants:
     - speaker: any
       khmer: សូមទឹក
-      ipa: "soːm.tɨk"
+      ipa: "soum.tɨk"
       audio: water.m4a
       parts:
-        - { khmer: សូម, ipa: "soːm", ja: どうぞ・お願いする, pos: particle }
+        - { khmer: សូម, ipa: "soum", ja: どうぞ・お願いする, pos: particle }
         - { khmer: ទឹក, ipa: "tɨk", ja: 水, pos: noun, role: O }
   words:
-    - { khmer: សូមទឹក, ipa: "soːm.tɨk", ja: お水をください }
+    - { khmer: សូមទឹក, ipa: "soum.tɨk", ja: お水をください }
   review: { ipa: false, audio: false, usage: false }
   audioSource: tts
 
@@ -611,13 +611,13 @@
   variants:
     - speaker: any
       khmer: រង់ចាំបន្តិច
-      ipa: "rɔŋ.cam.ɓɑn.tec"
+      ipa: "rŭəŋ.cam.ɓɑn.təc"
       audio: wait.m4a
       parts:
-        - { khmer: រង់ចាំ, ipa: "rɔŋ.cam", ja: 待つ, pos: verb, role: V }
-        - { khmer: បន្តិច, ipa: "ɓɑn.tec", ja: 少し, pos: adv }
+        - { khmer: រង់ចាំ, ipa: "rŭəŋ.cam", ja: 待つ, pos: verb, role: V }
+        - { khmer: បន្តិច, ipa: "ɓɑn.təc", ja: 少し, pos: adv }
   words:
-    - { khmer: រង់ចាំបន្តិច, ipa: "rɔŋ.cam.ɓɑn.tec", ja: ちょっと待ってください }
+    - { khmer: រង់ចាំបន្តិច, ipa: "rŭəŋ.cam.ɓɑn.təc", ja: ちょっと待ってください }
   review: { ipa: false, audio: false, usage: false }
   audioSource: tts
 
@@ -628,13 +628,13 @@
   variants:
     - speaker: any
       khmer: តើនេះអ្វី
-      ipa: "taə.nih.ʔə.ʋiː"
+      ipa: "taə.nih.ʔʋəj"
       audio: what-is-this.m4a
       parts:
         - { khmer: តើ, ipa: "taə", ja: 〜か(疑問), pos: particle }
         - { khmer: នេះ, ipa: "nih", ja: これ, pos: pron, role: S }
-        - { khmer: អ្វី, ipa: "ʔə.ʋiː", ja: 何, pos: question }
+        - { khmer: អ្វី, ipa: "ʔʋəj", ja: 何, pos: question }
   words:
-    - { khmer: តើនេះអ្វី, ipa: "taə.nih.ʔə.ʋiː", ja: これは何ですか }
+    - { khmer: តើនេះអ្វី, ipa: "taə.nih.ʔʋəj", ja: これは何ですか }
   review: { ipa: false, audio: false, usage: false }
   audioSource: tts

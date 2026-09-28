@@ -70,24 +70,33 @@ export function buildBundle(phrases: PhraseInput[], scenes: SceneInput[], opts: 
       const r = convertIpa(`phrase ${p.id}`, v.ipa, errors);
       if (!r) continue;
       let parts: Part[] | undefined;
+      // parts があれば、その単語境界を使って本文のカナも分かち書きする(語ごとに renderFull/Lite を
+      // 呼んで連結するのではなく、part の syllables を1つの Utterance の別々の語として渡すことで、
+      // renderFull の語間 space span をそのまま使う。design.md §2.1 / render.ts の word boundary)。
+      let spacedSyllables: Utterance | undefined;
       if (inputParts) {
         const where = `phrase ${p.id} の ${key}`;
         const strip = (t: string) => t.replace(/[.\s]/g, "");
         if (inputParts.map((x) => x.khmer).join("") !== v.khmer) errors.push(`${where}: parts の khmer を連結すると "${inputParts.map((x) => x.khmer).join("")}" になり、フレーズ "${v.khmer}" と一致しません`);
         if (strip(inputParts.map((x) => x.ipa).join("")) !== strip(v.ipa)) errors.push(`${where}: parts の ipa を連結すると "${inputParts.map((x) => x.ipa).join(".")}" になり、フレーズ "${v.ipa}" と一致しません`);
         parts = [];
+        spacedSyllables = [];
         for (const x of inputParts) {
           const pr = convertIpa(`${where} の部品 ${x.khmer}`, x.ipa, errors);
-          if (pr) parts.push({ ...x, ipa: pr.ipa, kanaFull: renderFull(pr.syllables).text, kanaLite: renderLite(pr.syllables).text });
+          if (pr) {
+            parts.push({ ...x, ipa: pr.ipa, kanaFull: renderFull(pr.syllables).text, kanaLite: renderLite(pr.syllables).text });
+            spacedSyllables.push(...pr.syllables);
+          }
         }
       }
+      const mainSyllables = spacedSyllables ?? r.syllables;
       variants.push({
         ...v,
         ...(parts ? { parts } : {}),
         ipa: r.ipa,
         syllables: r.syllables,
-        kanaFull: renderFull(r.syllables).text,
-        kanaLite: renderLite(r.syllables).text,
+        kanaFull: renderFull(mainSyllables).text,
+        kanaLite: renderLite(mainSyllables).text,
       });
     }
     if (speakers.has("any/polite") && speakers.size > 1) {

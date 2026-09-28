@@ -302,32 +302,32 @@
  {
   "group": "G-1",
   "ipa": "ŋa",
-  "full": "カ゚",
-  "lite": "ガ"
+  "full": "ガᵑ",
+  "lite": "ガᵑ"
  },
  {
   "group": "G-1",
   "ipa": "ŋi",
-  "full": "キ゚",
-  "lite": "ギ"
+  "full": "ギᵑ",
+  "lite": "ギᵑ"
  },
  {
   "group": "G-1",
   "ipa": "ŋu",
-  "full": "ク゚",
-  "lite": "グ"
+  "full": "グᵑ",
+  "lite": "グᵑ"
  },
  {
   "group": "G-1",
   "ipa": "ŋe",
-  "full": "ケ゚",
-  "lite": "ゲ"
+  "full": "ゲᵑ",
+  "lite": "ゲᵑ"
  },
  {
   "group": "G-1",
   "ipa": "ŋo",
-  "full": "コ゚",
-  "lite": "ゴ"
+  "full": "ゴᵑ",
+  "lite": "ゴᵑ"
  },
  {
   "group": "G-1",
@@ -363,61 +363,61 @@
   "group": "G-1",
   "ipa": "ra",
   "full": "ラʳ",
-  "lite": "ラ"
+  "lite": "ラʳ"
  },
  {
   "group": "G-1",
   "ipa": "ri",
   "full": "リʳ",
-  "lite": "リ"
+  "lite": "リʳ"
  },
  {
   "group": "G-1",
   "ipa": "ru",
   "full": "ルʳ",
-  "lite": "ル"
+  "lite": "ルʳ"
  },
  {
   "group": "G-1",
   "ipa": "re",
   "full": "レʳ",
-  "lite": "レ"
+  "lite": "レʳ"
  },
  {
   "group": "G-1",
   "ipa": "ro",
   "full": "ロʳ",
-  "lite": "ロ"
+  "lite": "ロʳ"
  },
  {
   "group": "G-1",
   "ipa": "la",
   "full": "ラˡ",
-  "lite": "ラ"
+  "lite": "ラˡ"
  },
  {
   "group": "G-1",
   "ipa": "li",
   "full": "リˡ",
-  "lite": "リ"
+  "lite": "リˡ"
  },
  {
   "group": "G-1",
   "ipa": "lu",
   "full": "ルˡ",
-  "lite": "ル"
+  "lite": "ルˡ"
  },
  {
   "group": "G-1",
   "ipa": "le",
   "full": "レˡ",
-  "lite": "レ"
+  "lite": "レˡ"
  },
  {
   "group": "G-1",
   "ipa": "lo",
   "full": "ロˡ",
-  "lite": "ロ"
+  "lite": "ロˡ"
  },
  {
   "group": "G-1",
@@ -633,25 +633,25 @@
   "group": "G-1",
   "ipa": "pʰa",
   "full": "パʰ",
-  "lite": "パ"
+  "lite": "パʰ"
  },
  {
   "group": "G-1",
   "ipa": "tʰa",
   "full": "タʰ",
-  "lite": "タ"
+  "lite": "タʰ"
  },
  {
   "group": "G-1",
   "ipa": "cʰa",
-  "full": "チャʰ",
-  "lite": "チャ"
+  "full": "チʰャ",
+  "lite": "チʰャ"
  },
  {
   "group": "G-1",
   "ipa": "kʰa",
   "full": "カʰ",
-  "lite": "カ"
+  "lite": "カʰ"
  },
  {
   "group": "G-2",
@@ -705,13 +705,13 @@
   "group": "G-2",
   "ipa": "kə",
   "full": "カᵊ",
-  "lite": "カ"
+  "lite": "カᵊ"
  },
  {
   "group": "G-2",
   "ipa": "kəː",
   "full": "カᵊー",
-  "lite": "カー"
+  "lite": "カᵊー"
  },
  {
   "group": "G-2",
@@ -729,13 +729,13 @@
   "group": "G-2",
   "ipa": "kɑ",
   "full": "コᵅ",
-  "lite": "コ"
+  "lite": "コᵅ"
  },
  {
   "group": "G-2",
   "ipa": "kɑː",
   "full": "コᵅー",
-  "lite": "コー"
+  "lite": "コᵅー"
  },
  {
   "group": "G-2",
@@ -777,43 +777,43 @@
   "group": "G-3",
   "ipa": "kiə",
   "full": "キアᵊ",
-  "lite": "キア"
+  "lite": "キアᵊ"
  },
  {
   "group": "G-3",
   "ipa": "kɨə",
   "full": "クᶤアᵊ",
-  "lite": "クア"
+  "lite": "クアᵊ"
  },
  {
   "group": "G-3",
   "ipa": "kuə",
   "full": "クアᵊ",
-  "lite": "クア"
+  "lite": "クアᵊ"
  },
  {
   "group": "G-3",
   "ipa": "keə",
   "full": "ケアᵊ",
-  "lite": "ケア"
+  "lite": "ケアᵊ"
  },
  {
   "group": "G-3",
   "ipa": "koə",
   "full": "コアᵊ",
-  "lite": "コア"
+  "lite": "コアᵊ"
  },
  {
   "group": "G-3",
   "ipa": "kɔə",
   "full": "コᵓアᵊ",
-  "lite": "コア"
+  "lite": "コアᵊ"
  },
  {
   "group": "G-3",
   "ipa": "kaə",
   "full": "カアᵊ",
-  "lite": "カア"
+  "lite": "カアᵊ"
  },
  {
   "group": "G-3",
@@ -843,103 +843,109 @@
   "group": "G-3",
   "ipa": "kĭə",
   "full": "キァᵊ",
-  "lite": "キァ"
+  "lite": "キァᵊ"
  },
  {
   "group": "G-3",
   "ipa": "kŭə",
   "full": "クァᵊ",
-  "lite": "クァ"
+  "lite": "クァᵊ"
  },
  {
   "group": "G-3",
   "ipa": "kĕə",
   "full": "ケァᵊ",
-  "lite": "ケァ"
+  "lite": "ケァᵊ"
  },
  {
   "group": "G-3",
   "ipa": "kŏə",
   "full": "コァᵊ",
-  "lite": "コァ"
+  "lite": "コァᵊ"
  },
  {
   "group": "G-4",
   "ipa": "kraː",
   "full": "ㇰラʳー",
-  "lite": "ㇰラー"
+  "lite": "ㇰラʳー"
  },
  {
   "group": "G-4",
   "ipa": "kʰraː",
   "full": "ㇰラʳー",
-  "lite": "ㇰラー"
+  "lite": "ㇰラʳー"
  },
  {
   "group": "G-4",
   "ipa": "traː",
   "full": "ㇳラʳー",
-  "lite": "ㇳラー"
+  "lite": "ㇳラʳー"
  },
  {
   "group": "G-4",
   "ipa": "tʰraː",
   "full": "ㇳラʳー",
-  "lite": "ㇳラー"
+  "lite": "ㇳラʳー"
  },
  {
   "group": "G-4",
   "ipa": "praː",
   "full": "ㇷ゚ラʳー",
-  "lite": "ㇷ゚ラー"
+  "lite": "ㇷ゚ラʳー"
  },
  {
   "group": "G-4",
   "ipa": "pʰraː",
   "full": "ㇷ゚ラʳー",
-  "lite": "ㇷ゚ラー"
+  "lite": "ㇷ゚ラʳー"
  },
  {
   "group": "G-4",
   "ipa": "sraː",
   "full": "ㇲラʳー",
-  "lite": "ㇲラー"
+  "lite": "ㇲラʳー"
  },
  {
   "group": "G-4",
   "ipa": "mraː",
   "full": "ㇺラʳー",
-  "lite": "ㇺラー"
+  "lite": "ㇺラʳー"
  },
  {
   "group": "G-4",
   "ipa": "lraː",
   "full": "ㇽˡラʳー",
-  "lite": "ㇽラー"
+  "lite": "ㇽˡラʳー"
  },
  {
   "group": "G-4",
   "ipa": "craː",
   "full": "チ̯ラʳー",
-  "lite": "チ̯ラー"
+  "lite": "チ̯ラʳー"
  },
  {
   "group": "G-4",
   "ipa": "cʰraː",
   "full": "チ̯ラʳー",
-  "lite": "チ̯ラー"
+  "lite": "チ̯ラʳー"
  },
  {
   "group": "G-4",
   "ipa": "strəj",
   "full": "ㇲㇳラʳᵊィ",
-  "lite": "ㇲㇳラィ"
+  "lite": "ㇲㇳラʳᵊィ"
  },
  {
   "group": "G-4",
   "ipa": "skraː",
   "full": "ㇲㇰラʳー",
-  "lite": "ㇲㇰラー"
+  "lite": "ㇲㇰラʳー"
+ },
+ {
+  "group": "G-4",
+  "ipa": "stʰaːn",
+  "full": "ㇲタʰーン",
+  "lite": "ㇲタʰーン"
  },
  {
   "group": "G-5",
@@ -986,8 +992,8 @@
  {
   "group": "G-5",
   "ipa": "kaŋ",
-  "full": "カン゚",
-  "lite": "カン"
+  "full": "カンᵑ",
+  "lite": "カンᵑ"
  },
  {
   "group": "G-5",
@@ -1011,7 +1017,7 @@
   "group": "G-5",
   "ipa": "kal",
   "full": "カㇽˡ",
-  "lite": "カㇽ"
+  "lite": "カㇽˡ"
  },
  {
   "group": "G-5",
