@@ -15,6 +15,15 @@ export const CODAS = new Set<string>(["p", "t", "k", "c", "ʔ", "m", "n", "ŋ", 
 
 export type Row = readonly [string, string, string, string, string]; // [ア, イ, ウ, エ, オ]
 
+/**
+ * Small kana that appear as the second character of a two-character ONSET_ROWS cell (ティ, トゥ, チャ,
+ * チュ, チェ, チョ, ...): a full-size base consonant kana followed by a small glide kana. Used to split
+ * such a cell when a consonant modifier needs to sit right after the base, before the glide (2026-09-28:
+ * ʰ on cʰa/cʰu/cʰe/cʰo/tʰi/tʰu goes between the base and the glide, matching how dakuten attaches to the
+ * base of a digraph like ぎゃ rather than after it — see render.ts's splitDigraph).
+ */
+export const SMALL_KANA_GLIDES = new Set<string>(["ァ", "ィ", "ゥ", "ェ", "ォ", "ャ", "ュ", "ョ"]);
+
 /** Onset consonant × vowel row. Aspiration is not part of the kana (added as a modifier). */
 export const ONSET_ROWS: Record<BaseConsonant, Row> = {
   p: ["パ", "ピ", "プ", "ペ", "ポ"],

@@ -7,6 +7,7 @@ import {
   ONSET_ROWS,
   PREFIX,
   SECOND,
+  SMALL_KANA_GLIDES,
   VOWEL,
   type BaseConsonant,
 } from "./tables";
@@ -31,13 +32,23 @@ function renderSyllable(sy: Syllable, out: Span[]): void {
   const row = ONSET_ROWS[base];
   const v = VOWEL[sy.nucleus.v1];
   const exception = ONSET_EXCEPTIONS[base + sy.nucleus.v1];
-  out.push({
-    kind: "kana",
-    text: exception?.full ?? row[v.row],
-    ipa: base,
-    ...(exception ? { lite: exception.lite } : {}),
-  });
-  if (main.endsWith("ʰ")) out.push({ kind: "cons-mod", text: "ʰ", ipa: main });
+  const text = exception?.full ?? row[v.row];
+  const aspirated = main.endsWith("ʰ");
+  // ʰ sits right after the base consonant, before a digraph's glide (ティ/トゥ/チャ/チュ/チェ/チョ):
+  // the same place dakuten attaches on ぎゃ, not after the whole cell.
+  if (aspirated && !exception && text.length === 2 && SMALL_KANA_GLIDES.has(text[1]!)) {
+    out.push({ kind: "kana", text: text[0]!, ipa: base });
+    out.push({ kind: "cons-mod", text: "ʰ", ipa: main });
+    out.push({ kind: "kana", text: text[1]!, ipa: base });
+  } else {
+    out.push({
+      kind: "kana",
+      text,
+      ipa: base,
+      ...(exception ? { lite: exception.lite } : {}),
+    });
+    if (aspirated) out.push({ kind: "cons-mod", text: "ʰ", ipa: main });
+  }
   const cm = CONS_MOD_OF[base];
   if (cm) out.push({ kind: "cons-mod", text: cm, ipa: base });
   if (v.mod) out.push({ kind: "vowel-mod", text: v.mod, ipa: sy.nucleus.v1 });

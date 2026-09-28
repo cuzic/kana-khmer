@@ -1,6 +1,6 @@
 // P (light derivation, spans), NO_VOWELLESS_FORM
 import { describe, expect, it } from "vitest";
-import { KhmerKanaError, parseIpa, renderFull, renderLite, type Rendered } from "../src";
+import { KhmerKanaError, parseIpa, renderFull, renderLite, toIpa, type Rendered } from "../src";
 import golden from "./golden.json";
 
 const H = "゚";
@@ -117,5 +117,48 @@ describe("ʔ prefix modifier", () => {
   it("ʔ before another onset consonant is the ˀ modifier, placed before the following kana (khmer-kana-spec.md §5.4/§11-1)", () => {
     expect(renderFull(parseIpa("ʔʋəj")).text).toBe("ˀヴァᵊィ");
     expect(renderLite(parseIpa("ʔʋəj")).text).toBe("ヴァᵊィ"); // ˀ (ʔ) is dropped in lite, but ə's kept ᵊ survives
+  });
+});
+
+describe("cluster with an aspirated main consonant", () => {
+  // Until 2026-09-28 every cluster+aspiration golden case had the aspirated consonant in PREFIX position
+  // (kʰraː etc.), where §5.4 drops aspiration, so ʰ never actually showed up in a cluster's rendering.
+  // Real, common Khmer words put the aspiration on the cluster's MAIN (last) consonant instead, e.g.
+  // ស្ថាន stʰaːn "place", ល្ខោន lkʰaon "theater", ម្ភៃ mpʰɨj "twenty" (G-4 golden.json).
+  it("prefix consonant + aspirated main consonant: ʰ shows (it's not dropped there)", () => {
+    expect(renderFull(parseIpa("stʰaːn")).text).toBe("ㇲタʰーン");
+    expect(renderLite(parseIpa("stʰaːn")).text).toBe("ㇲタʰーン"); // ʰ is kept in lite too (LITE_DROP, §7)
+  });
+});
+
+describe("ʰ on a digraph onset (2026-09-28)", () => {
+  // c and t are the only aspirable consonants (p t c k) with a two-character ONSET_ROWS cell (base kana +
+  // small glide kana: ティ トゥ チャ チュ チェ チョ). ʰ goes between the base and the glide, the same place
+  // dakuten attaches on a digraph like ぎゃ -- not after the whole cell (which is where it used to land).
+  it.each([
+    ["cʰa", "チʰャ"], ["cʰu", "チʰュ"], ["cʰo", "チʰョ"], ["cʰe", "チʰェ"],
+    ["tʰi", "テʰィ"], ["tʰu", "トʰゥ"],
+  ])("%s -> %s", (ipa, expected) => {
+    expect(renderFull(parseIpa(ipa)).text).toBe(expected);
+    expect(renderLite(parseIpa(ipa)).text).toBe(expected); // ʰ survives lite (LITE_DROP, §7)
+  });
+
+  it("a vowel-mod still lands at the very end, after the glide", () => {
+    // cʰɛ: ʰ (consonant) goes before the glide ェ, ᵋ (vowel quality) goes after it.
+    expect(renderFull(parseIpa("cʰɛ")).text).toBe("チʰェᵋ");
+    expect(renderLite(parseIpa("cʰɛ")).text).toBe("チʰェ"); // ᵋ is in LITE_DROP
+  });
+
+  it("single-character onsets are unaffected (no glide to split before)", () => {
+    expect(renderFull(parseIpa("cʰi")).text).toBe("チʰ");
+    expect(renderFull(parseIpa("tʰa")).text).toBe("タʰ");
+    expect(renderFull(parseIpa("kʰa")).text).toBe("カʰ");
+    expect(renderFull(parseIpa("pʰa")).text).toBe("パʰ");
+  });
+
+  it("round-trips through toIpa (span splitting doesn't affect the underlying syllable)", () => {
+    for (const ipa of ["cʰa", "cʰu", "cʰo", "cʰe", "cʰɛ", "tʰi", "tʰu"]) {
+      expect(toIpa(parseIpa(ipa))).toBe(ipa);
+    }
   });
 });
