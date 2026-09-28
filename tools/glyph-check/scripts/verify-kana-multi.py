@@ -205,8 +205,8 @@ def main(jp_path, latin_path):
     for k, members in class_members.items():
         members.sort(key=lambda t: t[1])
         for letter_, adv in {members[0], members[-1]}:
-            check_centring_independent(f"class{k} {letter_} (adv={adv})", MARKER + "カ" + letter_ + "˦˥", tol=45)
-    check_centring_independent("2 superscripts (キʲᵊ)", MARKER + "キʲᵊ˦˥", tol=60)
+            check_centring_independent(f"class{k} {letter_} (adv={adv})", MARKER + "カ" + letter_ + "˦˥", tol=35)
+    check_centring_independent("2 superscripts (キʲᵊ)", MARKER + "キʲᵊ˦˥", tol=45)
 
     # 7. Mark filtering (the M1 fix): a dot-below/creaky/handakuten between two kana must not knock the marker
     #    path back to the default (unstretched) position.
