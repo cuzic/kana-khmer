@@ -3,3 +3,4 @@ artifacts
 ci
 public/fonts
 server.log
+__pycache__
