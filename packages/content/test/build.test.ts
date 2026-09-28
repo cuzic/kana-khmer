@@ -68,6 +68,14 @@ describe("parts(分かち書き)", () => {
     const parts = r.bundle.phrases[0]!.variants[0]!.parts!;
     expect(parts.map((x) => x.kanaLite)).toEqual(["バーㇳ", "バーㇳ"]);
   });
+  it("本文のカナも parts の語境界で分かち書きする", () => {
+    const r = buildBundle([withParts("កក", "ɓaːt.ɓaːt", [part("ក", "ɓaːt"), part("ក", "ɓaːt")])], scenes, { profile: "preview" });
+    expect(r.errors).toEqual([]);
+    const v = r.bundle.phrases[0]!.variants[0]!;
+    expect(v.kanaLite).toBe("バーㇳ バーㇳ");
+    expect(v.kanaFull).toBe("バーㇳ バーㇳ");
+  });
+
   it("連結したクメール文字・IPA がフレーズと違えばエラー", () => {
     const r = buildBundle([withParts("កក", "ɓaːt.ɓaːt", [part("ក", "ɓaːt"), part("ខ", "ɓaːt")])], scenes, { profile: "preview" });
     expect(r.errors.some((e) => e.includes("khmer"))).toBe(true);
