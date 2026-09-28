@@ -5,17 +5,23 @@
 """Shape-verify kana-multi.woff2 with uharfbuzz (docs/tone-notation.md §6).
 
 Why this exists: the first version of the syllable-wide tone stretch (docs/tone-notation.md §8-12) shipped with
-several real bugs that two Opus reviews caught by rebuilding the font and shaping test strings, not by anything
+several real bugs that three Opus reviews caught by rebuilding the font and shaping test strings, not by anything
 in this repo -- most of them things a script like this one should have caught mechanically. Run it after any
 change to build-kana-multi-font.py, before trusting a glyph-check screenshot.
 
 Judgement is still by eye for anything about how a shape *looks* (glyph-check, docs/tone-notation.md's own
-policy); this only checks what a script can check: does the intended glyph get selected, does its outline
-exactly match an independently-recomputed expectation (so a mispositioned stem or a wrong stretch span fails
-here, not just "some tone glyph exists"), does a mark between the kana and the tone get skipped by the marker
-path, does a widened syllable's tone glyph stay opaque to the next syllable's context matching, and do the
-marker path (a literal glyph sequence) and the hint path (per-class counts) agree on every width the font builds
-a lookup for.
+policy); this only checks what a script can check. Two kinds of check, and they are not interchangeable:
+  - "does the right glyph get selected, and does its outline match what contour_glyph()/w_of() say it should be
+    for this (levels, x0, x1)" (assert_matches_expected). This catches wiring bugs (wrong lookup, wrong glyph
+    chosen) but NOT a bug inside contour_glyph()/stem()/w_of() themselves -- both sides of the comparison call
+    the same code, so a bug there passes on both sides. A third Opus review proved this by reintroducing the C1
+    stem bug in a scratch copy and confirming this script still printed ALL CHECKS PASSED.
+  - "does the shipped glyph's actual geometry match a value computed independently, from plain arithmetic and
+    the font's own real advances, without calling contour_glyph()/stem()/w_of() for the expectation"
+    (check_stem_independent, check_centring_independent). These are what can catch a bug in that code itself,
+    including a regression back to the old fixed-stem or ceiling-width bugs. If you add a check and aren't sure
+    which kind it is, ask: "would this still pass if I reintroduced the bug it's supposed to catch?" -- if you
+    haven't tried that, you don't know.
 
 This builds its own named copy of the font (build_kana_multi_font.main(..., keep_names=True)) rather than reading
 the shipped kana-multi.woff2 directly: the shipped file uses post format 3 (no glyph names, to save space), and
@@ -37,7 +43,9 @@ spec = importlib.util.spec_from_file_location("build_kana_multi_font", os.path.j
 bk = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(bk)
 
-MARKER = ""   # written as an escape, not the literal invisible character, so it's visible in a diff/review
+MARKER = chr(0xE000)   # U+E000, built via chr() rather than written as a source character so it can't silently
+HINT_A = chr(0x2062)   # collapse back into a literal invisible glyph the way a hand-typed escape has before.
+HINT_S = {1: chr(0x2061), 2: chr(0x2063), 3: chr(0x2064)}
 
 
 def main(jp_path, latin_path):
@@ -76,17 +84,63 @@ def main(jp_path, latin_path):
         return tones[0]
 
     def assert_matches_expected(label, name, levels, x0, x1):
-        """The strong version of a shape check: recompute the glyph build-kana-multi-font.py *should* have
-        produced for this exact (levels, x0, x1) -- via the same contour_glyph() the build uses, not a copy of
-        the logic -- and require the real shaped glyph's bounding box to match exactly. This is what the
-        original stem check should have been: that one derived its "expected" value from the same glyph it was
-        checking (bounds' own xMin), so it could never fail -- comparing against an independent recomputation can."""
+        """Wiring check, not a geometry check (see the module docstring): recomputes the glyph via the same
+        contour_glyph() the build uses, so this catches the build picking the wrong lookup/glyph for a given
+        (levels, x0, x1), but a bug inside contour_glyph()/stem() itself passes here either way."""
         expected = bk.contour_glyph(levels, x0, x1)
         expected.recalcBounds(glyf)
         exp_b = (expected.xMin, expected.yMin, expected.xMax, expected.yMax)
         got_b = bounds(name)
         if got_b != exp_b:
             fails.append(f"{label}: glyph {name} bounds {got_b} != recomputed expectation {exp_b} for x0={x0}")
+
+    def check_stem_independent(label, name, x0):
+        """The actual C1 regression test: computes the stem's expected position from plain arithmetic (x0-60,
+        STEM wide -- the literal values stem() is supposed to draw) without calling contour_glyph() or stem()
+        for the expectation, then reads the glyph's *first* contour (stem() draws the stem before the line) and
+        requires its x-range to be exactly that pair. Confirmed to fail when the C1 bug is reintroduced (a
+        scratch copy with stem()'s old fixed sx)."""
+        g = glyf[name]
+        coords, endPts, _ = g.getCoordinates(glyf)
+        if not endPts:
+            fails.append(f"{label}: {name} has no contours"); return
+        first = coords[:endPts[0] + 1]
+        xs = sorted({p[0] for p in first})
+        expected_sx = x0 - 60
+        if xs != [expected_sx, expected_sx + bk.STEM]:
+            fails.append(f"{label}: {name}'s first contour (the stem) has x in {xs}, "
+                         f"expected [{expected_sx}, {expected_sx + bk.STEM}] (independent arithmetic)")
+
+    def check_centring_independent(label, text, tol):
+        """The actual R1 regression test: uses the font's *real* x_advance for everything before the tone glyph
+        (not w_of()'s class-average approximation) to compute where the syllable's true centre is, and requires
+        the shaped tone glyph's own geometric centre to land within `tol` of it -- independent of SCLASS_WIDTH,
+        SCLASS_CEIL, or any function in build-kana-multi-font.py. Confirmed to fail (by a wide margin) against a
+        scratch copy with SCLASS_WIDTH reset to SCLASS_CEIL (the pre-R1 ceiling bug)."""
+        seq = shape(text)
+        tone = next(((n, x, a) for n, x, a in seq if n.startswith("tone_")), None)
+        if tone is None:
+            fails.append(f"{label}: no tone glyph in {[n for n,_,_ in seq]}"); return
+        name, tone_x, _ = tone
+        g = glyf[name]
+        if g.numberOfContours == 0:
+            fails.append(f"{label}: {name} has no outline"); return
+        # Centre of the *line* (its own contours), not the whole glyph: the whole-glyph bounding box also
+        # includes the reference stem, whose left edge sits a further STROKE units left of the line's own
+        # start (see stem()) -- folding that into the centre computation biases it by about half that offset,
+        # which is a measurement artefact of this check, not something the design is trying to keep small.
+        coords, endPts, _ = g.getCoordinates(glyf)
+        line_pts = coords[endPts[0] + 1:]
+        if not line_pts:
+            fails.append(f"{label}: {name} has only a stem contour"); return
+        xs = [p[0] for p in line_pts]
+        real_body_adv = sum(a for _, _, a in seq if a > 0)   # marker/hints are 0-width; only real kana+superscripts count
+        expected_centre = -real_body_adv / 2                 # body spans -real_body_adv..0 in the tone glyph's own frame
+        actual_centre = (min(xs) + max(xs)) / 2
+        diff = actual_centre - expected_centre
+        if abs(diff) > tol:
+            fails.append(f"{label}: {name} centre off by {diff:.0f} from the real-advance centre (tol {tol}); "
+                         f"real body width {real_body_adv}, line x-range [{min(xs)}, {max(xs)}]")
 
     # 1. Every 1-3 bar sequence ligates to exactly one contour glyph, at the default (unstretched) position
     # (docs/tone-notation.md §6, row 1), and its outline exactly matches a fresh contour_glyph() call.
@@ -106,14 +160,10 @@ def main(jp_path, latin_path):
     expect_tone("bare single kana", "カ˨˩", r"^tone_21$")
 
     # 4. Every width the font builds a lookup for (bk.width_combos()): the marker path (an actual glyph
-    #    sequence: nf kana, then n1/n2/n3 superscripts of each class) and the hint path (the same counts, as
-    #    hintA/hintS1-3) must select the *same* glyph, and that glyph's outline must exactly match an
-    #    independently recomputed one -- this is the R2 fix (the old check only compared a glyph name suffix
-    #    like "_w1280" against the formula, never the real geometry) and doubles as the C1 stem regression test
-    #    (contour_glyph draws the stem first, at x0-60, so a wrong x0 fails the bounds comparison) and the R1
-    #    width-bias check (SCLASS_WIDTH now an average, not a ceiling -- width_combos() and w_of() already use
-    #    whatever SCLASS_WIDTH the build computed, so this check is correct either way; it is what would have
-    #    shown the R1 bias directly, since the expected geometry is computed from the same formula, not eyeballed).
+    #    sequence: nf kana, then n1/n2/n3 superscripts of each class) and the hint path (the same counts) must
+    #    select the *same* glyph (a real cross-check between two independently-built rule sets), and that glyph
+    #    must be the one assert_matches_expected() recomputes -- a wiring check, see its docstring for what it
+    #    does and does not prove.
     letter = {1: "ʲ", 2: "ᵊ", 3: "ʷ"}   # one representative superscript per class (ʲ, ᵊ, ʷ)
     levels = (2, 1)
     tested_widths = set()
@@ -126,7 +176,7 @@ def main(jp_path, latin_path):
         x0, x1 = round(cx - half), round(cx + half)
         marker_name = expect_tone(f"marker nf={nf} n1={n1} n2={n2} n3={n3}",
                                    MARKER + body + "˨˩", rf"^tone_21_w{w}$")
-        hint_body = "カ" * nf + "⁢" * (nf - 1) + "⁡" * n1 + "⁣" * n2 + "⁤" * n3
+        hint_body = "カ" * nf + HINT_A * (nf - 1) + HINT_S[1] * n1 + HINT_S[2] * n2 + HINT_S[3] * n3
         hint_name = expect_tone(f"hint nf={nf} n1={n1} n2={n2} n3={n3}", hint_body + "˨˩", rf"^tone_21_w{w}$")
         if marker_name and hint_name and marker_name != hint_name:
             fails.append(f"nf={nf} n1={n1} n2={n2} n3={n3}: marker path picked {marker_name}, hint path picked {hint_name}")
@@ -134,7 +184,31 @@ def main(jp_path, latin_path):
             assert_matches_expected(f"marker nf={nf} n1={n1} n2={n2} n3={n3}", marker_name, levels, x0, x1)
     print(f"  ({len(tested_widths)} distinct widths exercised via both paths)")
 
-    # 5. Mark filtering (the M1 fix): a dot-below/creaky/handakuten between two kana must not knock the marker
+    # 5. The C1 regression test (independent of contour_glyph/w_of; see check_stem_independent's docstring): the
+    #    stem of a stretched glyph must sit at that glyph's own x0-60, not wherever a fixed constant would put it.
+    for nf, n1, n2, n3 in [(2, 0, 0, 0), (4, 1, 1, 0), (1, 0, 2, 0)]:
+        w = bk.w_of(nf, n1, n2, n3)
+        half = min(w - 2 * bk.SPAN_MARGIN, bk.SPAN_MAX) / 2
+        x0 = round(-w / 2 - half)
+        body = "カ" * nf + letter[1] * n1 + letter[2] * n2
+        name = expect_tone(f"stem nf={nf} n1={n1} n2={n2}", MARKER + body + "˨˩", rf"^tone_21_w{w}$")
+        if name: check_stem_independent(f"stem nf={nf} n1={n1} n2={n2}", name, x0)
+
+    # 6. The R1 regression test (independent of SCLASS_WIDTH/w_of; see check_centring_independent's docstring):
+    #    for every width class, the narrowest and the widest member (not just one arbitrary representative),
+    #    because R1 was specifically a bias that grew with how far a superscript sits from its class's average.
+    class_members = {1: [], 2: [], 3: []}
+    for cp, _drawn_from in bk.SUPERSCRIPTS.items():
+        letter_ = chr(cp)                          # the actual superscript codepoint, not the Latin letter it's drawn from
+        adv = shape(letter_)[0][2]
+        class_members.setdefault(bk.sclass_of(adv), []).append((letter_, adv))
+    for k, members in class_members.items():
+        members.sort(key=lambda t: t[1])
+        for letter_, adv in {members[0], members[-1]}:
+            check_centring_independent(f"class{k} {letter_} (adv={adv})", MARKER + "カ" + letter_ + "˦˥", tol=45)
+    check_centring_independent("2 superscripts (キʲᵊ)", MARKER + "キʲᵊ˦˥", tol=60)
+
+    # 7. Mark filtering (the M1 fix): a dot-below/creaky/handakuten between two kana must not knock the marker
     #    path back to the default (unstretched) position.
     for label, text in [
         ("dot-below mid-syllable", MARKER + "タ̣ラ˧˩"),
@@ -143,15 +217,15 @@ def main(jp_path, latin_path):
     ]:
         expect_tone(label, text, r"^tone_31_w2000$")
 
-    # 6. Consecutive syllables: syllable 1's own stretched tone glyph must not become invisible to syllable 2's
+    # 8. Consecutive syllables: syllable 1's own stretched tone glyph must not become invisible to syllable 2's
     #    matching (the regression the first UseMarkFilteringSet attempt introduced, and this script would have
     #    caught immediately).
-    seq = shape(MARKER + "カタ⁢˨˩ラ˧")
+    seq = shape(MARKER + "カタ" + HINT_A + "˨˩ラ˧")
     tones = [n for n, _, _ in seq if n.startswith("tone_")]
     if tones != ["tone_21_w2000", "tone_3"]:
         fails.append(f"consecutive syllables: expected ['tone_21_w2000', 'tone_3'], got {tones}")
 
-    # 7. ccmp/rclt are not discretionary: disabling liga/calt/clig (which no longer host anything) must not
+    # 9. ccmp/rclt are not discretionary: disabling liga/calt/clig (which no longer host anything) must not
     #    affect the result (the M2 fix).
     seq = shape("マ˨˩", {"liga": False, "calt": False, "clig": False})
     if not any(n == "tone_21" for n, _, _ in seq):
