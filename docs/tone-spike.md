@@ -3,6 +3,12 @@
 `docs/tone-notation.md` の案b(声調を**音節全体**の真上に、CSS も ruby も使わず**フォントだけ**で出す)が、実機相当の環境で成立するかを確かめる使い捨ての試作。
 成果物は「動くか/動かないか」と、その根拠になるスクリーンショット。製品コードには入れない。
 
+**この文書はスパイクブランチ `spike/tone-font`(コミット 41c527d)時点の記録**として `feature/kana-multi-notation`
+にそのまま持ち込んだもの。§3・§8 が参照する `build-tone-spike-font.py`・`verify-tone-spike.py`・`tone-spike.html`・
+`tone-spike.yml` は `spike/tone-font` ブランチにあり、このブランチには無い(結論だけを `kana-multi.woff2` に
+統合した。統合結果は `docs/tone-notation.md` の現状ノートと `tools/glyph-check/scripts/build-kana-multi-font.py`
+を参照)。
+
 ## 1. 検証したいこと
 
 | # | 仮説 | 駄目だった場合 |
