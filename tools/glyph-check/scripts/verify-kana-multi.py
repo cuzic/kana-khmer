@@ -5,17 +5,17 @@
 """Shape-verify kana-multi.woff2 with uharfbuzz (docs/tone-notation.md §6).
 
 Why this exists: the first version of the syllable-wide tone stretch (docs/tone-notation.md §8-12) shipped with
-two real bugs -- the reference stem staying at a fixed x instead of following the stretched contour's own left
-edge, and the width formula assuming every superscript is 480 units wide when the real range is ~160-487 -- that
-an Opus review caught by rebuilding the font and shaping test strings, not by anything in this repo. Both were
-things a script like this one would have caught mechanically. Run it after any change to
-build-kana-multi-font.py, before trusting a glyph-check screenshot.
+several real bugs that two Opus reviews caught by rebuilding the font and shaping test strings, not by anything
+in this repo -- most of them things a script like this one should have caught mechanically. Run it after any
+change to build-kana-multi-font.py, before trusting a glyph-check screenshot.
 
 Judgement is still by eye for anything about how a shape *looks* (glyph-check, docs/tone-notation.md's own
-policy); this only checks what a script can check: does the intended glyph get selected, is it centred where the
-formula says it should be, does the reference stem track the stretched line, does a mark between the kana and
-the tone get skipped by the marker path, does a widened syllable's tone glyph stay opaque to the next syllable's
-context matching.
+policy); this only checks what a script can check: does the intended glyph get selected, does its outline
+exactly match an independently-recomputed expectation (so a mispositioned stem or a wrong stretch span fails
+here, not just "some tone glyph exists"), does a mark between the kana and the tone get skipped by the marker
+path, does a widened syllable's tone glyph stay opaque to the next syllable's context matching, and do the
+marker path (a literal glyph sequence) and the hint path (per-class counts) agree on every width the font builds
+a lookup for.
 
 This builds its own named copy of the font (build_kana_multi_font.main(..., keep_names=True)) rather than reading
 the shipped kana-multi.woff2 directly: the shipped file uses post format 3 (no glyph names, to save space), and
@@ -36,6 +36,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 spec = importlib.util.spec_from_file_location("build_kana_multi_font", os.path.join(HERE, "build-kana-multi-font.py"))
 bk = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(bk)
+
+MARKER = ""   # written as an escape, not the literal invisible character, so it's visible in a diff/review
 
 
 def main(jp_path, latin_path):
@@ -68,16 +70,32 @@ def main(jp_path, latin_path):
         seq = shape(text)
         tones = [n for n, _, _ in seq if n.startswith("tone_")]
         if len(tones) != 1:
-            fails.append(f"{label}: expected exactly one tone glyph, got {tones} ({note})"); return
+            fails.append(f"{label}: expected exactly one tone glyph, got {tones} ({note})"); return None
         if not re.match(pattern, tones[0]):
             fails.append(f"{label}: expected glyph matching {pattern!r}, got {tones[0]} ({note})")
+        return tones[0]
 
-    # 1. Every 1-3 bar sequence ligates to exactly one contour glyph (docs/tone-notation.md §6, row 1).
+    def assert_matches_expected(label, name, levels, x0, x1):
+        """The strong version of a shape check: recompute the glyph build-kana-multi-font.py *should* have
+        produced for this exact (levels, x0, x1) -- via the same contour_glyph() the build uses, not a copy of
+        the logic -- and require the real shaped glyph's bounding box to match exactly. This is what the
+        original stem check should have been: that one derived its "expected" value from the same glyph it was
+        checking (bounds' own xMin), so it could never fail -- comparing against an independent recomputation can."""
+        expected = bk.contour_glyph(levels, x0, x1)
+        expected.recalcBounds(glyf)
+        exp_b = (expected.xMin, expected.yMin, expected.xMax, expected.yMax)
+        got_b = bounds(name)
+        if got_b != exp_b:
+            fails.append(f"{label}: glyph {name} bounds {got_b} != recomputed expectation {exp_b} for x0={x0}")
+
+    # 1. Every 1-3 bar sequence ligates to exactly one contour glyph, at the default (unstretched) position
+    # (docs/tone-notation.md §6, row 1), and its outline exactly matches a fresh contour_glyph() call.
     bar_cp = {5: "˥", 4: "˦", 3: "˧", 2: "˨", 1: "˩"}
     for n in (1, 2, 3):
         for levels in itertools.product((5, 4, 3, 2, 1), repeat=n):
             text = "マ" + "".join(bar_cp[l] for l in levels)
-            expect_tone(f"bars {levels}", text, rf"^tone_{''.join(map(str, levels))}$")
+            name = expect_tone(f"bars {levels}", text, rf"^tone_{''.join(map(str, levels))}$")
+            if name: assert_matches_expected(f"bars {levels}", name, levels, bk.TONE_X0, bk.TONE_X1)
 
     # 2. Legacy single-codepoint aliases point at the documented shapes (docs/tone-notation.md §2.3).
     for cp, levels in {"̄": "3", "̀": "21", "̂": "51", "́": "45", "̌": "14"}.items():
@@ -87,41 +105,53 @@ def main(jp_path, latin_path):
     #    §3.1.1, the "excludes (1,0)" rule).
     expect_tone("bare single kana", "カ˨˩", r"^tone_21$")
 
-    # 4. Syllable-wide stretch, both paths, and the stem-follows-x0 regression check (the C1 bug from the Opus
-    #    review: the stem used to sit at a fixed x regardless of how far the contour itself was stretched).
-    for label, text in [("marker nF=2", "ダア˨˩"), ("hint nF=2", "ダア⁢˨˩")]:
-        seq = shape(text)
-        name = seq[-1][0]
-        if name != "tone_21_w2000":
-            fails.append(f"{label}: expected tone_21_w2000, got {name}"); continue
-        b = bounds(name)
-        xs = [p[0] for c in glyf[name].getCoordinates(glyf)[0] for p in [c]]
-        if b is None or abs(min(xs) - b[0]) > 2:
-            fails.append(f"{label}: stem should start at the glyph's own left edge {b and b[0]}, outline min x is {min(xs) if xs else None}")
+    # 4. Every width the font builds a lookup for (bk.width_combos()): the marker path (an actual glyph
+    #    sequence: nf kana, then n1/n2/n3 superscripts of each class) and the hint path (the same counts, as
+    #    hintA/hintS1-3) must select the *same* glyph, and that glyph's outline must exactly match an
+    #    independently recomputed one -- this is the R2 fix (the old check only compared a glyph name suffix
+    #    like "_w1280" against the formula, never the real geometry) and doubles as the C1 stem regression test
+    #    (contour_glyph draws the stem first, at x0-60, so a wrong x0 fails the bounds comparison) and the R1
+    #    width-bias check (SCLASS_WIDTH now an average, not a ceiling -- width_combos() and w_of() already use
+    #    whatever SCLASS_WIDTH the build computed, so this check is correct either way; it is what would have
+    #    shown the R1 bias directly, since the expected geometry is computed from the same formula, not eyeballed).
+    letter = {1: "ʲ", 2: "ᵊ", 3: "ʷ"}   # one representative superscript per class (ʲ, ᵊ, ʷ)
+    levels = (2, 1)
+    tested_widths = set()
+    for nf, n1, n2, n3 in bk.width_combos():
+        body = "カ" * nf + letter[1] * n1 + letter[2] * n2 + letter[3] * n3
+        w = bk.w_of(nf, n1, n2, n3)
+        tested_widths.add(w)
+        half = min(w - 2 * bk.SPAN_MARGIN, bk.SPAN_MAX) / 2
+        cx = -w / 2
+        x0, x1 = round(cx - half), round(cx + half)
+        marker_name = expect_tone(f"marker nf={nf} n1={n1} n2={n2} n3={n3}",
+                                   MARKER + body + "˨˩", rf"^tone_21_w{w}$")
+        hint_body = "カ" * nf + "⁢" * (nf - 1) + "⁡" * n1 + "⁣" * n2 + "⁤" * n3
+        hint_name = expect_tone(f"hint nf={nf} n1={n1} n2={n2} n3={n3}", hint_body + "˨˩", rf"^tone_21_w{w}$")
+        if marker_name and hint_name and marker_name != hint_name:
+            fails.append(f"nf={nf} n1={n1} n2={n2} n3={n3}: marker path picked {marker_name}, hint path picked {hint_name}")
+        if marker_name:
+            assert_matches_expected(f"marker nf={nf} n1={n1} n2={n2} n3={n3}", marker_name, levels, x0, x1)
+    print(f"  ({len(tested_widths)} distinct widths exercised via both paths)")
 
-    # 5. Superscript width classes (the C2 bug: the old formula assumed every superscript was 480 wide; real
-    #    advances range ~160-487). One representative letter per class, via the marker path.
-    for label, letter, w in [("class1 (ʲ)", "ʲ", 1280), ("class2 (ᵊ)", "ᵊ", 1400), ("class3 (ʷ)", "ʷ", 1500)]:
-        expect_tone(label, "カ" + letter + "˨˩", rf"^tone_21_w{w}$")
-
-    # 6. Mark filtering (the M1 fix): a dot-below/creaky/handakuten between two kana must not knock the marker
+    # 5. Mark filtering (the M1 fix): a dot-below/creaky/handakuten between two kana must not knock the marker
     #    path back to the default (unstretched) position.
     for label, text in [
-        ("dot-below mid-syllable", "タ̣ラ˧˩"),
-        ("creaky mid-syllable", "カ̰タ˧˩"),
-        ("handakuten mid-syllable", "カ゚タ˧˩"),
+        ("dot-below mid-syllable", MARKER + "タ̣ラ˧˩"),
+        ("creaky mid-syllable", MARKER + "カ̰タ˧˩"),
+        ("handakuten mid-syllable", MARKER + "カ゚タ˧˩"),
     ]:
         expect_tone(label, text, r"^tone_31_w2000$")
 
-    # 7. Consecutive syllables: syllable 1's own stretched tone glyph must not become invisible to syllable 2's
+    # 6. Consecutive syllables: syllable 1's own stretched tone glyph must not become invisible to syllable 2's
     #    matching (the regression the first UseMarkFilteringSet attempt introduced, and this script would have
     #    caught immediately).
-    seq = shape("カタ⁢˨˩ラ˧")
+    seq = shape(MARKER + "カタ⁢˨˩ラ˧")
     tones = [n for n, _, _ in seq if n.startswith("tone_")]
     if tones != ["tone_21_w2000", "tone_3"]:
         fails.append(f"consecutive syllables: expected ['tone_21_w2000', 'tone_3'], got {tones}")
 
-    # 8. ccmp/rclt are not discretionary: disabling liga/calt/clig (which no longer host anything) must not
+    # 7. ccmp/rclt are not discretionary: disabling liga/calt/clig (which no longer host anything) must not
     #    affect the result (the M2 fix).
     seq = shape("マ˨˩", {"liga": False, "calt": False, "clig": False})
     if not any(n == "tone_21" for n, _, _ in seq):

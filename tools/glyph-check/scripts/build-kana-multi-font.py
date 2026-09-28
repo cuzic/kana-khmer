@@ -82,7 +82,15 @@ SPAN_MARGIN, SPAN_MAX = 100, 2400                     # stretched line: margin e
 # Superscript width classes: real advances range ~160-487 (Latin letters at SUP_SCALE are not uniform), so the
 # width formula buckets every superscript into the smallest class whose ceiling covers it, instead of assuming one
 # fixed width (docs/tone-notation.md §3.1.3 previously assumed a single 480 for all of them; that was wrong).
-SCLASS_WIDTH = {1: 280, 2: 400, 3: 500}
+# SCLASS_CEIL only decides *which* class a superscript falls into (sclass_of below); the width the formula
+# actually adds per superscript is SCLASS_WIDTH, filled in from the real per-class average once every superscript
+# has been measured (see "sclass" in main()). Using the ceiling itself for both would make W a systematic
+# overestimate -- every superscript pads its class up to the ceiling, so the error is one-directional and adds up
+# per superscript (an Opus re-review measured -85 units for a 2-superscript syllable, -240 for 4) -- so the two
+# are kept separate: fixed classification boundaries, but a width that averages out per class instead of biasing
+# every syllable's line to the left.
+SCLASS_CEIL = {1: 280, 2: 400, 3: 500}
+SCLASS_WIDTH = {}   # {1: avg, 2: avg, 3: avg}, populated in main() before width_combos()/sequences() are called
 
 
 def poly(pen, pts):
@@ -179,9 +187,9 @@ def sclass_of(adv):
     whose ceiling covers it. Raises if a future superscript is wider than every class -- silently reusing the top
     class for something far wider would just reintroduce the centring error this scheme exists to remove."""
     for k in (1, 2, 3):
-        if adv <= SCLASS_WIDTH[k]:
+        if adv <= SCLASS_CEIL[k]:
             return k
-    raise ValueError(f"superscript advance {adv} exceeds the widest class {SCLASS_WIDTH[3]}; add a wider class")
+    raise ValueError(f"superscript advance {adv} exceeds the widest class {SCLASS_CEIL[3]}; add a wider class")
 
 
 def width_combos():
@@ -273,15 +281,24 @@ def main(jp_path, latin_path, out, keep_names=False):
         rec.replay(TransformPen(pen, (SUP_SCALE, 0, 0, SUP_SCALE, 0, SUP_RAISE)))
         return pen.glyph(), round(lgs[name].width * SUP_SCALE)
 
-    sclass = {}   # superscript glyph name -> width class (1..3), used for @S1/@S2/@S3 below
+    sclass = {}    # superscript glyph name -> width class (1..3), used for @S1/@S2/@S3 below
+    sadv = {}      # superscript glyph name -> its real advance, used only to average SCLASS_WIDTH per class
     for cp, letter in SUPERSCRIPTS.items():
         g, adv = sup(letter)
         name = f"sup_{cp:X}"
         put(name, g, adv, cp)
         sclass[name] = sclass_of(adv)
+        sadv[name] = adv
     g, adv = sup("ħ")
     put("sup_hbar", g, adv)                         # only reachable through the ʰ + U+0335 ligature
     sclass["sup_hbar"] = sclass_of(adv)
+    sadv["sup_hbar"] = adv
+    # R1 (Opus re-review): SCLASS_WIDTH is each class's *average* real advance, not its ceiling -- averaging
+    # keeps the per-superscript error close to zero and unbiased in sign, instead of every superscript padding
+    # its class up to the ceiling and every one of them pushing the line further left.
+    for k in (1, 2, 3):
+        members = [sadv[n] for n in sclass if sclass[n] == k]
+        SCLASS_WIDTH[k] = round(sum(members) / len(members))
     h_adv = hmtx.metrics["sup_2B0"][0]
     # U+0335 as a real mark: a short bar over the preceding ʰ (fallback when the ligature does not fire)
     put("uni0335", rect_glyph(-h_adv + 10, SUP_RAISE + 250, -10, SUP_RAISE + 250 + 34), 0, STROKE_CP)
@@ -427,7 +444,7 @@ feature rclt {{
     # and the constants the width formula needs, so the class table is not hand-copied into docs/other packages
     # and left to drift (docs/tone-notation.md §4 links here instead of repeating the table).
     manifest = {
-        "sclassWidth": SCLASS_WIDTH,
+        "sclassWidth": SCLASS_WIDTH, "sclassCeil": SCLASS_CEIL,
         "maxNf": MAX_NF, "maxNs": MAX_NS,
         "syllableMarkerCp": SYLLABLE_MARKER_CP, "hintACp": HINT_A_CP, "hintSCp": HINT_S_CP,
         "fRange": "U+30A1-30FA, U+30FC, U+31F0-31FF (excludes U+30A0 U+30FB U+30FD U+30FE U+30FF)",
