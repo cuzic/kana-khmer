@@ -6,9 +6,12 @@ import golden from "./golden.json";
 const H = "゚";
 const N = "̯";
 
-/** The rule as a string operation: drop 9 modifier letters (ᵑ marks ŋ; dropping it alone yields plain ガ行/ン, no lookup table needed). Kept ◌̯. */
+/**
+ * The rule as a string operation: drop 4 low-functional-load modifier letters (ˀ ᵋ ᵓ ᶤ, khmer-kana-spec.md §7).
+ * ʰ ˡ ʳ ᵑ ᵅ ᵊ and ◌̯ survive into lite (2026-09-28: corpus functional load showed they're worth keeping).
+ */
 function liteByString(full: string): string {
-  return full.replace(/ト(ʰ?)ᶤ/g, "トゥ$1").replace(/[ʰˡʳᵋᵓᵅᵊᶤᵑ]/g, ""); // tɨ exception: full ト+ᶤ, lite トゥ
+  return full.replace(/ト(ʰ?)ᶤ/g, "トゥ$1").replace(/[ˀᵋᵓᶤ]/g, ""); // tɨ exception: full ト+ᶤ, lite トゥ
 }
 
 describe("lite derivation property", () => {
@@ -35,15 +38,17 @@ describe("lite derivation property", () => {
     expect(renderLite(parseIpa("kac")).text).toBe(`カィチ${N}`);
   });
 
-  it("lite never contains modifier letters", () => {
-    for (const g of golden) expect(renderLite(parseIpa(g.ipa)).text).not.toMatch(/[ʰˡʳᵋᵓᵅᵊᶤᵑ]/);
+  it("lite never contains the dropped modifier letters (ˀ ᵋ ᵓ ᶤ)", () => {
+    for (const g of golden) expect(renderLite(parseIpa(g.ipa)).text).not.toMatch(/[ˀᵋᵓᶤ]/);
   });
 
-  it("lite is derived from full's spans only (idempotent shape)", () => {
-    const u = parseIpa("kʰɑːŋ");
-    const kinds = renderLite(u).spans.map((s) => s.kind);
-    expect(kinds).not.toContain("cons-mod");
-    expect(kinds).not.toContain("vowel-mod");
+  it("lite keeps high-functional-load modifiers (ʰ ˡ ʳ ᵑ ᵅ ᵊ), drops the rest", () => {
+    // kʰɑːŋ uses only kept modifiers (ʰ, ᵅ, ᵑ): full and lite are identical
+    expect(renderLite(parseIpa("kʰɑːŋ")).text).toBe(renderFull(parseIpa("kʰɑːŋ")).text);
+    expect(renderLite(parseIpa("kʰɑːŋ")).text).toBe("コʰᵅーンᵑ");
+    // kʰɛ mixes a kept modifier (ʰ) with a dropped one (ᵋ, ɛ's vowel-mod)
+    expect(renderFull(parseIpa("kʰɛ")).text).toBe("ケʰᵋ");
+    expect(renderLite(parseIpa("kʰɛ")).text).toBe("ケʰ");
   });
 });
 
@@ -89,7 +94,7 @@ describe("tɨ exception", () => {
     expect(renderFull(parseIpa("tɨ")).text).toBe("トᶤ");
     expect(renderLite(parseIpa("tɨ")).text).toBe("トゥ");
     expect(renderLite(parseIpa("tɨ")).spans.every((x) => x.lite === undefined)).toBe(true);
-    expect(renderLite(parseIpa("tʰɨ")).text).toBe("トゥ");
+    expect(renderLite(parseIpa("tʰɨ")).text).toBe("トゥʰ"); // ɨ's ᶤ is dropped, but the kept ʰ survives
     expect(renderFull(parseIpa("tʰɨ")).text).toBe("トʰᶤ");
     expect(renderFull(parseIpa("tu")).text).toBe("トゥ");
     expect(renderFull(parseIpa("kɨ")).text).toBe("クᶤ");
@@ -111,6 +116,6 @@ describe("undefined vowelless forms", () => {
 describe("ʔ prefix modifier", () => {
   it("ʔ before another onset consonant is the ˀ modifier, placed before the following kana (khmer-kana-spec.md §5.4/§11-1)", () => {
     expect(renderFull(parseIpa("ʔʋəj")).text).toBe("ˀヴァᵊィ");
-    expect(renderLite(parseIpa("ʔʋəj")).text).toBe("ヴァィ");
+    expect(renderLite(parseIpa("ʔʋəj")).text).toBe("ヴァᵊィ"); // ˀ (ʔ) is dropped in lite, but ə's kept ᵊ survives
   });
 });

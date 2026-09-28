@@ -1,4 +1,5 @@
 import { KhmerKanaError } from "./errors";
+import { LITE_DROP } from "./symbols";
 import {
   CODA_KANA,
   CONS_MOD_OF,
@@ -73,13 +74,14 @@ export function renderFull(u: Utterance): Rendered {
 
 /**
  * Lite notation, derived from the detailed notation's spans (never by string replacement):
- * modifier letters are dropped (◌̯ stays; ᵑ drops too, turning ŋ's カ゚→ガ-style detour into a plain kana automatically).
+ * modifier letters in LITE_DROP are dropped (◌̯ always stays; the rest of cons-mod/vowel-mod, chosen by
+ * corpus functional load, survive into lite — see LITE_DROP in symbols.ts and khmer-kana-spec.md §7).
  * ㇷ゚ is a plain "kana" span, so its half-voiced mark is untouched.
  */
 export function liteFromFull(full: Rendered): Rendered {
   const spans: Span[] = [];
   for (const s of full.spans) {
-    if (s.kind === "cons-mod" || s.kind === "vowel-mod") continue;
+    if ((s.kind === "cons-mod" || s.kind === "vowel-mod") && LITE_DROP.has(s.text)) continue;
     if (s.lite !== undefined) {
       const { lite, ...rest } = s;
       spans.push({ ...rest, text: lite });
