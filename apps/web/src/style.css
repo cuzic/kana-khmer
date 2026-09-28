@@ -1,7 +1,7 @@
-/* Kana C: チ+◌̯ → small チ (ligature), Ainu small consonants ㇰ..ㇿ redrawn smaller (ㇷ゚ needs base+mark in one font on Android); modifier letters (including ᵑ, the ŋ marker) need the support subset (see tools/glyph-check). カ゚/ン゚ (カキクケコン+゚) composed glyphs are no longer produced by khmer-kana (ŋ now uses ᵑ) but stay bundled harmlessly. */
+/* Kana C: チ+◌̯ → small チ (ligature), Ainu small consonants ㇰ..ㇿ redrawn smaller (ㇷ゚ needs base+mark in one font on Android); modifier letters (including ᵑ, the ŋ marker, and ˀ, the ʔ prefix marker) need the support subset (see tools/glyph-check). カ゚/ン゚ (カキクケコン+゚) composed glyphs are no longer produced by khmer-kana (ŋ now uses ᵑ) but stay bundled harmlessly. U+02B0 (ʰ) is custom-drawn (dot+tail, not Noto's default small "h") so it isn't misread as dakuten/handakuten; see tools/glyph-check/scripts/build-kana-support-font.py. */
 @font-face { font-family: "Kana C"; src: url("/fonts/kana-c.woff2") format("woff2"); unicode-range: U+30C1, U+032F, U+309A, U+30AB, U+30AD, U+30AF, U+30B1, U+30B3, U+30F3, U+31F0-31FF; }
 @font-face { font-family: "Kana Support"; src: url("/fonts/kana-support.woff2") format("woff2");
-  unicode-range: U+032F, U+02B0-02B3, U+02E1, U+1D45, U+1D4A, U+1D4B, U+1D51, U+1D53, U+1D9C, U+1DA4; }
+  unicode-range: U+032F, U+02B0-02B3, U+02C0, U+02E1, U+1D45, U+1D4A, U+1D4B, U+1D51, U+1D53, U+1D9C, U+1DA4; }
 
 :root {
   --bg: #f7f5f1;
