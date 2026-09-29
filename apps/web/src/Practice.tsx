@@ -73,16 +73,16 @@ export function Practice({ settings, onBack }: { settings: Settings; onBack: () 
         <div className="card practice">
           <div className="sub">残り {queue.pending.length} 枚</div>
           <PhraseImage key={phrase.id} id={phrase.id} className="phrase-img" />
-          <div className="ja">{phrase.ja}</div>
+          <div className="ja">{phrase.gloss}</div>
           {!shown ? (
             <button className="reveal" onClick={() => setShown(true)}>答えを見る</button>
           ) : (
             <>
               {main.map((v) => (
                 <div key={`${v.speaker}/${v.register}`} className="variant">
-                  <span className="kana">{settings.notation === "lite" ? v.kanaLite : v.kanaFull}</span>
-                  <span className="khmer" lang="km">{v.khmer}</span>
-                  {settings.notation === "full" && <span className="ipa">/{v.ipa}/</span>}
+                  <span className="kana">{settings.notation === "lite" ? v.readingLite : v.readingFull}</span>
+                  <span className="khmer" lang="km">{v.text}</span>
+                  {settings.notation === "full" && <span className="ipa">/{v.pron}/</span>}
                 </div>
               ))}
               {main.map((v) => <Breakdown key={`${v.speaker}/${v.register}`} variant={v} notation={settings.notation} />)}

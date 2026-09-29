@@ -12,20 +12,20 @@ const speakerLabel = { any: "", male: "男性", female: "女性" } as const;
 function Card({ phrase, notation, gender }: { phrase: Phrase; notation: "lite" | "full"; gender: "male" | "female" | "unset" }) {
   const { main, other, casual } = pickVariants(phrase, gender);
   const [hasImage, setHasImage] = useState(false);
-  const kana = (v: (typeof main)[number]) => (notation === "lite" ? v.kanaLite : v.kanaFull);
+  const kana = (v: (typeof main)[number]) => (notation === "lite" ? v.readingLite : v.readingFull);
   return (
     <li className={hasImage ? "card has-img" : "card"}>
       <PhraseImage id={phrase.id} className="phrase-thumb" onLoad={() => setHasImage(true)} />
       <div className="ja">
-        {phrase.ja}
+        {phrase.gloss}
         {phrase.unreviewed && <span className="badge">未確認</span>}
       </div>
       {main.map((v) => (
         <div key={`${v.speaker}/${v.register}`} className="variant">
           {speakerLabel[v.speaker] && <span className="tag">{speakerLabel[v.speaker]}</span>}
           <span className="kana">{kana(v)}</span>
-          <span className="khmer" lang="km">{v.khmer}</span>
-          {notation === "full" && <span className="ipa">/{v.ipa}/</span>}
+          <span className="khmer" lang="km">{v.text}</span>
+          {notation === "full" && <span className="ipa">/{v.pron}/</span>}
         </div>
       ))}
       {main.some((v) => v.parts) && (
@@ -36,7 +36,7 @@ function Card({ phrase, notation, gender }: { phrase: Phrase; notation: "lite" |
       )}
       {other.length > 0 && (
         <div className="sub">
-          {other.map((v) => `${speakerLabel[v.speaker]}: ${kana(v)}${notation === "full" ? ` /${v.ipa}/` : ""}`).join(" / ")}
+          {other.map((v) => `${speakerLabel[v.speaker]}: ${kana(v)}${notation === "full" ? ` /${v.pron}/` : ""}`).join(" / ")}
         </div>
       )}
       {casual.length > 0 && <div className="sub">くだけた形: {casual.map(kana).join(" / ")}</div>}

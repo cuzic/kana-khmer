@@ -51,6 +51,9 @@ importers:
 
   packages/content:
     dependencies:
+      ja-hangul:
+        specifier: workspace:*
+        version: link:../ja-hangul
       khmer-kana:
         specifier: workspace:*
         version: link:../khmer-kana

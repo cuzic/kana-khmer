@@ -1,0 +1,640 @@
+# 仮データ(40件)。クメール文字・IPA・用法はすべて未確認(review: すべて false)。ネイティブ確認後に true にする。
+- id: hello
+  scene: greetings
+  gloss: こんにちは
+  usage: 朝昼晩いつでも使える、一番ふつうの挨拶。店に入るときや人に会ったときの最初のひとこと
+  variants:
+    - { speaker: any, text: សួស្តី, pron: "suə.sɗəj", audio: hello.m4a }
+  words:
+    - { text: សួស្តី, pron: "suə.sɗəj", gloss: こんにちは }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: yes
+  scene: thanks-sorry
+  gloss: はい
+  usage: 丁寧な「はい」。話す人が男性なら「バーㇳ」、女性なら「チャーホ」。呼びかけへの返事や、相づちにも使う
+  variants:
+    - { speaker: male,   text: បាទ, pron: "ɓaːt", audio: yes-m.m4a }
+    - { speaker: female, text: ចាស, pron: "caːh", audio: yes-f.m4a }
+  words:
+    - { text: បាទ, pron: "ɓaːt", gloss: はい(男性) }
+    - { text: ចាស, pron: "caːh", gloss: はい(女性) }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: thanks
+  scene: thanks-sorry
+  gloss: ありがとう
+  usage: 場面を選ばない基本のお礼。買い物、食事、道を教えてもらったときなど
+  variants:
+    - { speaker: any, text: អរគុណ, pron: "ʔɑː.kun", audio: thanks.m4a }
+  words:
+    - { text: អរគុណ, pron: "ʔɑː.kun", gloss: ありがとう }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: sorry
+  scene: thanks-sorry
+  gloss: すみません
+  usage: 軽く謝るとき。人にぶつかったときや、話しかけるときの「すみません」にも使える
+  variants:
+    - { speaker: any, text: សុំទោស, pron: "som.toːh", audio: sorry.m4a }
+  words:
+    - { text: សុំទោស, pron: "som.toːh", gloss: すみません }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: goodbye
+  scene: greetings
+  gloss: さようなら
+  usage: 別れるときの挨拶。店を出るときや、また会う予定がない相手に
+  variants:
+    - { speaker: any, text: លាហើយ, pron: "liə.haəj", audio: goodbye.m4a }
+  words:
+    - { text: លាហើយ, pron: "liə.haəj", gloss: さようなら }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: how-are-you
+  scene: greetings
+  gloss: お元気ですか
+  usage: 会ったときの近況のあいさつ。返事は「元気です」
+  variants:
+    - speaker: any
+      text: សុខសប្បាយជាទេ
+      pron: "sok.sap.ɓaːj.ciə.tei"
+      audio: how-are-you.m4a
+      parts:
+        - { text: សុខសប្បាយ, pron: "sok.sap.ɓaːj", gloss: 元気・健康, pos: adj }
+        - { text: ជា, pron: "ciə", gloss: 〜である, pos: verb }
+        - { text: ទេ, pron: "tei", gloss: 〜か(疑問), pos: particle }
+  words:
+    - { text: សុខសប្បាយជាទេ, pron: "sok.sap.ɓaːj.ciə.tei", gloss: お元気ですか }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: fine
+  scene: greetings
+  gloss: 元気です
+  usage: 「お元気ですか」への返事
+  variants:
+    - speaker: any
+      text: សុខសប្បាយ
+      pron: "sok.sap.ɓaːj"
+      audio: fine.m4a
+      parts:
+        - { text: សុខ, pron: "sok", gloss: 健康, pos: adj }
+        - { text: សប្បាយ, pron: "sap.ɓaːj", gloss: 楽しい・うれしい, pos: adj }
+  words:
+    - { text: សុខសប្បាយ, pron: "sok.sap.ɓaːj", gloss: 元気です }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: good-morning
+  scene: greetings
+  gloss: おはよう
+  usage: 朝のあいさつ。ホテルや店で
+  variants:
+    - speaker: any
+      text: អរុណសួស្តី
+      pron: "ʔaʔ.run.suə.sɗəj"
+      audio: good-morning.m4a
+      parts:
+        - { text: អរុណ, pron: "ʔaʔ.run", gloss: 夜明け, pos: noun }
+        - { text: សួស្តី, pron: "suə.sɗəj", gloss: 幸あれ, pos: interj }
+  words:
+    - { text: អរុណសួស្តី, pron: "ʔaʔ.run.suə.sɗəj", gloss: おはよう }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: good-night
+  scene: greetings
+  gloss: おやすみなさい
+  usage: 夜、別れるときや寝る前に
+  variants:
+    - speaker: any
+      text: រាត្រីសួស្តី
+      pron: "riə.trəj.suə.sɗəj"
+      audio: good-night.m4a
+      parts:
+        - { text: រាត្រី, pron: "riə.trəj", gloss: 夜, pos: noun }
+        - { text: សួស្តី, pron: "suə.sɗəj", gloss: 幸あれ, pos: interj }
+  words:
+    - { text: រាត្រីសួស្តី, pron: "riə.trəj.suə.sɗəj", gloss: おやすみなさい }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: nice-to-meet
+  scene: greetings
+  gloss: はじめまして
+  usage: 初対面のあいさつ。「お会いできてうれしい」という意味
+  variants:
+    - speaker: any
+      text: រីករាយដែលបានស្គាល់
+      pron: "riːk.riəj.ɗael.ɓaːn.skŏəl"
+      audio: nice-to-meet.m4a
+      parts:
+        - { text: រីករាយ, pron: "riːk.riəj", gloss: うれしい, pos: adj }
+        - { text: ដែល, pron: "ɗael", gloss: 〜ということ, pos: particle }
+        - { text: បាន, pron: "ɓaːn", gloss: 〜できた, pos: verb }
+        - { text: ស្គាល់, pron: "skŏəl", gloss: 知り合う, pos: verb }
+  words:
+    - { text: រីករាយដែលបានស្គាល់, pron: "riːk.riəj.ɗael.ɓaːn.skŏəl", gloss: はじめまして }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: welcome
+  scene: greetings
+  gloss: ようこそ
+  usage: お客さんを迎えるときの言葉。お店で聞くことが多い
+  variants:
+    - speaker: any
+      text: សូមស្វាគមន៍
+      pron: "soum.sʋaː.kum"
+      audio: welcome.m4a
+      parts:
+        - { text: សូម, pron: "soum", gloss: どうぞ・お願いする, pos: particle }
+        - { text: ស្វាគមន៍, pron: "sʋaː.kum", gloss: 歓迎, pos: noun }
+  words:
+    - { text: សូមស្វាគមន៍, pron: "soum.sʋaː.kum", gloss: ようこそ }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: no
+  scene: thanks-sorry
+  gloss: いいえ
+  usage: 否定の返事。「〜ではない」と答えるとき
+  variants:
+    - { speaker: any, text: ទេ, pron: "tei", audio: no.m4a }
+  words:
+    - { text: ទេ, pron: "tei", gloss: いいえ }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: welcome-reply
+  scene: thanks-sorry
+  gloss: どういたしまして
+  usage: お礼を言われたときの返事。「気にしないで」に近い
+  variants:
+    - speaker: any
+      text: អត់អីទេ
+      pron: "ʔɑt.ʔəj.tei"
+      audio: welcome-reply.m4a
+      parts:
+        - { text: អត់, pron: "ʔɑt", gloss: ない, pos: adv }
+        - { text: អី, pron: "ʔəj", gloss: 何か, pos: pron }
+        - { text: ទេ, pron: "tei", gloss: 〜ない, pos: particle }
+  words:
+    - { text: អត់អីទេ, pron: "ʔɑt.ʔəj.tei", gloss: どういたしまして }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: thanks-a-lot
+  scene: thanks-sorry
+  gloss: ありがとうございます(とても)
+  usage: 「ありがとう」に「たくさん」を足した、気持ちの強いお礼
+  variants:
+    - speaker: any
+      text: អរគុណច្រើន
+      pron: "ʔɑː.kun.craən"
+      audio: thanks-a-lot.m4a
+      parts:
+        - { text: អរគុណ, pron: "ʔɑː.kun", gloss: ありがとう, pos: interj }
+        - { text: ច្រើន, pron: "craən", gloss: たくさん, pos: adj }
+  words:
+    - { text: អរគុណច្រើន, pron: "ʔɑː.kun.craən", gloss: ありがとうございます(とても) }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: ok
+  scene: thanks-sorry
+  gloss: 大丈夫です・いいですよ
+  usage: 了承や「できます」の返事。軽い承諾にも使う
+  variants:
+    - { speaker: any, text: បាន, pron: "ɓaːn", audio: ok.m4a }
+  words:
+    - { text: បាន, pron: "ɓaːn", gloss: 大丈夫です・いいですよ }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: apologize
+  scene: thanks-sorry
+  gloss: ごめんなさい
+  usage: 「すみません」より、はっきり謝るとき
+  variants:
+    - speaker: any
+      text: ខ្ញុំសុំទោស
+      pron: "kɲom.som.toːh"
+      audio: apologize.m4a
+      parts:
+        - { text: ខ្ញុំ, pron: "kɲom", gloss: 私, pos: pron, role: S }
+        - { text: សុំ, pron: "som", gloss: 求める, pos: verb, role: V }
+        - { text: ទោស, pron: "toːh", gloss: 罪・過ち, pos: noun, role: O }
+  words:
+    - { text: ខ្ញុំសុំទោស, pron: "kɲom.som.toːh", gloss: ごめんなさい }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: older-sibling
+  scene: address
+  gloss: (年上の人への呼びかけ)兄さん・姉さん
+  usage: 年上の人に。性別を問わず、店員や知人への親しみのある呼びかけ
+  addressee: { gender: any, age: older }
+  variants:
+    - { speaker: any, text: បង, pron: "ɓɑːŋ", audio: older-sibling.m4a }
+  words:
+    - { text: បង, pron: "ɓɑːŋ", gloss: (年上の人への呼びかけ)兄さん・姉さん }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: younger-sibling
+  scene: address
+  gloss: (年下の人への呼びかけ)
+  usage: 年下の人や若い店員に
+  addressee: { gender: any, age: younger }
+  variants:
+    - { speaker: any, text: អូន, pron: "ʔoun", audio: younger-sibling.m4a }
+  words:
+    - { text: អូន, pron: "ʔoun", gloss: (年下の人への呼びかけ) }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: mr
+  scene: address
+  gloss: (男性への丁寧な呼びかけ)
+  usage: 男性への敬称。目上や初対面の男性に
+  addressee: { gender: male, age: any }
+  variants:
+    - { speaker: any, text: លោក, pron: "loːk", audio: mr.m4a }
+  words:
+    - { text: លោក, pron: "loːk", gloss: (男性への丁寧な呼びかけ) }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: mrs
+  scene: address
+  gloss: (女性への丁寧な呼びかけ)
+  usage: 女性への敬称。目上や初対面の女性に
+  addressee: { gender: female, age: any }
+  variants:
+    - speaker: any
+      text: លោកស្រី
+      pron: "loːk.srəj"
+      audio: mrs.m4a
+      parts:
+        - { text: លោក, pron: "loːk", gloss: (敬称), pos: noun }
+        - { text: ស្រី, pron: "srəj", gloss: 女, pos: noun }
+  words:
+    - { text: លោកស្រី, pron: "loːk.srəj", gloss: (女性への丁寧な呼びかけ) }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: uncle
+  scene: address
+  gloss: (年上の男性への呼びかけ)おじさん
+  usage: 父母世代くらいの男性に。屋台や運転手さんへ
+  addressee: { gender: male, age: older }
+  variants:
+    - { speaker: any, text: ពូ, pron: "puː", audio: uncle.m4a }
+  words:
+    - { text: ពូ, pron: "puː", gloss: (年上の男性への呼びかけ)おじさん }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: aunt
+  scene: address
+  gloss: (年上の女性への呼びかけ)おばさん
+  usage: 父母世代くらいの女性に。市場や食堂で
+  addressee: { gender: female, age: older }
+  variants:
+    - { speaker: any, text: មីង, pron: "miːŋ", audio: aunt.m4a }
+  words:
+    - { text: មីង, pron: "miːŋ", gloss: (年上の女性への呼びかけ)おばさん }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: name-q
+  scene: intro
+  gloss: お名前は?
+  usage: 相手の名前を聞くとき
+  variants:
+    - speaker: any
+      text: អ្នកឈ្មោះអ្វី
+      pron: "nĕəʔ.cʰmŭəh.ʔʋəj"
+      audio: name-q.m4a
+      parts:
+        - { text: អ្នក, pron: "nĕəʔ", gloss: あなた, pos: pron, role: S }
+        - { text: ឈ្មោះ, pron: "cʰmŭəh", gloss: 名前(である), pos: verb, role: V }
+        - { text: អ្វី, pron: "ʔʋəj", gloss: 何, pos: question, role: O }
+  words:
+    - { text: អ្នកឈ្មោះអ្វី, pron: "nĕəʔ.cʰmŭəh.ʔʋəj", gloss: お名前は? }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: from-japan
+  scene: intro
+  gloss: 日本から来ました
+  usage: 出身を伝える
+  variants:
+    - speaker: any
+      text: ខ្ញុំមកពីប្រទេសជប៉ុន
+      pron: "kɲom.mɔːʔ.piː.prɑ.teih.cĕəʔ.pon"
+      audio: from-japan.m4a
+      parts:
+        - { text: ខ្ញុំ, pron: "kɲom", gloss: 私, pos: pron, role: S }
+        - { text: មក, pron: "mɔːʔ", gloss: 来る, pos: verb, role: V }
+        - { text: ពី, pron: "piː", gloss: 〜から, pos: prep }
+        - { text: ប្រទេស, pron: "prɑ.teih", gloss: 国, pos: noun }
+        - { text: ជប៉ុន, pron: "cĕəʔ.pon", gloss: 日本, pos: noun }
+  words:
+    - { text: ខ្ញុំមកពីប្រទេសជប៉ុន, pron: "kɲom.mɔːʔ.piː.prɑ.teih.cĕəʔ.pon", gloss: 日本から来ました }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: japanese
+  scene: intro
+  gloss: 私は日本人です
+  usage: 国籍を伝える
+  variants:
+    - speaker: any
+      text: ខ្ញុំជាជនជាតិជប៉ុន
+      pron: "kɲom.ciə.cɔːn.ciət.cĕəʔ.pon"
+      audio: japanese.m4a
+      parts:
+        - { text: ខ្ញុំ, pron: "kɲom", gloss: 私, pos: pron, role: S }
+        - { text: ជា, pron: "ciə", gloss: 〜である, pos: verb, role: V }
+        - { text: ជនជាតិ, pron: "cɔːn.ciət", gloss: 〜人(国民), pos: noun }
+        - { text: ជប៉ុន, pron: "cĕəʔ.pon", gloss: 日本, pos: noun }
+  words:
+    - { text: ខ្ញុំជាជនជាតិជប៉ុន, pron: "kɲom.ciə.cɔːn.ciət.cĕəʔ.pon", gloss: 私は日本人です }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: learning-khmer
+  scene: intro
+  gloss: クメール語を勉強しています
+  usage: 現地の人に話しかけるきっかけになる
+  variants:
+    - speaker: any
+      text: ខ្ញុំកំពុងរៀនភាសាខ្មែរ
+      pron: "kɲom.kɑm.puŋ.riən.pʰiə.saː.kʰmae"
+      audio: learning-khmer.m4a
+      parts:
+        - { text: ខ្ញុំ, pron: "kɲom", gloss: 私, pos: pron, role: S }
+        - { text: កំពុង, pron: "kɑm.puŋ", gloss: 〜しているところ, pos: adv }
+        - { text: រៀន, pron: "riən", gloss: 学ぶ, pos: verb, role: V }
+        - { text: ភាសា, pron: "pʰiə.saː", gloss: 言語, pos: noun, role: O }
+        - { text: ខ្មែរ, pron: "kʰmae", gloss: クメール, pos: noun }
+  words:
+    - { text: ខ្ញុំកំពុងរៀនភាសាខ្មែរ, pron: "kɲom.kɑm.puŋ.riən.pʰiə.saː.kʰmae", gloss: クメール語を勉強しています }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: like-cambodia
+  scene: intro
+  gloss: カンボジアが好きです
+  usage: 気持ちを伝える一言
+  variants:
+    - speaker: any
+      text: ខ្ញុំចូលចិត្តកម្ពុជា
+      pron: "kɲom.coul.cət.kam.pu.ciə"
+      audio: like-cambodia.m4a
+      parts:
+        - { text: ខ្ញុំ, pron: "kɲom", gloss: 私, pos: pron, role: S }
+        - { text: ចូលចិត្ត, pron: "coul.cət", gloss: 好む, pos: verb, role: V }
+        - { text: កម្ពុជា, pron: "kam.pu.ciə", gloss: カンボジア, pos: noun, role: O }
+  words:
+    - { text: ខ្ញុំចូលចិត្តកម្ពុជា, pron: "kɲom.coul.cət.kam.pu.ciə", gloss: カンボジアが好きです }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: came-to-visit
+  scene: intro
+  gloss: 旅行に来ました
+  usage: 来た目的を聞かれたとき
+  variants:
+    - speaker: any
+      text: ខ្ញុំមកលេង
+      pron: "kɲom.mɔːʔ.leːŋ"
+      audio: came-to-visit.m4a
+      parts:
+        - { text: ខ្ញុំ, pron: "kɲom", gloss: 私, pos: pron, role: S }
+        - { text: មក, pron: "mɔːʔ", gloss: 来る, pos: verb, role: V }
+        - { text: លេង, pron: "leːŋ", gloss: 遊ぶ・訪れる, pos: verb }
+  words:
+    - { text: ខ្ញុំមកលេង, pron: "kɲom.mɔːʔ.leːŋ", gloss: 旅行に来ました }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: dont-understand
+  scene: oneliners
+  gloss: わかりません
+  usage: 相手の話が聞き取れないとき
+  variants:
+    - speaker: any
+      text: ខ្ញុំមិនយល់ទេ
+      pron: "kɲom.mɨn.jŭəl.tei"
+      audio: dont-understand.m4a
+      parts:
+        - { text: ខ្ញុំ, pron: "kɲom", gloss: 私, pos: pron, role: S }
+        - { text: មិន, pron: "mɨn", gloss: 〜ない, pos: adv }
+        - { text: យល់, pron: "jŭəl", gloss: わかる, pos: verb, role: V }
+        - { text: ទេ, pron: "tei", gloss: (否定を締める), pos: particle }
+  words:
+    - { text: ខ្ញុំមិនយល់ទេ, pron: "kɲom.mɨn.jŭəl.tei", gloss: わかりません }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: understand
+  scene: oneliners
+  gloss: わかりました
+  usage: 理解できたとき
+  variants:
+    - speaker: any
+      text: ខ្ញុំយល់ហើយ
+      pron: "kɲom.jŭəl.haəj"
+      audio: understand.m4a
+      parts:
+        - { text: ខ្ញុំ, pron: "kɲom", gloss: 私, pos: pron, role: S }
+        - { text: យល់, pron: "jŭəl", gloss: わかる, pos: verb, role: V }
+        - { text: ហើយ, pron: "haəj", gloss: もう(済んだ), pos: adv }
+  words:
+    - { text: ខ្ញុំយល់ហើយ, pron: "kɲom.jŭəl.haəj", gloss: わかりました }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: say-again
+  scene: oneliners
+  gloss: もう一度言ってください
+  usage: 聞き返すとき
+  variants:
+    - speaker: any
+      text: សូមនិយាយម្តងទៀត
+      pron: "soum.ni.jiəj.mdɑːŋ.tiət"
+      audio: say-again.m4a
+      parts:
+        - { text: សូម, pron: "soum", gloss: どうぞ・お願いする, pos: particle }
+        - { text: និយាយ, pron: "ni.jiəj", gloss: 言う, pos: verb, role: V }
+        - { text: ម្តង, pron: "mdɑːŋ", gloss: 1回, pos: noun }
+        - { text: ទៀត, pron: "tiət", gloss: もっと・また, pos: adv }
+  words:
+    - { text: សូមនិយាយម្តងទៀត, pron: "soum.ni.jiəj.mdɑːŋ.tiət", gloss: もう一度言ってください }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: slowly
+  scene: oneliners
+  gloss: ゆっくり話してください
+  usage: 早口で聞き取れないとき
+  variants:
+    - speaker: any
+      text: សូមនិយាយយឺតៗ
+      pron: "soum.ni.jiəj.jɨːt.jɨːt"
+      audio: slowly.m4a
+      parts:
+        - { text: សូម, pron: "soum", gloss: どうぞ・お願いする, pos: particle }
+        - { text: និយាយ, pron: "ni.jiəj", gloss: 言う, pos: verb, role: V }
+        - { text: យឺតៗ, pron: "jɨːt.jɨːt", gloss: 遅く遅く(ゆっくり), pos: adv }
+  words:
+    - { text: សូមនិយាយយឺតៗ, pron: "soum.ni.jiəj.jɨːt.jɨːt", gloss: ゆっくり話してください }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: how-much
+  scene: oneliners
+  gloss: いくらですか
+  usage: 買い物で値段を聞くとき
+  variants:
+    - speaker: any
+      text: ថ្លៃប៉ុន្មាន
+      pron: "tʰlaj.pon.maːn"
+      audio: how-much.m4a
+      parts:
+        - { text: ថ្លៃ, pron: "tʰlaj", gloss: 値段・高い, pos: noun }
+        - { text: ប៉ុន្មាន, pron: "pon.maːn", gloss: いくつ・いくら, pos: question }
+  words:
+    - { text: ថ្លៃប៉ុន្មាន, pron: "tʰlaj.pon.maːn", gloss: いくらですか }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: too-expensive
+  scene: oneliners
+  gloss: 高すぎます
+  usage: 値切るときの最初のひとこと
+  variants:
+    - speaker: any
+      text: ថ្លៃពេក
+      pron: "tʰlaj.peik"
+      audio: too-expensive.m4a
+      parts:
+        - { text: ថ្លៃ, pron: "tʰlaj", gloss: 高い, pos: adj }
+        - { text: ពេក, pron: "peik", gloss: 〜すぎる, pos: adv }
+  words:
+    - { text: ថ្លៃពេក, pron: "tʰlaj.peik", gloss: 高すぎます }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: toilet
+  scene: oneliners
+  gloss: トイレはどこですか
+  usage: 場所を聞くとき
+  variants:
+    - speaker: any
+      text: បង្គន់នៅឯណា
+      pron: "ɓɑŋ.kŭən.nɨw.ʔae.naː"
+      audio: toilet.m4a
+      parts:
+        - { text: បង្គន់, pron: "ɓɑŋ.kŭən", gloss: トイレ, pos: noun, role: S }
+        - { text: នៅ, pron: "nɨw", gloss: いる・ある, pos: verb, role: V }
+        - { text: ឯណា, pron: "ʔae.naː", gloss: どこ, pos: question }
+  words:
+    - { text: បង្គន់នៅឯណា, pron: "ɓɑŋ.kŭən.nɨw.ʔae.naː", gloss: トイレはどこですか }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: very-good
+  scene: oneliners
+  gloss: とてもいいです
+  usage: ほめるとき。食べ物や景色にも
+  variants:
+    - speaker: any
+      text: ល្អណាស់
+      pron: "lʔɑː.nah"
+      audio: very-good.m4a
+      parts:
+        - { text: ល្អ, pron: "lʔɑː", gloss: よい, pos: adj }
+        - { text: ណាស់, pron: "nah", gloss: とても, pos: adv }
+  words:
+    - { text: ល្អណាស់, pron: "lʔɑː.nah", gloss: とてもいいです }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: water
+  scene: oneliners
+  gloss: お水をください
+  usage: 飲み物を頼むとき
+  variants:
+    - speaker: any
+      text: សូមទឹក
+      pron: "soum.tɨk"
+      audio: water.m4a
+      parts:
+        - { text: សូម, pron: "soum", gloss: どうぞ・お願いする, pos: particle }
+        - { text: ទឹក, pron: "tɨk", gloss: 水, pos: noun, role: O }
+  words:
+    - { text: សូមទឹក, pron: "soum.tɨk", gloss: お水をください }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: help
+  scene: oneliners
+  gloss: 助けてください
+  usage: 困ったとき
+  variants:
+    - speaker: any
+      text: ជួយផង
+      pron: "cuəj.pʰɑːŋ"
+      audio: help.m4a
+      parts:
+        - { text: ជួយ, pron: "cuəj", gloss: 助ける, pos: verb, role: V }
+        - { text: ផង, pron: "pʰɑːŋ", gloss: 〜してね(お願い), pos: particle }
+  words:
+    - { text: ជួយផង, pron: "cuəj.pʰɑːŋ", gloss: 助けてください }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: wait
+  scene: oneliners
+  gloss: ちょっと待ってください
+  usage: 少し待ってほしいとき
+  variants:
+    - speaker: any
+      text: រង់ចាំបន្តិច
+      pron: "rŭəŋ.cam.ɓɑn.təc"
+      audio: wait.m4a
+      parts:
+        - { text: រង់ចាំ, pron: "rŭəŋ.cam", gloss: 待つ, pos: verb, role: V }
+        - { text: បន្តិច, pron: "ɓɑn.təc", gloss: 少し, pos: adv }
+  words:
+    - { text: រង់ចាំបន្តិច, pron: "rŭəŋ.cam.ɓɑn.təc", gloss: ちょっと待ってください }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: what-is-this
+  scene: oneliners
+  gloss: これは何ですか
+  usage: 知らないものを聞くとき
+  variants:
+    - speaker: any
+      text: តើនេះអ្វី
+      pron: "taə.nih.ʔʋəj"
+      audio: what-is-this.m4a
+      parts:
+        - { text: តើ, pron: "taə", gloss: 〜か(疑問), pos: particle }
+        - { text: នេះ, pron: "nih", gloss: これ, pos: pron, role: S }
+        - { text: អ្វី, pron: "ʔʋəj", gloss: 何, pos: question }
+  words:
+    - { text: តើនេះអ្វី, pron: "taə.nih.ʔʋəj", gloss: これは何ですか }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts

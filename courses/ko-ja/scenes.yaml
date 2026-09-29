@@ -1,3 +1,8 @@
-# 場面。日本側(韓国人が日本で使う場面)から選ぶ。未作成。
-# 形式(既存 packages/content/data/scenes.yaml と同じ): { id: kebab-case, title: 韓国語, order: 整数 }
-[]
+# 場面(韓国語話者が日本で使う場面)。文言は韓国語ネイティブ確認前の仮。
+- { id: greetings, title: "인사", order: 1 }
+- { id: thanks-sorry, title: "감사·사과·대답", order: 2 }
+- { id: restaurant, title: "식당", order: 3 }
+- { id: shopping, title: "쇼핑", order: 4 }
+- { id: transport, title: "교통·길 찾기", order: 5 }
+- { id: hotel, title: "숙소", order: 6 }
+- { id: trouble, title: "곤란할 때", order: 7 }

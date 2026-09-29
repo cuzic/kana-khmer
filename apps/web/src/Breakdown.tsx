@@ -12,7 +12,7 @@ const roleLabel = { S: "主語", V: "動詞", O: "目的語" } as const;
 export function Breakdown({ variant, notation }: { variant: Variant; notation: "lite" | "full" }) {
   const parts = variant.parts;
   if (!parts) return null;
-  const kana = (p: Part) => (notation === "lite" ? p.kanaLite : p.kanaFull);
+  const kana = (p: Part) => (notation === "lite" ? p.readingLite : p.readingFull);
   const roles = parts.filter((p) => p.role).map((p) => p.role!);
   return (
     <div className="breakdown">
@@ -23,8 +23,8 @@ export function Breakdown({ variant, notation }: { variant: Variant; notation: "
         {parts.map((p, i) => (
           <li key={i} className={p.role ? `role-${p.role}` : undefined}>
             <span className="kana">{kana(p)}</span>
-            <span className="khmer" lang="km">{p.khmer}</span>
-            <span className="gloss">{p.ja}</span>
+            <span className="khmer" lang="km">{p.text}</span>
+            <span className="gloss">{p.gloss}</span>
             <span className="pos">{posLabel[p.pos]}{p.role && roleLabel[p.role] !== posLabel[p.pos] && <b>{roleLabel[p.role]}</b>}</span>
           </li>
         ))}

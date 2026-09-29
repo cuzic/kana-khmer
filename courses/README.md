@@ -6,8 +6,8 @@
 
 | コース | from → to | 表記ライブラリ | 状態 |
 |---|---|---|---|
-| `ko-ja` | 韓国語 → 日本語(韓国語話者向けの日本語あいさつ) | `packages/ja-hangul` | 骨格のみ(フレーズ未作成) |
-| `ja-km`(予定) | 日本語 → クメール語 | `packages/khmer-kana` | 現状は `packages/content/data/` と `apps/web`。ADR-0020 の段階1で移す |
+| `ko-ja` | 韓国語 → 日本語(韓国語話者向けの日本語あいさつ) | `packages/ja-hangul` | フレーズ案 40 件・7 場面(未確認。`content` のビルドは通る)。`apps/web` は未対応 |
+| `ja-km` | 日本語 → クメール語(日本語話者向けのクメール語あいさつ) | `packages/khmer-kana` | 動作中(`apps/web` はこのコース専用。段階2でコース対応) |
 
 ## 1コースのファイル
 
@@ -20,5 +20,10 @@ courses/<from>-<to>/
   images/        場面・フレーズの絵(任意)
 ```
 
-コースを足すときは、ディレクトリを作り、`pnpm --filter content check --course <id>`(段階1で実装)が通ること、
+コースを足すときは、ディレクトリを作り、`pnpm --filter content check -- --course <id>` が通ること、
 `.github/workflows/deploy.yml` の入力に `<id>` を足すこと。
+
+## フィールド名の改名(ADR-0020 段階1)
+`docs/design.md` §4 のフレーズのフィールド名は改名前のまま。対応は `khmer`→`text`(学ぶ言語の文字)、`ipa`→`pron`(発音)、
+`ja`→`gloss`(学習者の言語の訳)、`review.ipa`→`review.pron`。バンドルの `kanaFull`/`kanaLite` は
+`readingFull`/`readingLite`(表記ライブラリが作る読み。クメール語はカナ、日本語はハングル)。

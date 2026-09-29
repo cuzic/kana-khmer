@@ -1,0 +1,14 @@
+# 日本語話者向けのクメール語あいさつ・日常会話。設計は docs/design.md、docs/adr/0020-course-per-language-pair.md
+id: ja-km
+from: ja            # 学習者の言語。UI・訳・用法は日本語
+to: km              # 学ぶ言語。音声・フレーズはクメール語
+title:
+  ja: クメール語 挨拶・日常会話
+notation:
+  package: khmer-kana    # packages/khmer-kana(IPA → カナ詳細/ライト)
+  input: ipa             # phrases.yaml の pron は IPA
+  levels: [full, lite]
+fonts: [kana-c, kana-support]   # apps/web/public/fonts/
+phrases: 40
+deploy:
+  cloudflarePagesProject: kana-ja-km
