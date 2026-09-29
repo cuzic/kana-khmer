@@ -1,14 +1,22 @@
-# 韓国語話者向けの日本語あいさつ 40 件(案)。丁寧語のみ、1フレーズ=1カード(ADR-0020)。
-# gloss・usage の韓国語、日本語の自然さ、pron(発音を確定したカタカナ)はすべて未確認(review: すべて false)。
-# ネイティブ確認後に true にする。ハングル表記は packages/ja-hangul が pron から生成する(手で書かない)。
-# フィールド名: text=日本語、pron=発音、gloss=韓国語訳(ADR-0020 段階1で確定。ja-km と共通)。
+# 韓国語話者向けの日本語あいさつ 40 件(案・第2版)。丁寧語のみ、1フレーズ=1カード(ADR-0020)。表示要素は ADR-0022:
+# 漢字かな交じり(text)・ふりがな(furigana、ひらがな。カタカナ語は かーど のようにひらがな+ー)・ローマ字(pron から生成)・ハングル(pron から生成)・韓国語訳(gloss)。
+# gloss・usage の韓国語、日本語の自然さ、furigana、pron(発音を確定したカタカナ)、語の切り方(parts)はすべて未確認(review: すべて false)。ネイティブ確認後に true にする。
+# parts は必須。連結すると text・furigana・pron が本文と一致する(content のビルドで検証)。助詞は独立した part。words は parts と同じ内容(単語タップ用)。
+# 聞き取り表現(相手が言うもの)は usage の先頭に「[듣는 표현]」。
 
 - id: hello
   scene: greetings
   gloss: "안녕하세요"
   usage: "낮부터 저녁 무렵까지 쓰는 기본 인사예요. 가게에 들어갈 때나 사람을 만났을 때 첫마디로 좋아요."
   variants:
-    - { speaker: any, register: polite, text: こんにちは, pron: コンニチワ, audio: hello.m4a }
+    - speaker: any
+      register: polite
+      text: こんにちは
+      furigana: こんにちは
+      pron: コンニチワ
+      audio: hello.m4a
+      parts:
+        - { text: こんにちは, furigana: こんにちは, pron: コンニチワ, gloss: "안녕하세요", pos: interj }
   words:
     - { text: こんにちは, pron: コンニチワ, gloss: "안녕하세요" }
   review: { pron: false, audio: false, usage: false }
@@ -19,9 +27,18 @@
   gloss: "좋은 아침입니다"
   usage: "아침에 쓰는 인사예요. 직장이나 숙소에서는 낮에 처음 만나도 쓰는 경우가 있어요. 친구끼리는 “おはよう”라고 줄여요."
   variants:
-    - { speaker: any, register: polite, text: おはようございます, pron: オハヨーゴザイマス, audio: good-morning.m4a }
+    - speaker: any
+      register: polite
+      text: おはようございます
+      furigana: おはようございます
+      pron: オハヨーゴザイマス
+      audio: good-morning.m4a
+      parts:
+        - { text: おはよう, furigana: おはよう, pron: オハヨー, gloss: "좋은 아침", pos: interj }
+        - { text: ございます, furigana: ございます, pron: ゴザイマス, gloss: "(정중 표현)", pos: verb }
   words:
-    - { text: おはようございます, pron: オハヨーゴザイマス, gloss: "좋은 아침입니다" }
+    - { text: おはよう, pron: オハヨー, gloss: "좋은 아침" }
+    - { text: ございます, pron: ゴザイマス, gloss: "(정중 표현)" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
 
@@ -30,7 +47,14 @@
   gloss: "안녕하세요(저녁 인사)"
   usage: "저녁부터 밤까지 쓰는 인사예요. 마지막 は는 “하”가 아니라 “와”로 읽어요."
   variants:
-    - { speaker: any, register: polite, text: こんばんは, pron: コンバンワ, audio: good-evening.m4a }
+    - speaker: any
+      register: polite
+      text: こんばんは
+      furigana: こんばんは
+      pron: コンバンワ
+      audio: good-evening.m4a
+      parts:
+        - { text: こんばんは, furigana: こんばんは, pron: コンバンワ, gloss: "안녕하세요(저녁 인사)", pos: interj }
   words:
     - { text: こんばんは, pron: コンバンワ, gloss: "안녕하세요(저녁 인사)" }
   review: { pron: false, audio: false, usage: false }
@@ -41,7 +65,14 @@
   gloss: "처음 뵙겠습니다"
   usage: "처음 만나는 사람에게 하는 첫인사예요. 뒤에 이름과 “よろしくおねがいします”를 이어서 말해요."
   variants:
-    - { speaker: any, register: polite, text: はじめまして, pron: ハジメマシテ, audio: nice-to-meet.m4a }
+    - speaker: any
+      register: polite
+      text: はじめまして
+      furigana: はじめまして
+      pron: ハジメマシテ
+      audio: nice-to-meet.m4a
+      parts:
+        - { text: はじめまして, furigana: はじめまして, pron: ハジメマシテ, gloss: "처음 뵙겠습니다", pos: interj }
   words:
     - { text: はじめまして, pron: ハジメマシテ, gloss: "처음 뵙겠습니다" }
   review: { pron: false, audio: false, usage: false }
@@ -52,9 +83,18 @@
   gloss: "잘 부탁드립니다"
   usage: "처음 만난 사람에게, 또는 부탁을 할 때 마무리로 쓰는 말이에요. 아주 폭넓게 쓰여요."
   variants:
-    - { speaker: any, register: polite, text: よろしくおねがいします, pron: ヨロシクオネガイシマス, audio: yoroshiku.m4a }
+    - speaker: any
+      register: polite
+      text: よろしくお願いします
+      furigana: よろしくおねがいします
+      pron: ヨロシクオネガイシマス
+      audio: yoroshiku.m4a
+      parts:
+        - { text: よろしく, furigana: よろしく, pron: ヨロシク, gloss: "잘", pos: adv }
+        - { text: お願いします, furigana: おねがいします, pron: オネガイシマス, gloss: "부탁합니다", pos: verb }
   words:
-    - { text: よろしくおねがいします, pron: ヨロシクオネガイシマス, gloss: "잘 부탁드립니다" }
+    - { text: よろしく, pron: ヨロシク, gloss: "잘" }
+    - { text: お願いします, pron: オネガイシマス, gloss: "부탁합니다" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
 
@@ -63,7 +103,14 @@
   gloss: "안녕히 가세요"
   usage: "헤어질 때 하는 인사예요. 오랫동안 못 만날 것 같을 때 쓰는 느낌이라서, 가벼운 헤어짐에는 “じゃあ、また”를 자주 써요."
   variants:
-    - { speaker: any, register: polite, text: さようなら, pron: サヨーナラ, audio: sayonara.m4a }
+    - speaker: any
+      register: polite
+      text: さようなら
+      furigana: さようなら
+      pron: サヨーナラ
+      audio: sayonara.m4a
+      parts:
+        - { text: さようなら, furigana: さようなら, pron: サヨーナラ, gloss: "안녕히 가세요", pos: interj }
   words:
     - { text: さようなら, pron: サヨーナラ, gloss: "안녕히 가세요" }
   review: { pron: false, audio: false, usage: false }
@@ -74,20 +121,18 @@
   gloss: "감사합니다"
   usage: "장소를 가리지 않고 쓰는 기본 감사 인사예요. 가게, 식사, 길을 알려 받았을 때 등에 써요."
   variants:
-    - { speaker: any, register: polite, text: ありがとうございます, pron: アリガトーゴザイマス, audio: thanks.m4a }
+    - speaker: any
+      register: polite
+      text: ありがとうございます
+      furigana: ありがとうございます
+      pron: アリガトーゴザイマス
+      audio: thanks.m4a
+      parts:
+        - { text: ありがとう, furigana: ありがとう, pron: アリガトー, gloss: "감사", pos: interj }
+        - { text: ございます, furigana: ございます, pron: ゴザイマス, gloss: "(정중 표현)", pos: verb }
   words:
-    - { text: ありがとうございます, pron: アリガトーゴザイマス, gloss: "감사합니다" }
-  review: { pron: false, audio: false, usage: false }
-  audioSource: tts
-
-- id: thanks-much
-  scene: thanks-sorry
-  gloss: "정말 감사했습니다"
-  usage: "도움을 받은 뒤에 하는 정중한 감사 인사예요. 과거형(でした)이라서 일이 끝난 뒤에 써요."
-  variants:
-    - { speaker: any, register: polite, text: どうもありがとうございました, pron: ドーモアリガトーゴザイマシタ, audio: thanks-much.m4a }
-  words:
-    - { text: どうもありがとうございました, pron: ドーモアリガトーゴザイマシタ, gloss: "정말 감사했습니다" }
+    - { text: ありがとう, pron: アリガトー, gloss: "감사" }
+    - { text: ございます, pron: ゴザイマス, gloss: "(정중 표현)" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
 
@@ -96,20 +141,16 @@
   gloss: "죄송합니다 · 실례합니다"
   usage: "가볍게 사과할 때, 사람에게 말을 걸 때, 고맙다는 뜻을 전할 때도 쓰는 만능 표현이에요. 종업원을 부를 때도 써요."
   variants:
-    - { speaker: any, register: polite, text: すみません, pron: スミマセン, audio: sorry.m4a }
+    - speaker: any
+      register: polite
+      text: すみません
+      furigana: すみません
+      pron: スミマセン
+      audio: sorry.m4a
+      parts:
+        - { text: すみません, furigana: すみません, pron: スミマセン, gloss: "죄송합니다 · 실례합니다", pos: interj }
   words:
     - { text: すみません, pron: スミマセン, gloss: "죄송합니다 · 실례합니다" }
-  review: { pron: false, audio: false, usage: false }
-  audioSource: tts
-
-- id: welcome
-  scene: thanks-sorry
-  gloss: "천만에요"
-  usage: "감사 인사를 받았을 때의 대답이에요. 일상에서는 웃으면서 “いえいえ”만 말하는 경우도 많아요."
-  variants:
-    - { speaker: any, register: polite, text: どういたしまして, pron: ドーイタシマシテ, audio: welcome.m4a }
-  words:
-    - { text: どういたしまして, pron: ドーイタシマシテ, gloss: "천만에요" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
 
@@ -118,7 +159,14 @@
   gloss: "네"
   usage: "정중한 “네”예요. 이름이 불렸을 때의 대답이나 맞장구에도 써요."
   variants:
-    - { speaker: any, register: polite, text: はい, pron: ハイ, audio: yes.m4a }
+    - speaker: any
+      register: polite
+      text: はい
+      furigana: はい
+      pron: ハイ
+      audio: yes.m4a
+      parts:
+        - { text: はい, furigana: はい, pron: ハイ, gloss: "네", pos: interj }
   words:
     - { text: はい, pron: ハイ, gloss: "네" }
   review: { pron: false, audio: false, usage: false }
@@ -129,9 +177,40 @@
   gloss: "괜찮습니다(사양할게요)"
   usage: "권유나 판촉을 정중하게 거절할 때 써요. 상황에 따라 “좋아요”로 들릴 수 있으니, 손을 저으며 말하면 확실해요."
   variants:
-    - { speaker: any, register: polite, text: けっこうです, pron: ケッコーデス, audio: no-thanks.m4a }
+    - speaker: any
+      register: polite
+      text: 結構です
+      furigana: けっこうです
+      pron: ケッコーデス
+      audio: no-thanks.m4a
+      parts:
+        - { text: 結構, furigana: けっこう, pron: ケッコー, gloss: "괜찮음", pos: adj }
+        - { text: です, furigana: です, pron: デス, gloss: "입니다", pos: particle }
   words:
-    - { text: けっこうです, pron: ケッコーデス, gloss: "괜찮습니다(사양할게요)" }
+    - { text: 結構, pron: ケッコー, gloss: "괜찮음" }
+    - { text: です, pron: デス, gloss: "입니다" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: wait-a-moment
+  scene: thanks-sorry
+  gloss: "잠시만 기다려 주세요"
+  usage: "[듣는 표현] 점원이나 직원이 확인·준비하는 동안 잠깐 기다려 달라고 할 때 하는 말이에요. 그 자리에서 기다리면 돼요."
+  variants:
+    - speaker: any
+      register: polite
+      text: 少々お待ちください
+      furigana: しょうしょうおまちください
+      pron: ショーショーオマチクダサイ
+      audio: wait-a-moment.m4a
+      parts:
+        - { text: 少々, furigana: しょうしょう, pron: ショーショー, gloss: "잠시", pos: adv }
+        - { text: お待ち, furigana: おまち, pron: オマチ, gloss: "기다림", pos: noun }
+        - { text: ください, furigana: ください, pron: クダサイ, gloss: "주세요", pos: verb }
+  words:
+    - { text: 少々, pron: ショーショー, gloss: "잠시" }
+    - { text: お待ち, pron: オマチ, gloss: "기다림" }
+    - { text: ください, pron: クダサイ, gloss: "주세요" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
 
@@ -140,9 +219,38 @@
   gloss: "어서 오세요"
   usage: "[듣는 표현] 가게에 들어가면 점원이 하는 인사예요. 대답하지 않아도 되고, 가볍게 목례하면 충분해요."
   variants:
-    - { speaker: any, register: polite, text: いらっしゃいませ, pron: イラッシャイマセ, audio: irasshaimase.m4a }
+    - speaker: any
+      register: polite
+      text: いらっしゃいませ
+      furigana: いらっしゃいませ
+      pron: イラッシャイマセ
+      audio: irasshaimase.m4a
+      parts:
+        - { text: いらっしゃいませ, furigana: いらっしゃいませ, pron: イラッシャイマセ, gloss: "어서 오세요", pos: interj }
   words:
     - { text: いらっしゃいませ, pron: イラッシャイマセ, gloss: "어서 오세요" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: come-this-way
+  scene: restaurant
+  gloss: "이쪽으로 오세요"
+  usage: "[듣는 표현] 점원이 자리로 안내할 때 하는 말이에요. 그냥 따라가면 돼요. へ는 “에”라고 읽어요."
+  variants:
+    - speaker: any
+      register: polite
+      text: こちらへどうぞ
+      furigana: こちらへどうぞ
+      pron: コチラエドーゾ
+      audio: come-this-way.m4a
+      parts:
+        - { text: こちら, furigana: こちら, pron: コチラ, gloss: "이쪽", pos: pron }
+        - { text: へ, furigana: へ, pron: エ, gloss: "(방향 조사)", pos: particle }
+        - { text: どうぞ, furigana: どうぞ, pron: ドーゾ, gloss: "어서", pos: adv }
+  words:
+    - { text: こちら, pron: コチラ, gloss: "이쪽" }
+    - { text: へ, pron: エ, gloss: "(방향 조사)" }
+    - { text: どうぞ, pron: ドーゾ, gloss: "어서" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
 
@@ -151,9 +259,18 @@
   gloss: "두 명이에요"
   usage: "“몇 분이세요?”라고 물었을 때 인원수를 말해요. 한 명은 “ひとり”, 세 명은 “さんにん”이에요."
   variants:
-    - { speaker: any, register: polite, text: ふたりです, pron: フタリデス, audio: table-for-two.m4a }
+    - speaker: any
+      register: polite
+      text: 二人です
+      furigana: ふたりです
+      pron: フタリデス
+      audio: table-for-two.m4a
+      parts:
+        - { text: 二人, furigana: ふたり, pron: フタリ, gloss: "두 명", pos: noun }
+        - { text: です, furigana: です, pron: デス, gloss: "입니다", pos: particle }
   words:
-    - { text: ふたりです, pron: フタリデス, gloss: "두 명이에요" }
+    - { text: 二人, pron: フタリ, gloss: "두 명" }
+    - { text: です, pron: デス, gloss: "입니다" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
 
@@ -162,9 +279,20 @@
   gloss: "이거 주세요"
   usage: "메뉴를 가리키면서 주문할 때 써요. 사진이나 진열된 음식 모형을 가리키면 확실히 통해요."
   variants:
-    - { speaker: any, register: polite, text: これをください, pron: コレオクダサイ, audio: this-please.m4a }
+    - speaker: any
+      register: polite
+      text: これをください
+      furigana: これをください
+      pron: コレオクダサイ
+      audio: this-please.m4a
+      parts:
+        - { text: これ, furigana: これ, pron: コレ, gloss: "이것", pos: pron }
+        - { text: を, furigana: を, pron: オ, gloss: "(목적격 조사)", pos: particle }
+        - { text: ください, furigana: ください, pron: クダサイ, gloss: "주세요", pos: verb }
   words:
-    - { text: これをください, pron: コレオクダサイ, gloss: "이거 주세요" }
+    - { text: これ, pron: コレ, gloss: "이것" }
+    - { text: を, pron: オ, gloss: "(목적격 조사)" }
+    - { text: ください, pron: クダサイ, gloss: "주세요" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
 
@@ -173,9 +301,20 @@
   gloss: "물 주세요"
   usage: "물은 대부분 무료로 나와요. 차가운 물이 나오는 경우가 많아요."
   variants:
-    - { speaker: any, register: polite, text: おみずをください, pron: オミズオクダサイ, audio: water-please.m4a }
+    - speaker: any
+      register: polite
+      text: お水をください
+      furigana: おみずをください
+      pron: オミズオクダサイ
+      audio: water-please.m4a
+      parts:
+        - { text: お水, furigana: おみず, pron: オミズ, gloss: "물", pos: noun }
+        - { text: を, furigana: を, pron: オ, gloss: "(목적격 조사)", pos: particle }
+        - { text: ください, furigana: ください, pron: クダサイ, gloss: "주세요", pos: verb }
   words:
-    - { text: おみずをください, pron: オミズオクダサイ, gloss: "물 주세요" }
+    - { text: お水, pron: オミズ, gloss: "물" }
+    - { text: を, pron: オ, gloss: "(목적격 조사)" }
+    - { text: ください, pron: クダサイ, gloss: "주세요" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
 
@@ -184,9 +323,18 @@
   gloss: "맛있어요"
   usage: "음식을 먹고 나서 감상을 전할 때 써요. 가게 사람에게 말하면 기뻐해요."
   variants:
-    - { speaker: any, register: polite, text: おいしいです, pron: オイシーデス, audio: delicious.m4a }
+    - speaker: any
+      register: polite
+      text: おいしいです
+      furigana: おいしいです
+      pron: オイシーデス
+      audio: delicious.m4a
+      parts:
+        - { text: おいしい, furigana: おいしい, pron: オイシー, gloss: "맛있다", pos: adj }
+        - { text: です, furigana: です, pron: デス, gloss: "입니다", pos: particle }
   words:
-    - { text: おいしいです, pron: オイシーデス, gloss: "맛있어요" }
+    - { text: おいしい, pron: オイシー, gloss: "맛있다" }
+    - { text: です, pron: デス, gloss: "입니다" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
 
@@ -195,9 +343,20 @@
   gloss: "계산해 주세요"
   usage: "다 먹고 나서 점원을 불러 계산을 부탁할 때 써요. 자리에서 계산하는 가게와 계산대로 가는 가게가 있어요."
   variants:
-    - { speaker: any, register: polite, text: おかいけいおねがいします, pron: オカイケーオネガイシマス, audio: check-please.m4a }
+    - speaker: any
+      register: polite
+      text: お会計をお願いします
+      furigana: おかいけいをおねがいします
+      pron: オカイケーオオネガイシマス
+      audio: check-please.m4a
+      parts:
+        - { text: お会計, furigana: おかいけい, pron: オカイケー, gloss: "계산", pos: noun }
+        - { text: を, furigana: を, pron: オ, gloss: "(목적격 조사)", pos: particle }
+        - { text: お願いします, furigana: おねがいします, pron: オネガイシマス, gloss: "부탁합니다", pos: verb }
   words:
-    - { text: おかいけいおねがいします, pron: オカイケーオネガイシマス, gloss: "계산해 주세요" }
+    - { text: お会計, pron: オカイケー, gloss: "계산" }
+    - { text: を, pron: オ, gloss: "(목적격 조사)" }
+    - { text: お願いします, pron: オネガイシマス, gloss: "부탁합니다" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
 
@@ -206,9 +365,20 @@
   gloss: "얼마예요?"
   usage: "물건을 가리키면서 값을 물어볼 때 써요. 대답은 숫자로 들리니 계산기 앱을 준비하면 편해요."
   variants:
-    - { speaker: any, register: polite, text: いくらですか, pron: イクラデスカ, audio: how-much.m4a }
+    - speaker: any
+      register: polite
+      text: いくらですか
+      furigana: いくらですか
+      pron: イクラデスカ
+      audio: how-much.m4a
+      parts:
+        - { text: いくら, furigana: いくら, pron: イクラ, gloss: "얼마", pos: question }
+        - { text: です, furigana: です, pron: デス, gloss: "입니다", pos: particle }
+        - { text: か, furigana: か, pron: カ, gloss: "(의문 조사)", pos: particle }
   words:
-    - { text: いくらですか, pron: イクラデスカ, gloss: "얼마예요?" }
+    - { text: いくら, pron: イクラ, gloss: "얼마" }
+    - { text: です, pron: デス, gloss: "입니다" }
+    - { text: か, pron: カ, gloss: "(의문 조사)" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
 
@@ -217,20 +387,20 @@
   gloss: "그냥 보는 거예요"
   usage: "점원이 말을 걸었을 때 가볍게 거절하는 말이에요. 부담 없이 구경할 수 있어요."
   variants:
-    - { speaker: any, register: polite, text: みているだけです, pron: ミテイルダケデス, audio: just-looking.m4a }
+    - speaker: any
+      register: polite
+      text: 見ているだけです
+      furigana: みているだけです
+      pron: ミテイルダケデス
+      audio: just-looking.m4a
+      parts:
+        - { text: 見ている, furigana: みている, pron: ミテイル, gloss: "보고 있다", pos: verb }
+        - { text: だけ, furigana: だけ, pron: ダケ, gloss: "뿐", pos: particle }
+        - { text: です, furigana: です, pron: デス, gloss: "입니다", pos: particle }
   words:
-    - { text: みているだけです, pron: ミテイルダケデス, gloss: "그냥 보는 거예요" }
-  review: { pron: false, audio: false, usage: false }
-  audioSource: tts
-
-- id: try-on
-  scene: shopping
-  gloss: "입어 봐도 돼요?"
-  usage: "옷이나 신발을 입어 보고 싶을 때 물어요. 화장품 테스터나 신발은 가게마다 규칙이 달라요."
-  variants:
-    - { speaker: any, register: polite, text: しちゃくしてもいいですか, pron: シチャクシテモイーデスカ, audio: try-on.m4a }
-  words:
-    - { text: しちゃくしてもいいですか, pron: シチャクシテモイーデスカ, gloss: "입어 봐도 돼요?" }
+    - { text: 見ている, pron: ミテイル, gloss: "보고 있다" }
+    - { text: だけ, pron: ダケ, gloss: "뿐" }
+    - { text: です, pron: デス, gloss: "입니다" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
 
@@ -239,9 +409,20 @@
   gloss: "면세 되나요?"
   usage: "외국인 관광객은 조건에 따라 소비세 면세를 받을 수 있어요. 계산하기 전에 물어봐요. 여권이 필요할 수 있어요."
   variants:
-    - { speaker: any, register: polite, text: めんぜいできますか, pron: メンゼーデキマスカ, audio: tax-free.m4a }
+    - speaker: any
+      register: polite
+      text: 免税できますか
+      furigana: めんぜいできますか
+      pron: メンゼーデキマスカ
+      audio: tax-free.m4a
+      parts:
+        - { text: 免税, furigana: めんぜい, pron: メンゼー, gloss: "면세", pos: noun }
+        - { text: できます, furigana: できます, pron: デキマス, gloss: "가능합니다", pos: verb }
+        - { text: か, furigana: か, pron: カ, gloss: "(의문 조사)", pos: particle }
   words:
-    - { text: めんぜいできますか, pron: メンゼーデキマスカ, gloss: "면세 되나요?" }
+    - { text: 免税, pron: メンゼー, gloss: "면세" }
+    - { text: できます, pron: デキマス, gloss: "가능합니다" }
+    - { text: か, pron: カ, gloss: "(의문 조사)" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
 
@@ -250,9 +431,74 @@
   gloss: "카드 쓸 수 있나요?"
   usage: "계산하기 전에 카드 결제가 되는지 물어볼 때 써요. 현금만 받는 가게도 있어요."
   variants:
-    - { speaker: any, register: polite, text: カードはつかえますか, pron: カードワツカエマスカ, audio: card-ok.m4a }
+    - speaker: any
+      register: polite
+      text: カードは使えますか
+      furigana: かーどはつかえますか
+      pron: カードワツカエマスカ
+      audio: card-ok.m4a
+      parts:
+        - { text: カード, furigana: かーど, pron: カード, gloss: "카드", pos: noun }
+        - { text: は, furigana: は, pron: ワ, gloss: "(주제 조사)", pos: particle }
+        - { text: 使えます, furigana: つかえます, pron: ツカエマス, gloss: "사용할 수 있습니다", pos: verb }
+        - { text: か, furigana: か, pron: カ, gloss: "(의문 조사)", pos: particle }
   words:
-    - { text: カードはつかえますか, pron: カードワツカエマスカ, gloss: "카드 쓸 수 있나요?" }
+    - { text: カード, pron: カード, gloss: "카드" }
+    - { text: は, pron: ワ, gloss: "(주제 조사)" }
+    - { text: 使えます, pron: ツカエマス, gloss: "사용할 수 있습니다" }
+    - { text: か, pron: カ, gloss: "(의문 조사)" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: bag-ok
+  scene: shopping
+  gloss: "봉투 필요하세요?"
+  usage: "[듣는 표현] 계산할 때 점원이 봉투가 필요한지 물어요. 필요하면 “おねがいします”, 필요 없으면 “けっこうです”라고 답해요. 봉투는 유료인 가게가 많아요."
+  variants:
+    - speaker: any
+      register: polite
+      text: 袋はご利用ですか
+      furigana: ふくろはごりようですか
+      pron: フクロワゴリヨーデスカ
+      audio: bag-ok.m4a
+      parts:
+        - { text: 袋, furigana: ふくろ, pron: フクロ, gloss: "봉투", pos: noun }
+        - { text: は, furigana: は, pron: ワ, gloss: "(주제 조사)", pos: particle }
+        - { text: ご利用, furigana: ごりよう, pron: ゴリヨー, gloss: "이용", pos: noun }
+        - { text: です, furigana: です, pron: デス, gloss: "입니다", pos: particle }
+        - { text: か, furigana: か, pron: カ, gloss: "(의문 조사)", pos: particle }
+  words:
+    - { text: 袋, pron: フクロ, gloss: "봉투" }
+    - { text: は, pron: ワ, gloss: "(주제 조사)" }
+    - { text: ご利用, pron: ゴリヨー, gloss: "이용" }
+    - { text: です, pron: デス, gloss: "입니다" }
+    - { text: か, pron: カ, gloss: "(의문 조사)" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: separate-bill
+  scene: shopping
+  gloss: "계산 따로 하시나요?"
+  usage: "[듣는 표현] 여럿이 함께 계산할 때 점원이 따로 계산할지 묻는 말이에요. “べつべつで”(따로) 또는 “いっしょで”(같이)라고 답해요."
+  variants:
+    - speaker: any
+      register: polite
+      text: お会計は別々ですか
+      furigana: おかいけいはべつべつですか
+      pron: オカイケーワベツベツデスカ
+      audio: separate-bill.m4a
+      parts:
+        - { text: お会計, furigana: おかいけい, pron: オカイケー, gloss: "계산", pos: noun }
+        - { text: は, furigana: は, pron: ワ, gloss: "(주제 조사)", pos: particle }
+        - { text: 別々, furigana: べつべつ, pron: ベツベツ, gloss: "따로따로", pos: adj }
+        - { text: です, furigana: です, pron: デス, gloss: "입니다", pos: particle }
+        - { text: か, furigana: か, pron: カ, gloss: "(의문 조사)", pos: particle }
+  words:
+    - { text: お会計, pron: オカイケー, gloss: "계산" }
+    - { text: は, pron: ワ, gloss: "(주제 조사)" }
+    - { text: 別々, pron: ベツベツ, gloss: "따로따로" }
+    - { text: です, pron: デス, gloss: "입니다" }
+    - { text: か, pron: カ, gloss: "(의문 조사)" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
 
@@ -261,9 +507,24 @@
   gloss: "역이 어디예요?"
   usage: "길을 걷다가 가장 가까운 역을 물어볼 때 써요. “역” 자리에 다른 장소 이름을 넣어도 돼요."
   variants:
-    - { speaker: any, register: polite, text: えきはどこですか, pron: エキワドコデスカ, audio: where-station.m4a }
+    - speaker: any
+      register: polite
+      text: 駅はどこですか
+      furigana: えきはどこですか
+      pron: エキワドコデスカ
+      audio: where-station.m4a
+      parts:
+        - { text: 駅, furigana: えき, pron: エキ, gloss: "역", pos: noun }
+        - { text: は, furigana: は, pron: ワ, gloss: "(주제 조사)", pos: particle }
+        - { text: どこ, furigana: どこ, pron: ドコ, gloss: "어디", pos: question }
+        - { text: です, furigana: です, pron: デス, gloss: "입니다", pos: particle }
+        - { text: か, furigana: か, pron: カ, gloss: "(의문 조사)", pos: particle }
   words:
-    - { text: えきはどこですか, pron: エキワドコデスカ, gloss: "역이 어디예요?" }
+    - { text: 駅, pron: エキ, gloss: "역" }
+    - { text: は, pron: ワ, gloss: "(주제 조사)" }
+    - { text: どこ, pron: ドコ, gloss: "어디" }
+    - { text: です, pron: デス, gloss: "입니다" }
+    - { text: か, pron: カ, gloss: "(의문 조사)" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
 
@@ -272,9 +533,24 @@
   gloss: "화장실이 어디예요?"
   usage: "화장실 위치를 물어볼 때 써요. 가게나 역 안에서도 그대로 통해요."
   variants:
-    - { speaker: any, register: polite, text: トイレはどこですか, pron: トイレワドコデスカ, audio: where-toilet.m4a }
+    - speaker: any
+      register: polite
+      text: トイレはどこですか
+      furigana: といれはどこですか
+      pron: トイレワドコデスカ
+      audio: where-toilet.m4a
+      parts:
+        - { text: トイレ, furigana: といれ, pron: トイレ, gloss: "화장실", pos: noun }
+        - { text: は, furigana: は, pron: ワ, gloss: "(주제 조사)", pos: particle }
+        - { text: どこ, furigana: どこ, pron: ドコ, gloss: "어디", pos: question }
+        - { text: です, furigana: です, pron: デス, gloss: "입니다", pos: particle }
+        - { text: か, furigana: か, pron: カ, gloss: "(의문 조사)", pos: particle }
   words:
-    - { text: トイレはどこですか, pron: トイレワドコデスカ, gloss: "화장실이 어디예요?" }
+    - { text: トイレ, pron: トイレ, gloss: "화장실" }
+    - { text: は, pron: ワ, gloss: "(주제 조사)" }
+    - { text: どこ, pron: ドコ, gloss: "어디" }
+    - { text: です, pron: デス, gloss: "입니다" }
+    - { text: か, pron: カ, gloss: "(의문 조사)" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
 
@@ -283,9 +559,22 @@
   gloss: "여기에 가고 싶어요"
   usage: "지도나 스마트폰 화면을 보여 주면서 목적지를 전할 때 써요. へ는 “에”라고 읽어요."
   variants:
-    - { speaker: any, register: polite, text: ここへいきたいです, pron: ココエイキタイデス, audio: want-go-here.m4a }
+    - speaker: any
+      register: polite
+      text: ここへ行きたいです
+      furigana: ここへいきたいです
+      pron: ココエイキタイデス
+      audio: want-go-here.m4a
+      parts:
+        - { text: ここ, furigana: ここ, pron: ココ, gloss: "여기", pos: pron }
+        - { text: へ, furigana: へ, pron: エ, gloss: "(방향 조사)", pos: particle }
+        - { text: 行きたい, furigana: いきたい, pron: イキタイ, gloss: "가고 싶다", pos: adj }
+        - { text: です, furigana: です, pron: デス, gloss: "입니다", pos: particle }
   words:
-    - { text: ここへいきたいです, pron: ココエイキタイデス, gloss: "여기에 가고 싶어요" }
+    - { text: ここ, pron: ココ, gloss: "여기" }
+    - { text: へ, pron: エ, gloss: "(방향 조사)" }
+    - { text: 行きたい, pron: イキタイ, gloss: "가고 싶다" }
+    - { text: です, pron: デス, gloss: "입니다" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
 
@@ -294,20 +583,20 @@
   gloss: "얼마나 걸려요?"
   usage: "목적지까지 걸리는 시간을 물어볼 때 써요. 택시나 버스를 타기 전에 유용해요."
   variants:
-    - { speaker: any, register: polite, text: どのくらいかかりますか, pron: ドノクライカカリマスカ, audio: how-long.m4a }
+    - speaker: any
+      register: polite
+      text: どのくらいかかりますか
+      furigana: どのくらいかかりますか
+      pron: ドノクライカカリマスカ
+      audio: how-long.m4a
+      parts:
+        - { text: どのくらい, furigana: どのくらい, pron: ドノクライ, gloss: "어느 정도", pos: adv }
+        - { text: かかります, furigana: かかります, pron: カカリマス, gloss: "걸립니다", pos: verb }
+        - { text: か, furigana: か, pron: カ, gloss: "(의문 조사)", pos: particle }
   words:
-    - { text: どのくらいかかりますか, pron: ドノクライカカリマスカ, gloss: "얼마나 걸려요?" }
-  review: { pron: false, audio: false, usage: false }
-  audioSource: tts
-
-- id: get-off-next
-  scene: transport
-  gloss: "다음에서 내릴게요"
-  usage: "버스나 택시에서 내릴 곳을 전할 때 써요. 혼잡한 차 안에서 앞사람에게 비켜 달라고 할 때도 써요."
-  variants:
-    - { speaker: any, register: polite, text: つぎでおります, pron: ツギデオリマス, audio: get-off-next.m4a }
-  words:
-    - { text: つぎでおります, pron: ツギデオリマス, gloss: "다음에서 내릴게요" }
+    - { text: どのくらい, pron: ドノクライ, gloss: "어느 정도" }
+    - { text: かかります, pron: カカリマス, gloss: "걸립니다" }
+    - { text: か, pron: カ, gloss: "(의문 조사)" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
 
@@ -316,9 +605,26 @@
   gloss: "표는 어디서 살 수 있어요?"
   usage: "역에서 표를 사는 곳을 물어볼 때 써요. 승차 카드를 살 때도 그대로 써요."
   variants:
-    - { speaker: any, register: polite, text: きっぷはどこでかえますか, pron: キップワドコデカエマスカ, audio: where-ticket.m4a }
+    - speaker: any
+      register: polite
+      text: 切符はどこで買えますか
+      furigana: きっぷはどこでかえますか
+      pron: キップワドコデカエマスカ
+      audio: where-ticket.m4a
+      parts:
+        - { text: 切符, furigana: きっぷ, pron: キップ, gloss: "표", pos: noun }
+        - { text: は, furigana: は, pron: ワ, gloss: "(주제 조사)", pos: particle }
+        - { text: どこ, furigana: どこ, pron: ドコ, gloss: "어디", pos: question }
+        - { text: で, furigana: で, pron: デ, gloss: "(장소 조사)", pos: particle }
+        - { text: 買えます, furigana: かえます, pron: カエマス, gloss: "살 수 있습니다", pos: verb }
+        - { text: か, furigana: か, pron: カ, gloss: "(의문 조사)", pos: particle }
   words:
-    - { text: きっぷはどこでかえますか, pron: キップワドコデカエマスカ, gloss: "표는 어디서 살 수 있어요?" }
+    - { text: 切符, pron: キップ, gloss: "표" }
+    - { text: は, pron: ワ, gloss: "(주제 조사)" }
+    - { text: どこ, pron: ドコ, gloss: "어디" }
+    - { text: で, pron: デ, gloss: "(장소 조사)" }
+    - { text: 買えます, pron: カエマス, gloss: "살 수 있습니다" }
+    - { text: か, pron: カ, gloss: "(의문 조사)" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
 
@@ -327,9 +633,40 @@
   gloss: "예약했어요"
   usage: "체크인할 때 예약이 있다고 알리는 말이에요. 예약 확인 메일이나 이름을 함께 보여 주세요."
   variants:
-    - { speaker: any, register: polite, text: よやくしています, pron: ヨヤクシテイマス, audio: reservation.m4a }
+    - speaker: any
+      register: polite
+      text: 予約しています
+      furigana: よやくしています
+      pron: ヨヤクシテイマス
+      audio: reservation.m4a
+      parts:
+        - { text: 予約しています, furigana: よやくしています, pron: ヨヤクシテイマス, gloss: "예약했습니다", pos: verb }
   words:
-    - { text: よやくしています, pron: ヨヤクシテイマス, gloss: "예약했어요" }
+    - { text: 予約しています, pron: ヨヤクシテイマス, gloss: "예약했습니다" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: reserved-q
+  scene: hotel
+  gloss: "예약하셨나요?"
+  usage: "[듣는 표현] 숙소나 식당에 들어가면 직원이 예약 여부를 물어요. “はい、よやくしています”처럼 대답하고, 예약 확인서나 이름을 보여 주세요."
+  variants:
+    - speaker: any
+      register: polite
+      text: ご予約はされていますか
+      furigana: ごよやくはされていますか
+      pron: ゴヨヤクワサレテイマスカ
+      audio: reserved-q.m4a
+      parts:
+        - { text: ご予約, furigana: ごよやく, pron: ゴヨヤク, gloss: "예약", pos: noun }
+        - { text: は, furigana: は, pron: ワ, gloss: "(주제 조사)", pos: particle }
+        - { text: されています, furigana: されています, pron: サレテイマス, gloss: "하셨습니다", pos: verb }
+        - { text: か, furigana: か, pron: カ, gloss: "(의문 조사)", pos: particle }
+  words:
+    - { text: ご予約, pron: ゴヨヤク, gloss: "예약" }
+    - { text: は, pron: ワ, gloss: "(주제 조사)" }
+    - { text: されています, pron: サレテイマス, gloss: "하셨습니다" }
+    - { text: か, pron: カ, gloss: "(의문 조사)" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
 
@@ -338,9 +675,22 @@
   gloss: "짐을 맡길 수 있나요?"
   usage: "체크인 전이나 체크아웃 후에 짐을 맡길 때 물어요. 공공 장소에서는 코인로커를 쓸 수도 있어요."
   variants:
-    - { speaker: any, register: polite, text: にもつをあずかってもらえますか, pron: ニモツオアズカッテモラエマスカ, audio: keep-luggage.m4a }
+    - speaker: any
+      register: polite
+      text: 荷物を預かってもらえますか
+      furigana: にもつをあずかってもらえますか
+      pron: ニモツオアズカッテモラエマスカ
+      audio: keep-luggage.m4a
+      parts:
+        - { text: 荷物, furigana: にもつ, pron: ニモツ, gloss: "짐", pos: noun }
+        - { text: を, furigana: を, pron: オ, gloss: "(목적격 조사)", pos: particle }
+        - { text: 預かってもらえます, furigana: あずかってもらえます, pron: アズカッテモラエマス, gloss: "맡아 주실 수 있습니다", pos: verb }
+        - { text: か, furigana: か, pron: カ, gloss: "(의문 조사)", pos: particle }
   words:
-    - { text: にもつをあずかってもらえますか, pron: ニモツオアズカッテモラエマスカ, gloss: "짐을 맡길 수 있나요?" }
+    - { text: 荷物, pron: ニモツ, gloss: "짐" }
+    - { text: を, pron: オ, gloss: "(목적격 조사)" }
+    - { text: 預かってもらえます, pron: アズカッテモラエマス, gloss: "맡아 주실 수 있습니다" }
+    - { text: か, pron: カ, gloss: "(의문 조사)" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
 
@@ -349,20 +699,26 @@
   gloss: "조식은 몇 시부터예요?"
   usage: "조식이 포함된 숙소에서 시간을 물어볼 때 써요. “なんじまで(몇 시까지)”로 바꿔서 끝나는 시간도 물어봐요."
   variants:
-    - { speaker: any, register: polite, text: あさごはんはなんじからですか, pron: アサゴハンワナンジカラデスカ, audio: breakfast-time.m4a }
+    - speaker: any
+      register: polite
+      text: 朝食は何時からですか
+      furigana: ちょうしょくはなんじからですか
+      pron: チョーショクワナンジカラデスカ
+      audio: breakfast-time.m4a
+      parts:
+        - { text: 朝食, furigana: ちょうしょく, pron: チョーショク, gloss: "조식", pos: noun }
+        - { text: は, furigana: は, pron: ワ, gloss: "(주제 조사)", pos: particle }
+        - { text: 何時, furigana: なんじ, pron: ナンジ, gloss: "몇 시", pos: question }
+        - { text: から, furigana: から, pron: カラ, gloss: "(~부터)", pos: particle }
+        - { text: です, furigana: です, pron: デス, gloss: "입니다", pos: particle }
+        - { text: か, furigana: か, pron: カ, gloss: "(의문 조사)", pos: particle }
   words:
-    - { text: あさごはんはなんじからですか, pron: アサゴハンワナンジカラデスカ, gloss: "조식은 몇 시부터예요?" }
-  review: { pron: false, audio: false, usage: false }
-  audioSource: tts
-
-- id: more-towel
-  scene: hotel
-  gloss: "수건을 조금 더 주세요"
-  usage: "객실에서 수건이 모자랄 때 프런트에 부탁하는 말이에요. “タオル” 자리에 다른 물건 이름을 넣어도 돼요."
-  variants:
-    - { speaker: any, register: polite, text: タオルをもうすこしください, pron: タオルオモースコシクダサイ, audio: more-towel.m4a }
-  words:
-    - { text: タオルをもうすこしください, pron: タオルオモースコシクダサイ, gloss: "수건을 조금 더 주세요" }
+    - { text: 朝食, pron: チョーショク, gloss: "조식" }
+    - { text: は, pron: ワ, gloss: "(주제 조사)" }
+    - { text: 何時, pron: ナンジ, gloss: "몇 시" }
+    - { text: から, pron: カラ, gloss: "(~부터)" }
+    - { text: です, pron: デス, gloss: "입니다" }
+    - { text: か, pron: カ, gloss: "(의문 조사)" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
 
@@ -371,9 +727,22 @@
   gloss: "인터넷 쓸 수 있나요?"
   usage: "와이파이를 쓸 수 있는지 물어볼 때 써요. 비밀번호가 필요하면 “パスワード”를 알려 달라고 하면 돼요."
   variants:
-    - { speaker: any, register: polite, text: インターネットはつかえますか, pron: インターネットワツカエマスカ, audio: internet-ok.m4a }
+    - speaker: any
+      register: polite
+      text: インターネットは使えますか
+      furigana: いんたーねっとはつかえますか
+      pron: インターネットワツカエマスカ
+      audio: internet-ok.m4a
+      parts:
+        - { text: インターネット, furigana: いんたーねっと, pron: インターネット, gloss: "인터넷", pos: noun }
+        - { text: は, furigana: は, pron: ワ, gloss: "(주제 조사)", pos: particle }
+        - { text: 使えます, furigana: つかえます, pron: ツカエマス, gloss: "사용할 수 있습니다", pos: verb }
+        - { text: か, furigana: か, pron: カ, gloss: "(의문 조사)", pos: particle }
   words:
-    - { text: インターネットはつかえますか, pron: インターネットワツカエマスカ, gloss: "인터넷 쓸 수 있나요?" }
+    - { text: インターネット, pron: インターネット, gloss: "인터넷" }
+    - { text: は, pron: ワ, gloss: "(주제 조사)" }
+    - { text: 使えます, pron: ツカエマス, gloss: "사용할 수 있습니다" }
+    - { text: か, pron: カ, gloss: "(의문 조사)" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
 
@@ -382,9 +751,18 @@
   gloss: "도와주세요"
   usage: "곤란할 때 도움을 청하는 말이에요. 급할 때는 큰 소리로 말해도 괜찮아요."
   variants:
-    - { speaker: any, register: polite, text: たすけてください, pron: タスケテクダサイ, audio: help.m4a }
+    - speaker: any
+      register: polite
+      text: 助けてください
+      furigana: たすけてください
+      pron: タスケテクダサイ
+      audio: help.m4a
+      parts:
+        - { text: 助けて, furigana: たすけて, pron: タスケテ, gloss: "도와", pos: verb }
+        - { text: ください, furigana: ください, pron: クダサイ, gloss: "주세요", pos: verb }
   words:
-    - { text: たすけてください, pron: タスケテクダサイ, gloss: "도와주세요" }
+    - { text: 助けて, pron: タスケテ, gloss: "도와" }
+    - { text: ください, pron: クダサイ, gloss: "주세요" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
 
@@ -393,9 +771,20 @@
   gloss: "다시 한 번 부탁드려요"
   usage: "못 알아들었을 때 다시 말해 달라고 정중하게 부탁하는 말이에요."
   variants:
-    - { speaker: any, register: polite, text: もういちどおねがいします, pron: モーイチドオネガイシマス, audio: again-please.m4a }
+    - speaker: any
+      register: polite
+      text: もう一度お願いします
+      furigana: もういちどおねがいします
+      pron: モーイチドオネガイシマス
+      audio: again-please.m4a
+      parts:
+        - { text: もう, furigana: もう, pron: モー, gloss: "다시", pos: adv }
+        - { text: 一度, furigana: いちど, pron: イチド, gloss: "한 번", pos: noun }
+        - { text: お願いします, furigana: おねがいします, pron: オネガイシマス, gloss: "부탁합니다", pos: verb }
   words:
-    - { text: もういちどおねがいします, pron: モーイチドオネガイシマス, gloss: "다시 한 번 부탁드려요" }
+    - { text: もう, pron: モー, gloss: "다시" }
+    - { text: 一度, pron: イチド, gloss: "한 번" }
+    - { text: お願いします, pron: オネガイシマス, gloss: "부탁합니다" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
 
@@ -404,9 +793,20 @@
   gloss: "천천히 말씀해 주세요"
   usage: "상대가 너무 빨리 말할 때 써요. 웃는 얼굴로 말하면 대부분 천천히 말해 줘요."
   variants:
-    - { speaker: any, register: polite, text: ゆっくりはなしてください, pron: ユックリハナシテクダサイ, audio: speak-slowly.m4a }
+    - speaker: any
+      register: polite
+      text: ゆっくり話してください
+      furigana: ゆっくりはなしてください
+      pron: ユックリハナシテクダサイ
+      audio: speak-slowly.m4a
+      parts:
+        - { text: ゆっくり, furigana: ゆっくり, pron: ユックリ, gloss: "천천히", pos: adv }
+        - { text: 話して, furigana: はなして, pron: ハナシテ, gloss: "말해", pos: verb }
+        - { text: ください, furigana: ください, pron: クダサイ, gloss: "주세요", pos: verb }
   words:
-    - { text: ゆっくりはなしてください, pron: ユックリハナシテクダサイ, gloss: "천천히 말씀해 주세요" }
+    - { text: ゆっくり, pron: ユックリ, gloss: "천천히" }
+    - { text: 話して, pron: ハナシテ, gloss: "말해" }
+    - { text: ください, pron: クダサイ, gloss: "주세요" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
 
@@ -415,9 +815,20 @@
   gloss: "일본어를 몰라요"
   usage: "일본어를 잘 못한다고 전할 때 써요. 상대가 영어나 몸짓으로 도와줄 수 있어요."
   variants:
-    - { speaker: any, register: polite, text: にほんごがわかりません, pron: ニホンゴガワカリマセン, audio: dont-understand.m4a }
+    - speaker: any
+      register: polite
+      text: 日本語が分かりません
+      furigana: にほんごがわかりません
+      pron: ニホンゴガワカリマセン
+      audio: dont-understand.m4a
+      parts:
+        - { text: 日本語, furigana: にほんご, pron: ニホンゴ, gloss: "일본어", pos: noun }
+        - { text: が, furigana: が, pron: ガ, gloss: "(주격 조사)", pos: particle }
+        - { text: 分かりません, furigana: わかりません, pron: ワカリマセン, gloss: "모릅니다", pos: verb }
   words:
-    - { text: にほんごがわかりません, pron: ニホンゴガワカリマセン, gloss: "일본어를 몰라요" }
+    - { text: 日本語, pron: ニホンゴ, gloss: "일본어" }
+    - { text: が, pron: ガ, gloss: "(주격 조사)" }
+    - { text: 分かりません, pron: ワカリマセン, gloss: "모릅니다" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
 
@@ -426,9 +837,20 @@
   gloss: "여권을 잃어버렸어요"
   usage: "여권을 잃어버렸을 때 경찰서나 숙소 직원에게 알리는 말이에요. “パスポート” 자리에 다른 물건 이름을 넣어도 돼요."
   variants:
-    - { speaker: any, register: polite, text: パスポートをなくしました, pron: パスポートオナクシマシタ, audio: lost-passport.m4a }
+    - speaker: any
+      register: polite
+      text: パスポートをなくしました
+      furigana: ぱすぽーとをなくしました
+      pron: パスポートオナクシマシタ
+      audio: lost-passport.m4a
+      parts:
+        - { text: パスポート, furigana: ぱすぽーと, pron: パスポート, gloss: "여권", pos: noun }
+        - { text: を, furigana: を, pron: オ, gloss: "(목적격 조사)", pos: particle }
+        - { text: なくしました, furigana: なくしました, pron: ナクシマシタ, gloss: "잃어버렸습니다", pos: verb }
   words:
-    - { text: パスポートをなくしました, pron: パスポートオナクシマシタ, gloss: "여권을 잃어버렸어요" }
+    - { text: パスポート, pron: パスポート, gloss: "여권" }
+    - { text: を, pron: オ, gloss: "(목적격 조사)" }
+    - { text: なくしました, pron: ナクシマシタ, gloss: "잃어버렸습니다" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
 
@@ -437,8 +859,23 @@
   gloss: "병원이 어디예요?"
   usage: "몸이 안 좋을 때 병원 위치를 물어보는 말이에요. 급하면 “きゅうきゅうしゃをよんでください(구급차를 불러 주세요)”를 써요."
   variants:
-    - { speaker: any, register: polite, text: びょういんはどこですか, pron: ビョーインワドコデスカ, audio: where-hospital.m4a }
+    - speaker: any
+      register: polite
+      text: 病院はどこですか
+      furigana: びょういんはどこですか
+      pron: ビョーインワドコデスカ
+      audio: where-hospital.m4a
+      parts:
+        - { text: 病院, furigana: びょういん, pron: ビョーイン, gloss: "병원", pos: noun }
+        - { text: は, furigana: は, pron: ワ, gloss: "(주제 조사)", pos: particle }
+        - { text: どこ, furigana: どこ, pron: ドコ, gloss: "어디", pos: question }
+        - { text: です, furigana: です, pron: デス, gloss: "입니다", pos: particle }
+        - { text: か, furigana: か, pron: カ, gloss: "(의문 조사)", pos: particle }
   words:
-    - { text: びょういんはどこですか, pron: ビョーインワドコデスカ, gloss: "병원이 어디예요?" }
+    - { text: 病院, pron: ビョーイン, gloss: "병원" }
+    - { text: は, pron: ワ, gloss: "(주제 조사)" }
+    - { text: どこ, pron: ドコ, gloss: "어디" }
+    - { text: です, pron: デス, gloss: "입니다" }
+    - { text: か, pron: カ, gloss: "(의문 조사)" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts

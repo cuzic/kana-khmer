@@ -17,6 +17,9 @@ importers:
 
   apps/web:
     dependencies:
+      ja-hangul:
+        specifier: workspace:*
+        version: link:../../packages/ja-hangul
       khmer-kana:
         specifier: workspace:*
         version: link:../../packages/khmer-kana

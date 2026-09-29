@@ -4,7 +4,7 @@
 # ///
 """Generate one illustration per phrase (packages/content/data/phrases.yaml) with gpt-image-2.
 
-Output: apps/web/public/images/phrases/<phrase-id>.webp. Same style as the scene images
+Output: apps/web/public/images/ja-km/phrases/<phrase-id>.webp. Same style as the scene images
 (generate.py), so the two sets look like one family. Existing files are skipped (safe to
 re-run after a failure); --force regenerates, --only <id> [<id> ...] limits the set,
 --dry-run prints the prompts without calling the API.
@@ -29,7 +29,7 @@ from PIL import Image
 
 ROOT = pathlib.Path(__file__).resolve().parents[3]
 PHRASES_YAML = ROOT / "packages/content/data/phrases.yaml"
-OUT_DIR = ROOT / "apps/web/public/images/phrases"
+OUT_DIR = ROOT / "apps/web/public/images/ja-km/phrases"
 
 # 練習カード・フレーズカードで幅いっぱいに出す (main の実効幅は最大 608px)。高DPI込みで 640px。
 IMG_MAX = 640

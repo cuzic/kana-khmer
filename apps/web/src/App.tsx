@@ -1,46 +1,44 @@
 import { useState } from "react";
 import { Breakdown } from "./Breakdown";
+import { course, hasGender, showsIpa } from "./course";
 import { data, type Phrase } from "./data";
-import { Guide } from "./Guide";
+import { Guide } from "./generated/guide";
+import { t } from "./i18n";
 import { PhraseImage } from "./PhraseImage";
 import { Practice } from "./Practice";
 import { useSettings } from "./settings";
 import { pickVariants } from "./variants";
+import { VariantLine } from "./VariantLine";
 
-const speakerLabel = { any: "", male: "男性", female: "女性" } as const;
+const speakerLabel = { any: "", male: t.male, female: t.female } as const;
 
 function Card({ phrase, notation, gender }: { phrase: Phrase; notation: "lite" | "full"; gender: "male" | "female" | "unset" }) {
   const { main, other, casual } = pickVariants(phrase, gender);
   const [hasImage, setHasImage] = useState(false);
-  const kana = (v: (typeof main)[number]) => (notation === "lite" ? v.readingLite : v.readingFull);
+  const reading = (v: (typeof main)[number]) => (notation === "lite" ? v.readingLite : v.readingFull);
   return (
     <li className={hasImage ? "card has-img" : "card"}>
       <PhraseImage id={phrase.id} className="phrase-thumb" onLoad={() => setHasImage(true)} />
-      <div className="ja">
+      <div className="phrase-gloss" lang={course.from}>
         {phrase.gloss}
-        {phrase.unreviewed && <span className="badge">未確認</span>}
+        {phrase.unreviewed && <span className="badge">{t.unreviewed}</span>}
       </div>
       {main.map((v) => (
-        <div key={`${v.speaker}/${v.register}`} className="variant">
-          {speakerLabel[v.speaker] && <span className="tag">{speakerLabel[v.speaker]}</span>}
-          <span className="kana">{kana(v)}</span>
-          <span className="khmer" lang="km">{v.text}</span>
-          {notation === "full" && <span className="ipa">/{v.pron}/</span>}
-        </div>
+        <VariantLine key={`${v.speaker}/${v.register}`} variant={v} notation={notation} tag={speakerLabel[v.speaker] || undefined} />
       ))}
       {main.some((v) => v.parts) && (
         <details className="how">
-          <summary>単語のしくみ</summary>
+          <summary>{t.howWords}</summary>
           {main.map((v) => <Breakdown key={`${v.speaker}/${v.register}`} variant={v} notation={notation} />)}
         </details>
       )}
       {other.length > 0 && (
         <div className="sub">
-          {other.map((v) => `${speakerLabel[v.speaker]}: ${kana(v)}${notation === "full" ? ` /${v.pron}/` : ""}`).join(" / ")}
+          {other.map((v) => `${speakerLabel[v.speaker]}: ${reading(v)}${showsIpa && notation === "full" ? ` /${v.pron}/` : ""}`).join(" / ")}
         </div>
       )}
-      {casual.length > 0 && <div className="sub">くだけた形: {casual.map(kana).join(" / ")}</div>}
-      {phrase.usage && <div className="sub usage">{phrase.usage}</div>}
+      {casual.length > 0 && <div className="sub">{t.casualForm}: {casual.map(reading).join(" / ")}</div>}
+      {phrase.usage && <div className="sub usage" lang={course.from}>{phrase.usage}</div>}
     </li>
   );
 }
@@ -56,23 +54,25 @@ export function App() {
   return (
     <main>
       <header>
-        <h1>クメール語 かんたん会話</h1>
+        <h1>{course.title[course.from]}</h1>
         <div className="controls">
           <label>
-            表記
+            {t.notation}
             <select value={settings.notation} onChange={(e) => setSettings({ ...settings, notation: e.target.value as "lite" | "full" })}>
-              <option value="lite">ライト</option>
-              <option value="full">詳細</option>
+              <option value="lite">{t.lite}</option>
+              <option value="full">{t.full}</option>
             </select>
           </label>
-          <label>
-            自分の性別
-            <select value={settings.speakerGender} onChange={(e) => setSettings({ ...settings, speakerGender: e.target.value as typeof settings.speakerGender })}>
-              <option value="unset">未設定(両方)</option>
-              <option value="male">男性</option>
-              <option value="female">女性</option>
-            </select>
-          </label>
+          {hasGender && (
+            <label>
+              {t.speakerGender}
+              <select value={settings.speakerGender} onChange={(e) => setSettings({ ...settings, speakerGender: e.target.value as typeof settings.speakerGender })}>
+                <option value="unset">{t.genderUnset}</option>
+                <option value="male">{t.male}</option>
+                <option value="female">{t.female}</option>
+              </select>
+            </label>
+          )}
         </div>
       </header>
       {guide ? (
@@ -81,7 +81,7 @@ export function App() {
         <Practice settings={settings} onBack={() => setPracticing(false)} />
       ) : scene ? (
         <section>
-          <button className="back" onClick={() => setSceneId(null)}>← シーン一覧</button>
+          <button className="back" onClick={() => setSceneId(null)}>{t.backToScenes}</button>
           <h2>{scene.title}</h2>
           <ul className="cards">
             {phrases.map((p) => <Card key={p.id} phrase={p} notation={settings.notation} gender={settings.speakerGender} />)}
@@ -89,17 +89,17 @@ export function App() {
         </section>
       ) : (
         <section>
-          <button className="reveal" onClick={() => setPracticing(true)}>今日の練習</button>
-          <button className="back" onClick={() => setGuide(true)}>表記の読み方</button>
-          <h2>シーン</h2>
-          {data.scenes.length === 0 && <p>公開できるフレーズがありません。</p>}
+          <button className="reveal" onClick={() => setPracticing(true)}>{t.practiceToday}</button>
+          <button className="back" onClick={() => setGuide(true)}>{t.guideLink}</button>
+          <h2>{t.scenes}</h2>
+          {data.scenes.length === 0 && <p>{t.noPhrases}</p>}
           <ul className="scenes">
             {data.scenes.map((s) => (
               <li key={s.id}>
                 <button onClick={() => setSceneId(s.id)}>
                   <img
                     className="scene-img"
-                    src={`/images/scenes/${s.id}.webp`}
+                    src={`/images/${course.id}/scenes/${s.id}.webp`}
                     alt=""
                     loading="lazy"
                     onError={(e) => e.currentTarget.remove()}

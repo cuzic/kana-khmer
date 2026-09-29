@@ -4,7 +4,7 @@
 # ///
 """Generate one illustration per scene (packages/content/data/scenes.yaml) with gpt-image-2.
 
-Output: apps/web/public/images/scenes/<scene-id>.webp (served by Vite from /public as-is,
+Output: apps/web/public/images/ja-km/scenes/<scene-id>.webp (served by Vite from /public as-is,
 same convention as /fonts/*.woff2). Re-run for one scene with --only <id>; --dry-run prints
 the prompts without calling the API (no cost).
 
@@ -30,7 +30,7 @@ from PIL import Image
 
 ROOT = pathlib.Path(__file__).resolve().parents[3]
 SCENES_YAML = ROOT / "packages/content/data/scenes.yaml"
-OUT_DIR = ROOT / "apps/web/public/images/scenes"
+OUT_DIR = ROOT / "apps/web/public/images/ja-km/scenes"
 
 # .scenes button の .scene-img はカード上部のバナー (幅いっぱい x 140px, apps/web/src/style.css)。
 # main の実効幅は最大 608px (max-width 640px - padding 32px) なので、高DPI込みで 768px あれば十分。

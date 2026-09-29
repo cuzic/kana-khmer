@@ -4,13 +4,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "gen": "pnpm --filter content build:preview",
+    "gen": "pnpm --filter content gen:web",
     "dev": "pnpm gen && vite",
-    "build": "pnpm gen && tsc -p tsconfig.json && vite build",
+    "build": "pnpm gen && tsc -p tsconfig.json && vite build && node scripts/prune-course-assets.mjs",
     "typecheck": "pnpm gen && tsc -p tsconfig.json",
     "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
+    "ja-hangul": "workspace:*",
     "khmer-kana": "workspace:*",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",

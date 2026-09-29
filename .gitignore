@@ -8,3 +8,6 @@ dist
 # 開発用のローカル証明書・秘密鍵(コミットしない)
 *.key
 dev.*.ts.net.crt
+
+# apps/web が読むコースの生成物(pnpm gen)
+apps/web/src/generated

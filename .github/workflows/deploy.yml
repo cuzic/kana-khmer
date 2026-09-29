@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       course:
-        description: "courses/ 配下の id。段階2(apps/web のコース対応)までは ja-km だけ"
+        description: "courses/ 配下の id(ja-km または ko-ja)"
         required: true
         default: ja-km
       branch:
@@ -30,15 +30,11 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 22, cache: pnpm }
       - run: pnpm install --frozen-lockfile
-      # apps/web は段階2までクメール語コース固定。他のコースを誤って公開しない
-      - name: ja-km 以外は拒否
-        if: ${{ inputs.course != 'ja-km' }}
-        run: |
-          echo "::error::apps/web がコースに対応するのは ADR-0020 の段階2。今は ja-km だけデプロイできる"
-          exit 1
       - run: pnpm typecheck
       - run: pnpm test
       - run: pnpm --filter web build
+        env:
+          COURSE: ${{ inputs.course }}
       - uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}

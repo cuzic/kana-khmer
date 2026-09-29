@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
+import { course } from "./course";
 
 export interface Settings {
   notation: "lite" | "full";
   speakerGender: "male" | "female" | "unset";
   newPerDay: number; // 3〜10、既定 6
 }
-const KEY = "kana-khmer:settings";
+/** コースごとに名前空間を分ける(ADR-0022)。ja-km の旧キーは初回に読んで移す */
+const KEY = `kana:${course.id}:settings`;
+const LEGACY_KEY = course.id === "ja-km" ? "kana-khmer:settings" : undefined;
 const DEFAULTS: Settings = { notation: "lite", speakerGender: "unset", newPerDay: 6 };
 
 function load(): Settings {
   let saved: Partial<Settings> = {};
   try {
-    saved = JSON.parse(localStorage.getItem(KEY) ?? "{}");
+    const raw = localStorage.getItem(KEY) ?? (LEGACY_KEY ? localStorage.getItem(LEGACY_KEY) : null);
+    saved = JSON.parse(raw ?? "{}");
   } catch {
     /* storage unavailable or corrupt: use defaults */
   }

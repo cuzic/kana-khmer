@@ -8,7 +8,8 @@
     "build:preview": "tsx src/cli.ts build --profile preview",
     "check": "tsx src/cli.ts check",
     "test": "vitest run",
-    "typecheck": "tsc -p tsconfig.json"
+    "typecheck": "tsc -p tsconfig.json",
+    "gen:web": "tsx src/cli.ts build --profile preview --out ../../apps/web/src/generated"
   },
   "dependencies": {
     "ja-hangul": "workspace:*",
