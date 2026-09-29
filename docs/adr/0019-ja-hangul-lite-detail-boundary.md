@@ -1,7 +1,7 @@
 ---
-status: proposed
+status: accepted
 date: 2026-09-29
-deciders: agent (提案のみ。accepted はユーザーの承認後。ライトでも区切りを残すことは ADR-0018 でユーザーが決定済み)
+deciders: user (右肩ローマ字にそろえる方針、長音の字形 (a)、accepted の承認) + agent
 ---
 
 # ADR-0019: 日本語→ハングル表記の記号を右肩ローマ字にそろえ、長音・促音・区切りをライト、じゃ・じょ の ʲ を詳細だけにする

@@ -2,7 +2,7 @@
 status: accepted
 date: 2026-09-28
 deciders: agent (opus-reviewed)
-note: kana-multi.woff2 を apps/web に採用するかどうかは未決
+note: kana-multi.woff2 を apps/web に採用するかどうかは未決。2026-09-29 に ADR-0019 が日本語→ハングル表記用の4つ目のフォント kana-hangul.woff2 を足した
 ---
 
 # ADR-0014: 表示用フォントは kana-c / kana-support / kana-multi の3系統に分けて管理する
@@ -40,6 +40,9 @@ modifier letter(`ʰ ˡ ʳ ᵑ ˀ` 等。カスタム字形を含む。[ADR-0015]
 `build-kana-support-font.py` / `build-kana-multi-font.py`)を個別にメンテナンスするコストがある。
 将来 `kana-multi` をアプリに採用する場合、`kana-c`/`kana-support` の役割をどちらに寄せるか
 (3つのまま増やす/2つに統合する)を別途決める必要がある。
+
+
+2026-09-29 追記: [ADR-0019](0019-ja-hangul-lite-detail-boundary.md) が、日本語→ハングル表記の右肩ローマ字(ʲ と、長音の上付き母音+結合マクロンの合成グリフ)用に、4つ目の専用フォント `kana-hangul.woff2`(`build-kana-hangul-font.py`)を足した。3系統の役割は変えていない。
 
 ## 参照
 - `apps/web/public/fonts/`, `apps/web/src/style.css`
