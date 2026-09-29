@@ -15,7 +15,7 @@ export function toMoras(kata, tok = 0, out = []) {
     else if (SMALL_V[ch] && last && last.c !== undefined && !last.yoon && !last.smallV && last.c === '' && last.v === 'u') { last.c = 'w'; last.v = SMALL_V[ch]; last.smallV = true; } // ウィ ウェ ウォ ウァ = w+母音
     else if (SMALL_V[ch] && last && last.c !== undefined && !last.yoon && !last.smallV && SMALL_V[ch] === last.v) last.long = true; // ナァ、アァ = 長音
     else if (SMALL_V[ch] && last && last.c !== undefined && !last.yoon) { last.v = SMALL_V[ch]; last.smallV = true; }
-    else if (SMALL_Y[ch] && last && last.c !== undefined && !last.yoon) { last.v = SMALL_Y[ch]; last.yoon = !PALATAL.has(last.c); last.smallY = true; }
+    else if (SMALL_Y[ch] && last && last.c !== undefined && !last.yoon) { last.v = SMALL_Y[ch]; if (last.c === 'n') last.c = 'ny'; else last.yoon = !PALATAL.has(last.c); last.smallY = true; }
     else if (KANA[ch]) out.push({ c: KANA[ch][0], v: KANA[ch][1], src: ch });
     else out.push({ raw: ch });
     if (out.length > n) out[out.length - 1].tok = tok;
@@ -58,17 +58,21 @@ function render(s, opts) {
   const tag = `${s.src ?? s.c + s.v}${s.smallV || s.smallY ? '(拗/小)' : ''}`;
   if (eff !== want) flags.push({ kind: 'SERIES_MISMATCH', at: tag, note: `${s.c}+${s.v}: 欲しい系列 ${want} だが字 ${cell.base}${cell.shifter ?? ''} は実効 ${eff}系` });
   if (s.c === 'g' || s.c === 'z' || s.c === 'ts' || s.c === 'f') flags.push({ kind: 'CONVENTION', at: tag, note: `${s.c}: 借用語の慣習的綴りで、音価・系列の確認が要る` });
-  let t = cell.base + (cell.coeng ? COENG + cell.coeng : '') + (s.yoon ? YOON_COENG : '') + (cell.shifter ?? '');
+  // 拗音で coeng+យ を足すときは、◌៉/◌៊ を基底字の直後に置く(Module:km-pron はそう並べると読める。ហ្យ៊ は読めない)
+  // ただし基底字が共鳴音(ម យ រ វ)のときは、後ろの子音(យ)の系列で読まれるので、◌៉ は យ の後ろに置く(ម្យ៉ាង と同じ)
+  const shiftFirst = s.yoon && !cell.coeng && !'មយរវ'.includes(cell.base);
+  let t = cell.base + (shiftFirst ? (cell.shifter ?? '') : '') + (cell.coeng ? COENG + cell.coeng : '') + (s.yoon ? YOON_COENG : '') + (shiftFirst ? '' : (cell.shifter ?? ''));
   let vsign;
   const tbl = s.v === 'u' && opts.uMid ? VOWEL_U_MID : VOWEL[s.v];
   const short = tbl[0], long = tbl[1];
   const lenMark = s.long && (s.v === 'e' || s.v === 'o') ? LONG_MARK : '';
   if (s.coda) {
-    vsign = s.long ? long : (s.v === 'a' ? '' : short); // a系 a は固有母音+末子音、ៈ は付けない
-    if (!s.long && (s.v === 'i' || s.v === 'u')) flags.push({ kind: 'SHORT_BEFORE_FINAL', at: tag, note: `${s.v} の短母音記号は末子音の前で母音が変わる(◌ិ→[ə]/[ɨ]、◌ុ→[o]/[u])` });
-    const ch = s.coda.type === 'N' ? N_CODA(s.coda.next) : Q_CODA(s.coda.next);
+    // 末子音の前: a は固有母音+末子音+◌់(短)、i は短母音記号 ◌ិ が [ɨ] になるので長い ◌ី を使い、長さは右肩 ː で足す
+    vsign = s.long ? long : (s.v === 'a' ? '' : s.v === 'i' ? long : short);
+    const coda = s.coda.type === 'N' ? N_CODA(s.coda.next) : Q_CODA(s.coda.next);
     if (s.coda.type === 'Q') flags.push({ kind: 'SOKUON', at: tag, note: '促音を末子音の破裂音で近似(長母音後の ក は声門閉鎖になりうる)' });
-    t += vsign + lenMark + ch;
+    const iLen = s.v === 'i' && s.long && marks.has('len') ? LONG_MARK : '';
+    t += vsign + lenMark + iLen + coda + (s.v === 'a' && !s.long ? '\u17CB' : '');
   } else {
     vsign = s.long ? long : short;
     t += vsign + lenMark;
@@ -96,6 +100,7 @@ export function kanaToKhmer(katas, opts = {}) {
     if (s.raw) { khmer += s.raw; if (!/[、。?!？！\s「」・]/.test(s.raw)) unknown.push(s.raw); continue; }
     if (s.standaloneN) { khmer += N_CODA(s.next); flags.push({ kind: 'STANDALONE_N', at: 'ン', note: '単独のン' }); continue; }
     const r = render(s, opts);
+    if (opts.sep && khmer && !khmer.endsWith(' ')) khmer += opts.sep; // 検証用: 音節区切り(読み戻しで再分割を防ぐ)
     khmer += r.text;
     flags.push(...r.flags);
   }
