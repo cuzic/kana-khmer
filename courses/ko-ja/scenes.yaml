@@ -1,0 +1,3 @@
+# 場面。日本側(韓国人が日本で使う場面)から選ぶ。未作成。
+# 形式(既存 packages/content/data/scenes.yaml と同じ): { id: kebab-case, title: 韓国語, order: 整数 }
+[]

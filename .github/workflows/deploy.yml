@@ -1,0 +1,46 @@
+# Cloudflare Pages へのデプロイ(ADR-0020)。コースごとに Pages プロジェクトを1つ持つ(kana-<course>)。
+# 手動実行のみ。事前に repo の Secrets に CLOUDFLARE_API_TOKEN(Pages の編集権限)と CLOUDFLARE_ACCOUNT_ID を入れ、
+# 初回だけ `pnpm dlx wrangler pages project create kana-<course> --production-branch main` を実行しておく。
+name: deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      course:
+        description: "courses/ 配下の id。段階2(apps/web のコース対応)までは ja-km だけ"
+        required: true
+        default: ja-km
+      branch:
+        description: "Pages のブランチ名。main が本番、それ以外はプレビュー"
+        required: true
+        default: preview
+
+concurrency:
+  group: deploy-${{ inputs.course }}-${{ inputs.branch }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      # apps/web は段階2までクメール語コース固定。他のコースを誤って公開しない
+      - name: ja-km 以外は拒否
+        if: ${{ inputs.course != 'ja-km' }}
+        run: |
+          echo "::error::apps/web がコースに対応するのは ADR-0020 の段階2。今は ja-km だけデプロイできる"
+          exit 1
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: pnpm --filter web build
+      - uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy apps/web/dist --project-name=kana-${{ inputs.course }} --branch=${{ inputs.branch }}

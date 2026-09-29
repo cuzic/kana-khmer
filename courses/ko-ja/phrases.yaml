@@ -1,0 +1,10 @@
+# フレーズ 40 件(未作成)。フィールド名は ADR-0020 の段階1で確定する。想定:
+#   - id: hello
+#     scene: greetings
+#     text: こんにちは            # 日本語の表記(to の言語の文字)
+#     pron: コンニチワ            # 発音を確定したカタカナ。ハングルは ja-hangul が生成し、手で書かない
+#     gloss: 안녕하세요           # 韓国語訳(from の言語)
+#     usage: ...                  # 用法の一口コメント(韓国語)
+#     audio: hello.m4a
+#     review: { pron: false, audio: false, usage: false }
+[]

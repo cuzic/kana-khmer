@@ -1,0 +1,15 @@
+# 韓国語話者向けの日本語あいさつ。設計は docs/adr/0020-course-per-language-pair.md
+id: ko-ja
+from: ko            # 学習者の言語。UI・訳・用法は韓国語
+to: ja              # 学ぶ言語。音声・フレーズは日本語
+title:
+  ko: 일본어 인사
+  ja: 日本語あいさつ(韓国語話者向け)
+notation:
+  package: ja-hangul     # packages/ja-hangul(ADR-0018・ADR-0019)
+  input: kana            # phrases.yaml の pron は「発音を確定したカタカナ」(長音 ー・促音 ッ・撥音 ン)
+  levels: [full, lite]   # 詳細(ʲ あり)/ライト
+fonts: [kana-hangul]     # tools/glyph-check/public/kana-font/ から配る(ADR-0019)
+phrases: 40              # 目標件数。場面は日本側(訪日韓国人が使う場面)から選ぶ
+deploy:
+  cloudflarePagesProject: kana-ko-ja

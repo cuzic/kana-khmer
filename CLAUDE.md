@@ -14,6 +14,8 @@ supersede する(`docs/adr/README.md` と `.claude/rules/adr.md` を参照)。
 
 ## 構成
 - `packages/khmer-kana`  表記ライブラリ(IPA → 音節構造 → カナ詳細/ライト)
+- `packages/ja-hangul`    日本語の発音(かな)→ハングル表記(ADR-0018・0019)
 - `packages/content`      フレーズデータ(phrases.yaml → phrases.json、prod/preview)
+- `courses/<from>-<to>`   学習コース(言語の組み合わせ。ko-ja は骨格のみ。ADR-0020)
 - `apps/web`              PWA(土台のみ: シーン一覧とフレーズカード。学習機能は未着手)
-- `tools/glyph-check`     iOS/Android での描画検証とフォント生成
+- `tools/glyph-check`     iOS/Android での描画検証とフォント生成(kana-hangul.woff2 を含む)
