@@ -1,6 +1,6 @@
 // ADR-0006 と同じ測り方: 1つの対立を潰したとき、新たに同綴りになる語の割合(同音の語は先に除く)。
 // 既定は設計書 v0.7 の表(spec)。--table=v0 で ADR-0017 の仮表(table.mjs・convert.mjs)。
-// usage: node collision.mjs [--table=spec|v0] [--scope-only] <jmdict-json>...
+// usage: node collision.mjs [--table=spec|v0] [--scope-only] [--long=c|a|colon] <jmdict-json>...
 import { kanaToKhmer, ALL_MARKS } from './convert.mjs';
 import { kanaToKhmerSpec, SPEC_MARKS } from './convert-spec.mjs';
 import { loadWords } from './vocab.mjs';
@@ -9,12 +9,13 @@ const args = process.argv.slice(2);
 const files = args.filter((a) => !a.startsWith('--'));
 const useV0 = args.includes('--table=v0');
 const scopeOnly = args.includes('--scope-only') || !useV0;
+const longStyle = (args.find((a) => a.startsWith('--long=')) ?? '--long=c').slice(7); // c | a | colon(旧案の ː)
 if (!files.length) throw new Error('usage: node collision.mjs [--table=spec|v0] [--scope-only] <jmdict-json>...');
 
 const ALL = useV0 ? ALL_MARKS : SPEC_MARKS;
 const render = useV0
   ? (w, marks) => kanaToKhmer(w, { marks }).khmer
-  : (w, marks) => kanaToKhmerSpec(w, new Set(marks));
+  : (w, marks) => kanaToKhmerSpec(w, new Set(marks), longStyle);
 
 // marks を制限した綴りが同じで、全対立を保った綴りが違う語の割合
 const rate = (words, marks) => {
@@ -75,14 +76,14 @@ for (const file of files) {
   }
   const without = (...xs) => SPEC_MARKS.filter((m) => !xs.includes(m));
   console.log('### 個別の記号を潰す');
-  console.log(line('(a) 長音 ː を潰す', rate(words, without('len'))));
-  console.log(line('(b) ᶴ を潰す(サ/シャ・ス/シュ・ショ/チョ の合計)', rate(words, without('sha', 'shu', 'sho'))));
-  console.log(line('    個別: サ/シャ(しゃ の ᶴ だけ)', rate(words, without('sha'))));
-  console.log(line('    個別: ス/シュ(しゅ の ᶴ だけ)', rate(words, without('shu'))));
-  console.log(line('    個別: ショ/チョ(しょ の ᶴ だけ)', rate(words, without('sho'))));
+  console.log(line('(a) 長音マーカーを潰す', rate(words, without('len'))));
+  console.log(line('(b) ˢʰ を潰す(サ/シャ・ス/シュ・ショ/チョ の合計)', rate(words, without('sha', 'shu', 'sho'))));
+  console.log(line('    個別: サ/シャ(しゃ の ˢʰ だけ)', rate(words, without('sha'))));
+  console.log(line('    個別: ス/シュ(しゅ の ˢʰ だけ)', rate(words, without('shu'))));
+  console.log(line('    個別: ショ/チョ(しょ の ˢʰ だけ)', rate(words, without('sho'))));
   console.log(line('(g) 促音(ッ)を書かない(参考。旧表の 3.4%/1.9% と比べる)', rate(words, without('sok'))));
   console.log('### ライト相当');
-  console.log(line('(c1) 右肩・長音(ː ᶴ)を全部なし(促音は残す)', rate(words, ['sok'])));
+  console.log(line('(c1) 右肩・長音(長音マーカー ˢʰ)を全部なし(促音は残す)', rate(words, ['sok'])));
   console.log(line('(c2) 右肩・長音・促音を全部なし(旧表の「右肩を全部なし」と同じ定義)', rate(words, [])));
   console.log('### 許容した同綴りの組(表を通さず、かなの置換で測る)');
   for (const [k, fn] of Object.entries(PAIRS)) console.log(line(k, pairRate(words, fn)));

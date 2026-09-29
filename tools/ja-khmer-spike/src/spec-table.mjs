@@ -7,7 +7,8 @@ import { fileURLToPath } from 'node:url';
 const here = path.dirname(fileURLToPath(import.meta.url));
 export const SPEC_PATH = path.resolve(here, '../../../docs/ja-khmer-spec.md');
 const VOWEL_SIGNS = 'ាិីឹឺុូេោែៃ';
-const isShoulder = (ch) => { const c = ch.codePointAt(0); return c >= 0x1d2c && c <= 0x1dbf; }; // 上付き文字(Phonetic Extensions 系)
+// 右肩の上付きローマ字(D8): ˢ ʰ ᵗ ᶜ ʲ ᵃ ᵉ ⁱ ᵒ ᵘ など(U+02B0–02FF、U+1D2C–1DBF、U+2071、U+207F)と結合マクロン(U+0304)
+const isShoulder = (ch) => { const c = ch.codePointAt(0); return (c >= 0x2b0 && c <= 0x2ff) || (c >= 0x1d2c && c <= 0x1dbf) || c === 0x2071 || c === 0x207f || c === 0x304; };
 
 /** { ひらがな: { c: 子音部(下付き含む), v: 母音記号, sh: 右肩('' 可) } } */
 export function loadSpecTable(file = SPEC_PATH) {
