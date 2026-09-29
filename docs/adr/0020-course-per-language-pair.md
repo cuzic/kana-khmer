@@ -1,7 +1,7 @@
 ---
-status: proposed
+status: accepted
 date: 2026-09-29
-deciders: user (言語の組み合わせ from→to を表現できる構成にする、ホスティングは Cloudflare Pages、フレーズは日本側の場面から作り直す、発音はかなを手で書く) + agent (詳細設計は提案のみ。accepted はユーザーの承認後)
+deciders: user (言語の組み合わせ from→to を表現できる構成にする、ホスティングは Cloudflare Pages、フレーズは日本側の場面から作り直す、発音はかなを手で書く) 、ko-ja のフレーズは丁寧語のみ・1フレーズ=1カード、accepted の承認) + agent
 ---
 
 # ADR-0020: 学習コースを言語の組み合わせ(from→to)を単位にし、`courses/<from>-<to>/` と Cloudflare Pages に分ける
@@ -65,7 +65,8 @@ deciders: user (言語の組み合わせ from→to を表現できる構成に�
 - **一般化を、クメール語のネイティブ確認前に行う**。表記が変わったときの影響は `khmer-kana` に閉じるが、
   `content` のスキーマ移行はデータ全件に及ぶ。段階1で `ja-km` の出力を固定するテストを先に置いて守る。
 - 段階0〜1 の間、`apps/web` は `ja-km` 専用のまま。`deploy.yml` は `ja-km` 以外を拒否する。
-- 未決: フレーズのスキーマの細部(性別・呼びかけの `variants`/`addressee` は ko-ja で要るか)、UI 文言の
+- ko-ja のフレーズは丁寧語のみ、1フレーズ=1カード(性別・呼びかけの差は使わない。ユーザー判断 2026-09-29)。スキーマの `variants`(1件)・`addressee` は ja-km のために残す。
+- 未決: UI 文言の
   持ち方、Pages のカスタムドメイン、ブランチごとのプレビューの運用、SRS のデータをコース間で共有するか。
 - デプロイには repo の Secrets(`CLOUDFLARE_API_TOKEN`・`CLOUDFLARE_ACCOUNT_ID`)と、Pages プロジェクトの
   初回作成が要る。ユーザーの作業になる。
