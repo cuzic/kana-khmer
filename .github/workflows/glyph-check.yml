@@ -58,6 +58,17 @@ jobs:
             xcrun simctl io "$UDID" screenshot "artifacts/$name.png"
             test -f "artifacts/report-$name.json"
           done
+          for mode in sys ja; do
+            name="ios-ja-khmer-$mode"
+            for attempt in 1 2 3; do
+              xcrun simctl openurl "$UDID" "http://localhost:8000/ja-khmer.html?platform=$name&mode=$mode" && break
+              echo "openurl attempt $attempt failed"; sleep 10
+            done
+            for i in $(seq 1 60); do [ -f "artifacts/report-$name.json" ] && break; sleep 1; done
+            sleep 4
+            xcrun simctl io "$UDID" screenshot "artifacts/$name.png"
+            test -f "artifacts/report-$name.json"
+          done
       - uses: actions/upload-artifact@v4
         if: always()
         with: { name: ios, path: "tools/glyph-check/artifacts/*\ntools/glyph-check/server.log" }
@@ -96,7 +107,8 @@ jobs:
           script: |
             bash scripts/android-run.sh; rc1=$?
             bash scripts/android-run-multi.sh; rc2=$?
-            exit $(( rc1 || rc2 ))
+            bash scripts/android-run-ja-khmer.sh; rc3=$?
+            exit $(( rc1 || rc2 || rc3 ))
       - uses: actions/upload-artifact@v4
         if: always()
         with: { name: "android-api${{ matrix.api-level }}", path: "tools/glyph-check/artifacts/*\ntools/glyph-check/server.log" }
