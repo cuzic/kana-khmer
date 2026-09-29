@@ -1,7 +1,7 @@
 ---
-status: proposed
+status: accepted
 date: 2026-09-29
-deciders: user (表示要素を全部入れて試す、聞き取り表現を増やす、UI 文言の辞書、学習データの名前空間) + agent (提案のみ。accepted はユーザーの承認後)
+deciders: user (表示要素を全部入れて試す、聞き取り表現を増やす、UI 文言の辞書、学習データの名前空間) 、accepted の承認) + agent
 ---
 
 # ADR-0022: ko-ja の表示要素(漢字・ふりがな・ローマ字・ハングル)と、apps/web のコース対応の細部
