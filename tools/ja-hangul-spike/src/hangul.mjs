@@ -64,7 +64,7 @@ export function kanaToHangul(pron, marks = new Set(MARKS)) {
       if (!marks.has('len')) continue;
       const p = last(); if (!p) return null;
       const v = VOWEL[dec(p.syl).V]; if (!v) return null;
-      out.push(SUP[v] + SUP[v]); continue; // 直前の音節の右肩に、母音の上付きローマ字を重ねる(暫定の字形 (c))
+      out.push(SUP[v] + '\u0304'); continue; // 直前の音節の右肩に、母音の上付きローマ字+結合マクロン(字形 (a)。ja-khmer-spec §3.2 の候補 (a))
     }
     if (m === 'ン' || m === 'ッ') {
       if (m === 'ッ' && !marks.has('sok')) continue;
