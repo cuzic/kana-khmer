@@ -1,0 +1,12 @@
+{
+  "name": "@kana-khmer/ja-khmer-spike",
+  "private": true,
+  "type": "module",
+  "description": "ADR-0010 spike: Japanese text -> kana pronunciation (kuromoji) -> Khmer script (draft table). Throwaway.",
+  "scripts": {
+    "samples": "node src/run.mjs"
+  },
+  "dependencies": {
+    "kuromoji": "^0.1.2"
+  }
+}
