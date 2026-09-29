@@ -19,13 +19,15 @@ const BASE = {
 };
 const YOON_ROW = 'キギシジチニヒビピミリ';
 const YV = { ャ: 2, ュ: 17, ョ: 12 };           // ㅑ ㅠ ㅛ
-const PLAIN_V = { 2: 0, 12: 8, 17: 13 };         // 長音で重ねる母音(ㅑ→ㅏ ㅛ→ㅗ ㅠ→ㅜ)
+const PLAIN_V = { 2: 0, 12: 8, 17: 13 };         // ㅑ→ㅏ ㅛ→ㅗ ㅠ→ㅜ(硬口蓋化した ㅈㅊ の読み)
 const dec = (s) => { const c = s.codePointAt(0) - 0xac00; return { L: Math.floor(c / 588), V: Math.floor((c % 588) / 28), T: c % 28 }; };
 const enc = ({ L, V, T }) => String.fromCodePoint(0xac00 + (L * 21 + V) * 28 + T);
 
 export const MARKS = ['len', 'sok', 'nsep', 'zj'];
 export const NSEP = '·';   // ん・っ の直後が母音始まりのとき、連音化を止める区切り(暫定)
-export const ZJ = '̤'; // じゃ・じょ 側に付ける印(暫定。ざ・ぞ 側でも測定値は同じ)
+export const ZJ = 'ʲ'; // じゃ・じょ に付ける右肩ローマ字 j(ja-khmer-spec D8 と同じ方針。ざ・ぞ 側に付けても測定値は同じ)
+const SUP = { a: 'ᵃ', i: 'ⁱ', u: 'ᵘ', e: 'ᵉ', o: 'ᵒ' };
+const VOWEL = { 0: 'a', 2: 'a', 9: 'a', 20: 'i', 13: 'u', 17: 'u', 18: 'u', 5: 'e', 8: 'o', 12: 'o' }; // 母音記号 → ローマ字の母音
 
 const T_N = 4, T_K = 1, T_P = 17, T_S = 19;
 const codaFor = (nextSyl) => { // ッ の同位置パッチム
@@ -61,7 +63,8 @@ export function kanaToHangul(pron, marks = new Set(MARKS)) {
     if (m === 'ー') {
       if (!marks.has('len')) continue;
       const p = last(); if (!p) return null;
-      const d = dec(p.syl); out.push({ syl: enc({ L: 11, V: PLAIN_V[d.V] ?? d.V, T: 0 }) }); continue;
+      const v = VOWEL[dec(p.syl).V]; if (!v) return null;
+      out.push(SUP[v] + SUP[v]); continue; // 直前の音節の右肩に、母音の上付きローマ字を重ねる(暫定の字形 (c))
     }
     if (m === 'ン' || m === 'ッ') {
       if (m === 'ッ' && !marks.has('sok')) continue;
