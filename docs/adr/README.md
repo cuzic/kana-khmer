@@ -36,7 +36,7 @@ ADR として記録する。**各設計の詳細・変換表・テスト計画�
 | [0015](0015-custom-aspiration-glyph.md) | 有気音マーカー `ʰ` の字形をカスタム字形に変更する | accepted | 2026-09-28 |
 | [0016](0016-old-android-webview-constraints.md) | 古い Android WebView を実行対象とし、実装全体に制約を課す | accepted | 2026-09-26 |
 | [0017](0017-ja-khmer-subtitle-direction-and-right-shoulder-measurement.md) | 字幕表示は日本語→クメール文字の方向に絞り、右肩 IPA の要否を語彙の衝突率で測る | accepted | 2026-09-28 |
-| [0018](0018-ja-hangul-n-boundary-marker.md) | 日本語→ハングル表記で、ん・っ の直後が母音・ら行のとき区切り記号を入れる | proposed | 2026-09-29 |
+| [0018](0018-ja-hangul-n-boundary-marker.md) | 日本語→ハングル表記で、ん・っ の直後が母音・ら行のとき区切り記号を入れる | accepted | 2026-09-29 |
 
 この表は各ファイル冒頭の frontmatter(`status`・`date`・`deciders`、任意で `note`)を手で転記したもの
 (`deciders` はこの表には出していない。各 ADR 本文を見る)。**状態・日付の正は frontmatter 側**とし、
