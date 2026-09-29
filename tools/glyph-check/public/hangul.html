@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glyph Check: ja-hangul</title>
+<style>
+  :root { --bg:#fff; --fg:#111; --line:#ccc; --ng:#c00; --ok:#080; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#111; --fg:#eee; --line:#444; --ng:#f66; --ok:#6c6; } }
+  body { margin:0; padding:12px 16px; background:var(--bg); color:var(--fg); font:14px/1.5 sans-serif; }
+  h1 { font-size:16px; margin:0 0 4px; }
+  h2 { font-size:14px; margin:16px 0 4px; }
+  #status { font-weight:bold; margin-bottom:8px; }
+  .ok { color:var(--ok); } .ng { color:var(--ng); }
+  .row { display:flex; gap:12px; align-items:baseline; border-bottom:1px solid var(--line); padding:4px 0; }
+  .row .k { flex:0 0 9em; font-size:11px; opacity:.7; word-break:break-all; }
+  .row .v { font-size:34px; font-family:sans-serif; }
+  .row .w { font-size:11px; opacity:.7; }
+  pre { font-size:11px; white-space:pre-wrap; word-break:break-all; }
+</style>
+</head>
+<body>
+<h1>Glyph Check: ja-hangul</h1>
+<p style="font-size:12px;opacity:.75">
+  日本語→ハングル表記の記号の見え方(ADR-0018 の区切り <code>·</code>、じゃ・じょ に付ける印の候補)。
+  フォントは同梱せず端末の既定(lang=ko)で確認する。合否は目視。自動判定は「結合記号を付けても幅が変わらないか」だけの補助。
+  見るところ: (1) 記号が音節の下/上に重なって読めるか (2) 隣の音節と衝突しないか (3) 欠字(□)や記号だけ別位置に出ていないか。
+</p>
+<div id="status">running…</div>
+
+<h2>区切り <code>·</code>(ADR-0018)と、長音・促音</h2>
+<div id="sep"></div>
+<h2>じゃ・じょ の印の候補(基準: 조우 と 죠 は別語)</h2>
+<div id="mark"></div>
+<h2>詳細表記の例文</h2>
+<div id="sent"></div>
+<h2>report</h2>
+<pre id="report"></pre>
+
+<script>
+const params = new URLSearchParams(location.search);
+const platform = params.get("platform") || "unknown";
+
+const SEP = [
+  ["ほんや", "혼·야"], ["ほにゃ(区切りなし)", "호냐"], ["ほんらい", "혼·라이"],
+  ["おばあさん(長音)", "오바아산"], ["にっぽん(促音)", "닙폰"], ["さっか", "삭카"],
+];
+// 印の候補。基底は 죠(じょ)。結合記号は \uXXXX で書く。
+const CAND = [
+  ["なし", ""],
+  ["U+0324 diaeresis below", "̤"],
+  ["U+0323 dot below", "̣"],
+  ["U+0331 macron below", "̱"],
+  ["U+0308 diaeresis above", "̈"],
+  ["U+0307 dot above", "̇"],
+  ["U+032F inverted breve below", "̯"],
+];
+const SENT = [
+  ["ほんじつは おげんきですか", "혼지츠와 오겐키데스카"], // 見た目の確認用の仮表記
+  ["ありがとうございます", "아리가토오고자이마스"],
+  ["じょうずですね", "죠̤오즈데스네"],
+];
+
+const rows = [];
+function addRow(container, key, text, meas) {
+  const row = document.createElement("div"); row.className = "row";
+  const k = document.createElement("div"); k.className = "k"; k.textContent = key;
+  const v = document.createElement("div"); v.className = "v"; v.textContent = text;
+  row.append(k, v);
+  if (meas) { const w = document.createElement("div"); w.className = "w"; row.append(w); rows.push({ key, w, ...meas }); }
+  document.getElementById(container).append(row);
+}
+for (const [k, t] of SEP) addRow("sep", `${k}\n${[...t].map(c => "U+" + c.codePointAt(0).toString(16).toUpperCase()).join(" ")}`, t);
+for (const [k, m] of CAND) {
+  addRow("mark", k, "죠" + m + "우 / 조우 / 쟈" + m, { base: "죠", mark: m });
+}
+for (const [k, t] of SENT) addRow("sent", k, t);
+
+// 補助: 結合記号を付けても基底の幅が変わらなければ「重なって描かれている」とみなす
+const ctx = document.createElement("canvas").getContext("2d");
+ctx.font = "34px sans-serif";
+let bad = 0;
+for (const r of rows) {
+  if (!r.mark) { r.w.textContent = "基準"; continue; }
+  const d = ctx.measureText(r.base + r.mark).width - ctx.measureText(r.base).width;
+  const ok = Math.abs(d) < 1;
+  r.w.textContent = ok ? "幅+0 (重なり)" : "幅+" + d.toFixed(1) + " (別グリフ?)";
+  r.w.className = "w " + (ok ? "ok" : "ng");
+  if (!ok) bad++;
+}
+const st = document.getElementById("status");
+st.textContent = bad ? `幅が変わる候補 ${bad} 件(目視で確認)` : "自動判定: 全候補で幅は変わらない(目視で確認)";
+st.className = bad ? "ng" : "ok";
+const report = { platform, ua: navigator.userAgent, widthChanged: rows.filter(r => r.mark && !r.w.classList.contains("ok")).map(r => r.key) };
+document.getElementById("report").textContent = JSON.stringify(report, null, 1);
+fetch("/report?platform=hangul-" + platform, { method: "POST", body: JSON.stringify(report) }).catch(() => {});
+</script>
+</body>
+</html>
