@@ -44,3 +44,5 @@ ko-ja(韓国語話者向けの日本語あいさつ)の下書き 40 件は、か
 ## 参照
 - `packages/ja-hangul/src/romaji.ts`(ローマ字生成)、`packages/content/src/{schema,build,notation}.ts`
 - [ADR-0019](0019-ja-hangul-lite-detail-boundary.md)(ハングル表記)、[ADR-0020](0020-course-per-language-pair.md)(コース)
+
+2026-09-29 追記: い段の長音のローマ字は、決定1の `ii` ではなく `ī` にした(ユーザー判断。ハングルの `ⁱ̄` とそろえるため)。`packages/ja-hangul/src/romaji.ts`。

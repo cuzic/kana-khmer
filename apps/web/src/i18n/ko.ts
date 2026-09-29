@@ -20,7 +20,7 @@ export const ko: Dict = {
   noPhrases: "공개할 문구가 없습니다.",
   remaining: (n) => `남은 카드 ${n}장`,
   showAnswer: "정답 보기",
-  ratings: { again: "다시", hard: "어려움", good: "말할 수 있음", easy: "쉬움" },
+  ratings: { again: "다시", hard: "어려워요", good: "말했어요", easy: "쉬워요" },
   loading: "불러오는 중…",
   noCardsToday: "오늘 할 카드가 없습니다.",
   finishedToday: "오늘의 연습이 끝났습니다. 수고하셨습니다.",

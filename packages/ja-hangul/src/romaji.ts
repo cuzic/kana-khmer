@@ -1,5 +1,5 @@
 // 日本語の発音(かな)→ ローマ字(修正ヘボン式)。ko-ja の表示要素の1つ(ADR-0022)。
-// 入力は renderHangul と同じ「発音を確定したカタカナ」。長音 ー は母音の上にマクロン(ā ū ē ō)。ただし い段の ー は ii。
+// 入力は renderHangul と同じ「発音を確定したカタカナ」。長音 ー は母音の上にマクロン(ā ī ū ē ō)。い段も ī(ユーザー判断 2026-09-29。ハングルの ⁱ̄ とそろえる)。
 // ん の後ろが母音・や行のときは n'(hon'ya)。っ は次の子音を重ねる(ch の前は t: tchi)。
 import { JaHangulError } from "./errors";
 
@@ -25,7 +25,7 @@ const YOON: Record<string, string> = {
   キ: "ky", ギ: "gy", シ: "sh", ジ: "j", チ: "ch", ニ: "ny", ヒ: "hy", ビ: "by", ピ: "py", ミ: "my", リ: "ry",
 };
 const YOON_VOWEL: Record<string, string> = { ャ: "a", ュ: "u", ョ: "o" };
-const MACRON: Record<string, string> = { a: "ā", u: "ū", e: "ē", o: "ō" };
+const MACRON: Record<string, string> = { a: "ā", i: "ī", u: "ū", e: "ē", o: "ō" };
 const VOWELS = "aiueo";
 
 export function renderRomaji(pron: string): string {
@@ -37,7 +37,7 @@ export function renderRomaji(pron: string): string {
     if (c === "ー") {
       const last = out.slice(-1);
       if (last === "" || !VOWELS.includes(last)) throw new JaHangulError("bad-structure", "語頭または子音の後の長音");
-      out = last === "i" ? out + "i" : out.slice(0, -1) + MACRON[last]!;
+      out = out.slice(0, -1) + MACRON[last]!;
       continue;
     }
     if (c === "ッ") { geminate = true; continue; }

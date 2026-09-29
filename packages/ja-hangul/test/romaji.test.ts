@@ -13,7 +13,8 @@ describe("renderRomaji(修正ヘボン式)", () => {
     ["ショーガッコー", "shōgakkō"],
     ["キョーカ", "kyōka"],
     ["フジサン", "fujisan"],
-    ["イーデス", "iidesu"],
+    ["イーデス", "īdesu"],
+    ["オイシー", "oishī"],
   ])("%s → %s", (input, expected) => expect(renderRomaji(input)).toBe(expected));
 
   it("促音は次の子音を重ね、ch の前は t", () => {
