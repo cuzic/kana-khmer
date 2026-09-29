@@ -19,8 +19,9 @@ Contents
   Khmer letters are NOT in this font: load Noto Sans Khmer separately (see ../public/ja-khmer.html and the note there).
 
 Geometry (font units, 1000/em; every number derived from the source glyph's own bounds, not hard-coded per vowel):
-  bar bottom = vowel ink top + BAR_GAP;  bar thickness = BAR_H;  bar is centred on the vowel's ink and is
-  max(ink width * BAR_RATIO, BAR_MIN) wide. ⁱ keeps its dot (the sequence is ⁱ + U+0304, not ī): bar sits above the dot.
+  bar bottom = (tallest vowel ink top) + BAR_GAP, the same for all five;  bar thickness = BAR_H;  bar is centred on the vowel's ink and is
+  max(ink width * BAR_RATIO, BAR_MIN) wide. ⁱ + U+0304 DROPS the dot (user decision: reads as ī; the bare ⁱ is unchanged).
+  All five bars sit at one shared height (above the tallest dotless vowel).
 
 usage: uv run scripts/build-ja-khmer-font.py NotoSans-Regular.ttf [out.woff2]
 Source font is OFL-licensed (Noto Project Authors); LICENSE.txt next to the output carries the notice -- keep it.
@@ -52,11 +53,29 @@ def cw(x0, y0, x1, y1):
     return [(x0, y0), (x0, y1), (x1, y1), (x1, y0)]   # clockwise = TrueType outer contour
 
 
-def with_bar(gs, name, x0, y0, x1, y1):
-    """The glyph's outline plus one rectangle (x0,y0)-(x1,y1)."""
+def contours_of(gs, name, drop_dot=False):
+    """Recorded pen ops per contour (split at closePath). drop_dot removes the highest contour (the dot of ⁱ)."""
     rec = DecomposingRecordingPen(gs); gs[name].draw(rec)
+    cs, cur = [], []
+    for op, args in rec.value:
+        cur.append((op, args))
+        if op in ("closePath", "endPath"): cs.append(cur); cur = []
+    if drop_dot:
+        def ymin(c): return min(p[1] for _, a in c for p in a)
+        cs.remove(max(cs, key=ymin))
+    return cs
+
+
+def bounds_ops(cs):
+    pts = [p for c in cs for _, a in c for p in a]
+    return min(p[0] for p in pts), min(p[1] for p in pts), max(p[0] for p in pts), max(p[1] for p in pts)
+
+
+def with_bar(cs, x0, y0, x1, y1):
+    """The given contours plus one rectangle (x0,y0)-(x1,y1)."""
     pen = TTGlyphPen(None)
-    rec.replay(pen)
+    for c in cs:
+        for op, args in c: getattr(pen, op)(*args)
     pts = cw(x0, y0, x1, y1)
     pen.moveTo(pts[0])
     for p in pts[1:]: pen.lineTo(p)
@@ -87,14 +106,18 @@ def main(src_path, out):
         if cp is not None: new_cmap[cp] = name
 
     ligs = []
+    # ⁱ + U+0304 drops the dot (reads as ī); every other vowel keeps its outline. All five bars share ONE height,
+    # set above the tallest dotless vowel, so the five markers line up in running text.
+    parts = {ch: contours_of(gs, cmap[ord(ch)], drop_dot=(ch == "ⁱ")) for ch in VOWELS}
+    ink = {ch: bounds_ops(parts[ch]) for ch in VOWELS}
+    bar_y = max(b[3] for b in ink.values()) + BAR_GAP
     for ch in VOWELS:
         base = cmap[ord(ch)]
-        x0, y0, x1, y1 = bounds_of(gs, base)
+        x0, y0, x1, y1 = ink[ch]
         adv = hmtx.metrics[base][0]
         cx, half = (x0 + x1) / 2, max((x1 - x0) * BAR_RATIO, BAR_MIN) / 2
-        by = y1 + BAR_GAP
         name = f"{base}_macron"
-        put(name, with_bar(gs, base, round(cx - half), by, round(cx + half), by + BAR_H), adv)
+        put(name, with_bar(parts[ch], round(cx - half), bar_y, round(cx + half), bar_y + BAR_H), adv)
         ligs.append(f"  sub {base} uni0304 by {name};")
     # standalone mark (fallback): zero advance, bar to the left of the pen
     pen = TTGlyphPen(None)

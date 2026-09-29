@@ -58,7 +58,11 @@ def main(src_path, khmer_path, font_path):
         return [(i.codepoint, p.x_advance, p.x_offset) for i, p in zip(buf.glyph_infos, buf.glyph_positions)]
 
     def src_bounds(ch):
-        bp = BoundsPen(sgs); sgs[scmap[ord(ch)]].draw(bp); return bp.bounds
+        """Source ink bounds; for the composite of ⁱ the dot is dropped (user decision), so ignore its highest contour."""
+        g = sglyf[scmap[ord(ch)]]; co, en, _ = g.getCoordinates(sglyf)
+        cs = _contours_from((list(co), list(en)))
+        if ch == "ⁱ": cs.remove(max(cs, key=lambda c: c[1]))
+        return (min(c[0] for c in cs), min(c[1] for c in cs), max(c[2] for c in cs), max(c[3] for c in cs))
 
     def glyph_contours(name):
         """[(xMin, yMin, xMax, yMax)] per contour, straight from the glyph's own points."""
@@ -74,6 +78,7 @@ def main(src_path, khmer_path, font_path):
         g = sglyf[scmap[ord(ch)]]; coords, ends, flags = g.getCoordinates(sglyf)
         return list(coords), list(ends), list(flags)
 
+    bars = {}
     # ---- 1-3: the five composites
     for v in VOW:
         label = v + "+U+0304"
@@ -94,6 +99,7 @@ def main(src_path, khmer_path, font_path):
         if not rest: continue
         rb = (min(c[0] for c in rest), min(c[1] for c in rest), max(c[2] for c in rest), max(c[3] for c in rest))
         check(tuple(round(x) for x in rb) == tuple(round(x) for x in sb), f"{label}: vowel part bounds {rb} != source {sb}")
+        bars[v] = bar
         gap, thick, bw = bar[1] - sb[3], bar[3] - bar[1], bar[2] - bar[0]
         ink_w, ink_c = sb[2] - sb[0], (sb[0] + sb[2]) / 2
         check(25 <= gap <= 90, f"{label}: gap between vowel top and bar {gap} outside 25..90")
@@ -112,6 +118,16 @@ def main(src_path, khmer_path, font_path):
             mid = sadv + (mc[0] + mc[2]) / 2
             check(abs(mid - ink_c) <= 45, f"{label}: fallback mark centre {mid} vs vowel ink centre {ink_c}")
             check(mc[1] - sb[3] >= 10, f"{label}: fallback mark bottom {mc[1]} not above vowel top {sb[3]}")
+
+    if len(bars) == 5:
+        ys = [b[1] for b in bars.values()]
+        check(max(ys) - min(ys) <= 2, f"macron bars not at one height: bottoms {dict((k, b[1]) for k, b in bars.items())}")
+        check(max(b[3] for b in bars.values()) - min(b[3] for b in bars.values()) <= 2, "macron bar tops differ")
+    # ⁱ+U+0304 has no dot: exactly 2 contours (stem + bar); the bare ⁱ still has its dot (2 contours: stem + dot)
+    ig = shape("ⁱ" + MACRON)
+    if len(ig) == 1: check(len(glyph_contours(order[ig[0][0]])) == 2, "ⁱ+U+0304: expected stem + bar only (no dot)")
+    bi = shape("ⁱ")
+    check(len(glyph_contours(order[bi[0][0]])) == len(_contours_from(src_points("ⁱ"))), "bare ⁱ changed (dot lost?)")
 
     # ---- 4: letters present, ʰ is the standard shape
     for ch in CONS + VOW:
