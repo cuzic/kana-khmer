@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Breakdown } from "./Breakdown";
 import { data, type Phrase } from "./data";
 import { Guide } from "./Guide";
+import { PhraseImage } from "./PhraseImage";
 import { Practice } from "./Practice";
 import { useSettings } from "./settings";
 import { pickVariants } from "./variants";
@@ -10,9 +11,11 @@ const speakerLabel = { any: "", male: "男性", female: "女性" } as const;
 
 function Card({ phrase, notation, gender }: { phrase: Phrase; notation: "lite" | "full"; gender: "male" | "female" | "unset" }) {
   const { main, other, casual } = pickVariants(phrase, gender);
+  const [hasImage, setHasImage] = useState(false);
   const kana = (v: (typeof main)[number]) => (notation === "lite" ? v.kanaLite : v.kanaFull);
   return (
-    <li className="card">
+    <li className={hasImage ? "card has-img" : "card"}>
+      <PhraseImage id={phrase.id} className="phrase-thumb" onLoad={() => setHasImage(true)} />
       <div className="ja">
         {phrase.ja}
         {phrase.unreviewed && <span className="badge">未確認</span>}

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Breakdown } from "./Breakdown";
 import { data } from "./data";
+import { PhraseImage } from "./PhraseImage";
 import type { Settings } from "./settings";
 import { advance, buildQueue, dateKey, type TodayQueue } from "./srs/queue";
 import { type PhraseProgress, type Rating, rate } from "./srs/scheduler";
@@ -71,6 +72,7 @@ export function Practice({ settings, onBack }: { settings: Settings; onBack: () 
       {queue && phrase && (
         <div className="card practice">
           <div className="sub">残り {queue.pending.length} 枚</div>
+          <PhraseImage key={phrase.id} id={phrase.id} className="phrase-img" />
           <div className="ja">{phrase.ja}</div>
           {!shown ? (
             <button className="reveal" onClick={() => setShown(true)}>答えを見る</button>

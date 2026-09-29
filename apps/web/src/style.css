@@ -70,6 +70,11 @@ ul { list-style: none; padding: 0; margin: 0; }
 .ipa { color: var(--muted); font-family: "Noto Sans", system-ui, sans-serif; font-size: 15px; }
 .usage { margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--line); }
 
+/* カード右側いっぱいに画像を敷く(高さはカードに追従)。画像が読めたカードだけ .has-img で余白と最小高さを確保する。 */
+.card { position: relative; }
+.phrase-thumb { position: absolute; top: 0; right: 0; bottom: 0; width: 38%; height: 100%; border-radius: 0 var(--radius) var(--radius) 0; object-fit: cover; background: var(--accent-soft); }
+.card.has-img { min-height: 132px; padding-right: calc(38% + 14px); }
+.phrase-img { display: block; width: 100%; max-width: 320px; aspect-ratio: 1; margin: 0.5rem auto 0; border-radius: var(--radius); object-fit: cover; background: var(--accent-soft); }
 .practice .ja { font-size: 1.3rem; margin: 0.5rem 0 1rem; }
 .reveal { width: 100%; padding: 0.85rem; font-size: 1rem; font-weight: 700; margin-bottom: 1rem; background: var(--accent); color: var(--accent-fg); border: none; border-radius: var(--radius); cursor: pointer; box-shadow: var(--shadow); }
 .reveal:hover { filter: brightness(1.06); transform: translateY(-1px); }
