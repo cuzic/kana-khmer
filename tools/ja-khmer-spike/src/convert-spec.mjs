@@ -9,7 +9,7 @@ const SUP = { a: 'ᵃ', i: 'ⁱ', u: 'ᵘ', e: 'ᵉ', o: 'ᵒ' };
 export const longMark = (v, style = 'a') => (style === 'colon' ? 'ː' : style === 'a' ? SUP[v] + '\u0304' : SUP[v] + SUP[v]);
 const SH_MARK = { しゃ: 'sha', しゅ: 'shu', しょ: 'sho' };
 const LONG = { a: 'ា', i: 'ី', u: 'ូ', e: 'េ', o: 'ូ' }; // 長い拍の基底は段の既定(§4.3 案A、規則3)
-const ROW_V = { a: 'あかがさざたなはばぱまやらわ', i: 'いきぎしじちぢにひびぴみり', u: 'うくぐすずつづぬふぶぷむゆる', e: 'えけげせぜてでねへべぺめれ', o: 'おこごそぞとどのほぼぽもよろを' };
+const ROW_V = { a: 'あかがさざただなはばぱまやらわ', i: 'いきぎしじちぢにひびぴみり', u: 'うくぐすずつづぬふぶぷむゆる', e: 'えけげせぜてでねへべぺめれ', o: 'おこごそぞとどのほぼぽもよろを' };
 const VOWEL_OF = {};
 for (const [v, s] of Object.entries(ROW_V)) for (const ch of s) VOWEL_OF[ch] = v;
 const K2H = (s) => s.replace(/[ァ-ヶ]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0x60));
