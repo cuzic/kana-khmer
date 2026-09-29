@@ -29,7 +29,7 @@ KM_PRON_LUA=km-pron.lua node src/verify-words.mjs jmdict-eng-common-3.6.2.json  
 ## 設計書 v0.7 の表(`spec-table.mjs`・`convert-spec.mjs`)
 
 設計書 `docs/ja-khmer-spec.md` §5 の対応表(基本46音・濁音・半濁音・拗音)を**機械的に読み込む**(表を二重に持たない)。
-規則は `convert-spec.mjs`: 長い拍の基底は段の既定+長音マーカー(直前の母音の上付きローマ字。字形は未決: `--long=c` 重ね書き ᵒᵒ(既定)、`--long=a` 結合マクロン ᵒ̄、`--long=colon` 旧案の ː)、`ˢʰ`(sh)は しゃ・しゅ・しょ、撥音=ន 固定、促音=次の子音に応じた末子音、あい=ៃ。
+規則は `convert-spec.mjs`: 長い拍の基底は段の既定+長音マーカー(直前の母音の上付きローマ字+結合マクロン U+0304。D9 で採用。`--long=a` ᵒ̄(既定)、`--long=c` 重ね書き ᵒᵒ(フォールバック)、`--long=colon` 旧案の ː)、`ˢʰ`(sh)は しゃ・しゅ・しょ、撥音=ន 固定、促音=次の子音に応じた末子音、あい=ៃ。
 `table.mjs`・`convert.mjs` は ADR-0017 の仮表(v0)のまま残してある(`verify.mjs` などが使うため、旧表との比較にも使う)。
 
 ```sh
@@ -46,7 +46,7 @@ curl -sLO "$B/jmdict-eng-common-3.6.2%2B20260928191014.json.tgz"
 curl -sLO "$B/jmdict-eng-3.6.2%2B20260928191014.json.tgz"
 tar xzf jmdict-eng-common-*.tgz && tar xzf jmdict-eng-3.6.2*.tgz
 node src/collision.mjs jmdict-eng-common-3.6.2.json jmdict-eng-3.6.2.json                  # 設計書 v0.7 の表(範囲外の語を除く)
-node src/collision.mjs --long=a jmdict-eng-common-3.6.2.json                               # 長音の字形 (a)。値は (c) と同じ
+node src/collision.mjs --long=c jmdict-eng-common-3.6.2.json                               # 長音の字形 (c)(フォールバック)。値は (a) と同じ
 node src/collision.mjs --table=v0 jmdict-eng-common-3.6.2.json jmdict-eng-3.6.2.json       # ADR-0017 の仮表(全語。ADR の値を再現)
 node src/collision.mjs --table=v0 --scope-only jmdict-eng-common-3.6.2.json jmdict-eng-3.6.2.json   # 仮表を、同じ語(範囲内)で
 ```

@@ -1,6 +1,6 @@
 // ADR-0006 と同じ測り方: 1つの対立を潰したとき、新たに同綴りになる語の割合(同音の語は先に除く)。
 // 既定は設計書 v0.7 の表(spec)。--table=v0 で ADR-0017 の仮表(table.mjs・convert.mjs)。
-// usage: node collision.mjs [--table=spec|v0] [--scope-only] [--long=c|a|colon] <jmdict-json>...
+// usage: node collision.mjs [--table=spec|v0] [--scope-only] [--long=a|c|colon] <jmdict-json>...
 import { kanaToKhmer, ALL_MARKS } from './convert.mjs';
 import { kanaToKhmerSpec, SPEC_MARKS } from './convert-spec.mjs';
 import { loadWords } from './vocab.mjs';
@@ -9,7 +9,7 @@ const args = process.argv.slice(2);
 const files = args.filter((a) => !a.startsWith('--'));
 const useV0 = args.includes('--table=v0');
 const scopeOnly = args.includes('--scope-only') || !useV0;
-const longStyle = (args.find((a) => a.startsWith('--long=')) ?? '--long=c').slice(7); // c | a | colon(旧案の ː)
+const longStyle = (args.find((a) => a.startsWith('--long=')) ?? '--long=a').slice(7); // a(結合マクロン。既定)| c(重ね書き)| colon(旧案の ː)
 if (!files.length) throw new Error('usage: node collision.mjs [--table=spec|v0] [--scope-only] <jmdict-json>...');
 
 const ALL = useV0 ? ALL_MARKS : SPEC_MARKS;

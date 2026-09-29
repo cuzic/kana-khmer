@@ -1,12 +1,12 @@
 // 設計書 v0.7 の規則で、カタカナ発音 → クメール文字(詳細)を作る。表は設計書から読む(spec-table.mjs)。
 // marks で右肩・長音・促音を個別に落として、衝突率(collision.mjs)を測る。
-// 長音マーカー(span 種別 long)の字形は未決(D8): 'c' 上付き母音の重ね書き(ᵒᵒ)、'a' 上付き母音+結合マクロン(ᵒ̄)、'colon' 旧案の ː(比較用)。既定 'c'。
+// 長音マーカー(span 種別 long)の字形は未決(D8): 'a' 上付き母音+結合マクロン(ᵒ̄。D9 で採用。ADR-0003 の合成グリフ)、'c' 上付き母音の重ね書き(ᵒᵒ。フォールバック)、'colon' 旧案の ː(比較用)。既定 'a'。
 import { loadSpecTable } from './spec-table.mjs';
 
 export const SPEC_MARKS = ['len', 'sok', 'sha', 'shu', 'sho'];
 export const LONG_STYLES = ['c', 'a', 'colon'];
 const SUP = { a: 'ᵃ', i: 'ⁱ', u: 'ᵘ', e: 'ᵉ', o: 'ᵒ' };
-export const longMark = (v, style = 'c') => (style === 'colon' ? 'ː' : style === 'a' ? SUP[v] + '\u0304' : SUP[v] + SUP[v]);
+export const longMark = (v, style = 'a') => (style === 'colon' ? 'ː' : style === 'a' ? SUP[v] + '\u0304' : SUP[v] + SUP[v]);
 const SH_MARK = { しゃ: 'sha', しゅ: 'shu', しょ: 'sho' };
 const LONG = { a: 'ា', i: 'ី', u: 'ូ', e: 'េ', o: 'ូ' }; // 長い拍の基底は段の既定(§4.3 案A、規則3)
 const ROW_V = { a: 'あかがさざたなはばぱまやらわ', i: 'いきぎしじちぢにひびぴみり', u: 'うくぐすずつづぬふぶぷむゆる', e: 'えけげせぜてでねへべぺめれ', o: 'おこごそぞとどのほぼぽもよろを' };
@@ -20,7 +20,7 @@ export const specTable = table;
 const vowelOfKana = (k) => (k.length === 2 ? { ゃ: 'a', ゅ: 'u', ょ: 'o' }[k[1]] : VOWEL_OF[k]);
 
 /** カタカナ発音 → クメール文字。範囲外の文字を含むと null */
-export function kanaToKhmerSpec(kata, marks = new Set(SPEC_MARKS), longStyle = 'c') {
+export function kanaToKhmerSpec(kata, marks = new Set(SPEC_MARKS), longStyle = 'a') {
   const moras = [];
   for (const ch of kata) {
     if (OUT_OF_SCOPE.includes(ch)) return null;
