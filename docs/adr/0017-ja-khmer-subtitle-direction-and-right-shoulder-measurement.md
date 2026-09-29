@@ -1,7 +1,7 @@
 ---
-status: proposed
-date: 2026-09-29
-deciders: agent (未レビュー。方向の選択はユーザー判断、accepted はユーザーの明示承認待ち)
+status: accepted
+date: 2026-09-28
+deciders: user (方向の選択と accepted の承認) + agent (Opus レビューは未実施)
 ---
 
 # ADR-0017: 字幕表示は日本語→クメール文字の方向に絞り、右肩 IPA の要否を語彙の衝突率で測る
