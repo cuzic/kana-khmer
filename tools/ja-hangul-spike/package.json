@@ -1,0 +1,6 @@
+{
+  "name": "@kana-khmer/ja-hangul-spike",
+  "private": true,
+  "type": "module",
+  "description": "Spike: Japanese kana pronunciation -> Hangul (draft table) and collision measurement under Korean reading rules. Throwaway."
+}
