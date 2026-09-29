@@ -28,7 +28,7 @@ ADR として記録する。**各設計の詳細・変換表・テスト計画�
 | [0007](0007-tone-as-chao-bars-separate-layer.md) | 声調の符号化は Chao 声調文字(U+02E5–E9)を音節末尾に並べる | accepted | 2026-09-26 |
 | [0008](0008-tone-line-syllable-width-stretch.md) | 声調線は音節全体の幅に GSUB で伸縮、iOS/Android 二重符号化 | accepted | 2026-09-26 |
 | [0009](0009-independent-geometry-verification.md) | フォント自動検証は生成関数を再利用せず幾何を独立に再計算する | accepted | 2026-09-28 |
-| [0010](0010-japanese-to-khmer-script-reverse-notation.md) | クメール語話者向けに、日本語→クメール文字の逆方向表記をこの repo 内に別ディレクトリで設計する | proposed | 2026-09-28 |
+| [0010](0010-japanese-to-khmer-script-reverse-notation.md) | クメール語話者向けに、日本語→クメール文字の逆方向表記をこの repo 内に別ディレクトリで設計する | accepted | 2026-09-29 |
 | [0011](0011-glottal-stop-prefix-modifier.md) | 子音連続先頭の `ʔ` は専用 modifier `ˀ` を次のカナ直前に置く | accepted | 2026-09-28 |
 | [0012](0012-ipa-source-of-truth.md) | 発音は IPA を正としカナはビルド時に生成、カナ→IPA の逆変換は保証しない | accepted | 2026-09-26 |
 | [0013](0013-vowelless-consonant-mark.md) | `◌̯` で母音なしの子音を表し、ライトでも残す | accepted | 2026-09-26 |
