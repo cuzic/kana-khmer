@@ -4,3 +4,7 @@ dist
 *.log
 .env
 .env.*
+
+# 開発用のローカル証明書・秘密鍵(コミットしない)
+*.key
+dev.*.ts.net.crt
