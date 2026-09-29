@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Glyph Check: ja-hangul</title>
-<style>@font-face { font-family: "Kana Multi"; src: url("kana-font/kana-multi.woff2") format("woff2"); }</style>
+<style>@font-face { font-family: "Kana Hangul"; src: url("kana-font/kana-hangul.woff2") format("woff2"); unicode-range: U+02B2, U+1D43, U+2071, U+1D58, U+1D49, U+1D52, U+0304; }</style>
 <style>
   :root { --bg:#fff; --fg:#111; --line:#ccc; --ng:#c00; --ok:#080; }
   @media (prefers-color-scheme: dark) { :root { --bg:#111; --fg:#eee; --line:#444; --ng:#f66; --ok:#6c6; } }
@@ -24,7 +24,7 @@
 <h1>Glyph Check: ja-hangul</h1>
 <p style="font-size:12px;opacity:.75">
   日本語→ハングル表記の右肩ローマ字(ADR-0019。長音 ᵃ̄ ⁱ̄ ᵘ̄ ᵉ̄ ᵒ̄(上付き母音+結合マクロン)、じゃ・じょ の ʲ、区切り <code>·</code>)の見え方。
-  上段は端末の既定フォント(lang=ko)、下段は同梱の Kana Multi 付き。合否は目視。自動判定は欠字(tofu)の検出だけの補助。
+  上段は端末の既定フォント(lang=ko)、下段は同梱の Kana Hangul(合成グリフ入り)付き。合否は目視。自動判定は欠字(tofu)の検出だけの補助。
   見るところ: (1) 右肩の文字が音節の右上に小さく出るか (2) 隣の音節と衝突しないか (3) 欠字(□)や、記号だけ別位置・別の大きさで出ていないか。
 </p>
 <div id="status">running…</div>
@@ -44,7 +44,7 @@ const platform = params.get("platform") || "unknown";
 
 const SEP = [
   ["ほんや", "혼·야"], ["ほにゃ(区切りなし)", "호냐"], ["ほんらい", "혼·라이"],
-  ["おばあさん(長音)", "오바아산"], ["にっぽん(促音)", "닙폰"], ["さっか", "삭카"],
+  ["おばあさん(長音)", "오바ᵃ\u0304산"], ["にっぽん(促音)", "닙폰"], ["さっか", "삭카"],
 ];
 // 右肩の記号。結合マクロンは \u0304。(c) は重ね書き、(a) は上付き母音+マクロン。
 const CAND = [
@@ -71,19 +71,25 @@ function addRow(container, key, text, meas) {
   document.getElementById(container).append(row);
 }
 for (const [k, t] of SEP) addRow("sep", `${k}\n${[...t].map(c => "U+" + c.codePointAt(0).toString(16).toUpperCase()).join(" ")}`, t);
-for (const [k, t] of CAND) { addRow("mark", k, t); addRow("mark", k + " (Kana Multi)", t); document.getElementById("mark").lastChild.querySelector(".v").style.fontFamily = '"Kana Multi", sans-serif'; }
+function addBoth(container, k, t) {
+  addRow(container, k, t);
+  addRow(container, k + " (Kana Hangul)", t);
+  document.getElementById(container).lastChild.querySelector(".v").style.fontFamily = '"Kana Hangul", sans-serif';
+}
+for (const [k, t] of CAND) addBoth("mark", k, t);
+for (const [k, t] of SENT) addBoth("sent", k, t);
 const ctx = document.createElement("canvas").getContext("2d");
 function tofu(font) {
   ctx.font = "34px " + font;
   const ref = ctx.measureText("\uE000").width;
   return PROBE.filter((c) => c !== "\u0304" && ctx.measureText(c).width === ref);
 }
-const sysTofu = tofu("sans-serif"), kmTofu = tofu('"Kana Multi", sans-serif');
+const sysTofu = tofu("sans-serif"), khTofu = tofu('"Kana Hangul", sans-serif');
 let bad = sysTofu.length;
 const st = document.getElementById("status");
 st.textContent = bad ? `既定フォントで欠字の疑い: ${sysTofu.join(" ")}(目視で確認)` : "自動判定: 欠字の疑いなし(目視で確認)";
 st.className = bad ? "ng" : "ok";
-const report = { platform, ua: navigator.userAgent, tofuSystem: sysTofu, tofuKanaMulti: kmTofu };
+const report = { platform, ua: navigator.userAgent, tofuSystem: sysTofu, tofuKanaHangul: khTofu };
 document.getElementById("report").textContent = JSON.stringify(report, null, 1);
 fetch("/report?platform=hangul-" + platform, { method: "POST", body: JSON.stringify(report) }).catch(() => {});
 </script>
