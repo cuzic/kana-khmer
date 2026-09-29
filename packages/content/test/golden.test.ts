@@ -1,5 +1,6 @@
 // ADR-0020 段階1: 一般化(フィールド名の変更、表記ライブラリのレジストリ化、データの courses/ への移行)の前後で、
 // ja-km の出力が変わらないことを固定する。fixtures/ja-km.golden.json は一般化の前のバンドルから作った。
+// フレーズの追加は許す(golden にある id・場面だけを比べる)。既存のフレーズの text・pron・読みが変わるとここで落ちる。
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { buildBundle } from "../src/build";
@@ -13,10 +14,12 @@ const { bundle, errors } = buildBundle(phrases, scenes, { profile: "preview", no
 describe("ja-km のバンドルが一般化の前と同じ", () => {
   it("エラーなし", () => expect(errors).toEqual([]));
   it("場面", () => {
-    expect(bundle.scenes.map((s) => ({ id: s.id, title: s.title, order: s.order, phraseIds: s.phraseIds }))).toEqual(golden.scenes);
+    const ids = new Set<string>(golden.phrases.map((p: { id: string }) => p.id));
+    const got = bundle.scenes.map((s) => ({ id: s.id, title: s.title, order: s.order, phraseIds: s.phraseIds.filter((i) => ids.has(i)) }));
+    expect(got.filter((s) => golden.scenes.some((g: { id: string }) => g.id === s.id))).toEqual(golden.scenes);
   });
   it("フレーズ(text・pron・読み・音声・parts・words)", () => {
-    const got = bundle.phrases.map((p) => ({
+    const got = bundle.phrases.filter((p) => golden.phrases.some((g: { id: string }) => g.id === p.id)).map((p) => ({
       id: p.id, scene: p.scene,
       variants: p.variants.map((v) => ({
         speaker: v.speaker, register: v.register, text: v.text, pron: v.pron,

@@ -9,6 +9,6 @@ notation:
   input: ipa             # phrases.yaml の pron は IPA
   levels: [full, lite]
 fonts: [kana-c, kana-support]   # apps/web/public/fonts/
-phrases: 40
+phrases: 53
 deploy:
   cloudflarePagesProject: kana-ja-km

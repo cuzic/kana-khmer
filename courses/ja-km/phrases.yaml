@@ -1,4 +1,4 @@
-# 仮データ(40件)。クメール文字・IPA・用法はすべて未確認(review: すべて false)。ネイティブ確認後に true にする。
+# 仮データ(53件)。クメール文字・IPA・用法はすべて未確認(review: すべて false)。ネイティブ確認後に true にする。
 - id: hello
   scene: greetings
   gloss: こんにちは
@@ -636,5 +636,256 @@
         - { text: អ្វី, pron: "ʔʋəj", gloss: 何, pos: question }
   words:
     - { text: តើនេះអ្វី, pron: "taə.nih.ʔʋəj", gloss: これは何ですか }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: study-fun
+  scene: friendly
+  gloss: クメール語の勉強は楽しいです
+  usage: 勉強していることを伝えると、相手が喜んでくれる
+  variants:
+    - speaker: any
+      text: ការរៀនភាសាខ្មែរសប្បាយណាស់
+      pron: "kaː.riən.pʰiə.saː.kʰmae.sɑp.paːj.nah"
+      audio: study-fun.m4a
+      parts:
+        - { text: ការរៀន, pron: "kaː.riən", gloss: 学ぶこと, pos: noun, role: S }
+        - { text: ភាសា, pron: "pʰiə.saː", gloss: 言語, pos: noun }
+        - { text: ខ្មែរ, pron: "kʰmae", gloss: クメール, pos: noun }
+        - { text: សប្បាយ, pron: "sɑp.paːj", gloss: 楽しい, pos: adj, role: V }
+        - { text: ណាស់, pron: "nah", gloss: とても, pos: adv }
+  words:
+    - { text: ការរៀនភាសាខ្មែរសប្បាយណាស់, pron: "kaː.riən.pʰiə.saː.kʰmae.sɑp.paːj.nah", gloss: クメール語の勉強は楽しいです }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: want-to-talk
+  scene: friendly
+  gloss: クメール人とお話をしたいです
+  usage: 現地の人と話したい気持ちを伝える
+  variants:
+    - speaker: any
+      text: ខ្ញុំចង់និយាយជាមួយជនជាតិខ្មែរ
+      pron: "kɲom.cɑŋ.ni.jiəj.ciə.muəj.cŭən.ciət.kʰmae"
+      audio: want-to-talk.m4a
+      parts:
+        - { text: ខ្ញុំ, pron: "kɲom", gloss: 私, pos: pron, role: S }
+        - { text: ចង់, pron: "cɑŋ", gloss: 〜したい, pos: verb }
+        - { text: និយាយ, pron: "ni.jiəj", gloss: 話す, pos: verb, role: V }
+        - { text: ជាមួយ, pron: "ciə.muəj", gloss: 〜と一緒に, pos: prep }
+        - { text: ជនជាតិ, pron: "cŭən.ciət", gloss: 民族・国民, pos: noun }
+        - { text: ខ្មែរ, pron: "kʰmae", gloss: クメール, pos: noun }
+  words:
+    - { text: ខ្ញុំចង់និយាយជាមួយជនជាតិខ្មែរ, pron: "kɲom.cɑŋ.ni.jiəj.ciə.muəj.cŭən.ciət.kʰmae", gloss: クメール人とお話をしたいです }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: khmer-kind
+  scene: friendly
+  gloss: クメール人は優しいです
+  usage: 親切にしてもらったあとに。「心がよい」という言い方
+  variants:
+    - speaker: any
+      text: ជនជាតិខ្មែរចិត្តល្អ
+      pron: "cŭən.ciət.kʰmae.cət.lʔɑː"
+      audio: khmer-kind.m4a
+      parts:
+        - { text: ជនជាតិ, pron: "cŭən.ciət", gloss: 民族・国民, pos: noun, role: S }
+        - { text: ខ្មែរ, pron: "kʰmae", gloss: クメール, pos: noun }
+        - { text: ចិត្ត, pron: "cət", gloss: 心, pos: noun }
+        - { text: ល្អ, pron: "lʔɑː", gloss: よい, pos: adj, role: V }
+  words:
+    - { text: ជនជាតិខ្មែរចិត្តល្អ, pron: "cŭən.ciət.kʰmae.cət.lʔɑː", gloss: クメール人は優しいです }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: food-delicious
+  scene: friendly
+  gloss: カンボジア料理はおいしいです
+  usage: 食事のあと、お店の人に
+  variants:
+    - speaker: any
+      text: ម្ហូបខ្មែរឆ្ងាញ់ណាស់
+      pron: "mhoup.kʰmae.cʰŋaɲ.nah"
+      audio: food-delicious.m4a
+      parts:
+        - { text: ម្ហូប, pron: "mhoup", gloss: 料理, pos: noun, role: S }
+        - { text: ខ្មែរ, pron: "kʰmae", gloss: クメール, pos: noun }
+        - { text: ឆ្ងាញ់, pron: "cʰŋaɲ", gloss: おいしい, pos: adj, role: V }
+        - { text: ណាស់, pron: "nah", gloss: とても, pos: adv }
+  words:
+    - { text: ម្ហូបខ្មែរឆ្ងាញ់ណាស់, pron: "mhoup.kʰmae.cʰŋaɲ.nah", gloss: カンボジア料理はおいしいです }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: cambodia-beautiful
+  scene: friendly
+  gloss: カンボジアは美しいです
+  usage: 景色や街を見て
+  variants:
+    - speaker: any
+      text: កម្ពុជាស្អាតណាស់
+      pron: "kam.pu.ciə.sʔaːt.nah"
+      audio: cambodia-beautiful.m4a
+      parts:
+        - { text: កម្ពុជា, pron: "kam.pu.ciə", gloss: カンボジア, pos: noun, role: S }
+        - { text: ស្អាត, pron: "sʔaːt", gloss: 美しい, pos: adj, role: V }
+        - { text: ណាស់, pron: "nah", gloss: とても, pos: adv }
+  words:
+    - { text: កម្ពុជាស្អាតណាស់, pron: "kam.pu.ciə.sʔaːt.nah", gloss: カンボジアは美しいです }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: love-cambodia
+  scene: friendly
+  gloss: カンボジアが大好きです
+  usage: 「好き」より強い気持ち
+  variants:
+    - speaker: any
+      text: ខ្ញុំស្រលាញ់កម្ពុជា
+      pron: "kɲom.sra.laɲ.kam.pu.ciə"
+      audio: love-cambodia.m4a
+      parts:
+        - { text: ខ្ញុំ, pron: "kɲom", gloss: 私, pos: pron, role: S }
+        - { text: ស្រលាញ់, pron: "sra.laɲ", gloss: 愛する・大好き, pos: verb, role: V }
+        - { text: កម្ពុជា, pron: "kam.pu.ciə", gloss: カンボジア, pos: noun, role: O }
+  words:
+    - { text: ខ្ញុំស្រលាញ់កម្ពុជា, pron: "kɲom.sra.laɲ.kam.pu.ciə", gloss: カンボジアが大好きです }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: khmer-hard
+  scene: friendly
+  gloss: クメール語は難しいです
+  usage: 苦労を話すと会話が広がる
+  variants:
+    - speaker: any
+      text: ភាសាខ្មែរពិបាកណាស់
+      pron: "pʰiə.saː.kʰmae.pi.ɓaːk.nah"
+      audio: khmer-hard.m4a
+      parts:
+        - { text: ភាសា, pron: "pʰiə.saː", gloss: 言語, pos: noun, role: S }
+        - { text: ខ្មែរ, pron: "kʰmae", gloss: クメール, pos: noun }
+        - { text: ពិបាក, pron: "pi.ɓaːk", gloss: 難しい, pos: adj, role: V }
+        - { text: ណាស់, pron: "nah", gloss: とても, pos: adv }
+  words:
+    - { text: ភាសាខ្មែរពិបាកណាស់, pron: "pʰiə.saː.kʰmae.pi.ɓaːk.nah", gloss: クメール語は難しいです }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: speak-little
+  scene: friendly
+  gloss: クメール語を少し話せます
+  usage: ほめられたときの謙遜にも使える
+  variants:
+    - speaker: any
+      text: ខ្ញុំនិយាយភាសាខ្មែរបន្តិចបន្តួច
+      pron: "kɲom.ni.jiəj.pʰiə.saː.kʰmae.ɓɑn.tec.ɓɑn.tuəc"
+      audio: speak-little.m4a
+      parts:
+        - { text: ខ្ញុំ, pron: "kɲom", gloss: 私, pos: pron, role: S }
+        - { text: និយាយ, pron: "ni.jiəj", gloss: 話す, pos: verb, role: V }
+        - { text: ភាសា, pron: "pʰiə.saː", gloss: 言語, pos: noun, role: O }
+        - { text: ខ្មែរ, pron: "kʰmae", gloss: クメール, pos: noun }
+        - { text: បន្តិចបន្តួច, pron: "ɓɑn.tec.ɓɑn.tuəc", gloss: 少し, pos: adv }
+  words:
+    - { text: ខ្ញុំនិយាយភាសាខ្មែរបន្តិចបន្តួច, pron: "kɲom.ni.jiəj.pʰiə.saː.kʰmae.ɓɑn.tec.ɓɑn.tuəc", gloss: クメール語を少し話せます }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: teach-me
+  scene: friendly
+  gloss: 教えてください
+  usage: クメール語を教えてほしいとき。相手は喜んで教えてくれる
+  variants:
+    - speaker: any
+      text: សូមបង្រៀនខ្ញុំ
+      pron: "som.ɓɑŋ.riən.kɲom"
+      audio: teach-me.m4a
+      parts:
+        - { text: សូម, pron: "som", gloss: どうぞ・〜してください, pos: particle }
+        - { text: បង្រៀន, pron: "ɓɑŋ.riən", gloss: 教える, pos: verb, role: V }
+        - { text: ខ្ញុំ, pron: "kɲom", gloss: 私, pos: pron, role: O }
+  words:
+    - { text: សូមបង្រៀនខ្ញុំ, pron: "som.ɓɑŋ.riən.kɲom", gloss: 教えてください }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: what-called
+  scene: friendly
+  gloss: これはクメール語で何と言いますか?
+  usage: 身のまわりの物を聞いて覚える。学ぶ姿勢が伝わる
+  variants:
+    - speaker: any
+      text: តើនេះហៅថាអ្វីជាភាសាខ្មែរ
+      pron: "taə.nih.haw.tʰaː.ʔʋəj.ciə.pʰiə.saː.kʰmae"
+      audio: what-called.m4a
+      parts:
+        - { text: តើ, pron: "taə", gloss: 〜ですか(疑問), pos: question }
+        - { text: នេះ, pron: "nih", gloss: これ, pos: pron, role: S }
+        - { text: ហៅ, pron: "haw", gloss: 呼ぶ, pos: verb, role: V }
+        - { text: ថា, pron: "tʰaː", gloss: 〜と, pos: particle }
+        - { text: អ្វី, pron: "ʔʋəj", gloss: 何, pos: question, role: O }
+        - { text: ជា, pron: "ciə", gloss: 〜で, pos: prep }
+        - { text: ភាសា, pron: "pʰiə.saː", gloss: 言語, pos: noun }
+        - { text: ខ្មែរ, pron: "kʰmae", gloss: クメール, pos: noun }
+  words:
+    - { text: តើនេះហៅថាអ្វីជាភាសាខ្មែរ, pron: "taə.nih.haw.tʰaː.ʔʋəj.ciə.pʰiə.saː.kʰmae", gloss: これはクメール語で何と言いますか? }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: come-again
+  scene: friendly
+  gloss: また来ます
+  usage: 別れ際に。もう一度来たいという気持ちが伝わる
+  variants:
+    - speaker: any
+      text: ខ្ញុំនឹងមកម្តងទៀត
+      pron: "kɲom.nɨŋ.mɔːʔ.mdɑŋ.tiət"
+      audio: come-again.m4a
+      parts:
+        - { text: ខ្ញុំ, pron: "kɲom", gloss: 私, pos: pron, role: S }
+        - { text: នឹង, pron: "nɨŋ", gloss: 〜するつもり, pos: adv }
+        - { text: មក, pron: "mɔːʔ", gloss: 来る, pos: verb, role: V }
+        - { text: ម្តងទៀត, pron: "mdɑŋ.tiət", gloss: もう一度, pos: adv }
+  words:
+    - { text: ខ្ញុំនឹងមកម្តងទៀត, pron: "kɲom.nɨŋ.mɔːʔ.mdɑŋ.tiət", gloss: また来ます }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: photo-together
+  scene: friendly
+  gloss: 一緒に写真を撮ってもいいですか?
+  usage: 現地の人と仲よくなれる。撮る前に必ず聞く
+  variants:
+    - speaker: any
+      text: ថតរូបជាមួយគ្នាបានទេ
+      pron: "tʰɑt.ruːp.ciə.muəj.kniə.ɓaːn.teː"
+      audio: photo-together.m4a
+      parts:
+        - { text: ថតរូប, pron: "tʰɑt.ruːp", gloss: 写真を撮る, pos: verb, role: V }
+        - { text: ជាមួយគ្នា, pron: "ciə.muəj.kniə", gloss: 一緒に, pos: adv }
+        - { text: បាន, pron: "ɓaːn", gloss: 〜できる, pos: verb }
+        - { text: ទេ, pron: "teː", gloss: 〜か(疑問), pos: question }
+  words:
+    - { text: ថតរូបជាមួយគ្នាបានទេ, pron: "tʰɑt.ruːp.ciə.muəj.kniə.ɓaːn.teː", gloss: 一緒に写真を撮ってもいいですか? }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: happy
+  scene: friendly
+  gloss: うれしいです
+  usage: 親切にされたとき、会えたときに
+  variants:
+    - speaker: any
+      text: ខ្ញុំរីករាយណាស់
+      pron: "kɲom.riːk.riəj.nah"
+      audio: happy.m4a
+      parts:
+        - { text: ខ្ញុំ, pron: "kɲom", gloss: 私, pos: pron, role: S }
+        - { text: រីករាយ, pron: "riːk.riəj", gloss: うれしい, pos: adj, role: V }
+        - { text: ណាស់, pron: "nah", gloss: とても, pos: adv }
+  words:
+    - { text: ខ្ញុំរីករាយណាស់, pron: "kɲom.riːk.riəj.nah", gloss: うれしいです }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts
