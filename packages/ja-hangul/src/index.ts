@@ -2,15 +2,11 @@
 // 入力は「発音を確定したカタカナ」(長音は ー、促音は ッ、撥音は ン。ヲ・ヂ・ヅ・ァィゥェォ は使わない)。
 // 表は韓国語ネイティブ確認前の暫定。す/ず/つ は 스/즈/츠(수・주・추 は しゅ・じゅ・ちゅ と同じ音になるため)。
 
-export type NotationLevel = "full" | "lite";
-export type JaHangulErrorCode = "unsupported-kana" | "bad-structure";
+import { JaHangulError, type JaHangulErrorCode } from "./errors";
+export { JaHangulError, type JaHangulErrorCode };
+export { renderRomaji } from "./romaji";
 
-export class JaHangulError extends Error {
-  constructor(readonly code: JaHangulErrorCode, message: string) {
-    super(message);
-    this.name = "JaHangulError";
-  }
-}
+export type NotationLevel = "full" | "lite";
 
 type Mark = "len" | "sok" | "nsep" | "zj";
 /** 詳細は全記号。ライトは じゃ・じょ の右肩 ʲ だけ落とす(ADR-0019)。 */

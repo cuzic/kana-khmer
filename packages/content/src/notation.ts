@@ -1,7 +1,7 @@
 // 表記ライブラリの差し込み口(ADR-0020)。コースの notation.package から引く。
 // ビルドは khmer-kana / ja-hangul を直接 import せず、ここのアダプタだけを通す。
 import { KhmerKanaError, parseIpa, renderFull, renderLite, toIpa, type Utterance } from "khmer-kana";
-import { JaHangulError, renderHangul } from "ja-hangul";
+import { JaHangulError, renderHangul, renderRomaji } from "ja-hangul";
 
 export interface NotationResult {
   /** 正規化した発音(クメール語は IPA。日本語はカナのまま) */
@@ -11,6 +11,8 @@ export interface NotationResult {
   lite: string;
   /** 音節構造。ある表記ライブラリだけが持つ(クメール語) */
   syllables?: unknown;
+  /** ラテン文字転写(日本語は修正ヘボン式ローマ字)。表記ライブラリが出せるときだけ */
+  latin?: string;
 }
 export class NotationError extends Error {}
 
@@ -20,7 +22,7 @@ export interface Notation {
   input: "ipa" | "kana";
   convert(pron: string): NotationResult;
   /** 語ごとの pron を、語境界を保って1つの読みにする(parts の分かち書き用) */
-  convertWords(prons: string[]): { full: string; lite: string };
+  convertWords(prons: string[]): { full: string; lite: string; latin?: string };
 }
 
 export const khmerNotation: Notation = {
@@ -49,16 +51,21 @@ export const jaHangulNotation: Notation = {
   input: "kana",
   convert(pron) {
     try {
-      return { pron, full: renderHangul(pron, "full"), lite: renderHangul(pron, "lite") };
+      return { pron, full: renderHangul(pron, "full"), lite: renderHangul(pron, "lite"), latin: renderRomaji(pron) };
     } catch (e) {
       throw new NotationError(e instanceof JaHangulError ? `${e.code}: ${e.message}` : String(e));
     }
   },
   convertWords(prons) {
-    return {
-      full: prons.map((p) => renderHangul(p, "full")).join(" "),
-      lite: prons.map((p) => renderHangul(p, "lite")).join(" "),
-    };
+    try {
+      return {
+        full: prons.map((p) => renderHangul(p, "full")).join(" "),
+        lite: prons.map((p) => renderHangul(p, "lite")).join(" "),
+        latin: prons.map((p) => renderRomaji(p)).join(" "),
+      };
+    } catch (e) {
+      throw new NotationError(e instanceof JaHangulError ? `${e.code}: ${e.message}` : String(e));
+    }
   },
 };
 

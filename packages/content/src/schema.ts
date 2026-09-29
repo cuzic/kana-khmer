@@ -2,6 +2,9 @@
 // フィールド名は言語に依存しない: text = 学ぶ言語(to)の文字、pron = その発音、gloss = 学習者の言語(from)の訳。
 import { z } from "zod";
 
+/** ふりがな(ひらがなの読み。to が日本語のコースで使う。正書法どおり: おう・を・は もそのまま) */
+const furigana = z.string().regex(/^[ぁ-ゖー]+$/, "ひらがなだけ").optional();
+
 const slug = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, "kebab-case の id");
 
 export const POS = ["noun", "pron", "verb", "adj", "adv", "particle", "prep", "question", "interj"] as const;
@@ -10,6 +13,7 @@ export const PartInput = z.object({
   text: z.string().min(1),
   pron: z.string().min(1),
   gloss: z.string().min(1),
+  furigana,
   pos: z.enum(POS),
   role: z.enum(["S", "V", "O"]).optional(),
 });
@@ -20,6 +24,7 @@ export const VariantInput = z.object({
   register: z.enum(["polite", "casual"]).default("polite"),
   text: z.string().min(1),
   pron: z.string().min(1),
+  furigana,
   audio: z.string().min(1),
   /** 単語ごとの分割。連結するとフレーズ全体(text/pron)と一致すること */
   parts: z.array(PartInput).optional(),

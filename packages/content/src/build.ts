@@ -6,16 +6,20 @@ export type Profile = "prod" | "preview";
 /** A scene needs at least this many published phrases to be shown in prod (design.md §4.3). */
 export const MIN_PHRASES_PER_SCENE = 4;
 
-export interface Part extends PartInput { readingFull: string; readingLite: string }
+export interface Part extends PartInput { readingFull: string; readingLite: string; latin?: string }
 export interface Variant {
   speaker: "any" | "male" | "female";
   register: "polite" | "casual";
   text: string;
   pron: string;
+  /** ふりがな(ひらがな。to が日本語のコースのみ) */
+  furigana?: string;
   /** 音節構造(表記ライブラリによる。クメール語のみ) */
   syllables?: unknown;
   readingFull: string;
   readingLite: string;
+  /** ラテン文字転写(日本語は修正ヘボン式ローマ字。parts があれば語ごとにスペース) */
+  latin?: string;
   audio: string;
   parts?: Part[];
 }
@@ -76,18 +80,21 @@ export function buildBundle(phrases: PhraseInput[], scenes: SceneInput[], opts: 
       // parts があれば、その単語境界を使って本文の読みも分かち書きする(語ごとに変換して連結するのではなく、
       // 表記ライブラリの convertWords に語を渡す。クメール語は renderFull の語間 space span をそのまま使う。
       // design.md §2.1 / render.ts の word boundary)。
-      let spaced: { full: string; lite: string } | undefined;
+      let spaced: { full: string; lite: string; latin?: string } | undefined;
       if (inputParts) {
         const where = `phrase ${p.id} の ${key}`;
         const strip = (t: string) => t.replace(/[.\s]/g, "");
         if (inputParts.map((x) => x.text).join("") !== v.text) errors.push(`${where}: parts の text を連結すると "${inputParts.map((x) => x.text).join("")}" になり、フレーズ "${v.text}" と一致しません`);
         if (strip(inputParts.map((x) => x.pron).join("")) !== strip(v.pron)) errors.push(`${where}: parts の pron を連結すると "${inputParts.map((x) => x.pron).join(".")}" になり、フレーズ "${v.pron}" と一致しません`);
+        if (v.furigana !== undefined && inputParts.every((x) => x.furigana !== undefined) && inputParts.map((x) => x.furigana).join("") !== v.furigana) {
+          errors.push(`${where}: parts の furigana を連結すると "${inputParts.map((x) => x.furigana).join("")}" になり、フレーズ "${v.furigana}" と一致しません`);
+        }
         parts = [];
         const okProns: string[] = [];
         for (const x of inputParts) {
           const pr = convertPron(notation, `${where} の部品 ${x.text}`, x.pron, errors);
           if (pr) {
-            parts.push({ ...x, pron: pr.pron, readingFull: pr.full, readingLite: pr.lite });
+            parts.push({ ...x, pron: pr.pron, readingFull: pr.full, readingLite: pr.lite, ...(pr.latin !== undefined ? { latin: pr.latin } : {}) });
             okProns.push(x.pron);
           }
         }
@@ -100,6 +107,7 @@ export function buildBundle(phrases: PhraseInput[], scenes: SceneInput[], opts: 
         ...(r.syllables !== undefined ? { syllables: r.syllables } : {}),
         readingFull: spaced?.full ?? r.full,
         readingLite: spaced?.lite ?? r.lite,
+        ...((spaced?.latin ?? r.latin) !== undefined ? { latin: (spaced?.latin ?? r.latin)! } : {}),
       });
     }
     if (speakers.has("any/polite") && speakers.size > 1) {
