@@ -41,6 +41,7 @@ ADR として記録する。**各設計の詳細・変換表・テスト計画�
 | [0020](0020-course-per-language-pair.md) | 学習コースを言語の組み合わせ(from→to)を単位にし、`courses/<from>-<to>/` と Cloudflare Pages に分ける | accepted | 2026-09-29 |
 | [0021](0021-ja-khmer-pitch-accent-overline.md) | ja-khmer の日本語ピッチアクセントは、拍単位の上線(H のみ)を DOM/CSS で描く | accepted | 2026-09-29 |
 | [0022](0022-ko-ja-display-elements-and-web-course-details.md) | ko-ja の表示要素(漢字・ふりがな・ローマ字・ハングル)と、apps/web のコース対応の細部 | accepted | 2026-09-29 |
+| [0023](0023-ja-khmer-package.md) | ja-khmer の変換は packages/ja-khmer に新設し、khmer-kana・ja-hangul との共通基盤は当面切り出さない | proposed | 2026-09-29 |
 
 この表は各ファイル冒頭の frontmatter(`status`・`date`・`deciders`、任意で `note`)を手で転記したもの
 (`deciders` はこの表には出していない。各 ADR 本文を見る)。**状態・日付の正は frontmatter 側**とし、
