@@ -20,13 +20,14 @@ export function toPron(reading) {
   return out;
 }
 
-export function loadWords(file) {
+/** scopeOnly: 設計書 v0.7 の範囲外(ァィゥェォ を含む外来語音)の語を除く */
+export function loadWords(file, { scopeOnly = false } = {}) {
   const d = JSON.parse(fs.readFileSync(file, 'utf8'));
   const set = new Set();
   let skipped = 0;
   for (const w of d.words) for (const kana of w.kana) {
     const p = toPron(kana.text);
-    if (p && !p.startsWith('ッ') && !p.startsWith('ー')) set.add(p); else skipped++;
+    if (p && !p.startsWith('ッ') && !p.startsWith('ー') && !(scopeOnly && /[ァィゥェォ]/.test(p))) set.add(p); else skipped++;
   }
   return { words: [...set], skipped };
 }

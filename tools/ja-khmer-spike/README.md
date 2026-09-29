@@ -26,6 +26,16 @@ KM_PRON_LUA=km-pron.lua node src/verify-words.mjs jmdict-eng-common-3.6.2.json  
 
 結果と見つかった問題は [docs/research/2026-09-28-ja-khmer-readback-verification.md](../../docs/research/2026-09-28-ja-khmer-readback-verification.md)。
 
+## 設計書 v0.7 の表(`spec-table.mjs`・`convert-spec.mjs`)
+
+設計書 `docs/ja-khmer-spec.md` §5 の対応表(基本46音・濁音・半濁音・拗音)を**機械的に読み込む**(表を二重に持たない)。
+規則は `convert-spec.mjs`: 長い拍の基底は段の既定+`ː`、ᶴ は しゃ・しゅ・しょ、撥音=ន 固定、促音=次の子音に応じた末子音、あい=ៃ。
+`table.mjs`・`convert.mjs` は ADR-0017 の仮表(v0)のまま残してある(`verify.mjs` などが使うため、旧表との比較にも使う)。
+
+```sh
+node src/spec-check.mjs      # 表の読み込み(103行)と、全かな(短・長)の同綴りの一覧
+```
+
 ## 衝突率の再現(右肩 IPA の要否)
 
 語彙は JMdict(jmdict-simplified の 3.6.2+20260928191014)。リポジトリには入れない。
@@ -35,7 +45,28 @@ B='https://github.com/scriptin/jmdict-simplified/releases/download/3.6.2%2B20260
 curl -sLO "$B/jmdict-eng-common-3.6.2%2B20260928191014.json.tgz"
 curl -sLO "$B/jmdict-eng-3.6.2%2B20260928191014.json.tgz"
 tar xzf jmdict-eng-common-*.tgz && tar xzf jmdict-eng-3.6.2*.tgz
-node src/collision.mjs jmdict-eng-common-3.6.2.json jmdict-eng-3.6.2.json
+node src/collision.mjs jmdict-eng-common-3.6.2.json jmdict-eng-3.6.2.json                  # 設計書 v0.7 の表(範囲外の語を除く)
+node src/collision.mjs --table=v0 jmdict-eng-common-3.6.2.json jmdict-eng-3.6.2.json       # ADR-0017 の仮表(全語。ADR の値を再現)
+node src/collision.mjs --table=v0 --scope-only jmdict-eng-common-3.6.2.json jmdict-eng-3.6.2.json   # 仮表を、同じ語(範囲内)で
 ```
+
+全体(205,730 語)の実行は数分かかる。測り方は ADR-0006 と同じ(1つの対立を潰したとき新たに同綴りになる語の割合。同音の語は先に除く)。
+「範囲外」は ァィゥェォ を含む外来語音の語(設計書の範囲外)。
+
+### 結果(2026-09-29。共通語 22,508 語 / 全体 205,730 語のうち、範囲内 21,680 / 195,245 語)
+
+| 測定 | 設計書 v0.7 の表(共通語 / 全体) | 仮表 v0(全語。ADR-0017 の値を再現) | 仮表 v0(範囲内) |
+|---|---|---|---|
+| 基準で既に同綴り | 0.23% / 0.19% | 0.47% / 0.18% | 0.09% / 0.03% |
+| (a) 長音 ː を潰す | 11.01% / 6.72% | 14.36% / 8.51% | 13.52% / 7.93% |
+| (b) ᶴ を潰す(3対立の合計) | 2.06% / 1.17% | 2.51% / 1.37%(ʃ) | 2.53% / 1.40% |
+| 個別: サ/シャ、ス/シュ、ショ/チョ | 0.54/0.53/1.03% / 0.30/0.38/0.50% | (ソ/ショ を含む) | |
+| (g) 促音を書かない | 3.24% / 1.89% | 3.39% / 1.92% | 3.23% / 1.87% |
+| (c1) 右肩・長音(ː ᶴ)を全部なし | 12.81% / 7.57% | | |
+| (c2) 右肩・長音・促音を全部なし | 16.58% / 9.49% | 21.95% / 12.29% | 21.11% / 11.72% |
+| 有声の破擦音(チ/ジ)を潰す | (ち≠じ は基底で分かれる。じゃ/ちゃ 0.06% / 0.10%) | 2.11% / 1.18% | 2.18% / 1.24% |
+| 許容: ず・づ/ぞ、じゃ/ちゃ、合計 | 0.07/0.06/0.14% / 0.06/0.10/0.16% | | |
+
+「基準で既に同綴り」の内訳(v0.7): 許容した ず・づ/ぞ・じゃ/ちゃ 30 語(0.14%) / 310 語(0.16%)、語末の ッ・ー の重複(感動詞)17 / 48 語、その他 2 / 22 語。
 
 `out/` は生成物(コミットしない)。
