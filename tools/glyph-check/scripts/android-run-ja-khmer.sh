@@ -15,14 +15,18 @@ adb shell pm grant com.android.chrome android.permission.POST_NOTIFICATIONS >/de
 adb logcat -c || true
 
 rc=0
+# page:report-name-infix. ja-khmer-accent.html is the ADR-0021 accent-line prototype (docs/research/2026-09-29-ja-accent-line-prototype.md).
+for target in ja-khmer:ja-khmer ja-khmer-accent:ja-khmer-accent; do
 for mode in sys ja; do
-  name="android-api${API_LEVEL}-ja-khmer-${mode}"
+  page="${target%%:*}"
+  name="android-api${API_LEVEL}-${target##*:}-${mode}"
   adb shell am force-stop com.android.chrome
-  adb shell am start -a android.intent.action.VIEW -d "'http://10.0.2.2:8000/ja-khmer.html?platform=${name}&mode=${mode}'" com.android.chrome
+  adb shell am start -a android.intent.action.VIEW -d "'http://10.0.2.2:8000/${page}.html?platform=${name}&mode=${mode}'" com.android.chrome
   for i in $(seq 1 60); do [ -f "$OUT/report-${name}.json" ] && break; sleep 1; done
   sleep 2
   adb exec-out screencap -p > "$OUT/${name}.png"
   [ -f "$OUT/report-${name}.json" ] || { echo "no report for $name"; rc=1; }
+done
 done
 adb shell dumpsys activity activities | grep -E "mResumedActivity|topResumedActivity" > "$OUT/android-api${API_LEVEL}-ja-khmer-activity.txt" || true
 adb logcat -d -t 400 > "$OUT/android-api${API_LEVEL}-ja-khmer-logcat.txt" || true
