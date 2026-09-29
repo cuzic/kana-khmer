@@ -1,4 +1,4 @@
-# 韓国語話者向けの日本語あいさつ 40 件(案・第2版)。丁寧語のみ、1フレーズ=1カード(ADR-0020)。表示要素は ADR-0022:
+# 韓国語話者向けの日本語あいさつ 50 件(案・第2版。基本 40 件 + 「喜ばれるひとこと」10 件)。丁寧語のみ、1フレーズ=1カード(ADR-0020)。表示要素は ADR-0022:
 # 漢字かな交じり(text)・ふりがな(furigana、ひらがな。カタカナ語は かーど のようにひらがな+ー)・ローマ字(pron から生成)・ハングル(pron から生成)・韓国語訳(gloss)。
 # gloss・usage の韓国語、日本語の自然さ、furigana、pron(発音を確定したカタカナ)、語の切り方(parts)はすべて未確認(review: すべて false)。ネイティブ確認後に true にする。
 # parts は必須。連結すると text・furigana・pron が本文と一致する(content のビルドで検証)。助詞は独立した part。words は parts と同じ内容(単語タップ用)。
@@ -877,5 +877,251 @@
     - { text: どこ, pron: ドコ, gloss: "어디" }
     - { text: です, pron: デス, gloss: "입니다" }
     - { text: か, pron: カ, gloss: "(의문 조사)" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: from-korea
+  scene: friendly
+  gloss: "한국에서 왔어요"
+  usage: "처음 만난 사람에게 자기소개로 말해요. 나라 이름만 바꾸면 다른 나라에서도 쓸 수 있어요."
+  variants:
+    - speaker: any
+      register: polite
+      text: 韓国から来ました
+      furigana: かんこくからきました
+      pron: カンコクカラキマシタ
+      audio: from-korea.m4a
+      parts:
+        - { text: 韓国, furigana: かんこく, pron: カンコク, gloss: "한국", pos: noun }
+        - { text: から, furigana: から, pron: カラ, gloss: "~에서", pos: particle }
+        - { text: 来ました, furigana: きました, pron: キマシタ, gloss: "왔어요", pos: verb }
+  words:
+    - { text: 韓国, pron: カンコク, gloss: "한국" }
+    - { text: から, pron: カラ, gloss: "~에서" }
+    - { text: 来ました, pron: キマシタ, gloss: "왔어요" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: came-to-visit
+  scene: friendly
+  gloss: "여행으로 왔어요"
+  usage: "왜 일본에 왔는지 물었을 때 대답해요. 짧게 말해도 친근하게 들려요."
+  variants:
+    - speaker: any
+      register: polite
+      text: 旅行で来ました
+      furigana: りょこうできました
+      pron: リョコーデキマシタ
+      audio: came-to-visit.m4a
+      parts:
+        - { text: 旅行, furigana: りょこう, pron: リョコー, gloss: "여행", pos: noun }
+        - { text: で, furigana: で, pron: デ, gloss: "~로(수단·목적)", pos: particle }
+        - { text: 来ました, furigana: きました, pron: キマシタ, gloss: "왔어요", pos: verb }
+  words:
+    - { text: 旅行, pron: リョコー, gloss: "여행" }
+    - { text: で, pron: デ, gloss: "~로(수단·목적)" }
+    - { text: 来ました, pron: キマシタ, gloss: "왔어요" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: study-japanese
+  scene: friendly
+  gloss: "일본어를 공부하고 있어요"
+  usage: "일본 분들이 가장 반가워하는 말 중 하나예요. 서툴러도 노력하는 모습을 좋게 봐 줘요."
+  variants:
+    - speaker: any
+      register: polite
+      text: 日本語を勉強しています
+      furigana: にほんごをべんきょうしています
+      pron: ニホンゴオベンキョーシテイマス
+      audio: study-japanese.m4a
+      parts:
+        - { text: 日本語, furigana: にほんご, pron: ニホンゴ, gloss: "일본어", pos: noun }
+        - { text: を, furigana: を, pron: オ, gloss: "(목적격 조사)", pos: particle }
+        - { text: 勉強しています, furigana: べんきょうしています, pron: ベンキョーシテイマス, gloss: "공부하고 있어요", pos: verb }
+  words:
+    - { text: 日本語, pron: ニホンゴ, gloss: "일본어" }
+    - { text: を, pron: オ, gloss: "(목적격 조사)" }
+    - { text: 勉強しています, pron: ベンキョーシテイマス, gloss: "공부하고 있어요" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: speak-little
+  scene: friendly
+  gloss: "일본어를 조금 할 수 있어요"
+  usage: "“少し”는 “조금”이에요. 겸손하게 말하는 표현이라서 상대가 더 편하게, 천천히 말해 줘요."
+  variants:
+    - speaker: any
+      register: polite
+      text: 日本語を少し話せます
+      furigana: にほんごをすこしはなせます
+      pron: ニホンゴオスコシハナセマス
+      audio: speak-little.m4a
+      parts:
+        - { text: 日本語, furigana: にほんご, pron: ニホンゴ, gloss: "일본어", pos: noun }
+        - { text: を, furigana: を, pron: オ, gloss: "(목적격 조사)", pos: particle }
+        - { text: 少し, furigana: すこし, pron: スコシ, gloss: "조금", pos: adv }
+        - { text: 話せます, furigana: はなせます, pron: ハナセマス, gloss: "말할 수 있어요", pos: verb }
+  words:
+    - { text: 日本語, pron: ニホンゴ, gloss: "일본어" }
+    - { text: を, pron: オ, gloss: "(목적격 조사)" }
+    - { text: 少し, pron: スコシ, gloss: "조금" }
+    - { text: 話せます, pron: ハナセマス, gloss: "말할 수 있어요" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: love-japan
+  scene: friendly
+  gloss: "일본을 아주 좋아해요"
+  usage: "“大好き”는 “아주 좋아하다”예요. 마음을 솔직하게 말하면 대화가 부드럽게 이어져요."
+  variants:
+    - speaker: any
+      register: polite
+      text: 日本が大好きです
+      furigana: にほんがだいすきです
+      pron: ニホンガダイスキデス
+      audio: love-japan.m4a
+      parts:
+        - { text: 日本, furigana: にほん, pron: ニホン, gloss: "일본", pos: noun }
+        - { text: が, furigana: が, pron: ガ, gloss: "(주격 조사)", pos: particle }
+        - { text: 大好き, furigana: だいすき, pron: ダイスキ, gloss: "아주 좋아함", pos: adj }
+        - { text: です, furigana: です, pron: デス, gloss: "입니다", pos: particle }
+  words:
+    - { text: 日本, pron: ニホン, gloss: "일본" }
+    - { text: が, pron: ガ, gloss: "(주격 조사)" }
+    - { text: 大好き, pron: ダイスキ, gloss: "아주 좋아함" }
+    - { text: です, pron: デス, gloss: "입니다" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: food-great
+  scene: friendly
+  gloss: "일본 요리는 맛있어요"
+  usage: "식당이나 숙소에서 음식을 먹은 뒤에 칭찬으로 말해요."
+  variants:
+    - speaker: any
+      register: polite
+      text: 日本の料理はおいしいです
+      furigana: にほんのりょうりはおいしいです
+      pron: ニホンノリョーリワオイシーデス
+      audio: food-great.m4a
+      parts:
+        - { text: 日本, furigana: にほん, pron: ニホン, gloss: "일본", pos: noun }
+        - { text: の, furigana: の, pron: ノ, gloss: "~의", pos: particle }
+        - { text: 料理, furigana: りょうり, pron: リョーリ, gloss: "요리", pos: noun }
+        - { text: は, furigana: は, pron: ワ, gloss: "(주제 조사)", pos: particle }
+        - { text: おいしい, furigana: おいしい, pron: オイシー, gloss: "맛있다", pos: adj }
+        - { text: です, furigana: です, pron: デス, gloss: "입니다", pos: particle }
+  words:
+    - { text: 日本, pron: ニホン, gloss: "일본" }
+    - { text: の, pron: ノ, gloss: "~의" }
+    - { text: 料理, pron: リョーリ, gloss: "요리" }
+    - { text: は, pron: ワ, gloss: "(주제 조사)" }
+    - { text: おいしい, pron: オイシー, gloss: "맛있다" }
+    - { text: です, pron: デス, gloss: "입니다" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: japanese-kind
+  scene: friendly
+  gloss: "일본 분들은 친절해요"
+  usage: "도움을 받은 뒤에 고마움과 함께 말해요. “ありがとうございます”와 같이 쓰면 좋아요."
+  variants:
+    - speaker: any
+      register: polite
+      text: 日本の人は親切です
+      furigana: にほんのひとはしんせつです
+      pron: ニホンノヒトワシンセツデス
+      audio: japanese-kind.m4a
+      parts:
+        - { text: 日本, furigana: にほん, pron: ニホン, gloss: "일본", pos: noun }
+        - { text: の, furigana: の, pron: ノ, gloss: "~의", pos: particle }
+        - { text: 人, furigana: ひと, pron: ヒト, gloss: "사람", pos: noun }
+        - { text: は, furigana: は, pron: ワ, gloss: "(주제 조사)", pos: particle }
+        - { text: 親切, furigana: しんせつ, pron: シンセツ, gloss: "친절함", pos: adj }
+        - { text: です, furigana: です, pron: デス, gloss: "입니다", pos: particle }
+  words:
+    - { text: 日本, pron: ニホン, gloss: "일본" }
+    - { text: の, pron: ノ, gloss: "~의" }
+    - { text: 人, pron: ヒト, gloss: "사람" }
+    - { text: は, pron: ワ, gloss: "(주제 조사)" }
+    - { text: 親切, pron: シンセツ, gloss: "친절함" }
+    - { text: です, pron: デス, gloss: "입니다" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: japan-beautiful
+  scene: friendly
+  gloss: "일본은 아름답네요"
+  usage: "“きれい”는 “예쁘다”와 “깨끗하다”를 둘 다 뜻해요. 풍경이나 거리를 보고 감탄할 때 써요. 끝의 “ね”는 상대의 공감을 구하는 말이에요."
+  variants:
+    - speaker: any
+      register: polite
+      text: 日本はきれいですね
+      furigana: にほんはきれいですね
+      pron: ニホンワキレーデスネ
+      audio: japan-beautiful.m4a
+      parts:
+        - { text: 日本, furigana: にほん, pron: ニホン, gloss: "일본", pos: noun }
+        - { text: は, furigana: は, pron: ワ, gloss: "(주제 조사)", pos: particle }
+        - { text: きれい, furigana: きれい, pron: キレー, gloss: "예쁘다·깨끗하다", pos: adj }
+        - { text: です, furigana: です, pron: デス, gloss: "입니다", pos: particle }
+        - { text: ね, furigana: ね, pron: ネ, gloss: "~네요", pos: particle }
+  words:
+    - { text: 日本, pron: ニホン, gloss: "일본" }
+    - { text: は, pron: ワ, gloss: "(주제 조사)" }
+    - { text: きれい, pron: キレー, gloss: "예쁘다·깨끗하다" }
+    - { text: です, pron: デス, gloss: "입니다" }
+    - { text: ね, pron: ネ, gloss: "~네요" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: what-called
+  scene: friendly
+  gloss: "이건 일본어로 뭐라고 해요?"
+  usage: "물건이나 음식을 가리키며 물어요. 일본어를 배우려는 마음이 전해져서 친절하게 알려 줘요."
+  variants:
+    - speaker: any
+      register: polite
+      text: これは日本語で何と言いますか
+      furigana: これはにほんごでなんといいますか
+      pron: コレワニホンゴデナントイーマスカ
+      audio: what-called.m4a
+      parts:
+        - { text: これ, furigana: これ, pron: コレ, gloss: "이것", pos: pron }
+        - { text: は, furigana: は, pron: ワ, gloss: "(주제 조사)", pos: particle }
+        - { text: 日本語, furigana: にほんご, pron: ニホンゴ, gloss: "일본어", pos: noun }
+        - { text: で, furigana: で, pron: デ, gloss: "~로(수단)", pos: particle }
+        - { text: 何, furigana: なん, pron: ナン, gloss: "무엇", pos: question }
+        - { text: と, furigana: と, pron: ト, gloss: "~라고", pos: particle }
+        - { text: 言いますか, furigana: いいますか, pron: イーマスカ, gloss: "말해요?", pos: verb }
+  words:
+    - { text: これ, pron: コレ, gloss: "이것" }
+    - { text: は, pron: ワ, gloss: "(주제 조사)" }
+    - { text: 日本語, pron: ニホンゴ, gloss: "일본어" }
+    - { text: で, pron: デ, gloss: "~로(수단)" }
+    - { text: 何, pron: ナン, gloss: "무엇" }
+    - { text: と, pron: ト, gloss: "~라고" }
+    - { text: 言いますか, pron: イーマスカ, gloss: "말해요?" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: come-again
+  scene: friendly
+  gloss: "또 올게요"
+  usage: "헤어질 때 인사로 말해요. 가게나 숙소를 떠날 때 하면 인상이 좋아요."
+  variants:
+    - speaker: any
+      register: polite
+      text: また来ます
+      furigana: またきます
+      pron: マタキマス
+      audio: come-again.m4a
+      parts:
+        - { text: また, furigana: また, pron: マタ, gloss: "또", pos: adv }
+        - { text: 来ます, furigana: きます, pron: キマス, gloss: "올게요", pos: verb }
+  words:
+    - { text: また, pron: マタ, gloss: "또" }
+    - { text: 来ます, pron: キマス, gloss: "올게요" }
   review: { pron: false, audio: false, usage: false }
   audioSource: tts

@@ -6,3 +6,4 @@
 - { id: transport, title: "교통·길 찾기", order: 5 }
 - { id: hotel, title: "숙소", order: 6 }
 - { id: trouble, title: "곤란할 때", order: 7 }
+- { id: friendly, title: "일본 분들이 기뻐하는 한마디", order: 8 }
