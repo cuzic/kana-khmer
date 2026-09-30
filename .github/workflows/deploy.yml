@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       course:
-        description: "courses/ 配下の id(ja-km または ko-ja)"
+        description: "courses/ 配下の id(ja-km・ko-ja・th-ja)"
         required: true
         default: ja-km
       branch:

@@ -1,0 +1,15 @@
+# タイ語話者向けの日本語あいさつ。設計は docs/adr/0020-course-per-language-pair.md、表記は docs/ja-thai-spec.md(ADR-0028)
+id: th-ja
+from: th            # 学習者の言語。UI・訳・用法はタイ語
+to: ja              # 学ぶ言語。音声・フレーズは日本語
+title:
+  th: ประโยคภาษาญี่ปุ่นสำหรับนักท่องเที่ยว
+  ja: 日本語あいさつ(タイ語話者向け)
+notation:
+  package: ja-thai       # packages/ja-thai(ADR-0028)。開音節は長母音、長音は母音を重ねる
+  input: kana            # phrases.yaml の pron は「発音を確定したカタカナ」(長音 ー・促音 ッ・撥音 ン)
+  levels: [full]         # 詳細/ライトの区別はない(表記を切り替える UI は出ない)
+fonts: []                # タイ文字は端末のシステムフォント(iOS/Android とも標準)
+phrases: 50              # ko-ja と同じ日本語 50 件(場面は日本側から選ぶ)
+deploy:
+  cloudflarePagesProject: kana-th-ja
