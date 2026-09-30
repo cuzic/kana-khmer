@@ -1,0 +1,9 @@
+{
+  "name": "@kana-khmer/ja-thai-spike",
+  "private": true,
+  "type": "module",
+  "description": "Spike: Japanese katakana pronunciation -> Thai script (draft rules after the 2018 Royal Society transcription rule) with tone/length readback via Wiktionary th-pron. Throwaway.",
+  "scripts": {
+    "run": "node src/run.mjs"
+  }
+}
