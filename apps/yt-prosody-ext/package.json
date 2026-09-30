@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "description": "PoC: YouTube の英語字幕に、意味のまとまり・強勢・弱形・実際の音(カナ+右肩IPA)・ビートを重ねる Chrome 拡張(MV3)",
+  "description": "PoC: YouTube の英語字幕に、意味のまとまり・強勢・弱形・推定の発音(カナ+右肩IPA)・ビートを重ねる Chrome 拡張(MV3)",
   "scripts": {
     "build": "node build.mjs",
     "build:test": "node build.mjs --test",

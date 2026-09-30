@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "YT Prosody(PoC)",
   "version": "0.0.1",
-  "description": "YouTube の英語字幕に、意味のまとまり・強勢・弱形・実際の音・ビートを重ねて表示する(規則による推定)。",
+  "description": "YouTube の英語字幕に、意味のまとまり・強勢・弱形・推定の発音・ビートを重ねて表示する(規則による推定)。",
   "permissions": ["storage"],
   "action": { "default_title": "YT Prosody", "default_popup": "popup.html" },
   "content_scripts": [

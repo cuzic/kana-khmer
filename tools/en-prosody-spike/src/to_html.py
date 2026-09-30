@@ -32,7 +32,7 @@ def to_html(ir: dict, profile: dict | None = None) -> str:
     out = [f"<!doctype html><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><title>en-prosody spike</title><style>{CSS}{sizes}</style>",
            "<h1>英語字幕の韻律表示 スパイク(v0・規則による推定)</h1>",
            "<div class=legend>文字の大きさ=強勢(小=弱形、大=核)／<b>太字</b>=内容語／<span style='color:#c0392b;text-decoration:underline'>赤の下線</span>=核／"
-           "<b>/</b>・<b>//</b>=まとまりの切れ目／‿=語のつながり／上段のカナ=実際の音(右肩は IPA)。すべて規則による推定。</div>",
+           "<b>/</b>・<b>//</b>=まとまりの切れ目／‿=語のつながり／上段のカナ=推定の発音(右肩は IPA)。すべて規則による推定。</div>",
            "<div class=ctl><label><input type=checkbox id=lite> ライト(右肩の IPA を隠す)</label> <label><input type=checkbox id=beat checked> ビート(· 弱 / ● 強 / ◎ 核)</label></div><div id=root>"]
     for ev in ir["events"]:
         out.append(f"<div class=ev><div class=t>{ev['start_ms'] / 1000:.1f}s</div><div class=line>")
