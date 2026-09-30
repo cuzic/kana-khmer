@@ -1,4 +1,4 @@
-"""音素認識(wav2vec2 espeak CTC)の出力を、字幕の語ごとの期待音素と系列で照合し、規則(弾き音・弱形)が実際の音と合うかを測る。
+"""音素認識(wav2vec2 espeak CTC)の出力を、字幕の語ごとの期待音素と系列で照合し、規則(弾き音・弱形)が、この認識器の出力と合うかを測る。
 
 使い方: uv run python src/phonecheck.py MANUAL.json3 AUTO.json3 AUDIO.wav PHONES.json [OUT_DIR]
 PHONES.json は [{"t": 秒, "p": espeak の音素}, ...](音素認識の貪欲デコード。~ 作り方は README)。
