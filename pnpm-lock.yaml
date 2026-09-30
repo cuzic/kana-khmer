@@ -20,6 +20,9 @@ importers:
       ja-hangul:
         specifier: workspace:*
         version: link:../../packages/ja-hangul
+      ja-thai:
+        specifier: workspace:*
+        version: link:../../packages/ja-thai
       khmer-kana:
         specifier: workspace:*
         version: link:../../packages/khmer-kana
@@ -57,6 +60,9 @@ importers:
       ja-hangul:
         specifier: workspace:*
         version: link:../ja-hangul
+      ja-thai:
+        specifier: workspace:*
+        version: link:../ja-thai
       khmer-kana:
         specifier: workspace:*
         version: link:../khmer-kana

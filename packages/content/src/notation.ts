@@ -2,6 +2,7 @@
 // ビルドは khmer-kana / ja-hangul を直接 import せず、ここのアダプタだけを通す。
 import { KhmerKanaError, parseIpa, renderFull, renderLite, toIpa, type Utterance } from "khmer-kana";
 import { JaHangulError, renderHangul, renderRomaji } from "ja-hangul";
+import { JaThaiError, renderThai } from "ja-thai";
 
 export interface NotationResult {
   /** 正規化した発音(クメール語は IPA。日本語はカナのまま) */
@@ -69,7 +70,29 @@ export const jaHangulNotation: Notation = {
   },
 };
 
-const REGISTRY: Record<string, Notation> = { [khmerNotation.id]: khmerNotation, [jaHangulNotation.id]: jaHangulNotation };
+/** 日本語→タイ文字(ADR-0028)。詳細/ライトの区別はなく、full と lite は同じ。ローマ字は ja-hangul のものを流用する */
+export const jaThaiNotation: Notation = {
+  id: "ja-thai",
+  input: "kana",
+  convert(pron) {
+    try {
+      const th = renderThai(pron);
+      return { pron, full: th, lite: th, latin: renderRomaji(pron) };
+    } catch (e) {
+      throw new NotationError(e instanceof JaThaiError || e instanceof JaHangulError ? `${e.code}: ${e.message}` : String(e));
+    }
+  },
+  convertWords(prons) {
+    try {
+      const th = prons.map((p) => renderThai(p)).join(" ");
+      return { full: th, lite: th, latin: prons.map((p) => renderRomaji(p)).join(" ") };
+    } catch (e) {
+      throw new NotationError(e instanceof JaThaiError || e instanceof JaHangulError ? `${e.code}: ${e.message}` : String(e));
+    }
+  },
+};
+
+const REGISTRY: Record<string, Notation> = { [khmerNotation.id]: khmerNotation, [jaHangulNotation.id]: jaHangulNotation, [jaThaiNotation.id]: jaThaiNotation };
 
 export function getNotation(id: string): Notation {
   const n = REGISTRY[id];

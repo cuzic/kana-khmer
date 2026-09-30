@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "ja-hangul": "workspace:*",
+    "ja-thai": "workspace:*",
     "khmer-kana": "workspace:*",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
