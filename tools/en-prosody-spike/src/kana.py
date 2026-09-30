@@ -42,7 +42,7 @@ CONS = {
 VOW = {
     "IY": (1, "", "ー"), "IH": (1, "ᶦ", ""), "EH": (3, "", ""), "EY": (3, "", "イ"), "AE": (0, "ᵆ", ""),
     "AA": (0, "", ""), "AH": (0, "ᶺ", ""), "AO": (4, "ᵓ", ""), "OW": (4, "", "ウ"), "UH": (2, "ᶷ", ""),
-    "UW": (2, "", "ー"), "AY": (0, "", "イ"), "AW": (0, "", "ウ"), "OY": (4, "", "イ"), "ER": (0, "ʳ", ""),
+    "UW": (2, "", "ー"), "AY": (0, "", "イ"), "AW": (0, "", "ウ"), "OY": (4, "", "イ"), "ER": (0, "ᶟʳ", ""),
 }
 # 子音 + y + 母音 → 子音の i 段 + 小書きの ャュョ(future → フュー、cute → キュー、music → ミュー)。L は ˡ を付ける
 YBASE = {"K": ("キ", ""), "G": ("ギ", ""), "B": ("ビ", ""), "P": ("ピ", ""), "M": ("ミ", ""), "F": ("フ", ""), "V": ("ヴ", ""),
@@ -74,6 +74,8 @@ def _nucleus(base: str, stress: int | None, onset: tuple[str, str, str] | None, 
             return ROWS[onset[0]][0] + onset[1] + "ʳ"  # ɚ は子音の ア 段 + ʳ(never → ネヴァʳ、dinner → ディᶦナʳ)
         if r_color and not onset:
             return "アʳ"
+        if onset and onset[0] == "y" and not r_color:
+            return ROWS["y"][0] + "ᵊ"  # y + 弱い母音は ヤᵊ(you の弱形)。強い /ju:/ は ユー(子音 + 母音の規則)
         if onset and onset[0] in ("ch", "j", "dj", "sh"):
             if r_color:
                 return ROWS[onset[0]][0] + onset[1] + "ʳ"
@@ -95,11 +97,30 @@ def _nucleus(base: str, stress: int | None, onset: tuple[str, str, str] | None, 
     return head + cmod + vmod + tail
 
 
-def _merge_ts(phones: list[str], flap_at: set[int]) -> tuple[list[str], set[int]]:
-    """T+S は破擦音 TS(ツ)、D+Z は DZ(ヅ)にする(it's → イᶦツ、kids → キᶦヅ)。弾き音の T/D は対象外。"""
+def _aspirated(phones: list[str], no_asp: set[int]) -> set[int]:
+    """有気音にする P T K CH の index。強勢(1・2)のある母音の前(R L W Y をはさんでもよい)で、S の直後でないもの。
+    連結で移った子音・融合した子音(no_asp)は対象外。"""
+    out: set[int] = set()
+    for i, ph in enumerate(phones):
+        b = split_phone(ph)[0]
+        if b not in ("P", "T", "K", "CH") or i in no_asp:
+            continue
+        if i > 0 and split_phone(phones[i - 1])[0] == "S":
+            continue
+        j = i + 1
+        if b != "CH" and j < len(phones) and split_phone(phones[j])[0] in ("R", "L", "W", "Y"):
+            j += 1
+        if j < len(phones) and is_vowel(phones[j]) and split_phone(phones[j])[1] in (1, 2):
+            out.add(i)
+    return out
+
+
+def _merge_ts(phones: list[str], flap_at: set[int], asp: set[int]) -> tuple[list[str], set[int], set[int]]:
+    """T+S は破擦音 TS(ツ)、D+Z は DZ(ヅ)にする(it's → イᶦツ、kids → キᶦヅ)。弾き音の T/D は対象外。index の集合も付け替える。"""
     pairs = {("T", "S"): "TS", ("D", "Z"): "DZ"}
     out: list[str] = []
     flaps: set[int] = set()
+    asps: set[int] = set()
     i = 0
     while i < len(phones):
         if i not in flap_at and i + 1 < len(phones):
@@ -110,14 +131,16 @@ def _merge_ts(phones: list[str], flap_at: set[int]) -> tuple[list[str], set[int]
                 continue
         if i in flap_at:
             flaps.add(len(out))
+        if i in asp:
+            asps.add(len(out))
         out.append(phones[i])
         i += 1
-    return out, flaps
+    return out, flaps, asps
 
 
-def phones_to_kana(phones: list[str], flap_at: set[int] | None = None) -> str:
-    """phones: ARPABET(ストレス数字つき)。flap_at: 弾き音にする T/D の index。"""
-    phones, flap_at = _merge_ts(phones, flap_at or set())
+def phones_to_kana(phones: list[str], flap_at: set[int] | None = None, no_asp: set[int] | None = None) -> str:
+    """phones: ARPABET(ストレス数字つき)。flap_at: 弾き音にする T/D の index。no_asp: 有気音にしない index(連結で移った子音など)。"""
+    phones, flap_at, asp = _merge_ts(phones, flap_at or set(), _aspirated(phones, no_asp or set()))
     # R が母音の直後で、次が母音でなければ母音の色づけに吸収する(car → アʳ)
     seq: list[tuple[str, int | None, int]] = []
     i = 0
@@ -141,22 +164,24 @@ def phones_to_kana(phones: list[str], flap_at: set[int] | None = None) -> str:
             onset = None
             flap = None
             if len(pending) >= 2 and pending[-1][0] == "Y" and pending[-2][0] in YBASE and b in YVOW:
-                *rest, (c, _), _y = pending
-                for cc, _ in rest:
-                    out.append(CONS[cc][2])
+                *rest, (c, cidx0), _y = pending
+                for cc, ccidx in rest:
+                    out.append(CONS[cc][2] + ("ʰ" if ccidx in asp else ""))
                 base_k, cmod = YBASE[c]
                 small, vm, tail = YVOW[b]
-                out.append(base_k + cmod + small + vm + tail)
+                out.append(base_k + cmod + ("ʰ" if cidx0 in asp else "") + small + vm + tail)
                 pending = []
                 continue
             if pending:
                 *rest, (last, lidx) = pending
                 for c, cidx in rest:
-                    out.append(CONS[c][2])
+                    out.append(CONS[c][2] + ("ʰ" if cidx in asp else ""))
                 if lidx in flap_at and last in FLAP:
                     flap = FLAP[last]
                 else:
                     onset = CONS[last]
+                    if lidx in asp:  # 強勢のある母音の前の p t k ch は有気音(ʰ)
+                        onset = (onset[0], onset[1] + "ʰ", onset[2])
                 pending = []
             nxt = seq[k + 1][0] if k + 1 < len(seq) else None
             out.append(_nucleus(b, s, onset, flap, nxt))

@@ -170,4 +170,4 @@ def _flap_and_kana(grp: list[W]) -> None:
         if w.carry_in:
             p = [w.carry_in] + p
             flaps = {i + 1 for i in flaps} | ({0} if w.flap_carry else set())
-        w.kana = phones_to_kana(p, flaps)
+        w.kana = phones_to_kana(p, flaps, {0} if (w.carry_in or w.pal_in) else set())

@@ -35,7 +35,7 @@ const CONS: Record<string, Cons> = {
 const VOW: Record<string, readonly [number, string, string]> = {
   IY: [1, "", "ー"], IH: [1, "ᶦ", ""], EH: [3, "", ""], EY: [3, "", "イ"], AE: [0, "ᵆ", ""],
   AA: [0, "", ""], AH: [0, "ᶺ", ""], AO: [4, "ᵓ", ""], OW: [4, "", "ウ"], UH: [2, "ᶷ", ""],
-  UW: [2, "", "ー"], AY: [0, "", "イ"], AW: [0, "", "ウ"], OY: [4, "", "イ"], ER: [0, "ʳ", ""],
+  UW: [2, "", "ー"], AY: [0, "", "イ"], AW: [0, "", "ウ"], OY: [4, "", "イ"], ER: [0, "ᶟʳ", ""],
 };
 const YBASE: Record<string, readonly [string, string]> = {
   K: ["キ", ""], G: ["ギ", ""], B: ["ビ", ""], P: ["ピ", ""], M: ["ミ", ""], F: ["フ", ""], V: ["ヴ", ""],
@@ -73,6 +73,7 @@ function nucleus(base: string, stress: number | null, onset: Cons | null, flap: 
     const pal = ["ch", "j", "dj", "sh"];
     if (rColor && onset && !pal.includes(onset[0])) return rowOf(onset[0])[0]! + onset[1] + "ʳ";
     if (rColor && !onset) return "アʳ";
+    if (onset && onset[0] === "y" && !rColor) return rowOf("y")[0]! + "ᵊ"; // y + 弱い母音は ヤᵊ(you の弱形)。強い /ju:/ は ユー
     if (onset && pal.includes(onset[0])) {
       if (rColor) return rowOf(onset[0])[0]! + onset[1] + "ʳ";
       if (nxt === "N") return rowOf(onset[0])[1]! + onset[1] + "ᵊ";
@@ -98,10 +99,26 @@ function nucleus(base: string, stress: number | null, onset: Cons | null, flap: 
   return head + cmod + vmod + tail;
 }
 
-function mergeTs(phones: string[], flapAt: Set<number>): [string[], Set<number>] {
+/** 有気音にする P T K CH の index。強勢(1・2)のある母音の前(R L W Y をはさんでもよい)で、S の直後でないもの。連結で移った子音・融合した子音(noAsp)は対象外。 */
+function aspirated(phones: string[], noAsp: Set<number>): Set<number> {
+  const out = new Set<number>();
+  phones.forEach((ph, i) => {
+    const b = splitPhone(ph)[0];
+    if (!["P", "T", "K", "CH"].includes(b) || noAsp.has(i)) return;
+    if (i > 0 && splitPhone(phones[i - 1]!)[0] === "S") return;
+    let j = i + 1;
+    if (b !== "CH" && j < phones.length && ["R", "L", "W", "Y"].includes(splitPhone(phones[j]!)[0])) j += 1;
+    if (j < phones.length && isVowel(phones[j]!) && [1, 2].includes(splitPhone(phones[j]!)[1] ?? -1)) out.add(i);
+  });
+  return out;
+}
+
+/** T+S は破擦音 TS(ツ)、D+Z は DZ(ヅ)にする。弾き音の T/D は対象外。index の集合も付け替える。 */
+function mergeTs(phones: string[], flapAt: Set<number>, asp: Set<number>): [string[], Set<number>, Set<number>] {
   const pairs: Record<string, string> = { "T S": "TS", "D Z": "DZ" };
   const out: string[] = [];
   const flaps = new Set<number>();
+  const asps = new Set<number>();
   let i = 0;
   while (i < phones.length) {
     if (!flapAt.has(i) && i + 1 < phones.length) {
@@ -113,15 +130,16 @@ function mergeTs(phones: string[], flapAt: Set<number>): [string[], Set<number>]
       }
     }
     if (flapAt.has(i)) flaps.add(out.length);
+    if (asp.has(i)) asps.add(out.length);
     out.push(phones[i]!);
     i += 1;
   }
-  return [out, flaps];
+  return [out, flaps, asps];
 }
 
-/** phones: ARPABET(ストレス数字つき)。flapAt: 弾き音にする T/D の index。 */
-export function phonesToKana(phonesIn: string[], flapIn?: Set<number>): string {
-  const [phones, flapAt] = mergeTs(phonesIn, flapIn ?? new Set());
+/** phones: ARPABET(ストレス数字つき)。flapAt: 弾き音にする T/D の index。noAsp: 有気音にしない index(連結で移った子音など)。 */
+export function phonesToKana(phonesIn: string[], flapIn?: Set<number>, noAspIn?: Set<number>): string {
+  const [phones, flapAt, asp] = mergeTs(phonesIn, flapIn ?? new Set(), aspirated(phonesIn, noAspIn ?? new Set()));
   const seq: [string, number | null, number][] = [];
   const n = phones.length;
   for (let i = 0; i < n; i++) {
@@ -146,18 +164,21 @@ export function phonesToKana(phonesIn: string[], flapIn?: Set<number>): string {
       const ybase = pending.length >= 2 ? own(YBASE, pending[pending.length - 2]![0]) : undefined;
       const yvow = own(YVOW, b);
       if (pending.length >= 2 && pending[pending.length - 1]![0] === "Y" && ybase && yvow) {
-        for (const [cc] of pending.slice(0, -2)) out.push(need(CONS, cc)[2]);
+        for (const [cc, ccidx] of pending.slice(0, -2)) out.push(need(CONS, cc)[2] + (asp.has(ccidx) ? "ʰ" : ""));
         const [baseK, cmod] = ybase;
         const [small, vm, tail] = yvow;
-        out.push(baseK + cmod + small + vm + tail);
+        out.push(baseK + cmod + (asp.has(pending[pending.length - 2]![1]) ? "ʰ" : "") + small + vm + tail);
         pending = [];
         continue;
       }
       if (pending.length) {
         const [last, lidx] = pending[pending.length - 1]!;
-        for (const [c] of pending.slice(0, -1)) out.push(need(CONS, c)[2]);
+        for (const [c, cidx] of pending.slice(0, -1)) out.push(need(CONS, c)[2] + (asp.has(cidx) ? "ʰ" : ""));
         if (flapAt.has(lidx) && own(FLAP, last)) flap = FLAP[last]!;
-        else onset = need(CONS, last);
+        else {
+          const base = need(CONS, last);
+          onset = asp.has(lidx) ? ([base[0], base[1] + "ʰ", base[2]] as const) : base; // 強勢のある母音の前の p t k ch は有気音(ʰ)
+        }
         pending = [];
       }
       const nxt = k + 1 < seq.length ? seq[k + 1]![0] : null;

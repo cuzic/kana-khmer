@@ -18,7 +18,7 @@ export interface IRWord {
   kana_lite: string;
 }
 
-export const MODS = new Set([..."ʳˡᶿᶞᵛᵆᶺᶦᶷᵓᵊᵑᵈᵇᵍᶻᶾᵗʰ"]);
+export const MODS = new Set([..."ʳˡᶿᶞᵛᵆᶺᶦᶷᵓᵊᵑᵈᵇᵍᶻᶾᵗʰᶟ"]);
 
 export function lite(kana: string): string {
   return Array.from(kana).filter((c) => !MODS.has(c)).join("");
@@ -112,7 +112,7 @@ function flapAndKana(grp: W[]): void {
       flaps = new Set([...flaps].map((i) => i + 1));
       if (w.flapCarry) flaps.add(0);
     }
-    w.kana = phonesToKana(p, flaps);
+    w.kana = phonesToKana(p, flaps, w.carryIn ? new Set([0]) : new Set()); // 連結で移った子音は有気音にしない
   }
 }
 

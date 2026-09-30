@@ -3,7 +3,7 @@
 //   node tools/glyph-check/scripts/gen-en-prosody-rows.mjs
 import { readFileSync, writeFileSync } from "node:fs";
 
-const MODS = [..."ʳˡʰᶿᶞᵆᶺᶦᶷᵓᵊᵑᵈᵇᵍᶻᶾᵛᵗ"];
+const MODS = [..."ʳˡʰᶿᶞᵆᶺᶦᶷᵓᵊᵑᵈᵇᵍᶻᶾᵛᵗᶟ"];
 const SMALL = [..."ㇰㇱㇲㇳㇴㇷㇺㇻㇽ"];
 const ir = JSON.parse(readFileSync(new URL("../../en-prosody-spike/out/ted.ir.json", import.meta.url), "utf8"));
 const seen = new Map();

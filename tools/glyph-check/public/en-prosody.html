@@ -65,7 +65,7 @@ const PROBES = [
 const FAMILIES = { sys: "sans-serif", noto: '"Noto Sans","Noto Sans JP",sans-serif' };
 const WORDS = EN_PROSODY_WORDS;
 // ʳ ˡ ʰ ᶿ ᶞ ᵆ ᶺ ᶦ ᶷ ᵓ ᵊ ᵑ ᵈ ᵇ ᵍ ᶻ ᶾ ᵛ ᵗ
-const MODS = [0x2B3, 0x2E1, 0x2B0, 0x1DBF, 0x1D9E, 0x1D46, 0x1DBA, 0x1DA6, 0x1DB7, 0x1D53, 0x1D4A, 0x1D51, 0x1D48, 0x1D47, 0x1D4D, 0x1DBB, 0x1DBE, 0x1D5B, 0x1D57].map(c => String.fromCodePoint(c));
+const MODS = [0x2B3, 0x2E1, 0x2B0, 0x1DBF, 0x1D9E, 0x1D46, 0x1DBA, 0x1DA6, 0x1DB7, 0x1D53, 0x1D4A, 0x1D51, 0x1D48, 0x1D47, 0x1D4D, 0x1DBB, 0x1DBE, 0x1D5B, 0x1D57, 0x1D9F].map(c => String.fromCodePoint(c));
 const SMALL = ["ㇰ", "ㇱ", "ㇲ", "ㇳ", "ㇴ", "ㇷ", "ㇺ", "ㇻ", "ㇽ"];
 const HANDAKUTEN = "゚"; // U+309A, ㇷ゚ = U+31F7 U+309A
 const cp = s => [...s].map(c => c.codePointAt(0).toString(16).toUpperCase().padStart(4, "0")).join(" ");

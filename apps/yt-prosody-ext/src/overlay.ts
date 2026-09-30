@@ -24,7 +24,7 @@ const CSS = `
 .nokana .kana, .nobeat .beat, .nobreaks .brk, .nolink .link, .noipa .m { display: none; }
 `;
 
-const MODS = new Set("ʳˡᶿᶞᵛᵆᶺᶦᶷᵓᵊᵑᵈᵇᵍᶻᶾᵗʰ");
+const MODS = new Set("ʳˡᶿᶞᵛᵆᶺᶦᶷᵓᵊᵑᵈᵇᵍᶻᶾᵗʰᶟ");
 
 function el<K extends keyof HTMLElementTagNameMap>(tag: K, cls?: string, text?: string): HTMLElementTagNameMap[K] {
   const e = document.createElement(tag);

@@ -36,7 +36,7 @@ import re
 from analyze import W
 
 IR_VERSION = "0.1"
-MODS = set("ʳˡᶿᶞᵛᵆᶺᶦᶷᵓᵊᵑᵈᵇᵍᶻᶾᵗʰ")
+MODS = set("ʳˡᶿᶞᵛᵆᶺᶦᶷᵓᵊᵑᵈᵇᵍᶻᶾᵗʰᶟ")
 
 
 def lite(kana: str) -> str:

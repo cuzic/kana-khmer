@@ -41,8 +41,31 @@ describe("ユーザーの指示(ユーザーが言った範囲だけ)", () => {
   it("θ + i は シ(シᶿ。スィ ではない)", () => {
     expect(kana("think")[0]!.startsWith("シᶿ")).toBe(true);
   });
-  it("in education → ネデュケイシᵊン(in の n が移り、語末は シᵊン)", () => {
-    expect(kana("in education")[1]).toBe("ネデュケイシᵊン");
+  it("in education → ネデュケイシᵊン(in の n が移り、語末は シᵊン。有気音の ʰ は別の指示なので除いて比べる)", () => {
+    expect(kana("in education")[1]!.replace("ʰ", "")).toBe("ネデュケイシᵊン");
+  });
+  it("bird と bard は書き分ける(ɝ は ᶟʳ)", () => {
+    expect(kana("bird")).not.toEqual(kana("bard"));
+    expect(kana("bird")[0]).toContain("ᶟʳ");
+  });
+  it("you は ヤ と ユ を使い分ける(弱形 /jə/ は ヤ、強い /ju:/ は ユー)", () => {
+    expect(kana("you can")[0]).toContain("ヤ");
+    expect(kana("you")[0]).toContain("ユー");
+  });
+});
+
+describe("ユーザーの指示: 強勢のある p t k ch は有気音(ʰ)", () => {
+  for (const w of ["pen", "top", "cat", "chair", "upon", "attack", "pray", "cute"]) {
+    it(`${w} は有気音`, () => expect(kana(w)[0]).toContain("ʰ"));
+  }
+  it("強勢のない音節の p は有気音でない(apple の語中の p)", () => {
+    expect(kana("apple")[0]).not.toContain("ʰ");
+  });
+  it("s の直後の p t k は無気音(spin・stop・sky)", () => {
+    for (const w of ["spin", "stop", "sky"]) expect(kana(w)[0]).not.toContain("ʰ");
+  });
+  it("連結で次の語に移った子音は有気音にしない(what I の弾き音)", () => {
+    expect(kana("what I")[1]).not.toContain("ʰ");
   });
 });
 
@@ -50,14 +73,16 @@ describe("現状の表記(エージェントの判断。未決を含む)", () =>
   const single: [string, string][] = [
     ["future", "フューチャʳ"], // ɚ は ʳ だけ(ユーザーに未確認)
     ["never", "ネヴァʳ"],
-    ["cats", "カᵆツ"], // æ は ᵆ(turned ae)で代用(未決)
+    ["cats", "カʰᵆツ"], // æ は ᵆ(turned ae)で代用(ユーザーが現状維持を選択)。語頭の k は有気音
     ["nation", "ネイシᵊン"],
     ["very", "ヴェリʳー"],
     ["think", "シᶿᶦンᵑㇰ"],
     ["strange", "ㇲㇳレʳインヂ"],
-    ["kids", "キᶦヅ"],
+    ["kids", "キʰᶦヅ"],
     ["it's", "イᶦツ"],
-    ["education", "エデュケイシᵊン"],
+    ["education", "エデュケʰイシᵊン"],
+    ["bird", "バᶟʳㇳᵈ"],
+    ["bard", "バʳㇳᵈ"],
   ];
   for (const [word, want] of single) {
     it(`${word} → ${want}`, () => expect(kana(word)).toEqual([want]));
