@@ -47,7 +47,7 @@ ADR として記録する。**各設計の詳細・変換表・テスト計画�
 | [0027](0027-ja-hi-long-vowel-avagraha.md) | ja-hi の長音は avagraha `ऽ` を直前の拍の直後に足して書く | proposed | 2026-09-29 |
 | [0028](0028-ja-thai-notation.md) | 日本語→タイ文字(ja-thai)は、開音節をすべて長母音で書き、長音は母音を重ねる | proposed | 2026-09-29 |
 | [0029](0029-ko-subtitle-g2p-on-device-poc-python.md) | 韓国語字幕→カナ変換の G2P は端末内(ブラウザ拡張)で動かす前提で設計し、PoC は Python、Rust/WASM 移植は後にする | proposed | 2026-09-30 |
-| [0030](0030-en-subtitle-prosody-ir-and-selectable-layers.md) | 英語字幕の韻律表示は、語ごとの中間表現(IR)を核にし、見せる層を利用者が選べる Chrome 拡張(YouTube 限定)で出す | proposed | 2026-09-30 |
+| [0030](0030-en-subtitle-prosody-ir-and-selectable-layers.md) | 英語字幕の韻律表示は、語ごとの中間表現(IR)を核にし、見せる層を利用者が選べる Chrome 拡張(YouTube 限定)で出す | accepted | 2026-09-30 |
 | [0031](0031-en-kana-with-shoulder-ipa.md) | 英語の推定の発音は、日本語話者が読める基本のカナ + 右肩の IPA 小文字で表記する | proposed | 2026-09-30 |
 | [0032](0032-en-audio-informed-variants.md) | 音声の音素認識を先生役にして、語ごとの形(弱形・弾き音・口蓋化)を観測して選ぶ。サーバー側の任意の拡張とし、PoC の拡張には含めない | proposed | 2026-09-30 |
 
