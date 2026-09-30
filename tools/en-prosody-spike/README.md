@@ -25,6 +25,11 @@ IR の `kana` が音声による形、`kana_rule` が規則だけの形。`phone
 PHONES.json は wav2vec2 の espeak CTC(`facebook/wav2vec2-lv-60-espeak-cv-ft`、Apache-2.0、1.26GB)の貪欲デコード。CPU で実時間の約 0.8〜0.9 倍。
 作り方: transformers の `Wav2Vec2ForCTC` に 16kHz の音声を 20 秒ずつ渡し、argmax の系列から `{"t": 秒, "p": 音素}` を出す(`src/phone_rec.py`。依存は別の仮想環境に入れる)。
 
+## 見せる層の選択
+`src/layers.py`。IR には全部の層が入っていて、変換器が選んで出す。層: size bold nucleus weak breaks link beat kana ipa audio。
+プリセット: 入門 / 標準 / 詳細 / リズム。例: `convert IR.json --to ass --layers 標準`、`--layers 詳細,-ipa`、`--layers size,beat,kana`(`--lite` は `-ipa` と同じ)。
+ビートは ASS/SRT では語の直前の小さな ●(強い語)/◎(核を兼ねる)で出す(語に付くので位置がずれない)。カナと英語の語単位の位置合わせは HTML だけ。
+
 ## 使い方
 ```
 # 取得(YouTube は bot 判定で弾かれるので、Tailscale 経由のプロキシを使った。手順は memory の project-en-prosody-subtitles)

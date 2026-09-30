@@ -1,6 +1,6 @@
 """使い方:
   uv run python src/cli.py build MANUAL.json3 AUTO.json3 AUDIO.wav OUT_IR.json [--phones PHONES.json] [--from SEC --to SEC]
-  uv run python src/cli.py convert IR.json --to ass|srt|html [--lite] [-o FILE]
+  uv run python src/cli.py convert IR.json --to ass|srt|html [--layers 標準] [--lite] [-o FILE]
 
 build は字幕・自動字幕・音声から IR を作る。convert は IR だけを読んで各形式に変換する。
 """
@@ -15,7 +15,10 @@ sys.path.insert(0, str(Path(__file__).parent))
 from align import align, load_auto, load_manual
 from analyze import analyze
 from audio import Audio
+from dataclasses import replace
+
 from ir import build_ir
+from layers import ALL, PRESETS, Layers
 from to_ass import to_ass
 from to_html import to_html
 from to_srt import to_srt
@@ -40,10 +43,13 @@ def cmd_build(a) -> None:
 
 def cmd_convert(a) -> None:
     ir = json.loads(Path(a.ir).read_text())
+    L = Layers.parse(a.layers)
+    if a.lite:
+        L = replace(L, ipa=False)
     if a.to == "ass":
-        s = to_ass(ir, lite=a.lite)
+        s = to_ass(ir, layers=L)
     elif a.to == "srt":
-        s = to_srt(ir, lite=a.lite)
+        s = to_srt(ir, layers=L)
     else:
         s = to_html(ir)
     out = a.output or str(Path(a.ir).with_suffix("." + a.to))
@@ -61,7 +67,9 @@ def main() -> None:
     b.set_defaults(fn=cmd_build)
     c = sub.add_parser("convert")
     c.add_argument("ir"); c.add_argument("--to", required=True, choices=["ass", "srt", "html"])
-    c.add_argument("--lite", action="store_true"); c.add_argument("-o", "--output")
+    c.add_argument("--lite", action="store_true", help="右肩の IPA を除く(--layers -ipa と同じ)")
+    c.add_argument("--layers", help=f"見せる層。プリセット({' / '.join(PRESETS)})、列挙(size,beat,kana)、差し引き(詳細,-ipa)。層: {', '.join(ALL)}")
+    c.add_argument("-o", "--output")
     c.set_defaults(fn=cmd_convert)
     a = ap.parse_args()
     a.fn(a)
