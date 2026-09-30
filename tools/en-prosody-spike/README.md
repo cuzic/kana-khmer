@@ -23,7 +23,7 @@ IR の形は `src/ir.py` の docstring。変換器(`to_ass.py` `to_srt.py` `to_h
 `--phones PHONES.json` を渡すと、弱形・強形、弾き音・t、口蓋化を音声で決める(`observe.py`)。信頼度が低い語と観測できない語は規則に戻す。
 IR の `kana` が音声による形、`kana_rule` が規則だけの形。`phonecheck.py` は規則と音声の一致を現象ごとに測る(`out/phonecheck.txt`)。
 PHONES.json は wav2vec2 の espeak CTC(`facebook/wav2vec2-lv-60-espeak-cv-ft`、Apache-2.0、1.26GB)の貪欲デコード。CPU で実時間の約 0.8〜0.9 倍。
-作り方: transformers の `Wav2Vec2ForCTC` に 16kHz の音声を 20 秒ずつ渡し、argmax の系列から `{"t": 秒, "p": 音素}` を出す(スクリプトは scratchpad の `phone_rec.py`。リポジトリには未収録)。
+作り方: transformers の `Wav2Vec2ForCTC` に 16kHz の音声を 20 秒ずつ渡し、argmax の系列から `{"t": 秒, "p": 音素}` を出す(`src/phone_rec.py`。依存は別の仮想環境に入れる)。
 
 ## 使い方
 ```
