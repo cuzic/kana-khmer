@@ -66,6 +66,9 @@ ul { list-style: none; padding: 0; margin: 0; }
 .kana { font-size: 24px; }
 .text { color: var(--muted); }
 .text:lang(km) { font-family: "Noto Sans Khmer", system-ui, sans-serif; }
+/* タイ文字は上下に母音・声調記号が積まれるので、行間を広めにする(th-ja。読みは .kana、本文の訳は body) */
+:lang(th) .kana, .kana:lang(th), :root:lang(th) { line-height: 1.7; }
+:root:lang(th) .kana { font-family: "Noto Sans Thai", "Sarabun", system-ui, sans-serif; }
 .text:lang(ja) { font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif; }
 .text ruby { ruby-position: over; }
 .text rt { font-size: .55em; color: var(--muted); }

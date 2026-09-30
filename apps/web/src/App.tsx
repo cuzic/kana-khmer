@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Breakdown } from "./Breakdown";
-import { course, hasGender, showsIpa } from "./course";
+import { course, hasGender, hasLevels, showsIpa } from "./course";
 import { data, type Phrase } from "./data";
 import { Guide } from "./generated/guide";
 import { t } from "./i18n";
@@ -56,13 +56,15 @@ export function App() {
       <header>
         <h1>{course.title[course.from]}</h1>
         <div className="controls">
-          <label>
-            {t.notation}
-            <select value={settings.notation} onChange={(e) => setSettings({ ...settings, notation: e.target.value as "lite" | "full" })}>
-              <option value="lite">{t.lite}</option>
-              <option value="full">{t.full}</option>
-            </select>
-          </label>
+          {hasLevels && (
+            <label>
+              {t.notation}
+              <select value={settings.notation} onChange={(e) => setSettings({ ...settings, notation: e.target.value as "lite" | "full" })}>
+                <option value="lite">{t.lite}</option>
+                <option value="full">{t.full}</option>
+              </select>
+            </label>
+          )}
           {hasGender && (
             <label>
               {t.speakerGender}

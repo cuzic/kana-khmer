@@ -14,6 +14,9 @@ export interface CourseInfo {
 }
 export const course = raw as unknown as CourseInfo;
 
+/** 詳細/ライトの2段があるコースだけ、表記の切り替えを出す(ja-thai は1段) */
+export const hasLevels = course.notation.levels.length > 1;
+
 /** 性別で形が変わるフレーズがあるコースだけ、性別の設定を出す(ja-km。ko-ja は丁寧語のみ) */
 export const hasGender = data.phrases.some((p) => p.variants.some((v) => v.speaker !== "any"));
 /** IPA を見せるコース(発音の正が IPA。ja-km)。ko-ja の pron はカナで、ローマ字・ハングルの元になるだけ */
