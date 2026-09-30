@@ -1,0 +1,32 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>YouTube 字幕の疑似ページ(拡張の動作確認用)</title>
+<!-- YouTube の字幕の DOM を模したページ。本物の YouTube にはこのサーバから入れないため、拡張の動作確認に使う。
+     #movie_player > .ytp-caption-window-container > .caption-window > .caption-visual-line > .ytp-caption-segment -->
+<style>
+  html, body { margin: 0; height: 100%; background: #111; }
+  #movie_player { position: relative; width: 960px; height: 540px; margin: 20px auto; background: linear-gradient(135deg, #2b3a55, #1c2433); overflow: hidden; }
+  .ytp-caption-window-container { position: absolute; left: 0; right: 0; bottom: 12%; text-align: center; }
+  .caption-window { display: inline-block; background: rgba(8, 8, 8, .75); color: #fff; font: 24px Roboto, Arial, sans-serif; padding: 2px 8px; }
+  .ytp-caption-segment { white-space: pre-wrap; }
+</style>
+<div id="movie_player" class="html5-video-player">
+  <div class="ytp-caption-window-container">
+    <div class="caption-window"><span class="captions-text"><span class="caption-visual-line"><span class="ytp-caption-segment" id="seg">The man in the red coat bought a car.</span></span></span></div>
+  </div>
+</div>
+<script>
+  // 字幕を数秒ごとに切り替える(自作の例文)
+  const lines = [
+    "The man in the red coat bought a car.",
+    "What I want is a little time to think about it.",
+    "If you're at the station, you can call me.",
+    "She said she'd be there, but it's not clear.",
+    "This is the best teacher I've ever had.",
+  ];
+  let i = 0;
+  const seg = document.getElementById("seg");
+  const params = new URLSearchParams(location.search);
+  if (params.has("i")) { seg.textContent = lines[Number(params.get("i")) % lines.length]; }
+  else setInterval(() => { i = (i + 1) % lines.length; seg.textContent = lines[i]; }, 3000);
+</script>
