@@ -82,6 +82,17 @@ jobs:
             xcrun simctl io "$UDID" screenshot "artifacts/$name.png"
             test -f "artifacts/report-$name.json"
           done
+          for mode in sys noto; do
+            name="ios-en-prosody-$mode"
+            for attempt in 1 2 3; do
+              xcrun simctl openurl "$UDID" "http://localhost:8000/en-prosody.html?platform=$name&mode=$mode" && break
+              echo "openurl attempt $attempt failed"; sleep 10
+            done
+            for i in $(seq 1 60); do [ -f "artifacts/report-$name.json" ] && break; sleep 1; done
+            sleep 4
+            xcrun simctl io "$UDID" screenshot "artifacts/$name.png"
+            test -f "artifacts/report-$name.json"
+          done
       - uses: actions/upload-artifact@v4
         if: always()
         with: { name: ios, path: "tools/glyph-check/artifacts/*\ntools/glyph-check/server.log" }
@@ -122,7 +133,8 @@ jobs:
             bash scripts/android-run-multi.sh; rc2=$?
             bash scripts/android-run-ja-khmer.sh; rc3=$?
             bash scripts/android-run-ja-thai.sh; rc4=$?
-            exit $(( rc1 || rc2 || rc3 || rc4 ))
+            bash scripts/android-run-en-prosody.sh; rc5=$?
+            exit $(( rc1 || rc2 || rc3 || rc4 || rc5 ))
       - uses: actions/upload-artifact@v4
         if: always()
         with: { name: "android-api${{ matrix.api-level }}", path: "tools/glyph-check/artifacts/*\ntools/glyph-check/server.log" }
