@@ -26,6 +26,14 @@ function readCaptions(root: ParentNode): string[] {
   return out;
 }
 
+/** 英語らしい字幕か(ラテン文字が文字全体の 8 割以上)。日本語などの字幕では、元の字幕を隠さず、何も重ねない */
+function looksEnglish(text: string): boolean {
+  const letters = text.match(/\p{L}/gu) ?? [];
+  if (letters.length === 0) return true; // ♪ など。隠しても失うものがない
+  const latin = letters.filter((c) => /[A-Za-z]/.test(c)).length;
+  return latin / letters.length >= 0.8;
+}
+
 function setNativeHidden(hidden: boolean): void {
   const existing = document.getElementById(HIDE_STYLE_ID);
   if (hidden && !existing) {
@@ -49,6 +57,12 @@ function update(): void {
     return;
   }
   const texts = readCaptions(player);
+  if (!texts.every(looksEnglish)) {
+    overlay.clear();
+    setNativeHidden(false);
+    lastKey = "";
+    return;
+  }
   const key = JSON.stringify([texts, settings.layers]);
   if (key === lastKey) return;
   lastKey = key;

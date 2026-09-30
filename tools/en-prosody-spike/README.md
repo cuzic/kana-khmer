@@ -32,7 +32,7 @@ PHONES.json は wav2vec2 の espeak CTC(`facebook/wav2vec2-lv-60-espeak-cv-ft`�
 
 ## 使い方
 ```
-# 取得(YouTube は bot 判定で弾かれるので、Tailscale 経由のプロキシを使った。手順は memory の project-en-prosody-subtitles)
+# 取得(開発サーバーの IP は YouTube の bot 判定で弾かれたため、別の PC(自宅回線)で動かしたプロキシ経由で yt-dlp を実行した。環境依存なので手順は置かない)
 yt-dlp --proxy ... --skip-download --write-subs --write-auto-subs --sub-langs "en,en-orig" --sub-format json3 -o "%(id)s.%(ext)s" URL
 uv run --with "yt-dlp[default]" yt-dlp --proxy ... --js-runtimes node -f bestaudio -x --audio-format wav --postprocessor-args "ffmpeg:-ar 16000 -ac 1" -o "%(id)s.%(ext)s" URL
 # IR を作る(--from/--to は秒)
