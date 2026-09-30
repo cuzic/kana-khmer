@@ -1,7 +1,7 @@
 // Copy @fontsource packages (400 weight css + files) into public/fonts so the page can serve them.
 import { cpSync, mkdirSync, existsSync } from "node:fs";
 
-for (const pkg of ["noto-sans", "noto-sans-jp", "noto-sans-khmer"]) {
+for (const pkg of ["noto-sans", "noto-sans-jp", "noto-sans-khmer", "noto-sans-thai"]) {
   const src = `node_modules/@fontsource/${pkg}`;
   const dst = `public/fonts/${pkg}`;
   if (!existsSync(src)) throw new Error(`missing ${src}; run pnpm install first`);

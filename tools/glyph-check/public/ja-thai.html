@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glyph Check: ja-thai</title>
+<link rel="stylesheet" href="fonts/noto-sans/400.css">
+<link rel="stylesheet" href="fonts/noto-sans-thai/400.css">
+<style>
+  /* ja-thai は右肩記号を使わず、タイ文字(子音字+上の母音記号 ั ิ ี ึ ื ็、下の ุ ู、前置母音 เ โ ไ)だけで書く。
+     apps/web の th-ja コースは fonts: [] でシステムフォントを使うので、sys が本番の見え方。thai は Noto Sans Thai を同梱した比較用。 */
+  :root { --bg:#fff; --fg:#111; --line:#ccc; --ng:#c00; --ok:#080; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#111; --fg:#eee; --line:#444; --ng:#f66; --ok:#6c6; } }
+  body { margin:0; padding:12px 16px; background:var(--bg); color:var(--fg); font:14px/1.5 sans-serif; }
+  h1 { font-size:16px; margin:0 0 4px; }
+  h2 { font-size:14px; margin:16px 0 4px; }
+  #status { font-weight:bold; margin-bottom:8px; }
+  .ok { color:var(--ok); } .ng { color:var(--ng); }
+  .sys { font-family: sans-serif; }
+  .thai { font-family: "Noto Sans Thai", "Noto Sans", sans-serif; }
+  .row { display:flex; gap:12px; align-items:baseline; border-bottom:1px solid var(--line); padding:4px 0; }
+  .row .k { flex:0 0 9em; font-size:11px; opacity:.7; word-break:break-all; }
+  .row .v { font-size:34px; line-height:1.7; }
+  table { border-collapse:collapse; }
+  th, td { border-bottom:1px solid var(--line); padding:2px 10px 2px 0; text-align:left; white-space:nowrap; }
+  th { font-size:11px; font-weight:normal; opacity:.7; }
+  td.kn { font-size:14px; font-family:sans-serif; }
+  td.g { font-size:30px; line-height:1.7; }
+  pre { font-size:11px; white-space:pre-wrap; word-break:break-all; }
+</style>
+</head>
+<body>
+<h1>Glyph Check: ja-thai</h1>
+<p style="font-size:12px;opacity:.75">
+  日本語の音をタイ文字で書く表記(docs/ja-thai-spec.md、ADR-0028)の描画確認。合否は目視。自動判定は tofu(欠字)と、結合記号が基底の幅を変えないか(Thai の上下の母音記号が別フォントで欠けたり幅を持ったりしないか)の補助のみ。
+  表と語は packages/ja-thai と courses/th-ja から scripts/gen-ja-thai-rows.mjs で生成(ja-thai-rows.js)。
+</p>
+<div id="status">running…</div>
+
+<div id="sys-wrap"><h2>sys (font-family: sans-serif、同梱フォントなし。th-ja の本番と同じ)</h2><div id="sys" class="sys"></div></div>
+<div id="thai-wrap"><h2>thai (Noto Sans Thai 同梱・比較用)</h2><div id="thai" class="thai"></div></div>
+<h2>report</h2>
+<pre id="report"></pre>
+
+<script src="ja-thai-rows.js"></script>
+<script>
+const params = new URLSearchParams(location.search);
+const platform = params.get("platform") || "unknown";
+
+// ---- new / unverified first (a device screenshot only captures the first viewport) ----
+// [label, text, note]
+const PROBES = [
+  ["上の記号を2つ積む・上の母音+下", "เซ็ง กัก สึ ตสึ มิตสึ", "母音記号が子音字の真上に乗り、隣の字と重ならない。สึ の ึ が ส の上"],
+  ["前置母音 เ โ ไ +子音字", "เอ โอ ไฮกู ไดซู เคเอ โคโอ", "前置母音が子音字の左に来て、後ろの字と離れない(ไ ใ の縦棒が欠けない)"],
+  ["拗音の เ-ีย / -ิว / เ-ียว", "เฮียกู เรียวโกโอ คิวอู เกียว", "เ ... ีย ... ว の3部品が1つの塊に見える。ีย の ี が子音字の上"],
+  ["下の記号 ุ ู と ตสึ", "ซูมีมาเซ็ง กูดาไซ มิตสึ", "ู ุ が子音字の下に付き、下の行に食い込まない(行間はページの 1.7)"],
+  ["長音の重ね (สระซ้ำ)", "โอกาอาซัง อารีงาโตโอ โทโอเกียวโอ", "อา อี อู เอ โอ が独立した音節として並ぶ。前の字との間隔が不自然に開かない"],
+  ["語頭・語中の有気/無気字", "คา กา ทา ตา พา ปา ชี จี", "似た字(ค/ก、ท/ต、พ/ป、ช/จ)が小さい画面でも見分けられる"],
+  ["ん・っ の末子音", "นิปปง กักโก ซัชชี ฮนโต ชิมบุง", "ง น ม の見分け。ตัวสะกด の位置"],
+  ["スペース区切りの語(フレーズ)", "โคเรวา อีกูรา เดซูกา", "空白が語の区切りとして見える(タイ語の通常の文には空白がない)"],
+];
+
+const FAMILIES = { sys: "sans-serif", thai: '"Noto Sans Thai","Noto Sans",sans-serif' };
+const ROWS = JA_THAI_ROWS, WORDS = JA_THAI_WORDS;
+const MARKS = ["ั", "ิ", "ี", "ึ", "ื", "ุ", "ู", "็"]; // ั ิ ี ึ ื ุ ู ็
+const LEAD = ["เ", "โ", "ไ"];
+
+function probeRow(target, label, text, note) {
+  const d = document.createElement("div"); d.className = "row";
+  d.innerHTML = '<span class="k"></span><span class="v"></span><span class="k"></span>';
+  d.children[0].textContent = label; d.children[1].textContent = text; d.children[2].textContent = note || "";
+  document.getElementById(target).appendChild(d);
+}
+function table(target) {
+  const t = document.createElement("table");
+  t.innerHTML = "<tr><th>かな</th><th>語頭</th><th>語中</th><th>長音 (〜ー)</th></tr>";
+  for (const r of ROWS) {
+    const tr = document.createElement("tr");
+    for (const c of [[r.kana, "kn"], [r.initial, "g"], [r.medial, "g"], [r.long, "g"]]) { const td = document.createElement("td"); td.className = c[1]; td.textContent = c[0]; tr.appendChild(td); }
+    t.appendChild(tr);
+  }
+  document.getElementById(target).appendChild(t);
+}
+function wordTable(target) {
+  const t = document.createElement("table");
+  t.innerHTML = "<tr><th>pron (th-ja の実データ)</th><th>タイ文字</th></tr>";
+  for (const w of WORDS) {
+    const tr = document.createElement("tr");
+    for (const c of [[w.pron, "kn"], [w.thai, "g"]]) { const td = document.createElement("td"); td.className = c[1]; td.textContent = c[0]; tr.appendChild(td); }
+    t.appendChild(tr);
+  }
+  document.getElementById(target).appendChild(t);
+}
+
+const modeParam = params.get("mode");
+const MODES = modeParam ? [modeParam] : ["sys", "thai"];
+for (const m of ["sys", "thai"]) {
+  if (!MODES.includes(m)) { document.getElementById(m + "-wrap").remove(); continue; }
+  for (const p of PROBES) probeRow(m, p[0], p[1], p[2]);
+  table(m);
+  wordTable(m);
+}
+
+// ---- self check (tofu detection + combining-mark width; judgement is by eye) ----
+const cv = document.createElement("canvas"); cv.width = 400; cv.height = 90;
+const ctx = cv.getContext("2d", { willReadFrequently: true });
+const SIZE = 48;
+function pixels(text, family) {
+  ctx.clearRect(0, 0, cv.width, cv.height);
+  ctx.font = SIZE + "px " + family; ctx.textBaseline = "alphabetic";
+  ctx.fillStyle = "#000"; ctx.fillText(text, 8, 60);
+  return ctx.getImageData(0, 0, cv.width, cv.height).data;
+}
+function same(a, b) { for (let i = 3; i < a.length; i += 4) if (a[i] !== b[i]) return false; return true; }
+function width(text, family) { ctx.font = SIZE + "px " + family; return ctx.measureText(text).width / SIZE; }
+const cp = s => [...s].map(c => c.codePointAt(0).toString(16).toUpperCase().padStart(4, "0")).join(" ");
+
+// every Thai code point that the generated text actually uses
+const USED = new Set();
+for (const r of ROWS) for (const s of [r.initial, r.medial, r.long]) for (const c of s) if (c >= "฀" && c <= "๿") USED.add(c);
+for (const w of WORDS) for (const c of w.thai) if (c >= "฀" && c <= "๿") USED.add(c);
+for (const p of PROBES) for (const c of p[1]) if (c >= "฀" && c <= "๿") USED.add(c);
+
+function check(mode) {
+  const f = FAMILIES[mode], res = [];
+  const missing = pixels("\u{10FFFE}", f);
+  const base = pixels("ก", f), baseW = width("ก", f);
+  for (const c of [...USED].sort()) {
+    if (MARKS.includes(c)) {
+      // a combining mark must be drawn (differs from the bare base) and must not widen it (else a fallback font drew it as a spacing glyph or tofu)
+      const p = pixels("ก" + c, f), w = width("ก" + c, f);
+      res.push({ mode, item: "mark " + c + " draws", cp: cp(c), ok: !same(p, base) });
+      res.push({ mode, item: "mark " + c + " width == base", cp: cp(c), ok: Math.abs(w - baseW) < 0.02, widths: { base: baseW, withMark: w } });
+    } else {
+      res.push({ mode, item: "glyph " + c, cp: cp(c), ok: !same(pixels(c, f), missing) });
+    }
+  }
+  // lead vowels are drawn to the left of the consonant: เก must be wider than ก
+  for (const v of LEAD) {
+    const w = width(v + "ก", f);
+    res.push({ mode, item: "lead " + v + " + ก wider than ก", ok: w > baseW + 0.05, widths: { base: baseW, withLead: w } });
+  }
+  return res;
+}
+
+(async () => {
+  try {
+    await Promise.all([
+      document.fonts.load('400 48px "Noto Sans Thai"', "กัิีึืุูเโไ็"),
+      document.fonts.load('400 48px "Noto Sans"', "abc"),
+    ]);
+    await document.fonts.ready;
+    const results = MODES.flatMap(check);
+    const failed = results.filter(r => !r.ok);
+    const report = {
+      platform, ua: navigator.userAgent, dpr: devicePixelRatio,
+      fontsLoaded: [...document.fonts].filter(x => x.status === "loaded").map(x => x.family),
+      failed: failed.length, results,
+    };
+    const st = document.getElementById("status");
+    st.textContent = failed.length ? "FAILED " + failed.length + "/" + results.length : "ALL OK " + results.length;
+    st.className = failed.length ? "ng" : "ok";
+    document.getElementById("report").textContent = JSON.stringify(report.results.filter(r => !r.ok), null, 1) || "";
+    await fetch("/report?platform=" + encodeURIComponent(platform), {
+      method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(report),
+    });
+    document.title = "DONE";
+  } catch (e) {
+    document.getElementById("status").textContent = "ERROR " + e;
+    await fetch("/report?platform=" + encodeURIComponent(platform), {
+      method: "POST", body: JSON.stringify({ platform, error: String(e) }),
+    }).catch(function () {});
+  }
+})();
+</script>
+</body>
+</html>
