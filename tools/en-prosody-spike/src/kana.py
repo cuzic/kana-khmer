@@ -26,11 +26,11 @@ ROWS = {k: list(v) for k, v in ROWS.items()}
 
 # 音素 → (行, 子音の右肩, 母音の前以外での小書き形)
 CONS = {
-    "P": ("p", "", "ㇷ゚"), "B": ("b", "", "ㇷ゚ᵇ"), "T": ("t", "", "ㇳ"), "D": ("d", "", "ㇳᵈ"),
-    "K": ("k", "", "ㇰ"), "G": ("g", "", "ㇰᵍ"),
-    "F": ("f", "", "ㇷ"), "V": ("v", "", "ㇷᵛ"),
-    "S": ("s", "", "ㇲ"), "Z": ("z", "", "ㇲᶻ"),
-    "SH": ("sh", "", "ㇱ"), "ZH": ("j", "ᶾ", "ㇱᶾ"),
+    "P": ("p", "", "ㇷ゚"), "B": ("b", "", "ㇷ゚\u3099"), "T": ("t", "", "ㇳ"), "D": ("d", "", "ㇳ\u3099"),
+    "K": ("k", "", "ㇰ"), "G": ("g", "", "ㇰ\u3099"),
+    "F": ("f", "", "ㇷ"), "V": ("v", "", "ㇷ\u3099"),
+    "S": ("s", "", "ㇲ"), "Z": ("z", "", "ㇲ\u3099"),
+    "SH": ("sh", "", "ㇱ"), "ZH": ("j", "ᶾ", "ㇱ\u3099"),
     "CH": ("ch", "", "チ"), "TS": ("ts", "", "ツ"), "DZ": ("dz", "", "ヅ"), "JH": ("dj", "", "ヂ"),
     "TH": ("th", "ᶿ", "ㇲᶿ"), "DH": ("dh", "ᶞ", "ㇲᶞ"),
     "M": ("m", "", "ㇺ"), "N": ("n", "", "ン"), "NG": ("n", "ᵑ", "ンᵑ"),
@@ -81,8 +81,6 @@ def _nucleus(base: str, stress: int | None, onset: tuple[str, str, str] | None, 
                 return ROWS[onset[0]][0] + onset[1] + "ʳ"
             if nxt == "N":  # 音節を成す n(nation → ネイシン、education の末尾): i 段 + ᵊ で シᵊン チᵊン ヂᵊン
                 return ROWS[onset[0]][1] + onset[1] + "ᵊ"
-            if onset[0] == "dj" and nxt is not None:  # 語末でない jh + 弱母音は慣用の デュ(education → エデュケイシン)
-                return "デュ"
             return ROWS[onset[0]][0] + onset[1]  # 語末など(Asia → エイジャ)
         return (onset[2] if onset else "ァ") + mark
     row, vmod, tail = VOW[base]

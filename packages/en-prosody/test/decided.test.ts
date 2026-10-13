@@ -41,8 +41,8 @@ describe("ユーザーの指示(ユーザーが言った範囲だけ)", () => {
   it("θ + i は シ(シᶿ。スィ ではない)", () => {
     expect(kana("think")[0]!.startsWith("シᶿ")).toBe(true);
   });
-  it("in education → ネデュケイシᵊン(in の n が移り、語末は シᵊン。有気音の ʰ は別の指示なので除いて比べる)", () => {
-    expect(kana("in education")[1]!.replace("ʰ", "")).toBe("ネデュケイシᵊン");
+  it("in education → ネヂャケイシᵊン(in の n が移り、語末は シᵊン。有気音の ʰ は別の指示なので除いて比べる。ADR-0034 で デュ をやめた)", () => {
+    expect(kana("in education")[1]!.replace("ʰ", "")).toBe("ネヂャケイシᵊン");
   });
   it("bird と bard は書き分ける(ɝ は ᶟʳ)", () => {
     expect(kana("bird")).not.toEqual(kana("bard"));
@@ -80,9 +80,9 @@ describe("現状の表記(エージェントの判断。未決を含む)", () =>
     ["strange", "ㇲㇳレʳインヂ"],
     ["kids", "キʰᶦヅ"],
     ["it's", "イᶦツ"],
-    ["education", "エデュケʰイシᵊン"],
-    ["bird", "バᶟʳㇳᵈ"],
-    ["bard", "バʳㇳᵈ"],
+    ["education", "エヂャケʰイシᵊン"],
+    ["bird", "バᶟʳㇳ゙"],
+    ["bard", "バʳㇳ゙"],
   ];
   for (const [word, want] of single) {
     it(`${word} → ${want}`, () => expect(kana(word)).toEqual([want]));

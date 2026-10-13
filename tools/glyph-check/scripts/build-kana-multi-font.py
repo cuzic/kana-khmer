@@ -53,6 +53,14 @@ ANCHOR_X = 500
 HANDAKUTEN_GAP, HANDAKUTEN_SCALE = 40, 0.8
 SMALL = list(range(0x31F0, 0x3200))
 MARK_H = 0x309A
+# Silent mouth shapes (ADR-0035): the mouth shape of an l / r that is not voiced, drawn as a kana struck through by
+# two diagonal lines. Two encodings of the same glyph: one private-use code point each (PUA, robust in subtitle
+# renderers), or the kana + U+0338 (COMBINING LONG SOLIDUS OVERLAY), which ligates to the glyph and degrades to a
+# slashed kana without the font.
+MOUTH_SHAPES = [(0x30CA, 0xE100), (0x30CB, 0xE101), (0x30CC, 0xE102), (0x30CD, 0xE103), (0x30CE, 0xE104),   # ナニヌネノ
+                (0x31F4, 0xE105), (0x30A6, 0xE106)]                                                          # ㇴ(small), ウ
+SLASH_CP = 0x0338
+MARK_D = 0x3099      # combining voiced sound mark: small ㇷ + this ligates to a small ヴ (a final v)
 OUT_DEFAULT = "public/kana-font/kana-multi.woff2"
 
 # code point -> Latin letter it is drawn from
@@ -238,7 +246,7 @@ def main(jp_path, latin_path, out, keep_names=False):
 
     o = subset.Options(); o.layout_features = []; o.notdef_outline = True; o.name_IDs = ["*"]
     f = subset.load_font(f"{tmp}/jp400.ttf", o); s = subset.Subsetter(o)
-    s.populate(unicodes=[*range(0x30A0, 0x3100), *SMALL, MARK_H]); s.subset(f)
+    s.populate(unicodes=[*range(0x30A0, 0x3100), *SMALL, MARK_H, MARK_D]); s.subset(f)
     f.save(f"{tmp}/base.ttf")
     t = TTFont(f"{tmp}/base.ttf")
     for tag in ("GSUB", "GPOS", "GDEF", "BASE", "vmtx", "vhea", "STAT"):   # OTS rejects vmtx lacking new glyphs
@@ -273,6 +281,58 @@ def main(jp_path, latin_path, out, keep_names=False):
     r2.replay(TransformPen(pen, (hs, 0, 0, hs, 1000 + mx1 - mx1 * hs, small_top[0x31F7] + HANDAKUTEN_GAP - my0 * hs)))
     put("uni31F7_309A", pen.glyph(), 1000)
     fu_name, h_name = cmap0[0x31F7], cmap0[MARK_H]
+    # Voiced small final consonants (ADR-0033): voiceless small kana + U+3099 ligates to the small form of the real
+    # voiced kana, so a final v/b/d/g/z/ʒ reads ヴ ブ ド グ ズ ジ, not フ プ ト ク ス シ. ヴ is drawn from the small ゥ
+    # (the real ヴ is ウ + ゛), and ブ from the small ㇷ, so v and b stay apart; the text still says "voiceless + voicing".
+    d_name = cmap0[MARK_D]
+    bp = BoundsPen(gs); gs[d_name].draw(bp); dx0, dy0, dx1, dy1 = bp.bounds
+    fgs2 = t.getGlyphSet()   # fresh: every small kana was redrawn above
+
+    def with_dakuten(base_name, name, top):
+        pen = TTGlyphPen(None)
+        r1 = DecomposingRecordingPen(fgs2); fgs2[base_name].draw(r1); r1.replay(pen)
+        r2 = DecomposingRecordingPen(gs); gs[d_name].draw(r2)
+        r2.replay(TransformPen(pen, (hs, 0, 0, hs, 1000 + dx1 - dx1 * hs, top + HANDAKUTEN_GAP - dy0 * hs)))
+        put(name, pen.glyph(), 1000)
+
+    for cp, name in ((0x31F0, "sm_gu"), (0x31F1, "sm_ji"), (0x31F2, "sm_zu"), (0x31F3, "sm_du"), (0x31F7, "sm_bu")):
+        with_dakuten(cmap0[cp], name, small_top[cp])
+    # ヴ: small ゥ, scaled to the same size and set on the baseline like the other small kana
+    vu_base = scaled(gs, cmap0[0x30A5], SMALL_SCALE)
+    put("sm_vu_base", vu_base, 1000)
+    fgs2 = t.getGlyphSet()
+    with_dakuten("sm_vu_base", "sm_vu", vu_base.yMax)
+
+    # Silent mouth shapes: the base kana plus two parallel diagonal strokes, as ONE glyph, reached by a PUA code point
+    # or by kana + U+0338. Both strokes wind the same way as the base's outer contours, so the nonzero fill unions them.
+    fgs3 = t.getGlyphSet()   # fresh: the small kana were redrawn above
+    mouth_names = []
+
+    def stroke(pen, xa, ya, xb, yb, w):
+        pts = [(xa, ya), (xb, yb), (xb + w, yb), (xa + w, ya)]
+        area = sum(pts[i][0] * pts[(i + 1) % 4][1] - pts[(i + 1) % 4][0] * pts[i][1] for i in range(4))
+        if area > 0: pts.reverse()    # y-up, TrueType outer contours run clockwise (negative area)
+        pen.moveTo(pts[0])
+        for q in pts[1:]: pen.lineTo(q)
+        pen.closePath()
+
+    for base_cp, pua_cp in MOUTH_SHAPES:
+        base = cmap0[base_cp]
+        bp2 = BoundsPen(fgs3); fgs3[base].draw(bp2); bx0, by0, bx1, by1 = bp2.bounds
+        pen = TTGlyphPen(None)
+        r = DecomposingRecordingPen(fgs3); fgs3[base].draw(r); r.replay(pen)
+        gap, w = (bx1 - bx0) * 0.20, 62
+        cx = (bx0 + bx1) / 2
+        for k in (-1, 1):
+            off = k * gap / 2
+            stroke(pen, bx0 - 50 + off, by0 - 40, bx1 + 50 + off - w, by1 + 40, w)
+        name = f"mouth_{base_cp:04X}"
+        put(name, pen.glyph(), 1000, pua_cp)
+        mouth_names.append((base, name))
+    # U+0338 as a real mark: one diagonal over the preceding kana (what the text shows where the ligature does not fire)
+    pen = TTGlyphPen(None)
+    stroke(pen, -950, -40, -100 - 62, 860, 62)
+    put("mark_slash", pen.glyph(), 0, SLASH_CP)
 
     def sup(letter):
         name = lcmap[ord(letter)]
@@ -338,6 +398,7 @@ def main(jp_path, latin_path, out, keep_names=False):
     #           class order keeps the hint rule count small: a multiset, not every ordering)
     F = [cmap0[cp] for cp in [*range(0x30A1, 0x30FB), 0x30FC, *SMALL] if cp in cmap0 and hmtx.metrics[cmap0[cp]][0] == 1000]
     F.append("uni31F7_309A")                          # ㇷ゚ ligature result: full-width once ligated
+    F.extend(["sm_gu", "sm_ji", "sm_zu", "sm_du", "sm_bu", "sm_vu", *[n for _, n in mouth_names]])   # voiced small kana ligature results
     S = {k: [name for name, c in sclass.items() if c == k] for k in (1, 2, 3)}
     put("sylB", TTGlyphPen(None).glyph(), 0, SYLLABLE_MARKER_CP)
     put("hintA", TTGlyphPen(None).glyph(), 0, HINT_A_CP)
@@ -401,7 +462,7 @@ def main(jp_path, latin_path, out, keep_names=False):
         elif rec.nameID in (4, 6): rec.string = "Kana Multi" if rec.nameID == 4 else "KanaMulti-Regular"
 
     hint_glyphs = ["sylB", "hintA", "hintS1", "hintS2", "hintS3"]
-    marks = " ".join([h_name, "uni0335", "uni0323", "uni0330", *hint_glyphs, *shape_glyph.values(), *stretch_names])
+    marks = " ".join([h_name, d_name, "mark_slash", "uni0335", "uni0323", "uni0330", *hint_glyphs, *shape_glyph.values(), *stretch_names])
     # UseMarkFilteringSet, not IgnoreMarks: sylB/hintA/hintS*/the tone glyphs (both the unwidened @T members and
     # their widened tone_*_w<W> variants) are themselves GDEF Mark (zero advance), and the marker-path rules need
     # to see them, not skip them -- in particular, a PRECEDING syllable's already-substituted tone_*_w<W> glyph
@@ -426,7 +487,14 @@ table GDEF {{ GlyphClassDef , , [{marks}], ; }} GDEF;
 @CTX = [{ctx}];
 feature ccmp {{
   sub sup_2B0 uni0335 by sup_hbar;
+  sub {fu_name} {h_name} {d_name} by sm_bu;
   sub {fu_name} {h_name} by uni31F7_309A;
+  sub {cmap0[0x31F0]} {d_name} by sm_gu;
+  sub {cmap0[0x31F1]} {d_name} by sm_ji;
+  sub {cmap0[0x31F2]} {d_name} by sm_zu;
+  sub {cmap0[0x31F3]} {d_name} by sm_du;
+  sub {fu_name} {d_name} by sm_vu;
+{chr(10).join(f'  sub {b} mark_slash by {n};' for b, n in mouth_names)}
 {chr(10).join(tone_ligs)}
 }} ccmp;
 {chr(10).join(stretch_lookups)}

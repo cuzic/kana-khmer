@@ -19,11 +19,11 @@ const ROWS: Record<string, string[]> = {
 // 音素 → [行, 子音の右肩, 母音の前以外での小書き形]
 type Cons = readonly [string, string, string];
 const CONS: Record<string, Cons> = {
-  P: ["p", "", "ㇷ゚"], B: ["b", "", "ㇷ゚ᵇ"], T: ["t", "", "ㇳ"], D: ["d", "", "ㇳᵈ"],
-  K: ["k", "", "ㇰ"], G: ["g", "", "ㇰᵍ"],
-  F: ["f", "", "ㇷ"], V: ["v", "", "ㇷᵛ"],
-  S: ["s", "", "ㇲ"], Z: ["z", "", "ㇲᶻ"],
-  SH: ["sh", "", "ㇱ"], ZH: ["j", "ᶾ", "ㇱᶾ"],
+  P: ["p", "", "ㇷ゚"], B: ["b", "", "ㇷ゚\u3099"], T: ["t", "", "ㇳ"], D: ["d", "", "ㇳ\u3099"],
+  K: ["k", "", "ㇰ"], G: ["g", "", "ㇰ\u3099"],
+  F: ["f", "", "ㇷ"], V: ["v", "", "ㇷ\u3099"],
+  S: ["s", "", "ㇲ"], Z: ["z", "", "ㇲ\u3099"],
+  SH: ["sh", "", "ㇱ"], ZH: ["j", "ᶾ", "ㇱ\u3099"],
   CH: ["ch", "", "チ"], TS: ["ts", "", "ツ"], DZ: ["dz", "", "ヅ"], JH: ["dj", "", "ヂ"],
   TH: ["th", "ᶿ", "ㇲᶿ"], DH: ["dh", "ᶞ", "ㇲᶞ"],
   M: ["m", "", "ㇺ"], N: ["n", "", "ン"], NG: ["n", "ᵑ", "ンᵑ"],
@@ -77,7 +77,6 @@ function nucleus(base: string, stress: number | null, onset: Cons | null, flap: 
     if (onset && pal.includes(onset[0])) {
       if (rColor) return rowOf(onset[0])[0]! + onset[1] + "ʳ";
       if (nxt === "N") return rowOf(onset[0])[1]! + onset[1] + "ᵊ";
-      if (onset[0] === "dj" && nxt !== null) return "デュ";
       return rowOf(onset[0])[0]! + onset[1];
     }
     return (onset ? onset[2] : "ァ") + mark;
