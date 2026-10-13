@@ -77,6 +77,7 @@ function nucleus(base: string, stress: number | null, onset: Cons | null, flap: 
     if (onset && pal.includes(onset[0])) {
       if (rColor) return rowOf(onset[0])[0]! + onset[1] + "ʳ";
       if (nxt === "N") return rowOf(onset[0])[1]! + onset[1] + "ᵊ";
+      if (onset[0] === "dj" && nxt !== null) return rowOf("dj")[1]! + onset[1] + "ᵊ"; // 語末でない dʒ + 弱い母音は ヂᵊ(ADR-0034。デュ・ヂャ にしない)
       return rowOf(onset[0])[0]! + onset[1];
     }
     return (onset ? onset[2] : "ァ") + mark;

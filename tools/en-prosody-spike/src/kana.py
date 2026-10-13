@@ -81,6 +81,8 @@ def _nucleus(base: str, stress: int | None, onset: tuple[str, str, str] | None, 
                 return ROWS[onset[0]][0] + onset[1] + "ʳ"
             if nxt == "N":  # 音節を成す n(nation → ネイシン、education の末尾): i 段 + ᵊ で シᵊン チᵊン ヂᵊン
                 return ROWS[onset[0]][1] + onset[1] + "ᵊ"
+            if onset[0] == "dj" and nxt is not None:  # 語末でない dʒ + 弱い母音は ヂᵊ(ADR-0034。デュ・ヂャ にしない)
+                return ROWS["dj"][1] + onset[1] + "ᵊ"
             return ROWS[onset[0]][0] + onset[1]  # 語末など(Asia → エイジャ)
         return (onset[2] if onset else "ァ") + mark
     row, vmod, tail = VOW[base]

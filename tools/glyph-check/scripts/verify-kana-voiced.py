@@ -8,7 +8,8 @@ verify-kana-multi.py rebuilds the font to check the tone machinery; it knows not
 the shipped file as is (woff2 -> ttf in a temp dir, because HarfBuzz does not read woff2) and checks with uharfbuzz:
   - each voiceless small kana + U+3099 ligates to ONE full-width glyph (ㇰ ㇱ ㇲ ㇳ ㇷ = グ ジ ズ ド ブ, ゥ = ヴ),
     and b (ㇷ + U+3099) and v (ゥ + U+3099) and p (ㇷ + U+309A) are three different glyphs;
-  - each PUA mouth shape (U+E100..E106) and its kana + U+0338 form shape to the same single glyph;
+  - each PUA mouth shape (U+E100..E106) and its kana + U+0338 form shape to the same single narrow glyph (a small
+    struck kana at the left shoulder of the next kana, advance 300-700);
   - a kana with no mouth ligature + U+0338 degrades to the kana plus a zero-advance slash mark (2 glyphs).
 Shape and look still need an eye (docs/adr/0004): this only checks the wiring.
 
@@ -49,7 +50,7 @@ def main(path):
     check(len(set(ids)) == len(ids), f"voiced glyphs must be distinct from each other and from ㇷ゚ (b/v/p): {seen} {p}")
     for kana, pua in MOUTH:
         a, b = shape(pua), shape(kana + SL)
-        check(len(a) == 1 and a[0][1] == 1000 and a[0][0] != 0, f"PUA {ord(pua):04X} should be one glyph, got {a}")
+        check(len(a) == 1 and 300 <= a[0][1] <= 700 and a[0][0] != 0, f"PUA {ord(pua):04X} should be one narrow (left-shoulder) glyph, got {a}")
         check(a == b, f"PUA {ord(pua):04X} and {kana}+U+0338 should shape alike: {a} vs {b}")
         plain = shape(kana)
         check(a != plain, f"mouth shape for {kana} must differ from the plain kana")
