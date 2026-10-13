@@ -18,7 +18,7 @@ PROFILE = {
     # prominence 0..3 → 基準サイズに対する倍率
     "size": {0: 0.72, 1: 0.86, 2: 1.0, 3: 1.22},
     "bold_from": 2,
-    # 無音の口形(斜線で消したナ行・ウ)は、淡く小さく(\alpha は 16 進の透明度。78 ≒ 47%)。ADR-0035
+    # 無音の口形(斜線で消したナ行・ウ)は、淡く小さく(\1a は本文だけの透明度で、縁・影の \3a \4a には触れない。16 進で 78 ≒ 47%)。ADR-0035
     "mouth_alpha": "78", "mouth_scale": 0.72,
     "colors": {"text": "FFFFFF", "weak": "A9AEB8", "nucleus": "FF6B5B", "kana": "8CC4FF", "brk": "9AA0A6", "note": "9AA0A6", "beat": "8CC4FF"},
 }
@@ -49,7 +49,7 @@ _MOUTH_RE = re.compile("[\ue100-\ue106]|[ナニヌネノウㇴ]\u0338")
 def _style_mouth(txt: str, fs: int, p: dict) -> str:
     """斜線で消した口形のカナを、淡く小さくする。"""
     ms = round(fs * p["mouth_scale"])
-    return _MOUTH_RE.sub(lambda m: f"{{\\alpha&H{p['mouth_alpha']}&\\fs{ms}}}{m.group(0)}{{\\alpha&H00&\\fs{fs}}}", txt)
+    return _MOUTH_RE.sub(lambda m: f"{{\\1a&H{p['mouth_alpha']}&\\fs{ms}}}{m.group(0)}{{\\1a&H00&\\fs{fs}}}", txt)
 
 
 def _line(words: list[dict], kana: bool, p: dict, L: Layers, mouth: str = "off", fn: bool = False) -> str:
@@ -98,6 +98,9 @@ def to_ass(ir: dict, profile: dict | None = None, layers: Layers | None = None, 
             fonts = fonts_section()
         except FileNotFoundError as e:
             print(f"warning: フォントを埋め込めません({e})", file=sys.stderr)
+            if mouth == "pua":   # PUA はフォントがないと豆腐になる。合字なら、斜線つきのカナに縮退する
+                print("warning: --mouth pua を lig に切り替えます", file=sys.stderr)
+                mouth = "lig"
     w, h = p["play_res"]
     hdr = ("[Script Info]\nScriptType: v4.00+\nWrapStyle: 0\nScaledBorderAndShadow: yes\n"
            f"PlayResX: {w}\nPlayResY: {h}\n\n[V4+ Styles]\n"

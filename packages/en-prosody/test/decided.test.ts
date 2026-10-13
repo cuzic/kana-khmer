@@ -81,12 +81,19 @@ describe("現状の表記(エージェントの判断。未決を含む)", () =>
     ["kids", "キʰᶦヅ"],
     ["it's", "イᶦツ"],
     ["education", "エヂャケʰイシᵊン"],
+    ["love", "ラˡᶺゥ゙"], // ユーザー指示: ラフ ではなく ラヴ(語末の v は小書きの ゥ + 濁点 = ヴ。b の ㇷ + 濁点 = ブ と書き分ける)
     ["bird", "バᶟʳㇳ゙"],
     ["bard", "バʳㇳ゙"],
   ];
   for (const [word, want] of single) {
     it(`${word} → ${want}`, () => expect(kana(word)).toEqual([want]));
   }
+  it("語末の b と v は書き分ける(b = ㇷ + 濁点 = ブ、v = ゥ + 濁点 = ヴ)。フォントがなくても、どちらも意図した音に読める", () => {
+    expect(kana("job")[0]!.endsWith("ㇷ゙")).toBe(true);
+    expect(kana("love")[0]!.endsWith("ゥ゙")).toBe(true);
+    expect(kana("love")[0]).not.toEqual(kana("luff")[0]); // love と luff は同じにならない
+    expect(kana("luff")[0]!.endsWith("ㇷ")).toBe(true);
+  });
   it("what I → ワᶺ ラᵗイ", () => {
     expect(kana("what I")).toEqual(["ワᶺ", "ラᵗイ"]);
   });

@@ -282,8 +282,10 @@ def main(jp_path, latin_path, out, keep_names=False):
     put("uni31F7_309A", pen.glyph(), 1000)
     fu_name, h_name = cmap0[0x31F7], cmap0[MARK_H]
     # Voiced small final consonants (ADR-0033): voiceless small kana + U+3099 ligates to the small form of the real
-    # voiced kana, so a final v/b/d/g/z/ʒ reads ヴ ブ ド グ ズ ジ, not フ プ ト ク ス シ. ヴ is drawn from the small ゥ
-    # (the real ヴ is ウ + ゛), and ブ from the small ㇷ, so v and b stay apart; the text still says "voiceless + voicing".
+    # voiced kana, so a final b/d/g/z/ʒ/v reads ブ ド グ ズ ジ ヴ, not プ ト ク ス シ フ. The text is "base + voicing",
+    # and WITHOUT the font each pair still reads as the intended kana: ㇷ+゙ = ブ (b), ゥ+゙ = ヴ (v; small ゥ is a
+    # base that NFC/NFKC leave alone, unlike ウ+゙ which composes to ヴ). ブ is drawn from the small ㇷ, ヴ from the
+    # small ゥ, so b and v stay apart. (An earlier encoding wrote v as ㇷ+゙, which a reader sees as ブ.)
     d_name = cmap0[MARK_D]
     bp = BoundsPen(gs); gs[d_name].draw(bp); dx0, dy0, dx1, dy1 = bp.bounds
     fgs2 = t.getGlyphSet()   # fresh: every small kana was redrawn above
@@ -297,12 +299,12 @@ def main(jp_path, latin_path, out, keep_names=False):
 
     for cp, name in ((0x31F0, "sm_gu"), (0x31F1, "sm_ji"), (0x31F2, "sm_zu"), (0x31F3, "sm_du"), (0x31F7, "sm_bu")):
         with_dakuten(cmap0[cp], name, small_top[cp])
-    # ヴ: small ゥ, scaled to the same size and set on the baseline like the other small kana
+    # ヴ: small ゥ (U+30A5), scaled to the same size as the other small kana
     vu_base = scaled(gs, cmap0[0x30A5], SMALL_SCALE)
     put("sm_vu_base", vu_base, 1000)
     fgs2 = t.getGlyphSet()
     with_dakuten("sm_vu_base", "sm_vu", vu_base.yMax)
-
+    vu_in = cmap0[0x30A5]   # the small ゥ the ligature starts from
     # Silent mouth shapes: the base kana plus two parallel diagonal strokes, as ONE glyph, reached by a PUA code point
     # or by kana + U+0338. Both strokes wind the same way as the base's outer contours, so the nonzero fill unions them.
     fgs3 = t.getGlyphSet()   # fresh: the small kana were redrawn above
@@ -322,7 +324,6 @@ def main(jp_path, latin_path, out, keep_names=False):
         pen = TTGlyphPen(None)
         r = DecomposingRecordingPen(fgs3); fgs3[base].draw(r); r.replay(pen)
         gap, w = (bx1 - bx0) * 0.20, 62
-        cx = (bx0 + bx1) / 2
         for k in (-1, 1):
             off = k * gap / 2
             stroke(pen, bx0 - 50 + off, by0 - 40, bx1 + 50 + off - w, by1 + 40, w)
@@ -487,13 +488,13 @@ table GDEF {{ GlyphClassDef , , [{marks}], ; }} GDEF;
 @CTX = [{ctx}];
 feature ccmp {{
   sub sup_2B0 uni0335 by sup_hbar;
-  sub {fu_name} {h_name} {d_name} by sm_bu;
   sub {fu_name} {h_name} by uni31F7_309A;
   sub {cmap0[0x31F0]} {d_name} by sm_gu;
   sub {cmap0[0x31F1]} {d_name} by sm_ji;
   sub {cmap0[0x31F2]} {d_name} by sm_zu;
   sub {cmap0[0x31F3]} {d_name} by sm_du;
-  sub {fu_name} {d_name} by sm_vu;
+  sub {fu_name} {d_name} by sm_bu;
+  sub {vu_in} {d_name} by sm_vu;
 {chr(10).join(f'  sub {b} mark_slash by {n};' for b, n in mouth_names)}
 {chr(10).join(tone_ligs)}
 }} ccmp;

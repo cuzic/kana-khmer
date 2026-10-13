@@ -46,6 +46,8 @@ def cmd_convert(a) -> None:
     L = Layers.parse(a.layers)
     if a.lite:
         L = replace(L, ipa=False)
+    if a.mouth and a.to != "ass":
+        print(f"warning: --mouth は --to ass のときだけ効きます(--to {a.to} では無視)", file=sys.stderr)
     if a.to == "ass":
         s = to_ass(ir, layers=L, mouth=a.mouth, embed_font=a.embed_font)
     elif a.to == "srt":

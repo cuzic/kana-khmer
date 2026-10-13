@@ -27,7 +27,8 @@ describe("parity with Python (rule-based analysis)", () => {
 describe("layers / lite", () => {
   it("lite strips modifier letters only", () => {
     expect(lite("ネヴァʳ")).toBe("ネヴァ");
-    expect(lite("ㇷ゚ᵇ")).toBe("ㇷ゚");
+    expect(lite("ㇷ゙")).toBe("ㇷ゙"); // 濁点は右肩の字ではないので、ライトでも残る(ADR-0033)
+    expect(lite("ㇳᵈ")).toBe("ㇳ"); // 弾き音などの右肩の ᵈ は従来どおり消える
   });
   it("parseLayers", () => {
     expect(Object.entries(parseLayers("詳細,-ipa")).filter(([, v]) => !v).map(([k]) => k)).toEqual(["ipa"]);

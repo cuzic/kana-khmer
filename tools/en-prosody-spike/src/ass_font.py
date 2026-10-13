@@ -13,6 +13,7 @@ import os
 import tempfile
 from pathlib import Path
 
+import fontTools
 from fontTools import subset
 from fontTools.ttLib import TTFont
 
@@ -33,12 +34,20 @@ def slim_font_ttf(woff2: Path | None = None) -> bytes:
     src = Path(woff2) if woff2 else font_path()
     if not src.exists():
         raise FileNotFoundError(f"フォントがありません: {src}(環境変数 {ENV_FONT} で指定できます)")
-    key = hashlib.sha256(src.read_bytes() + Path(__file__).read_bytes()).hexdigest()[:16]
-    cache = Path(tempfile.gettempdir()) / f"{FAMILY}-slim-{key}.ttf"
+    key = hashlib.sha256(src.read_bytes() + Path(__file__).read_bytes() + fontTools.version.encode()).hexdigest()[:16]
+    cache_dir = Path(os.environ.get("XDG_CACHE_HOME") or Path.home() / ".cache") / "en-prosody-spike"
+    cache = cache_dir / f"{FAMILY}-slim-{key}.ttf"
     if cache.exists():
         return cache.read_bytes()
     data = _slim(src)
-    cache.write_bytes(data)
+    try:   # 共有の場所には書かない。一時ファイルに書いてから置き換える(途中まで書かれたファイルを読ませない)
+        cache_dir.mkdir(parents=True, exist_ok=True)
+        fd, tmp = tempfile.mkstemp(dir=cache_dir, suffix=".tmp")
+        with os.fdopen(fd, "wb") as fh:
+            fh.write(data)
+        os.replace(tmp, cache)
+    except OSError:
+        pass
     return data
 
 
@@ -51,13 +60,13 @@ def _slim(src: Path) -> bytes:
     o = subset.Options()
     o.layout_features = ["ccmp"]
     o.notdef_outline = True
-    o.name_IDs = []
+    o.name_IDs = [0, 13, 14]   # OFL 1.1 の著作権表示とライセンス(再配布のコピーに残す)
     o.drop_tables += ["DSIG"]
     s = subset.Subsetter(o)
     s.populate(unicodes=sorted(keep))
     s.subset(f)
     name = f["name"]
-    name.names = []
+    name.names = [n for n in name.names if n.nameID in (0, 13, 14)]
     for nid, val in ((1, FAMILY), (2, "Regular"), (4, FAMILY), (6, FAMILY)):
         name.setName(val, nid, 3, 1, 0x409)
         name.setName(val, nid, 1, 0, 0)

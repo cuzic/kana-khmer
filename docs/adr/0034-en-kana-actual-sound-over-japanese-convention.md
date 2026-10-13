@@ -17,7 +17,7 @@ deciders: user (慣用的な日本語表現より実際の音に近いカナを�
 ## 決定
 1. **慣用的な日本語の表記より、実際の音に近いカナを優先する。** 母音の前以外の子音は、これまでどおり小書きカナ(ㇰ ㇲ ㇳ ㇷ゚ ㇱ ㇺ ㇽ)で書く。
 2. **`quarter` は `ㇰʰウォ…`、`sweets` は `ㇲウィーツ` のまま。** 現行の出力は、すでにこの方針に合っていた。
-3. **語末でない dʒ + 弱い母音の `デュ` をやめ、語末と同じ `ヂャ` にする**(education → エヂャケイシᵊン、Japan → ヂャパン)。`kana.ts`・`kana.py` から該当の分岐を削除した。
+3. **語末でない dʒ + 弱い母音の `デュ` をやめ、語末と同じ `ヂャ` にする**(education → エヂャケイシᵊン、Japan → ヂャパン)。`kana.ts`・`kana.py` から該当の分岐を削除した。**これは、ユーザーの方針(クウォーター・スウィーツ)を agent が一般化した変更で、ユーザーが `ヂャ` を指示したわけではない。** `ヂャ` には弱い母音の印(`ᵊ`)がなく、全角の ジャ(強い a)に読めるので、`ヂᵊ`(または `ヂュᵊ`)のほうが「実際の音」に近い可能性がある。未決(語末の シャ・チャ・ヂャ と同じ書き方を、ユーザーが選んだものとして残してある)。
 4. **ほかの規則は、洗い出した範囲では慣用優先のものは見つからなかった。** ヴ行(v の実際の音に近い)、ツ・ヅ(破擦音)、ヂ(dʒ)、フュー(f + j)は、実際の音に合うので変えない。見つかったら、この ADR の方針で直す。
 
 ## 検討した代替案
@@ -29,4 +29,4 @@ deciders: user (慣用的な日本語表現より実際の音に近いカナを�
 - 洗い出しは手元の 80 語ほどの出力を目で見た範囲。ユーザーが気づいた語は、個別に指示してもらって直す。
 
 ## 参照
-[ADR-0031](0031-en-kana-with-shoulder-ipa.md)(この ADR が一部を改定する。ADR-0031 は proposed のため本文は書き換えない)、[ADR-0033](0033-en-kana-final-v-small-vu-glyph.md)、[`docs/en-kana-spec.md`](../en-kana-spec.md)、`packages/en-prosody/src/kana.ts`、`tools/en-prosody-spike/src/kana.py`。
+[ADR-0031](0031-en-kana-with-shoulder-ipa.md)(この ADR が一部を改定する。ADR-0031 は proposed のため本文は書き換えない)、[ADR-0033](0033-en-kana-small-voiced-final-glyphs.md)、[`docs/en-kana-spec.md`](../en-kana-spec.md)、`packages/en-prosody/src/kana.ts`、`tools/en-prosody-spike/src/kana.py`。
