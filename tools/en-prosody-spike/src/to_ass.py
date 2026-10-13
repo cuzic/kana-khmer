@@ -18,8 +18,9 @@ PROFILE = {
     # prominence 0..3 → 基準サイズに対する倍率
     "size": {0: 0.72, 1: 0.86, 2: 1.0, 3: 1.22},
     "bold_from": 2,
-    # 無音の口形(斜線で消したナ行・ウ)は、淡く小さく(\1a は本文だけの透明度で、縁・影の \3a \4a には触れない。16 進で 78 ≒ 47%)。ADR-0035
+    # 無音の口形(斜線で消したナ行・ウ)は、淡く小さく(\1a \3a \4a は本文・縁・影の透明度。縁と影も淡くしないと、小さい口形が黒い縁に埋もれて暗く見える。戻すときは Style の値に。16 進で 78 ≒ 47%)。ADR-0035
     "mouth_alpha": "78", "mouth_scale": 0.72,
+    "style_alpha": {"outline": "00", "shadow": "80"},   # Style 行の OutlineColour / BackColour の alpha(戻すときの値)
     "colors": {"text": "FFFFFF", "weak": "A9AEB8", "nucleus": "FF6B5B", "kana": "8CC4FF", "brk": "9AA0A6", "note": "9AA0A6", "beat": "8CC4FF"},
 }
 
@@ -49,7 +50,10 @@ _MOUTH_RE = re.compile("[\ue100-\ue106]|[ナニヌネノウㇴ]\u0338")
 def _style_mouth(txt: str, fs: int, p: dict) -> str:
     """斜線で消した口形のカナを、淡く小さくする。"""
     ms = round(fs * p["mouth_scale"])
-    return _MOUTH_RE.sub(lambda m: f"{{\\1a&H{p['mouth_alpha']}&\\fs{ms}}}{m.group(0)}{{\\1a&H00&\\fs{fs}}}", txt)
+    a, st = p["mouth_alpha"], p["style_alpha"]
+    on = f"{{\\1a&H{a}&\\3a&H{a}&\\4a&H{a}&\\fs{ms}}}"
+    off = f"{{\\1a&H00&\\3a&H{st['outline']}&\\4a&H{st['shadow']}&\\fs{fs}}}"
+    return _MOUTH_RE.sub(lambda m: on + m.group(0) + off, txt)
 
 
 def _line(words: list[dict], kana: bool, p: dict, L: Layers, mouth: str = "off", fn: bool = False) -> str:
@@ -101,6 +105,8 @@ def to_ass(ir: dict, profile: dict | None = None, layers: Layers | None = None, 
             if mouth == "pua":   # PUA はフォントがないと豆腐になる。合字なら、斜線つきのカナに縮退する
                 print("warning: --mouth pua を lig に切り替えます", file=sys.stderr)
                 mouth = "lig"
+    if mouth == "pua" and not embed_font:
+        print("warning: --mouth pua で --no-embed-font です。KanaMulti がシステムにないと、口形は豆腐になります", file=sys.stderr)
     w, h = p["play_res"]
     hdr = ("[Script Info]\nScriptType: v4.00+\nWrapStyle: 0\nScaledBorderAndShadow: yes\n"
            f"PlayResX: {w}\nPlayResY: {h}\n\n[V4+ Styles]\n"

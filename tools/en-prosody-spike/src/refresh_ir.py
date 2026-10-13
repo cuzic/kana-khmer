@@ -30,7 +30,13 @@ def migrate_kana(kana: str, phones: list[str] | None) -> str:
     return kana
 
 
+NOTATION = "ADR-0033 v2(語末の有声子音は小書きカナ + 濁点: b = ㇷ + 濁点、v = ゥ + 濁点。dʒ + 弱い母音は ヂャ)"
+
+
 def migrate(ir: dict) -> int:
+    done = ir.get("provenance", {}).get("kana_notation")
+    if done and done != NOTATION:   # b と v を同じ ㇷ + 濁点にしていた途中の形。文字列だけでは b と v を区別できない
+        raise SystemExit(f"途中の表記({done[:40]}…)の IR は移行できません。作り直すか、ADR-0033 より前の IR から移行してください。")
     changed = 0
     for ev in ir["events"]:
         for w in ev["words"]:
@@ -42,7 +48,7 @@ def migrate(ir: dict) -> int:
             if isinstance(w.get("kana"), str):
                 w["kana_lite"] = lite(w["kana"])
     prov = ir.setdefault("provenance", {})
-    prov["kana_notation"] = "ADR-0033/0034(語末の有声子音は小書きカナ + 濁点、dʒ + 弱い母音は ヂャ)"
+    prov["kana_notation"] = NOTATION
     return changed
 
 

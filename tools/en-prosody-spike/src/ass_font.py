@@ -47,7 +47,10 @@ def slim_font_ttf(woff2: Path | None = None) -> bytes:
             fh.write(data)
         os.replace(tmp, cache)
     except OSError:
-        pass
+        try:
+            os.unlink(tmp)
+        except (OSError, NameError, UnboundLocalError):
+            pass
     return data
 
 
