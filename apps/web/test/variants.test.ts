@@ -3,7 +3,7 @@ import type { Phrase, Variant } from "../src/data";
 import { pickVariants } from "../src/variants";
 
 const v = (speaker: Variant["speaker"], register: Variant["register"] = "polite"): Variant =>
-  ({ speaker, register, khmer: "", ipa: "", syllables: [], kanaFull: "", kanaLite: "", audio: "" });
+  ({ speaker, register, text: "", pron: "", syllables: [], readingFull: "", readingLite: "", audio: "" });
 const phrase = (variants: Variant[]) => ({ variants }) as Phrase;
 
 describe("pickVariants", () => {

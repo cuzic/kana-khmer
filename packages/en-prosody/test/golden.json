@@ -1,0 +1,5708 @@
+[
+ {
+  "sentence": "I want to go to the store.",
+  "words": [
+   {
+    "text": "I",
+    "norm": "i",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AY1"
+    ],
+    "kana": "アイ",
+    "kana_lite": "アイ"
+   },
+   {
+    "text": "want",
+    "norm": "want",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "W",
+     "AA1",
+     "N",
+     "T"
+    ],
+    "kana": "ワンㇳ",
+    "kana_lite": "ワンㇳ"
+   },
+   {
+    "text": "to",
+    "norm": "to",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "T",
+     "AH0"
+    ],
+    "kana": "ㇳᵊ",
+    "kana_lite": "ㇳ"
+   },
+   {
+    "text": "go",
+    "norm": "go",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "G",
+     "OW1"
+    ],
+    "kana": "ゴウ",
+    "kana_lite": "ゴウ"
+   },
+   {
+    "text": "to",
+    "norm": "to",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "T",
+     "AH0"
+    ],
+    "kana": "ㇳᵊ",
+    "kana_lite": "ㇳ"
+   },
+   {
+    "text": "the",
+    "norm": "the",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "AH0"
+    ],
+    "kana": "ㇲᶞᵊ",
+    "kana_lite": "ㇲ"
+   },
+   {
+    "text": "store.",
+    "norm": "store",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "S",
+     "T",
+     "AO1",
+     "R"
+    ],
+    "kana": "ㇲトᵓʳ",
+    "kana_lite": "ㇲト"
+   }
+  ]
+ },
+ {
+  "sentence": "What are you doing tonight?",
+  "words": [
+   {
+    "text": "What",
+    "norm": "what",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "W",
+     "AH1",
+     "T"
+    ],
+    "kana": "ワᶺ",
+    "kana_lite": "ワ"
+   },
+   {
+    "text": "are",
+    "norm": "are",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "ER0"
+    ],
+    "kana": "ラᵗʳ",
+    "kana_lite": "ラ"
+   },
+   {
+    "text": "you",
+    "norm": "you",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "Y",
+     "AH0"
+    ],
+    "kana": "ヤᵊ",
+    "kana_lite": "ヤ"
+   },
+   {
+    "text": "doing",
+    "norm": "doing",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "D",
+     "UW1",
+     "IH0",
+     "NG"
+    ],
+    "kana": "ドゥーイᶦンᵑ",
+    "kana_lite": "ドゥーイン"
+   },
+   {
+    "text": "tonight?",
+    "norm": "tonight",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "T",
+     "AH0",
+     "N",
+     "AY1",
+     "T"
+    ],
+    "kana": "ㇳᵊナイㇳ",
+    "kana_lite": "ㇳナイㇳ"
+   }
+  ]
+ },
+ {
+  "sentence": "She said that she would come, but she did not.",
+  "words": [
+   {
+    "text": "She",
+    "norm": "she",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "SH",
+     "IY1"
+    ],
+    "kana": "シー",
+    "kana_lite": "シー"
+   },
+   {
+    "text": "said",
+    "norm": "said",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "S",
+     "EH1",
+     "D"
+    ],
+    "kana": "セㇳ゙",
+    "kana_lite": "セㇳ゙"
+   },
+   {
+    "text": "that",
+    "norm": "that",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "AH0",
+     "T"
+    ],
+    "kana": "ㇲᶞᵊㇳ",
+    "kana_lite": "ㇲㇳ"
+   },
+   {
+    "text": "she",
+    "norm": "she",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "SH",
+     "IY1"
+    ],
+    "kana": "シー",
+    "kana_lite": "シー"
+   },
+   {
+    "text": "would",
+    "norm": "would",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "W",
+     "AH0",
+     "D"
+    ],
+    "kana": "ウᵊㇳ゙",
+    "kana_lite": "ウㇳ゙"
+   },
+   {
+    "text": "come,",
+    "norm": "come",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 1,
+    "linked_next": false,
+    "phones": [
+     "K",
+     "AH1",
+     "M"
+    ],
+    "kana": "カʰᶺㇺ",
+    "kana_lite": "カㇺ"
+   },
+   {
+    "text": "but",
+    "norm": "but",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "B",
+     "AH0",
+     "T"
+    ],
+    "kana": "ㇷ゙ᵊㇳ",
+    "kana_lite": "ㇷ゙ㇳ"
+   },
+   {
+    "text": "she",
+    "norm": "she",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "SH",
+     "IY1"
+    ],
+    "kana": "シー",
+    "kana_lite": "シー"
+   },
+   {
+    "text": "did",
+    "norm": "did",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "D",
+     "IH1",
+     "D"
+    ],
+    "kana": "ディᶦㇳ゙",
+    "kana_lite": "ディㇳ゙"
+   },
+   {
+    "text": "not.",
+    "norm": "not",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "N",
+     "AA1",
+     "T"
+    ],
+    "kana": "ナㇳ",
+    "kana_lite": "ナㇳ"
+   }
+  ]
+ },
+ {
+  "sentence": "It's a beautiful day and I'm happy about it.",
+  "words": [
+   {
+    "text": "It's",
+    "norm": "it's",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "IH0",
+     "T",
+     "S"
+    ],
+    "kana": "イᶦㇳ",
+    "kana_lite": "イㇳ"
+   },
+   {
+    "text": "a",
+    "norm": "a",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0"
+    ],
+    "kana": "ㇲᵊ",
+    "kana_lite": "ㇲ"
+   },
+   {
+    "text": "beautiful",
+    "norm": "beautiful",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "B",
+     "Y",
+     "UW1",
+     "T",
+     "AH0",
+     "F",
+     "AH0",
+     "L"
+    ],
+    "kana": "ビューラᵗᵊㇷᵊㇽˡ",
+    "kana_lite": "ビューラㇷㇽ"
+   },
+   {
+    "text": "day",
+    "norm": "day",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "D",
+     "EY1"
+    ],
+    "kana": "デイ",
+    "kana_lite": "デイ"
+   },
+   {
+    "text": "and",
+    "norm": "and",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "AH0",
+     "N",
+     "D"
+    ],
+    "kana": "ァᵊン",
+    "kana_lite": "ァン"
+   },
+   {
+    "text": "I'm",
+    "norm": "i'm",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AY1",
+     "M"
+    ],
+    "kana": "ダイㇺ",
+    "kana_lite": "ダイㇺ"
+   },
+   {
+    "text": "happy",
+    "norm": "happy",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "HH",
+     "AE1",
+     "P",
+     "IY0"
+    ],
+    "kana": "ハᵆピー",
+    "kana_lite": "ハピー"
+   },
+   {
+    "text": "about",
+    "norm": "about",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "AH0",
+     "B",
+     "AW1",
+     "T"
+    ],
+    "kana": "ァᵊバウ",
+    "kana_lite": "ァバウ"
+   },
+   {
+    "text": "it.",
+    "norm": "it",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "IH1",
+     "T"
+    ],
+    "kana": "リᵗᶦㇳ",
+    "kana_lite": "リㇳ"
+   }
+  ]
+ },
+ {
+  "sentence": "You're going to love this.",
+  "words": [
+   {
+    "text": "You're",
+    "norm": "you're",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "Y",
+     "ER0"
+    ],
+    "kana": "ヤʳ",
+    "kana_lite": "ヤ"
+   },
+   {
+    "text": "going",
+    "norm": "going",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "G",
+     "OW1",
+     "IH0",
+     "NG"
+    ],
+    "kana": "ゴウイᶦンᵑ",
+    "kana_lite": "ゴウイン"
+   },
+   {
+    "text": "to",
+    "norm": "to",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "T",
+     "AH0"
+    ],
+    "kana": "ㇳᵊ",
+    "kana_lite": "ㇳ"
+   },
+   {
+    "text": "love",
+    "norm": "love",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "L",
+     "AH1",
+     "V"
+    ],
+    "kana": "ラˡᶺゥ゙",
+    "kana_lite": "ラゥ゙"
+   },
+   {
+    "text": "this.",
+    "norm": "this",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "IH1",
+     "S"
+    ],
+    "kana": "ジᶞᶦㇲ",
+    "kana_lite": "ジㇲ"
+   }
+  ]
+ },
+ {
+  "sentence": "Don't worry about it.",
+  "words": [
+   {
+    "text": "Don't",
+    "norm": "don't",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "D",
+     "OW1",
+     "N",
+     "T"
+    ],
+    "kana": "ドウンㇳ",
+    "kana_lite": "ドウンㇳ"
+   },
+   {
+    "text": "worry",
+    "norm": "worry",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "W",
+     "ER1",
+     "IY0"
+    ],
+    "kana": "ワᶟʳイー",
+    "kana_lite": "ワイー"
+   },
+   {
+    "text": "about",
+    "norm": "about",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "AH0",
+     "B",
+     "AW1",
+     "T"
+    ],
+    "kana": "ァᵊバウ",
+    "kana_lite": "ァバウ"
+   },
+   {
+    "text": "it.",
+    "norm": "it",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "IH1",
+     "T"
+    ],
+    "kana": "リᵗᶦㇳ",
+    "kana_lite": "リㇳ"
+   }
+  ]
+ },
+ {
+  "sentence": "What I want is a better place.",
+  "words": [
+   {
+    "text": "What",
+    "norm": "what",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "W",
+     "AH1",
+     "T"
+    ],
+    "kana": "ワᶺ",
+    "kana_lite": "ワ"
+   },
+   {
+    "text": "I",
+    "norm": "i",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AY1"
+    ],
+    "kana": "ラᵗイ",
+    "kana_lite": "ライ"
+   },
+   {
+    "text": "want",
+    "norm": "want",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "W",
+     "AA1",
+     "N",
+     "T"
+    ],
+    "kana": "ワン",
+    "kana_lite": "ワン"
+   },
+   {
+    "text": "is",
+    "norm": "is",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "IH1",
+     "Z"
+    ],
+    "kana": "ティᶦ",
+    "kana_lite": "ティ"
+   },
+   {
+    "text": "a",
+    "norm": "a",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0"
+    ],
+    "kana": "ㇲ゙ᵊ",
+    "kana_lite": "ㇲ゙"
+   },
+   {
+    "text": "better",
+    "norm": "better",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "B",
+     "EH1",
+     "T",
+     "ER0"
+    ],
+    "kana": "ベラᵗʳ",
+    "kana_lite": "ベラ"
+   },
+   {
+    "text": "place.",
+    "norm": "place",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "P",
+     "L",
+     "EY1",
+     "S"
+    ],
+    "kana": "ㇷ゚ʰレˡイㇲ",
+    "kana_lite": "ㇷ゚レイㇲ"
+   }
+  ]
+ },
+ {
+  "sentence": "Put it on the table.",
+  "words": [
+   {
+    "text": "Put",
+    "norm": "put",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "P",
+     "UH1",
+     "T"
+    ],
+    "kana": "プʰᶷ",
+    "kana_lite": "プ"
+   },
+   {
+    "text": "it",
+    "norm": "it",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "IH1",
+     "T"
+    ],
+    "kana": "リᵗᶦ",
+    "kana_lite": "リ"
+   },
+   {
+    "text": "on",
+    "norm": "on",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AA1",
+     "N"
+    ],
+    "kana": "ラᵗン",
+    "kana_lite": "ラン"
+   },
+   {
+    "text": "the",
+    "norm": "the",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "AH0"
+    ],
+    "kana": "ㇲᶞᵊ",
+    "kana_lite": "ㇲ"
+   },
+   {
+    "text": "table.",
+    "norm": "table",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "T",
+     "EY1",
+     "B",
+     "AH0",
+     "L"
+    ],
+    "kana": "テʰイㇷ゙ᵊㇽˡ",
+    "kana_lite": "テイㇷ゙ㇽ"
+   }
+  ]
+ },
+ {
+  "sentence": "Get out of here.",
+  "words": [
+   {
+    "text": "Get",
+    "norm": "get",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "G",
+     "EH1",
+     "T"
+    ],
+    "kana": "ゲ",
+    "kana_lite": "ゲ"
+   },
+   {
+    "text": "out",
+    "norm": "out",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "AW1",
+     "T"
+    ],
+    "kana": "ラᵗウ",
+    "kana_lite": "ラウ"
+   },
+   {
+    "text": "of",
+    "norm": "of",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0",
+     "V"
+    ],
+    "kana": "ラᵗᵊゥ゙",
+    "kana_lite": "ラゥ゙"
+   },
+   {
+    "text": "here.",
+    "norm": "here",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "HH",
+     "IY1",
+     "R"
+    ],
+    "kana": "ヒーʳ",
+    "kana_lite": "ヒー"
+   }
+  ]
+ },
+ {
+  "sentence": "I bought a lot of it.",
+  "words": [
+   {
+    "text": "I",
+    "norm": "i",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AY1"
+    ],
+    "kana": "アイ",
+    "kana_lite": "アイ"
+   },
+   {
+    "text": "bought",
+    "norm": "bought",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "B",
+     "AA1",
+     "T"
+    ],
+    "kana": "バ",
+    "kana_lite": "バ"
+   },
+   {
+    "text": "a",
+    "norm": "a",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0"
+    ],
+    "kana": "ラᵗᵊ",
+    "kana_lite": "ラ"
+   },
+   {
+    "text": "lot",
+    "norm": "lot",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "L",
+     "AA1",
+     "T"
+    ],
+    "kana": "ラˡ",
+    "kana_lite": "ラ"
+   },
+   {
+    "text": "of",
+    "norm": "of",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "AH0",
+     "V"
+    ],
+    "kana": "ラᵗᵊ",
+    "kana_lite": "ラ"
+   },
+   {
+    "text": "it.",
+    "norm": "it",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "IH1",
+     "T"
+    ],
+    "kana": "ヴィᶦㇳ",
+    "kana_lite": "ヴィㇳ"
+   }
+  ]
+ },
+ {
+  "sentence": "Better late than never.",
+  "words": [
+   {
+    "text": "Better",
+    "norm": "better",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "B",
+     "EH1",
+     "T",
+     "ER0"
+    ],
+    "kana": "ベラᵗʳ",
+    "kana_lite": "ベラ"
+   },
+   {
+    "text": "late",
+    "norm": "late",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "L",
+     "EY1",
+     "T"
+    ],
+    "kana": "レˡイㇳ",
+    "kana_lite": "レイㇳ"
+   },
+   {
+    "text": "than",
+    "norm": "than",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "AH0",
+     "N"
+    ],
+    "kana": "ㇲᶞᵊン",
+    "kana_lite": "ㇲン"
+   },
+   {
+    "text": "never.",
+    "norm": "never",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "N",
+     "EH1",
+     "V",
+     "ER0"
+    ],
+    "kana": "ネヴァʳ",
+    "kana_lite": "ネヴァ"
+   }
+  ]
+ },
+ {
+  "sentence": "The future of music is bright.",
+  "words": [
+   {
+    "text": "The",
+    "norm": "the",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "AH0"
+    ],
+    "kana": "ㇲᶞᵊ",
+    "kana_lite": "ㇲ"
+   },
+   {
+    "text": "future",
+    "norm": "future",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "F",
+     "Y",
+     "UW1",
+     "CH",
+     "ER0"
+    ],
+    "kana": "フューチャʳ",
+    "kana_lite": "フューチャ"
+   },
+   {
+    "text": "of",
+    "norm": "of",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0",
+     "V"
+    ],
+    "kana": "ァᵊゥ゙",
+    "kana_lite": "ァゥ゙"
+   },
+   {
+    "text": "music",
+    "norm": "music",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "M",
+     "Y",
+     "UW1",
+     "Z",
+     "IH0",
+     "K"
+    ],
+    "kana": "ミューズィᶦ",
+    "kana_lite": "ミューズィ"
+   },
+   {
+    "text": "is",
+    "norm": "is",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "IH1",
+     "Z"
+    ],
+    "kana": "キᶦㇲ゙",
+    "kana_lite": "キㇲ゙"
+   },
+   {
+    "text": "bright.",
+    "norm": "bright",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "B",
+     "R",
+     "AY1",
+     "T"
+    ],
+    "kana": "ㇷ゙ラʳイㇳ",
+    "kana_lite": "ㇷ゙ライㇳ"
+   }
+  ]
+ },
+ {
+  "sentence": "Education is the key to a good nation.",
+  "words": [
+   {
+    "text": "Education",
+    "norm": "education",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "EH2",
+     "JH",
+     "AH0",
+     "K",
+     "EY1",
+     "SH",
+     "AH0",
+     "N"
+    ],
+    "kana": "エヂᵊケʰイシャ",
+    "kana_lite": "エヂケイシャ"
+   },
+   {
+    "text": "is",
+    "norm": "is",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "IH1",
+     "Z"
+    ],
+    "kana": "ニᶦㇲ゙",
+    "kana_lite": "ニㇲ゙"
+   },
+   {
+    "text": "the",
+    "norm": "the",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "AH0"
+    ],
+    "kana": "ㇲᶞᵊ",
+    "kana_lite": "ㇲ"
+   },
+   {
+    "text": "key",
+    "norm": "key",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "K",
+     "IY1"
+    ],
+    "kana": "キʰー",
+    "kana_lite": "キー"
+   },
+   {
+    "text": "to",
+    "norm": "to",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "T",
+     "AH0"
+    ],
+    "kana": "ㇳᵊ",
+    "kana_lite": "ㇳ"
+   },
+   {
+    "text": "a",
+    "norm": "a",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0"
+    ],
+    "kana": "ァᵊ",
+    "kana_lite": "ァ"
+   },
+   {
+    "text": "good",
+    "norm": "good",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "G",
+     "UH1",
+     "D"
+    ],
+    "kana": "グᶷㇳ゙",
+    "kana_lite": "グㇳ゙"
+   },
+   {
+    "text": "nation.",
+    "norm": "nation",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "N",
+     "EY1",
+     "SH",
+     "AH0",
+     "N"
+    ],
+    "kana": "ネイシᵊン",
+    "kana_lite": "ネイシン"
+   }
+  ]
+ },
+ {
+  "sentence": "The teacher took a measure of the room.",
+  "words": [
+   {
+    "text": "The",
+    "norm": "the",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "AH0"
+    ],
+    "kana": "ㇲᶞᵊ",
+    "kana_lite": "ㇲ"
+   },
+   {
+    "text": "teacher",
+    "norm": "teacher",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "T",
+     "IY1",
+     "CH",
+     "ER0"
+    ],
+    "kana": "ティʰーチャʳ",
+    "kana_lite": "ティーチャ"
+   },
+   {
+    "text": "took",
+    "norm": "took",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "T",
+     "UH1",
+     "K"
+    ],
+    "kana": "トゥʰᶷ",
+    "kana_lite": "トゥ"
+   },
+   {
+    "text": "a",
+    "norm": "a",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0"
+    ],
+    "kana": "ㇰᵊ",
+    "kana_lite": "ㇰ"
+   },
+   {
+    "text": "measure",
+    "norm": "measure",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "M",
+     "EH1",
+     "ZH",
+     "ER0"
+    ],
+    "kana": "メジャᶾʳ",
+    "kana_lite": "メジャ"
+   },
+   {
+    "text": "of",
+    "norm": "of",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0",
+     "V"
+    ],
+    "kana": "ァᵊゥ゙",
+    "kana_lite": "ァゥ゙"
+   },
+   {
+    "text": "the",
+    "norm": "the",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "AH0"
+    ],
+    "kana": "ㇲᶞᵊ",
+    "kana_lite": "ㇲ"
+   },
+   {
+    "text": "room.",
+    "norm": "room",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "R",
+     "UW1",
+     "M"
+    ],
+    "kana": "ルʳーㇺ",
+    "kana_lite": "ルーㇺ"
+   }
+  ]
+ },
+ {
+  "sentence": "We had dinner at eight.",
+  "words": [
+   {
+    "text": "We",
+    "norm": "we",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "W",
+     "IY1"
+    ],
+    "kana": "ウィー",
+    "kana_lite": "ウィー"
+   },
+   {
+    "text": "had",
+    "norm": "had",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0",
+     "D"
+    ],
+    "kana": "ァᵊㇳ゙",
+    "kana_lite": "ァㇳ゙"
+   },
+   {
+    "text": "dinner",
+    "norm": "dinner",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "D",
+     "IH1",
+     "N",
+     "ER0"
+    ],
+    "kana": "ディᶦナʳ",
+    "kana_lite": "ディナ"
+   },
+   {
+    "text": "at",
+    "norm": "at",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "AH0",
+     "T"
+    ],
+    "kana": "ァᵊ",
+    "kana_lite": "ァ"
+   },
+   {
+    "text": "eight.",
+    "norm": "eight",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "EY1",
+     "T"
+    ],
+    "kana": "レᵗイㇳ",
+    "kana_lite": "レイㇳ"
+   }
+  ]
+ },
+ {
+  "sentence": "Never say never.",
+  "words": [
+   {
+    "text": "Never",
+    "norm": "never",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "N",
+     "EH1",
+     "V",
+     "ER0"
+    ],
+    "kana": "ネヴァʳ",
+    "kana_lite": "ネヴァ"
+   },
+   {
+    "text": "say",
+    "norm": "say",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "S",
+     "EY1"
+    ],
+    "kana": "セイ",
+    "kana_lite": "セイ"
+   },
+   {
+    "text": "never.",
+    "norm": "never",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "N",
+     "EH1",
+     "V",
+     "ER0"
+    ],
+    "kana": "ネヴァʳ",
+    "kana_lite": "ネヴァ"
+   }
+  ]
+ },
+ {
+  "sentence": "Kids like words and stories.",
+  "words": [
+   {
+    "text": "Kids",
+    "norm": "kids",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "K",
+     "IH1",
+     "D",
+     "Z"
+    ],
+    "kana": "キʰᶦヅ",
+    "kana_lite": "キヅ"
+   },
+   {
+    "text": "like",
+    "norm": "like",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "L",
+     "AY1",
+     "K"
+    ],
+    "kana": "ラˡイㇰ",
+    "kana_lite": "ライㇰ"
+   },
+   {
+    "text": "words",
+    "norm": "words",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "W",
+     "ER1",
+     "D",
+     "Z"
+    ],
+    "kana": "ワᶟʳㇳ゙",
+    "kana_lite": "ワㇳ゙"
+   },
+   {
+    "text": "and",
+    "norm": "and",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0",
+     "N",
+     "D"
+    ],
+    "kana": "ㇲ゙ᵊンㇳ゙",
+    "kana_lite": "ㇲ゙ンㇳ゙"
+   },
+   {
+    "text": "stories.",
+    "norm": "stories",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "S",
+     "T",
+     "AO1",
+     "R",
+     "IY0",
+     "Z"
+    ],
+    "kana": "ㇲトᵓリʳーㇲ゙",
+    "kana_lite": "ㇲトリーㇲ゙"
+   }
+  ]
+ },
+ {
+  "sentence": "It's hers, not his.",
+  "words": [
+   {
+    "text": "It's",
+    "norm": "it's",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "IH0",
+     "T",
+     "S"
+    ],
+    "kana": "イᶦツ",
+    "kana_lite": "イツ"
+   },
+   {
+    "text": "hers,",
+    "norm": "hers",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 1,
+    "linked_next": false,
+    "phones": [
+     "HH",
+     "ER0",
+     "Z"
+    ],
+    "kana": "ハʳㇲ゙",
+    "kana_lite": "ハㇲ゙"
+   },
+   {
+    "text": "not",
+    "norm": "not",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "N",
+     "AA1",
+     "T"
+    ],
+    "kana": "ナㇳ",
+    "kana_lite": "ナㇳ"
+   },
+   {
+    "text": "his.",
+    "norm": "his",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "HH",
+     "IH1",
+     "Z"
+    ],
+    "kana": "ヒᶦㇲ゙",
+    "kana_lite": "ヒㇲ゙"
+   }
+  ]
+ },
+ {
+  "sentence": "He's tired, and she's hungry.",
+  "words": [
+   {
+    "text": "He's",
+    "norm": "he's",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "IY0",
+     "Z"
+    ],
+    "kana": "イーㇲ゙",
+    "kana_lite": "イーㇲ゙"
+   },
+   {
+    "text": "tired,",
+    "norm": "tired",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 1,
+    "linked_next": false,
+    "phones": [
+     "T",
+     "AY1",
+     "ER0",
+     "D"
+    ],
+    "kana": "タʰイアʳㇳ゙",
+    "kana_lite": "タイアㇳ゙"
+   },
+   {
+    "text": "and",
+    "norm": "and",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0",
+     "N",
+     "D"
+    ],
+    "kana": "ァᵊンㇳ゙",
+    "kana_lite": "ァンㇳ゙"
+   },
+   {
+    "text": "she's",
+    "norm": "she's",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "SH",
+     "IY0",
+     "Z"
+    ],
+    "kana": "シーㇲ゙",
+    "kana_lite": "シーㇲ゙"
+   },
+   {
+    "text": "hungry.",
+    "norm": "hungry",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "HH",
+     "AH1",
+     "NG",
+     "G",
+     "R",
+     "IY0"
+    ],
+    "kana": "ハᶺンᵑㇰ゙リʳー",
+    "kana_lite": "ハンㇰ゙リー"
+   }
+  ]
+ },
+ {
+  "sentence": "There's a cat on the mat.",
+  "words": [
+   {
+    "text": "There's",
+    "norm": "there's",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "DH",
+     "ER0",
+     "Z"
+    ],
+    "kana": "ザᶞʳ",
+    "kana_lite": "ザ"
+   },
+   {
+    "text": "a",
+    "norm": "a",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0"
+    ],
+    "kana": "ㇲ゙ᵊ",
+    "kana_lite": "ㇲ゙"
+   },
+   {
+    "text": "cat",
+    "norm": "cat",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "K",
+     "AE1",
+     "T"
+    ],
+    "kana": "カʰᵆ",
+    "kana_lite": "カ"
+   },
+   {
+    "text": "on",
+    "norm": "on",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AA1",
+     "N"
+    ],
+    "kana": "ラᵗン",
+    "kana_lite": "ラン"
+   },
+   {
+    "text": "the",
+    "norm": "the",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "AH0"
+    ],
+    "kana": "ㇲᶞᵊ",
+    "kana_lite": "ㇲ"
+   },
+   {
+    "text": "mat.",
+    "norm": "mat",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "M",
+     "AE1",
+     "T"
+    ],
+    "kana": "マᵆㇳ",
+    "kana_lite": "マㇳ"
+   }
+  ]
+ },
+ {
+  "sentence": "They're not here yet.",
+  "words": [
+   {
+    "text": "They're",
+    "norm": "they're",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "ER0"
+    ],
+    "kana": "ザᶞʳ",
+    "kana_lite": "ザ"
+   },
+   {
+    "text": "not",
+    "norm": "not",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "N",
+     "AA1",
+     "T"
+    ],
+    "kana": "ナㇳ",
+    "kana_lite": "ナㇳ"
+   },
+   {
+    "text": "here",
+    "norm": "here",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "HH",
+     "IY1",
+     "R"
+    ],
+    "kana": "ヒーʳ",
+    "kana_lite": "ヒー"
+   },
+   {
+    "text": "yet.",
+    "norm": "yet",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "Y",
+     "EH1",
+     "T"
+    ],
+    "kana": "イェㇳ",
+    "kana_lite": "イェㇳ"
+   }
+  ]
+ },
+ {
+  "sentence": "Let's go home.",
+  "words": [
+   {
+    "text": "Let's",
+    "norm": "let's",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "L",
+     "EH1",
+     "T",
+     "S"
+    ],
+    "kana": "レˡツ",
+    "kana_lite": "レツ"
+   },
+   {
+    "text": "go",
+    "norm": "go",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "G",
+     "OW1"
+    ],
+    "kana": "ゴウ",
+    "kana_lite": "ゴウ"
+   },
+   {
+    "text": "home.",
+    "norm": "home",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "HH",
+     "OW1",
+     "M"
+    ],
+    "kana": "ホウㇺ",
+    "kana_lite": "ホウㇺ"
+   }
+  ]
+ },
+ {
+  "sentence": "I've got 2024 reasons to stay.",
+  "words": [
+   {
+    "text": "I've",
+    "norm": "i've",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AY1",
+     "V"
+    ],
+    "kana": "アイゥ゙",
+    "kana_lite": "アイゥ゙"
+   },
+   {
+    "text": "got",
+    "norm": "got",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "G",
+     "AA1",
+     "T"
+    ],
+    "kana": "ガㇳ",
+    "kana_lite": "ガㇳ"
+   },
+   {
+    "text": "2024",
+    "norm": "2024",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": null,
+    "kana": "",
+    "kana_lite": ""
+   },
+   {
+    "text": "reasons",
+    "norm": "reasons",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "R",
+     "IY1",
+     "Z",
+     "AH0",
+     "N",
+     "Z"
+    ],
+    "kana": "リʳーㇲ゙ᵊンㇲ゙",
+    "kana_lite": "リーㇲ゙ンㇲ゙"
+   },
+   {
+    "text": "to",
+    "norm": "to",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "T",
+     "AH0"
+    ],
+    "kana": "ㇳᵊ",
+    "kana_lite": "ㇳ"
+   },
+   {
+    "text": "stay.",
+    "norm": "stay",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "S",
+     "T",
+     "EY1"
+    ],
+    "kana": "ㇲテイ",
+    "kana_lite": "ㇲテイ"
+   }
+  ]
+ },
+ {
+  "sentence": "A well-known author wrote the long-term plan.",
+  "words": [
+   {
+    "text": "A",
+    "norm": "a",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0"
+    ],
+    "kana": "ァᵊ",
+    "kana_lite": "ァ"
+   },
+   {
+    "text": "well-known",
+    "norm": "wellknown",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": null,
+    "kana": "",
+    "kana_lite": ""
+   },
+   {
+    "text": "author",
+    "norm": "author",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AO1",
+     "TH",
+     "ER0"
+    ],
+    "kana": "オᵓサᶿʳ",
+    "kana_lite": "オサ"
+   },
+   {
+    "text": "wrote",
+    "norm": "wrote",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "R",
+     "OW1",
+     "T"
+    ],
+    "kana": "ロʳウㇳ",
+    "kana_lite": "ロウㇳ"
+   },
+   {
+    "text": "the",
+    "norm": "the",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "AH0"
+    ],
+    "kana": "ㇲᶞᵊ",
+    "kana_lite": "ㇲ"
+   },
+   {
+    "text": "long-term",
+    "norm": "longterm",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "L",
+     "AO1",
+     "NG",
+     "T",
+     "ER2",
+     "M"
+    ],
+    "kana": "ロˡᵓンᵑタʰᶟʳㇺ",
+    "kana_lite": "ロンタㇺ"
+   },
+   {
+    "text": "plan.",
+    "norm": "plan",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "P",
+     "L",
+     "AE1",
+     "N"
+    ],
+    "kana": "ㇷ゚ʰラˡᵆン",
+    "kana_lite": "ㇷ゚ラン"
+   }
+  ]
+ },
+ {
+  "sentence": "Zxqvjk is not a word.",
+  "words": [
+   {
+    "text": "Zxqvjk",
+    "norm": "zxqvjk",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": null,
+    "kana": "",
+    "kana_lite": ""
+   },
+   {
+    "text": "is",
+    "norm": "is",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "IH1",
+     "Z"
+    ],
+    "kana": "イᶦㇲ゙",
+    "kana_lite": "イㇲ゙"
+   },
+   {
+    "text": "not",
+    "norm": "not",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "N",
+     "AA1",
+     "T"
+    ],
+    "kana": "ナ",
+    "kana_lite": "ナ"
+   },
+   {
+    "text": "a",
+    "norm": "a",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0"
+    ],
+    "kana": "ラᵗᵊ",
+    "kana_lite": "ラ"
+   },
+   {
+    "text": "word.",
+    "norm": "word",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "W",
+     "ER1",
+     "D"
+    ],
+    "kana": "ワᶟʳㇳ゙",
+    "kana_lite": "ワㇳ゙"
+   }
+  ]
+ },
+ {
+  "sentence": "(Laughter) That was funny.",
+  "words": [
+   {
+    "text": "(Laughter)",
+    "norm": "laughter",
+    "kind": "note",
+    "prominence": 2,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": null,
+    "kana": "",
+    "kana_lite": ""
+   },
+   {
+    "text": "That",
+    "norm": "that",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "AH0",
+     "T"
+    ],
+    "kana": "ㇲᶞᵊㇳ",
+    "kana_lite": "ㇲㇳ"
+   },
+   {
+    "text": "was",
+    "norm": "was",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "W",
+     "AH0",
+     "Z"
+    ],
+    "kana": "ウᵊㇲ゙",
+    "kana_lite": "ウㇲ゙"
+   },
+   {
+    "text": "funny.",
+    "norm": "funny",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "F",
+     "AH1",
+     "N",
+     "IY0"
+    ],
+    "kana": "ファᶺニー",
+    "kana_lite": "ファニー"
+   }
+  ]
+ },
+ {
+  "sentence": "[Music] Now we begin.",
+  "words": [
+   {
+    "text": "[Music]",
+    "norm": "music",
+    "kind": "note",
+    "prominence": 2,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": null,
+    "kana": "",
+    "kana_lite": ""
+   },
+   {
+    "text": "Now",
+    "norm": "now",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "N",
+     "AW1"
+    ],
+    "kana": "ナウ",
+    "kana_lite": "ナウ"
+   },
+   {
+    "text": "we",
+    "norm": "we",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "W",
+     "IY1"
+    ],
+    "kana": "ウィー",
+    "kana_lite": "ウィー"
+   },
+   {
+    "text": "begin.",
+    "norm": "begin",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "B",
+     "IH0",
+     "G",
+     "IH1",
+     "N"
+    ],
+    "kana": "ビᶦギᶦン",
+    "kana_lite": "ビギン"
+   }
+  ]
+ },
+ {
+  "sentence": "Is this the right way?",
+  "words": [
+   {
+    "text": "Is",
+    "norm": "is",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "IH1",
+     "Z"
+    ],
+    "kana": "イᶦㇲ゙",
+    "kana_lite": "イㇲ゙"
+   },
+   {
+    "text": "this",
+    "norm": "this",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "IH1",
+     "S"
+    ],
+    "kana": "ジᶞᶦㇲ",
+    "kana_lite": "ジㇲ"
+   },
+   {
+    "text": "the",
+    "norm": "the",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "AH0"
+    ],
+    "kana": "ㇲᶞᵊ",
+    "kana_lite": "ㇲ"
+   },
+   {
+    "text": "right",
+    "norm": "right",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "R",
+     "AY1",
+     "T"
+    ],
+    "kana": "ラʳイㇳ",
+    "kana_lite": "ライㇳ"
+   },
+   {
+    "text": "way?",
+    "norm": "way",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "W",
+     "EY1"
+    ],
+    "kana": "ウェイ",
+    "kana_lite": "ウェイ"
+   }
+  ]
+ },
+ {
+  "sentence": "Can you help me, please?",
+  "words": [
+   {
+    "text": "Can",
+    "norm": "can",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "K",
+     "AH0",
+     "N"
+    ],
+    "kana": "ㇰᵊン",
+    "kana_lite": "ㇰン"
+   },
+   {
+    "text": "you",
+    "norm": "you",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "Y",
+     "AH0"
+    ],
+    "kana": "ヤᵊ",
+    "kana_lite": "ヤ"
+   },
+   {
+    "text": "help",
+    "norm": "help",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "HH",
+     "EH1",
+     "L",
+     "P"
+    ],
+    "kana": "ヘㇽˡㇷ゚",
+    "kana_lite": "ヘㇽㇷ゚"
+   },
+   {
+    "text": "me,",
+    "norm": "me",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 1,
+    "linked_next": false,
+    "phones": [
+     "M",
+     "IY1"
+    ],
+    "kana": "ミー",
+    "kana_lite": "ミー"
+   },
+   {
+    "text": "please?",
+    "norm": "please",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "P",
+     "L",
+     "IY1",
+     "Z"
+    ],
+    "kana": "ㇷ゚ʰリˡーㇲ゙",
+    "kana_lite": "ㇷ゚リーㇲ゙"
+   }
+  ]
+ },
+ {
+  "sentence": "First, we wait; then we go.",
+  "words": [
+   {
+    "text": "First,",
+    "norm": "first",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 1,
+    "linked_next": false,
+    "phones": [
+     "F",
+     "ER1",
+     "S",
+     "T"
+    ],
+    "kana": "ファᶟʳㇲㇳ",
+    "kana_lite": "ファㇲㇳ"
+   },
+   {
+    "text": "we",
+    "norm": "we",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "W",
+     "IY1"
+    ],
+    "kana": "ウィー",
+    "kana_lite": "ウィー"
+   },
+   {
+    "text": "wait;",
+    "norm": "wait",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 1,
+    "linked_next": false,
+    "phones": [
+     "W",
+     "EY1",
+     "T"
+    ],
+    "kana": "ウェイㇳ",
+    "kana_lite": "ウェイㇳ"
+   },
+   {
+    "text": "then",
+    "norm": "then",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "EH1",
+     "N"
+    ],
+    "kana": "ゼᶞン",
+    "kana_lite": "ゼン"
+   },
+   {
+    "text": "we",
+    "norm": "we",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "W",
+     "IY1"
+    ],
+    "kana": "ウィー",
+    "kana_lite": "ウィー"
+   },
+   {
+    "text": "go.",
+    "norm": "go",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "G",
+     "OW1"
+    ],
+    "kana": "ゴウ",
+    "kana_lite": "ゴウ"
+   }
+  ]
+ },
+ {
+  "sentence": "He could have been there.",
+  "words": [
+   {
+    "text": "He",
+    "norm": "he",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "IY0"
+    ],
+    "kana": "イー",
+    "kana_lite": "イー"
+   },
+   {
+    "text": "could",
+    "norm": "could",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "K",
+     "AH0",
+     "D"
+    ],
+    "kana": "ㇰᵊ",
+    "kana_lite": "ㇰ"
+   },
+   {
+    "text": "have",
+    "norm": "have",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0",
+     "V"
+    ],
+    "kana": "ラᵈᵊゥ゙",
+    "kana_lite": "ラゥ゙"
+   },
+   {
+    "text": "been",
+    "norm": "been",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "B",
+     "IH0",
+     "N"
+    ],
+    "kana": "ビᶦン",
+    "kana_lite": "ビン"
+   },
+   {
+    "text": "there.",
+    "norm": "there",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "EH1",
+     "R"
+    ],
+    "kana": "ゼᶞʳ",
+    "kana_lite": "ゼ"
+   }
+  ]
+ },
+ {
+  "sentence": "We should have left earlier.",
+  "words": [
+   {
+    "text": "We",
+    "norm": "we",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "W",
+     "IY1"
+    ],
+    "kana": "ウィー",
+    "kana_lite": "ウィー"
+   },
+   {
+    "text": "should",
+    "norm": "should",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "SH",
+     "AH0",
+     "D"
+    ],
+    "kana": "シャ",
+    "kana_lite": "シャ"
+   },
+   {
+    "text": "have",
+    "norm": "have",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0",
+     "V"
+    ],
+    "kana": "ラᵈᵊゥ゙",
+    "kana_lite": "ラゥ゙"
+   },
+   {
+    "text": "left",
+    "norm": "left",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "L",
+     "EH1",
+     "F",
+     "T"
+    ],
+    "kana": "レˡㇷ",
+    "kana_lite": "レㇷ"
+   },
+   {
+    "text": "earlier.",
+    "norm": "earlier",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "ER1",
+     "L",
+     "IY0",
+     "ER0"
+    ],
+    "kana": "タᶟʳリˡーアʳ",
+    "kana_lite": "タリーア"
+   }
+  ]
+ },
+ {
+  "sentence": "How much does it cost?",
+  "words": [
+   {
+    "text": "How",
+    "norm": "how",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "HH",
+     "AW1"
+    ],
+    "kana": "ハウ",
+    "kana_lite": "ハウ"
+   },
+   {
+    "text": "much",
+    "norm": "much",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "M",
+     "AH1",
+     "CH"
+    ],
+    "kana": "マᶺチ",
+    "kana_lite": "マチ"
+   },
+   {
+    "text": "does",
+    "norm": "does",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "D",
+     "AH0",
+     "Z"
+    ],
+    "kana": "ㇳ゙ᵊ",
+    "kana_lite": "ㇳ゙"
+   },
+   {
+    "text": "it",
+    "norm": "it",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "IH1",
+     "T"
+    ],
+    "kana": "ズィᶦㇳ",
+    "kana_lite": "ズィㇳ"
+   },
+   {
+    "text": "cost?",
+    "norm": "cost",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "K",
+     "AA1",
+     "S",
+     "T"
+    ],
+    "kana": "カʰㇲㇳ",
+    "kana_lite": "カㇲㇳ"
+   }
+  ]
+ },
+ {
+  "sentence": "Just give it to them.",
+  "words": [
+   {
+    "text": "Just",
+    "norm": "just",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "JH",
+     "AH0",
+     "S",
+     "T"
+    ],
+    "kana": "ヂᵊㇲㇳ",
+    "kana_lite": "ヂㇲㇳ"
+   },
+   {
+    "text": "give",
+    "norm": "give",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "G",
+     "IH1",
+     "V"
+    ],
+    "kana": "ギᶦ",
+    "kana_lite": "ギ"
+   },
+   {
+    "text": "it",
+    "norm": "it",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "IH1",
+     "T"
+    ],
+    "kana": "ヴィᶦㇳ",
+    "kana_lite": "ヴィㇳ"
+   },
+   {
+    "text": "to",
+    "norm": "to",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "T",
+     "AH0"
+    ],
+    "kana": "ㇳᵊ",
+    "kana_lite": "ㇳ"
+   },
+   {
+    "text": "them.",
+    "norm": "them",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "EH1",
+     "M"
+    ],
+    "kana": "ゼᶞㇺ",
+    "kana_lite": "ゼㇺ"
+   }
+  ]
+ },
+ {
+  "sentence": "Some of them were late.",
+  "words": [
+   {
+    "text": "Some",
+    "norm": "some",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "S",
+     "AH0",
+     "M"
+    ],
+    "kana": "ㇲᵊ",
+    "kana_lite": "ㇲ"
+   },
+   {
+    "text": "of",
+    "norm": "of",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0",
+     "V"
+    ],
+    "kana": "ㇺᵊゥ゙",
+    "kana_lite": "ㇺゥ゙"
+   },
+   {
+    "text": "them",
+    "norm": "them",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "AH0",
+     "M"
+    ],
+    "kana": "ㇲᶞᵊㇺ",
+    "kana_lite": "ㇲㇺ"
+   },
+   {
+    "text": "were",
+    "norm": "were",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "W",
+     "ER0"
+    ],
+    "kana": "ワʳ",
+    "kana_lite": "ワ"
+   },
+   {
+    "text": "late.",
+    "norm": "late",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "L",
+     "EY1",
+     "T"
+    ],
+    "kana": "レˡイㇳ",
+    "kana_lite": "レイㇳ"
+   }
+  ]
+ },
+ {
+  "sentence": "Cute puppies play in the yard.",
+  "words": [
+   {
+    "text": "Cute",
+    "norm": "cute",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "K",
+     "Y",
+     "UW1",
+     "T"
+    ],
+    "kana": "キʰューㇳ",
+    "kana_lite": "キューㇳ"
+   },
+   {
+    "text": "puppies",
+    "norm": "puppies",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "P",
+     "AH1",
+     "P",
+     "IY0",
+     "Z"
+    ],
+    "kana": "パʰᶺピーㇲ゙",
+    "kana_lite": "パピーㇲ゙"
+   },
+   {
+    "text": "play",
+    "norm": "play",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "P",
+     "L",
+     "EY1"
+    ],
+    "kana": "ㇷ゚ʰレˡイ",
+    "kana_lite": "ㇷ゚レイ"
+   },
+   {
+    "text": "in",
+    "norm": "in",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "IH0",
+     "N"
+    ],
+    "kana": "イᶦン",
+    "kana_lite": "イン"
+   },
+   {
+    "text": "the",
+    "norm": "the",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "AH0"
+    ],
+    "kana": "ㇲᶞᵊ",
+    "kana_lite": "ㇲ"
+   },
+   {
+    "text": "yard.",
+    "norm": "yard",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "Y",
+     "AA1",
+     "R",
+     "D"
+    ],
+    "kana": "ヤʳㇳ゙",
+    "kana_lite": "ヤㇳ゙"
+   }
+  ]
+ },
+ {
+  "sentence": "The view from the hill is beautiful.",
+  "words": [
+   {
+    "text": "The",
+    "norm": "the",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "AH0"
+    ],
+    "kana": "ㇲᶞᵊ",
+    "kana_lite": "ㇲ"
+   },
+   {
+    "text": "view",
+    "norm": "view",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "V",
+     "Y",
+     "UW1"
+    ],
+    "kana": "ヴュー",
+    "kana_lite": "ヴュー"
+   },
+   {
+    "text": "from",
+    "norm": "from",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "F",
+     "R",
+     "AH0",
+     "M"
+    ],
+    "kana": "ㇷㇽʳᵊㇺ",
+    "kana_lite": "ㇷㇽㇺ"
+   },
+   {
+    "text": "the",
+    "norm": "the",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "AH0"
+    ],
+    "kana": "ㇲᶞᵊ",
+    "kana_lite": "ㇲ"
+   },
+   {
+    "text": "hill",
+    "norm": "hill",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "HH",
+     "IH1",
+     "L"
+    ],
+    "kana": "ヒᶦ",
+    "kana_lite": "ヒ"
+   },
+   {
+    "text": "is",
+    "norm": "is",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "IH1",
+     "Z"
+    ],
+    "kana": "リˡᶦㇲ゙",
+    "kana_lite": "リㇲ゙"
+   },
+   {
+    "text": "beautiful.",
+    "norm": "beautiful",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "B",
+     "Y",
+     "UW1",
+     "T",
+     "AH0",
+     "F",
+     "AH0",
+     "L"
+    ],
+    "kana": "ビューラᵗᵊㇷᵊㇽˡ",
+    "kana_lite": "ビューラㇷㇽ"
+   }
+  ]
+ },
+ {
+  "sentence": "Computers are useful for many things.",
+  "words": [
+   {
+    "text": "Computers",
+    "norm": "computers",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "K",
+     "AH0",
+     "M",
+     "P",
+     "Y",
+     "UW1",
+     "T",
+     "ER0",
+     "Z"
+    ],
+    "kana": "ㇰᵊㇺピʰューラᵗʳ",
+    "kana_lite": "ㇰㇺピューラ"
+   },
+   {
+    "text": "are",
+    "norm": "are",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "ER0"
+    ],
+    "kana": "ザʳ",
+    "kana_lite": "ザ"
+   },
+   {
+    "text": "useful",
+    "norm": "useful",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "Y",
+     "UW1",
+     "S",
+     "F",
+     "AH0",
+     "L"
+    ],
+    "kana": "ユーㇲㇷᵊㇽˡ",
+    "kana_lite": "ユーㇲㇷㇽ"
+   },
+   {
+    "text": "for",
+    "norm": "for",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "F",
+     "ER0"
+    ],
+    "kana": "ファʳ",
+    "kana_lite": "ファ"
+   },
+   {
+    "text": "many",
+    "norm": "many",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "M",
+     "EH1",
+     "N",
+     "IY0"
+    ],
+    "kana": "メニー",
+    "kana_lite": "メニー"
+   },
+   {
+    "text": "things.",
+    "norm": "things",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "TH",
+     "IH1",
+     "NG",
+     "Z"
+    ],
+    "kana": "シᶿᶦンᵑㇲ゙",
+    "kana_lite": "シンㇲ゙"
+   }
+  ]
+ },
+ {
+  "sentence": "Fish and chips is my favorite meal.",
+  "words": [
+   {
+    "text": "Fish",
+    "norm": "fish",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "F",
+     "IH1",
+     "SH"
+    ],
+    "kana": "フィᶦ",
+    "kana_lite": "フィ"
+   },
+   {
+    "text": "and",
+    "norm": "and",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0",
+     "N",
+     "D"
+    ],
+    "kana": "シᵊンㇳ゙",
+    "kana_lite": "シンㇳ゙"
+   },
+   {
+    "text": "chips",
+    "norm": "chips",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "CH",
+     "IH1",
+     "P",
+     "S"
+    ],
+    "kana": "チʰᶦㇷ゚",
+    "kana_lite": "チㇷ゚"
+   },
+   {
+    "text": "is",
+    "norm": "is",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "IH1",
+     "Z"
+    ],
+    "kana": "スィᶦㇲ゙",
+    "kana_lite": "スィㇲ゙"
+   },
+   {
+    "text": "my",
+    "norm": "my",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "M",
+     "AY1"
+    ],
+    "kana": "マイ",
+    "kana_lite": "マイ"
+   },
+   {
+    "text": "favorite",
+    "norm": "favorite",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "F",
+     "EY1",
+     "V",
+     "ER0",
+     "IH0",
+     "T"
+    ],
+    "kana": "フェイヴァʳイᶦㇳ",
+    "kana_lite": "フェイヴァイㇳ"
+   },
+   {
+    "text": "meal.",
+    "norm": "meal",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "M",
+     "IY1",
+     "L"
+    ],
+    "kana": "ミーㇽˡ",
+    "kana_lite": "ミーㇽ"
+   }
+  ]
+ },
+ {
+  "sentence": "Church is at nine in the morning.",
+  "words": [
+   {
+    "text": "Church",
+    "norm": "church",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "CH",
+     "ER1",
+     "CH"
+    ],
+    "kana": "チャʰᶟʳ",
+    "kana_lite": "チャ"
+   },
+   {
+    "text": "is",
+    "norm": "is",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "IH1",
+     "Z"
+    ],
+    "kana": "チᶦ",
+    "kana_lite": "チ"
+   },
+   {
+    "text": "at",
+    "norm": "at",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0",
+     "T"
+    ],
+    "kana": "ㇲ゙ᵊㇳ",
+    "kana_lite": "ㇲ゙ㇳ"
+   },
+   {
+    "text": "nine",
+    "norm": "nine",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "N",
+     "AY1",
+     "N"
+    ],
+    "kana": "ナイ",
+    "kana_lite": "ナイ"
+   },
+   {
+    "text": "in",
+    "norm": "in",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "IH0",
+     "N"
+    ],
+    "kana": "ニᶦン",
+    "kana_lite": "ニン"
+   },
+   {
+    "text": "the",
+    "norm": "the",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "AH0"
+    ],
+    "kana": "ㇲᶞᵊ",
+    "kana_lite": "ㇲ"
+   },
+   {
+    "text": "morning.",
+    "norm": "morning",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "M",
+     "AO1",
+     "R",
+     "N",
+     "IH0",
+     "NG"
+    ],
+    "kana": "モᵓʳニᶦンᵑ",
+    "kana_lite": "モニン"
+   }
+  ]
+ },
+ {
+  "sentence": "Judge the book by its cover.",
+  "words": [
+   {
+    "text": "Judge",
+    "norm": "judge",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "JH",
+     "AH1",
+     "JH"
+    ],
+    "kana": "ヂャᶺヂ",
+    "kana_lite": "ヂャヂ"
+   },
+   {
+    "text": "the",
+    "norm": "the",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "AH0"
+    ],
+    "kana": "ㇲᶞᵊ",
+    "kana_lite": "ㇲ"
+   },
+   {
+    "text": "book",
+    "norm": "book",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "B",
+     "UH1",
+     "K"
+    ],
+    "kana": "ブᶷㇰ",
+    "kana_lite": "ブㇰ"
+   },
+   {
+    "text": "by",
+    "norm": "by",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "B",
+     "AY1"
+    ],
+    "kana": "バイ",
+    "kana_lite": "バイ"
+   },
+   {
+    "text": "its",
+    "norm": "its",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "IH1",
+     "T",
+     "S"
+    ],
+    "kana": "イᶦツ",
+    "kana_lite": "イツ"
+   },
+   {
+    "text": "cover.",
+    "norm": "cover",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "K",
+     "AH1",
+     "V",
+     "ER0"
+    ],
+    "kana": "カʰᶺヴァʳ",
+    "kana_lite": "カヴァ"
+   }
+  ]
+ },
+ {
+  "sentence": "The pizza was great.",
+  "words": [
+   {
+    "text": "The",
+    "norm": "the",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "AH0"
+    ],
+    "kana": "ㇲᶞᵊ",
+    "kana_lite": "ㇲ"
+   },
+   {
+    "text": "pizza",
+    "norm": "pizza",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "P",
+     "IY1",
+     "T",
+     "S",
+     "AH0"
+    ],
+    "kana": "ピʰーツᵊ",
+    "kana_lite": "ピーツ"
+   },
+   {
+    "text": "was",
+    "norm": "was",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "W",
+     "AH0",
+     "Z"
+    ],
+    "kana": "ウᵊㇲ゙",
+    "kana_lite": "ウㇲ゙"
+   },
+   {
+    "text": "great.",
+    "norm": "great",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "G",
+     "R",
+     "EY1",
+     "T"
+    ],
+    "kana": "ㇰ゙レʳイㇳ",
+    "kana_lite": "ㇰ゙レイㇳ"
+   }
+  ]
+ },
+ {
+  "sentence": "Asia is a big continent.",
+  "words": [
+   {
+    "text": "Asia",
+    "norm": "asia",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "EY1",
+     "ZH",
+     "AH0"
+    ],
+    "kana": "エイジャᶾ",
+    "kana_lite": "エイジャ"
+   },
+   {
+    "text": "is",
+    "norm": "is",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "IH1",
+     "Z"
+    ],
+    "kana": "イᶦ",
+    "kana_lite": "イ"
+   },
+   {
+    "text": "a",
+    "norm": "a",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0"
+    ],
+    "kana": "ㇲ゙ᵊ",
+    "kana_lite": "ㇲ゙"
+   },
+   {
+    "text": "big",
+    "norm": "big",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "B",
+     "IH1",
+     "G"
+    ],
+    "kana": "ビᶦㇰ゙",
+    "kana_lite": "ビㇰ゙"
+   },
+   {
+    "text": "continent.",
+    "norm": "continent",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "K",
+     "AA1",
+     "N",
+     "T",
+     "AH0",
+     "N",
+     "AH0",
+     "N",
+     "T"
+    ],
+    "kana": "カʰンㇳᵊンᵊンㇳ",
+    "kana_lite": "カンㇳンンㇳ"
+   }
+  ]
+ },
+ {
+  "sentence": "Her sister is a doctor.",
+  "words": [
+   {
+    "text": "Her",
+    "norm": "her",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "ER0"
+    ],
+    "kana": "アʳ",
+    "kana_lite": "ア"
+   },
+   {
+    "text": "sister",
+    "norm": "sister",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "S",
+     "IH1",
+     "S",
+     "T",
+     "ER0"
+    ],
+    "kana": "スィᶦㇲタʳ",
+    "kana_lite": "スィㇲタ"
+   },
+   {
+    "text": "is",
+    "norm": "is",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "IH1",
+     "Z"
+    ],
+    "kana": "イᶦ",
+    "kana_lite": "イ"
+   },
+   {
+    "text": "a",
+    "norm": "a",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0"
+    ],
+    "kana": "ㇲ゙ᵊ",
+    "kana_lite": "ㇲ゙"
+   },
+   {
+    "text": "doctor.",
+    "norm": "doctor",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "D",
+     "AA1",
+     "K",
+     "T",
+     "ER0"
+    ],
+    "kana": "ダㇰタʳ",
+    "kana_lite": "ダㇰタ"
+   }
+  ]
+ },
+ {
+  "sentence": "Water is important for life.",
+  "words": [
+   {
+    "text": "Water",
+    "norm": "water",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "W",
+     "AO1",
+     "T",
+     "ER0"
+    ],
+    "kana": "ウォᵓラᵗʳ",
+    "kana_lite": "ウォラ"
+   },
+   {
+    "text": "is",
+    "norm": "is",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "IH1",
+     "Z"
+    ],
+    "kana": "イᶦ",
+    "kana_lite": "イ"
+   },
+   {
+    "text": "important",
+    "norm": "important",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "IH2",
+     "M",
+     "P",
+     "AO1",
+     "R",
+     "T",
+     "AH0",
+     "N",
+     "T"
+    ],
+    "kana": "ズィᶦㇺポʰᵓʳラᵗᵊンㇳ",
+    "kana_lite": "ズィㇺポランㇳ"
+   },
+   {
+    "text": "for",
+    "norm": "for",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "F",
+     "ER0"
+    ],
+    "kana": "ファʳ",
+    "kana_lite": "ファ"
+   },
+   {
+    "text": "life.",
+    "norm": "life",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "L",
+     "AY1",
+     "F"
+    ],
+    "kana": "ラˡイㇷ",
+    "kana_lite": "ライㇷ"
+   }
+  ]
+ },
+ {
+  "sentence": "Is that all you need?",
+  "words": [
+   {
+    "text": "Is",
+    "norm": "is",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "IH1",
+     "Z"
+    ],
+    "kana": "イᶦㇲ゙",
+    "kana_lite": "イㇲ゙"
+   },
+   {
+    "text": "that",
+    "norm": "that",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "DH",
+     "AH0",
+     "T"
+    ],
+    "kana": "ㇲᶞᵊ",
+    "kana_lite": "ㇲ"
+   },
+   {
+    "text": "all",
+    "norm": "all",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AO1",
+     "L"
+    ],
+    "kana": "ロᵗᵓㇽˡ",
+    "kana_lite": "ロㇽ"
+   },
+   {
+    "text": "you",
+    "norm": "you",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "Y",
+     "AH0"
+    ],
+    "kana": "ヤᵊ",
+    "kana_lite": "ヤ"
+   },
+   {
+    "text": "need?",
+    "norm": "need",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "N",
+     "IY1",
+     "D"
+    ],
+    "kana": "ニーㇳ゙",
+    "kana_lite": "ニーㇳ゙"
+   }
+  ]
+ },
+ {
+  "sentence": "Wait, what did you say?",
+  "words": [
+   {
+    "text": "Wait,",
+    "norm": "wait",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 1,
+    "linked_next": false,
+    "phones": [
+     "W",
+     "EY1",
+     "T"
+    ],
+    "kana": "ウェイㇳ",
+    "kana_lite": "ウェイㇳ"
+   },
+   {
+    "text": "what",
+    "norm": "what",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "W",
+     "AH1",
+     "T"
+    ],
+    "kana": "ワᶺㇳ",
+    "kana_lite": "ワㇳ"
+   },
+   {
+    "text": "did",
+    "norm": "did",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "D",
+     "IH1",
+     "D"
+    ],
+    "kana": "ディᶦㇳ゙",
+    "kana_lite": "ディㇳ゙"
+   },
+   {
+    "text": "you",
+    "norm": "you",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "Y",
+     "AH0"
+    ],
+    "kana": "ヤᵊ",
+    "kana_lite": "ヤ"
+   },
+   {
+    "text": "say?",
+    "norm": "say",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "S",
+     "EY1"
+    ],
+    "kana": "セイ",
+    "kana_lite": "セイ"
+   }
+  ]
+ },
+ {
+  "sentence": "He said: \"Go away.\"",
+  "words": [
+   {
+    "text": "He",
+    "norm": "he",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "IY0"
+    ],
+    "kana": "イー",
+    "kana_lite": "イー"
+   },
+   {
+    "text": "said:",
+    "norm": "said",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 1,
+    "linked_next": false,
+    "phones": [
+     "S",
+     "EH1",
+     "D"
+    ],
+    "kana": "セㇳ゙",
+    "kana_lite": "セㇳ゙"
+   },
+   {
+    "text": "\"Go",
+    "norm": "go",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "G",
+     "OW1"
+    ],
+    "kana": "ゴウ",
+    "kana_lite": "ゴウ"
+   },
+   {
+    "text": "away.\"",
+    "norm": "away",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "AH0",
+     "W",
+     "EY1"
+    ],
+    "kana": "ァᵊウェイ",
+    "kana_lite": "ァウェイ"
+   }
+  ]
+ },
+ {
+  "sentence": "I think that's enough for today.",
+  "words": [
+   {
+    "text": "I",
+    "norm": "i",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AY1"
+    ],
+    "kana": "アイ",
+    "kana_lite": "アイ"
+   },
+   {
+    "text": "think",
+    "norm": "think",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "TH",
+     "IH1",
+     "NG",
+     "K"
+    ],
+    "kana": "シᶿᶦンᵑㇰ",
+    "kana_lite": "シンㇰ"
+   },
+   {
+    "text": "that's",
+    "norm": "that's",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "DH",
+     "AE1",
+     "T",
+     "S"
+    ],
+    "kana": "ザᶞᵆㇳ",
+    "kana_lite": "ザㇳ"
+   },
+   {
+    "text": "enough",
+    "norm": "enough",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "IH0",
+     "N",
+     "AH1",
+     "F"
+    ],
+    "kana": "スィᶦナᶺㇷ",
+    "kana_lite": "スィナㇷ"
+   },
+   {
+    "text": "for",
+    "norm": "for",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "F",
+     "ER0"
+    ],
+    "kana": "ファʳ",
+    "kana_lite": "ファ"
+   },
+   {
+    "text": "today.",
+    "norm": "today",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "T",
+     "AH0",
+     "D",
+     "EY1"
+    ],
+    "kana": "ㇳᵊデイ",
+    "kana_lite": "ㇳデイ"
+   }
+  ]
+ },
+ {
+  "sentence": "Sit down and eat it up.",
+  "words": [
+   {
+    "text": "Sit",
+    "norm": "sit",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "S",
+     "IH1",
+     "T"
+    ],
+    "kana": "スィᶦㇳ",
+    "kana_lite": "スィㇳ"
+   },
+   {
+    "text": "down",
+    "norm": "down",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "D",
+     "AW1",
+     "N"
+    ],
+    "kana": "ダウ",
+    "kana_lite": "ダウ"
+   },
+   {
+    "text": "and",
+    "norm": "and",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "AH0",
+     "N",
+     "D"
+    ],
+    "kana": "ンᵊン",
+    "kana_lite": "ンン"
+   },
+   {
+    "text": "eat",
+    "norm": "eat",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "IY1",
+     "T"
+    ],
+    "kana": "ディー",
+    "kana_lite": "ディー"
+   },
+   {
+    "text": "it",
+    "norm": "it",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "IH1",
+     "T"
+    ],
+    "kana": "リᵗᶦ",
+    "kana_lite": "リ"
+   },
+   {
+    "text": "up.",
+    "norm": "up",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "AH1",
+     "P"
+    ],
+    "kana": "ラᵗᶺㇷ゚",
+    "kana_lite": "ラㇷ゚"
+   }
+  ]
+ },
+ {
+  "sentence": "Talk about it later.",
+  "words": [
+   {
+    "text": "Talk",
+    "norm": "talk",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "T",
+     "AO1",
+     "K"
+    ],
+    "kana": "トʰᵓ",
+    "kana_lite": "ト"
+   },
+   {
+    "text": "about",
+    "norm": "about",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "AH0",
+     "B",
+     "AW1",
+     "T"
+    ],
+    "kana": "ㇰᵊバウ",
+    "kana_lite": "ㇰバウ"
+   },
+   {
+    "text": "it",
+    "norm": "it",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "IH1",
+     "T"
+    ],
+    "kana": "リᵗᶦㇳ",
+    "kana_lite": "リㇳ"
+   },
+   {
+    "text": "later.",
+    "norm": "later",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "L",
+     "EY1",
+     "T",
+     "ER0"
+    ],
+    "kana": "レˡイラᵗʳ",
+    "kana_lite": "レイラ"
+   }
+  ]
+ },
+ {
+  "sentence": "Both of them went out and got it.",
+  "words": [
+   {
+    "text": "Both",
+    "norm": "both",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "B",
+     "OW1",
+     "TH"
+    ],
+    "kana": "ボウ",
+    "kana_lite": "ボウ"
+   },
+   {
+    "text": "of",
+    "norm": "of",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0",
+     "V"
+    ],
+    "kana": "ㇲᶿᵊゥ゙",
+    "kana_lite": "ㇲゥ゙"
+   },
+   {
+    "text": "them",
+    "norm": "them",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "AH0",
+     "M"
+    ],
+    "kana": "ㇲᶞᵊㇺ",
+    "kana_lite": "ㇲㇺ"
+   },
+   {
+    "text": "went",
+    "norm": "went",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "W",
+     "EH1",
+     "N",
+     "T"
+    ],
+    "kana": "ウェン",
+    "kana_lite": "ウェン"
+   },
+   {
+    "text": "out",
+    "norm": "out",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "AW1",
+     "T"
+    ],
+    "kana": "タウ",
+    "kana_lite": "タウ"
+   },
+   {
+    "text": "and",
+    "norm": "and",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0",
+     "N",
+     "D"
+    ],
+    "kana": "ラᵗᵊンㇳ゙",
+    "kana_lite": "ランㇳ゙"
+   },
+   {
+    "text": "got",
+    "norm": "got",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "G",
+     "AA1",
+     "T"
+    ],
+    "kana": "ガ",
+    "kana_lite": "ガ"
+   },
+   {
+    "text": "it.",
+    "norm": "it",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "IH1",
+     "T"
+    ],
+    "kana": "リᵗᶦㇳ",
+    "kana_lite": "リㇳ"
+   }
+  ]
+ },
+ {
+  "sentence": "Turn it off and put us in a cab.",
+  "words": [
+   {
+    "text": "Turn",
+    "norm": "turn",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "T",
+     "ER1",
+     "N"
+    ],
+    "kana": "タʰᶟʳ",
+    "kana_lite": "タ"
+   },
+   {
+    "text": "it",
+    "norm": "it",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "IH1",
+     "T"
+    ],
+    "kana": "ニᶦ",
+    "kana_lite": "ニ"
+   },
+   {
+    "text": "off",
+    "norm": "off",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "AO1",
+     "F"
+    ],
+    "kana": "ロᵗᵓ",
+    "kana_lite": "ロ"
+   },
+   {
+    "text": "and",
+    "norm": "and",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0",
+     "N",
+     "D"
+    ],
+    "kana": "ㇷᵊンㇳ゙",
+    "kana_lite": "ㇷンㇳ゙"
+   },
+   {
+    "text": "put",
+    "norm": "put",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "P",
+     "UH1",
+     "T"
+    ],
+    "kana": "プʰᶷ",
+    "kana_lite": "プ"
+   },
+   {
+    "text": "us",
+    "norm": "us",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "AH1",
+     "S"
+    ],
+    "kana": "ラᵗᶺ",
+    "kana_lite": "ラ"
+   },
+   {
+    "text": "in",
+    "norm": "in",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "IH0",
+     "N"
+    ],
+    "kana": "スィᶦ",
+    "kana_lite": "スィ"
+   },
+   {
+    "text": "a",
+    "norm": "a",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0"
+    ],
+    "kana": "ンᵊ",
+    "kana_lite": "ン"
+   },
+   {
+    "text": "cab.",
+    "norm": "cab",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "K",
+     "AE1",
+     "B"
+    ],
+    "kana": "カʰᵆㇷ゙",
+    "kana_lite": "カㇷ゙"
+   }
+  ]
+ },
+ {
+  "sentence": "Would you like a cup of tea?",
+  "words": [
+   {
+    "text": "Would",
+    "norm": "would",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "W",
+     "AH0",
+     "D"
+    ],
+    "kana": "ウᵊㇳ゙",
+    "kana_lite": "ウㇳ゙"
+   },
+   {
+    "text": "you",
+    "norm": "you",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "Y",
+     "AH0"
+    ],
+    "kana": "ヤᵊ",
+    "kana_lite": "ヤ"
+   },
+   {
+    "text": "like",
+    "norm": "like",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "L",
+     "AY1",
+     "K"
+    ],
+    "kana": "ラˡイ",
+    "kana_lite": "ライ"
+   },
+   {
+    "text": "a",
+    "norm": "a",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0"
+    ],
+    "kana": "ㇰᵊ",
+    "kana_lite": "ㇰ"
+   },
+   {
+    "text": "cup",
+    "norm": "cup",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "K",
+     "AH1",
+     "P"
+    ],
+    "kana": "カʰᶺ",
+    "kana_lite": "カ"
+   },
+   {
+    "text": "of",
+    "norm": "of",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0",
+     "V"
+    ],
+    "kana": "ㇷ゚ᵊゥ゙",
+    "kana_lite": "ㇷ゚ゥ゙"
+   },
+   {
+    "text": "tea?",
+    "norm": "tea",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "T",
+     "IY1"
+    ],
+    "kana": "ティʰー",
+    "kana_lite": "ティー"
+   }
+  ]
+ },
+ {
+  "sentence": "The weather is nice but cold.",
+  "words": [
+   {
+    "text": "The",
+    "norm": "the",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "AH0"
+    ],
+    "kana": "ㇲᶞᵊ",
+    "kana_lite": "ㇲ"
+   },
+   {
+    "text": "weather",
+    "norm": "weather",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "W",
+     "EH1",
+     "DH",
+     "ER0"
+    ],
+    "kana": "ウェザᶞʳ",
+    "kana_lite": "ウェザ"
+   },
+   {
+    "text": "is",
+    "norm": "is",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "IH1",
+     "Z"
+    ],
+    "kana": "イᶦㇲ゙",
+    "kana_lite": "イㇲ゙"
+   },
+   {
+    "text": "nice",
+    "norm": "nice",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "N",
+     "AY1",
+     "S"
+    ],
+    "kana": "ナイㇲ",
+    "kana_lite": "ナイㇲ"
+   },
+   {
+    "text": "but",
+    "norm": "but",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "B",
+     "AH0",
+     "T"
+    ],
+    "kana": "ㇷ゙ᵊㇳ",
+    "kana_lite": "ㇷ゙ㇳ"
+   },
+   {
+    "text": "cold.",
+    "norm": "cold",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "K",
+     "OW1",
+     "L",
+     "D"
+    ],
+    "kana": "コʰウㇽˡㇳ゙",
+    "kana_lite": "コウㇽㇳ゙"
+   }
+  ]
+ },
+ {
+  "sentence": "Who was that man at the door?",
+  "words": [
+   {
+    "text": "Who",
+    "norm": "who",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "HH",
+     "UW1"
+    ],
+    "kana": "フー",
+    "kana_lite": "フー"
+   },
+   {
+    "text": "was",
+    "norm": "was",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "W",
+     "AH0",
+     "Z"
+    ],
+    "kana": "ウᵊㇲ゙",
+    "kana_lite": "ウㇲ゙"
+   },
+   {
+    "text": "that",
+    "norm": "that",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "AH0",
+     "T"
+    ],
+    "kana": "ㇲᶞᵊㇳ",
+    "kana_lite": "ㇲㇳ"
+   },
+   {
+    "text": "man",
+    "norm": "man",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "M",
+     "AE1",
+     "N"
+    ],
+    "kana": "マᵆ",
+    "kana_lite": "マ"
+   },
+   {
+    "text": "at",
+    "norm": "at",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0",
+     "T"
+    ],
+    "kana": "ンᵊㇳ",
+    "kana_lite": "ンㇳ"
+   },
+   {
+    "text": "the",
+    "norm": "the",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "AH0"
+    ],
+    "kana": "ㇲᶞᵊ",
+    "kana_lite": "ㇲ"
+   },
+   {
+    "text": "door?",
+    "norm": "door",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "D",
+     "AO1",
+     "R"
+    ],
+    "kana": "ドᵓʳ",
+    "kana_lite": "ド"
+   }
+  ]
+ },
+ {
+  "sentence": "My brother lives in a little town.",
+  "words": [
+   {
+    "text": "My",
+    "norm": "my",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "M",
+     "AY1"
+    ],
+    "kana": "マイ",
+    "kana_lite": "マイ"
+   },
+   {
+    "text": "brother",
+    "norm": "brother",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "B",
+     "R",
+     "AH1",
+     "DH",
+     "ER0"
+    ],
+    "kana": "ㇷ゙ラʳᶺザᶞʳ",
+    "kana_lite": "ㇷ゙ラザ"
+   },
+   {
+    "text": "lives",
+    "norm": "lives",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "L",
+     "IH1",
+     "V",
+     "Z"
+    ],
+    "kana": "リˡᶦゥ゙",
+    "kana_lite": "リゥ゙"
+   },
+   {
+    "text": "in",
+    "norm": "in",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "IH0",
+     "N"
+    ],
+    "kana": "ズィᶦ",
+    "kana_lite": "ズィ"
+   },
+   {
+    "text": "a",
+    "norm": "a",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0"
+    ],
+    "kana": "ンᵊ",
+    "kana_lite": "ン"
+   },
+   {
+    "text": "little",
+    "norm": "little",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "L",
+     "IH1",
+     "T",
+     "AH0",
+     "L"
+    ],
+    "kana": "リˡᶦラᵗᵊㇽˡ",
+    "kana_lite": "リラㇽ"
+   },
+   {
+    "text": "town.",
+    "norm": "town",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "T",
+     "AW1",
+     "N"
+    ],
+    "kana": "タʰウン",
+    "kana_lite": "タウン"
+   }
+  ]
+ },
+ {
+  "sentence": "Hot coffee with milk and sugar.",
+  "words": [
+   {
+    "text": "Hot",
+    "norm": "hot",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "HH",
+     "AA1",
+     "T"
+    ],
+    "kana": "ハㇳ",
+    "kana_lite": "ハㇳ"
+   },
+   {
+    "text": "coffee",
+    "norm": "coffee",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "K",
+     "AA1",
+     "F",
+     "IY0"
+    ],
+    "kana": "カʰフィー",
+    "kana_lite": "カフィー"
+   },
+   {
+    "text": "with",
+    "norm": "with",
+    "kind": "speech",
+    "prominence": 1,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "W",
+     "IH1",
+     "DH"
+    ],
+    "kana": "ウィᶦㇲᶞ",
+    "kana_lite": "ウィㇲ"
+   },
+   {
+    "text": "milk",
+    "norm": "milk",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": true,
+    "phones": [
+     "M",
+     "IH1",
+     "L",
+     "K"
+    ],
+    "kana": "ミᶦㇽˡ",
+    "kana_lite": "ミㇽ"
+   },
+   {
+    "text": "and",
+    "norm": "and",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "AH0",
+     "N",
+     "D"
+    ],
+    "kana": "ㇰᵊンㇳ゙",
+    "kana_lite": "ㇰンㇳ゙"
+   },
+   {
+    "text": "sugar.",
+    "norm": "sugar",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "SH",
+     "UH1",
+     "G",
+     "ER0"
+    ],
+    "kana": "シュᶷガʳ",
+    "kana_lite": "シュガ"
+   }
+  ]
+ },
+ {
+  "sentence": "Eight hundred people came to the party.",
+  "words": [
+   {
+    "text": "Eight",
+    "norm": "eight",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "EY1",
+     "T"
+    ],
+    "kana": "エイㇳ",
+    "kana_lite": "エイㇳ"
+   },
+   {
+    "text": "hundred",
+    "norm": "hundred",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "HH",
+     "AH1",
+     "N",
+     "D",
+     "R",
+     "AH0",
+     "D"
+    ],
+    "kana": "ハᶺンㇳ゙ㇽʳᵊㇳ゙",
+    "kana_lite": "ハンㇳ゙ㇽㇳ゙"
+   },
+   {
+    "text": "people",
+    "norm": "people",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "P",
+     "IY1",
+     "P",
+     "AH0",
+     "L"
+    ],
+    "kana": "ピʰーㇷ゚ᵊㇽˡ",
+    "kana_lite": "ピーㇷ゚ㇽ"
+   },
+   {
+    "text": "came",
+    "norm": "came",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "K",
+     "EY1",
+     "M"
+    ],
+    "kana": "ケʰイㇺ",
+    "kana_lite": "ケイㇺ"
+   },
+   {
+    "text": "to",
+    "norm": "to",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "T",
+     "AH0"
+    ],
+    "kana": "ㇳᵊ",
+    "kana_lite": "ㇳ"
+   },
+   {
+    "text": "the",
+    "norm": "the",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "AH0"
+    ],
+    "kana": "ㇲᶞᵊ",
+    "kana_lite": "ㇲ"
+   },
+   {
+    "text": "party.",
+    "norm": "party",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "P",
+     "AA1",
+     "R",
+     "T",
+     "IY0"
+    ],
+    "kana": "パʰʳティー",
+    "kana_lite": "パティー"
+   }
+  ]
+ },
+ {
+  "sentence": "Nothing matters more than love!",
+  "words": [
+   {
+    "text": "Nothing",
+    "norm": "nothing",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "N",
+     "AH1",
+     "TH",
+     "IH0",
+     "NG"
+    ],
+    "kana": "ナᶺシᶿᶦンᵑ",
+    "kana_lite": "ナシン"
+   },
+   {
+    "text": "matters",
+    "norm": "matters",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "M",
+     "AE1",
+     "T",
+     "ER0",
+     "Z"
+    ],
+    "kana": "マᵆラᵗʳㇲ゙",
+    "kana_lite": "マラㇲ゙"
+   },
+   {
+    "text": "more",
+    "norm": "more",
+    "kind": "speech",
+    "prominence": 2,
+    "beat": 1,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "M",
+     "AO1",
+     "R"
+    ],
+    "kana": "モᵓʳ",
+    "kana_lite": "モ"
+   },
+   {
+    "text": "than",
+    "norm": "than",
+    "kind": "speech",
+    "prominence": 0,
+    "beat": 0,
+    "break_after": 0,
+    "linked_next": false,
+    "phones": [
+     "DH",
+     "AH0",
+     "N"
+    ],
+    "kana": "ㇲᶞᵊン",
+    "kana_lite": "ㇲン"
+   },
+   {
+    "text": "love!",
+    "norm": "love",
+    "kind": "speech",
+    "prominence": 3,
+    "beat": 2,
+    "break_after": 2,
+    "linked_next": false,
+    "phones": [
+     "L",
+     "AH1",
+     "V"
+    ],
+    "kana": "ラˡᶺゥ゙",
+    "kana_lite": "ラゥ゙"
+   }
+  ]
+ }
+]

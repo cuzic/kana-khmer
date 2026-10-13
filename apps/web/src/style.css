@@ -2,6 +2,8 @@
 @font-face { font-family: "Kana C"; src: url("/fonts/kana-c.woff2") format("woff2"); unicode-range: U+30C1, U+032F, U+309A, U+30AB, U+30AD, U+30AF, U+30B1, U+30B3, U+30F3, U+31F0-31FF; }
 @font-face { font-family: "Kana Support"; src: url("/fonts/kana-support.woff2") format("woff2");
   unicode-range: U+032F, U+02B0-02B3, U+02C0, U+02E1, U+1D45, U+1D4A, U+1D4B, U+1D51, U+1D53, U+1D9C, U+1DA4; }
+/* Kana Hangul: ko-ja の右肩ローマ字(ʲ と、長音の上付き母音+結合マクロンの合成グリフ)。tools/glyph-check/scripts/build-kana-hangul-font.py。ADR-0019 */
+@font-face { font-family: "Kana Hangul"; src: url("/fonts/kana-hangul.woff2") format("woff2"); unicode-range: U+02B2, U+1D43, U+2071, U+1D58, U+1D49, U+1D52, U+0304; }
 
 :root {
   --bg: #f7f5f1;
@@ -25,7 +27,7 @@
 }
 
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 "Kana C", "Kana Support", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 "Kana C", "Kana Support", "Kana Hangul", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
 main { max-width: 640px; margin: 0 auto; padding: 12px 16px 48px; }
 a, button, select { font: inherit; }
 button, select { transition: background-color .15s ease, border-color .15s ease, transform .15s ease, box-shadow .15s ease; }
@@ -59,10 +61,19 @@ ul { list-style: none; padding: 0; margin: 0; }
 .back:hover { color: var(--accent); text-decoration: underline; }
 
 .card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); padding: 14px 16px; margin-top: 10px; }
-.ja { font-weight: 700; font-size: 1.05em; }
+.phrase-gloss { font-weight: 700; font-size: 1.05em; }
 .variant { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
 .kana { font-size: 24px; }
-.khmer { color: var(--muted); font-family: "Noto Sans Khmer", system-ui, sans-serif; }
+.text { color: var(--muted); }
+.text:lang(km) { font-family: "Noto Sans Khmer", system-ui, sans-serif; }
+/* タイ文字は上下に母音・声調記号が積まれるので、行間を広めにする(th-ja。読みは .kana、本文の訳は body) */
+:lang(th) .kana, .kana:lang(th), :root:lang(th) { line-height: 1.7; }
+:root:lang(th) .kana { font-family: "Noto Sans Thai", "Sarabun", system-ui, sans-serif; }
+.text:lang(ja) { font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif; }
+.text ruby { ruby-position: over; }
+.text rt { font-size: .55em; color: var(--muted); }
+.furigana-line { display: block; font-size: 12px; }
+.latin { color: var(--muted); font-family: "Noto Sans", system-ui, sans-serif; font-size: 15px; }
 .tag, .badge { font-size: 12px; border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; }
 .tag { background: var(--accent-soft); border-color: transparent; color: var(--accent); }
 .badge { margin-left: 8px; color: var(--r2); border-color: var(--r2); background: color-mix(in srgb, var(--r2) 12%, transparent); }
@@ -70,7 +81,12 @@ ul { list-style: none; padding: 0; margin: 0; }
 .ipa { color: var(--muted); font-family: "Noto Sans", system-ui, sans-serif; font-size: 15px; }
 .usage { margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--line); }
 
-.practice .ja { font-size: 1.3rem; margin: 0.5rem 0 1rem; }
+/* カード右側いっぱいに画像を敷く(高さはカードに追従)。画像が読めたカードだけ .has-img で余白と最小高さを確保する。 */
+.card { position: relative; }
+.phrase-thumb { position: absolute; top: 0; right: 0; bottom: 0; width: 38%; height: 100%; border-radius: 0 var(--radius) var(--radius) 0; object-fit: cover; background: var(--accent-soft); }
+.card.has-img { min-height: 132px; padding-right: calc(38% + 14px); }
+.phrase-img { display: block; width: 100%; max-width: 320px; aspect-ratio: 1; margin: 0.5rem auto 0; border-radius: var(--radius); object-fit: cover; background: var(--accent-soft); }
+.practice .phrase-gloss { font-size: 1.3rem; margin: 0.5rem 0 1rem; }
 .reveal { width: 100%; padding: 0.85rem; font-size: 1rem; font-weight: 700; margin-bottom: 1rem; background: var(--accent); color: var(--accent-fg); border: none; border-radius: var(--radius); cursor: pointer; box-shadow: var(--shadow); }
 .reveal:hover { filter: brightness(1.06); transform: translateY(-1px); }
 .reveal:active { transform: translateY(0); filter: brightness(.98); }
@@ -91,7 +107,8 @@ ul { list-style: none; padding: 0; margin: 0; }
 .parts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
 .parts li { border: 1px solid var(--line); border-radius: var(--radius); padding: 6px 10px; display: flex; flex-direction: column; min-width: 4.5em; background: var(--surface); }
 .parts .kana { font-size: 18px; }
-.parts .khmer { font-size: 13px; }
+.parts .text { font-size: 13px; }
+.parts .latin { font-size: 12px; }
 .gloss { font-size: 14px; }
 .pos { font-size: 11px; color: var(--muted); }
 .pos b { margin-left: 6px; font-weight: 600; color: var(--accent); }

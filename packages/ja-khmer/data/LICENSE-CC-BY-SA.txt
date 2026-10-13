@@ -1,0 +1,26 @@
+Attribution / License notice for accent-ja-pron.json
+=====================================================
+
+The file accent-ja-pron.json in this directory (and only that file) contains data
+extracted from the English Wiktionary (https://en.wiktionary.org/), specifically the
+`acc` (Tokyo-dialect pitch accent) parameter of the {{ja-pron}} template on the
+entries listed in each record's `source.url` (a permanent link to the exact page
+revision, "oldid") on the date in `source.retrievedAt`.
+
+The Wiktionary text is available under the Creative Commons Attribution-ShareAlike
+4.0 International License (CC BY-SA 4.0):
+  https://creativecommons.org/licenses/by-sa/4.0/
+Attribution: "Wiktionary contributors" of each page (page history is linked from
+`source.url`; the history of a page lists its authors).
+
+Changes made: the accent values were parsed out of the wikitext, normalised to a
+nucleus position (mora number after which the pitch falls, 0 = flat), and expanded
+into an H/L pattern per mora. The dictionary abbreviations in `refs` (NHK, DJR, ...)
+are the source codes cited by Wiktionary; the dictionaries' own text is not included.
+
+Scope of the share-alike condition: this file is kept separate from the rest of the
+repository so that the CC BY-SA terms apply to it and to adaptations of it. The legal
+question of how far the condition extends to software that reads this file has not
+been settled (see docs/adr/0021, decision 8).
+
+All records are unverified by a human (`verified: false`).

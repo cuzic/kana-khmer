@@ -1,0 +1,11 @@
+{
+  "name": "@kana-khmer/ja-khmer-accent",
+  "private": true,
+  "type": "module",
+  "description": "ADR-0021: 英語版 Wiktionary の ja-pron の acc から旅行語彙の東京式アクセントを取り込み、packages/ja-khmer/data/accent-ja-pron.json を作る。",
+  "scripts": {
+    "fetch": "node src/fetch.mjs",
+    "validate": "node src/validate.mjs",
+    "test": "node src/validate.mjs"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "en-prosody",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "gen:dict": "uv run --project ../../tools/en-prosody-spike python ../../tools/en-prosody-spike/src/export_dict.py",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json"
+  }
+}

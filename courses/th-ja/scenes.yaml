@@ -1,0 +1,9 @@
+# 場面(タイ語話者が日本で使う場面)。文言はタイ語ネイティブ確認前の仮(ร่างที่ยังไม่ได้ให้เจ้าของภาษาไทยตรวจ)。
+- { id: greetings, title: "ทักทาย", order: 1 }
+- { id: thanks-sorry, title: "ขอบคุณ · ขอโทษ · ตอบรับ", order: 2 }
+- { id: restaurant, title: "ร้านอาหาร", order: 3 }
+- { id: shopping, title: "ช้อปปิ้ง", order: 4 }
+- { id: transport, title: "การเดินทาง · ถามทาง", order: 5 }
+- { id: hotel, title: "ที่พัก", order: 6 }
+- { id: trouble, title: "เมื่อมีปัญหา", order: 7 }
+- { id: friendly, title: "ประโยคที่คนญี่ปุ่นดีใจเมื่อได้ยิน", order: 8 }

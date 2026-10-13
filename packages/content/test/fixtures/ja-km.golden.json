@@ -1,0 +1,1470 @@
+{
+ "scenes": [
+  {
+   "id": "greetings",
+   "title": "挨拶",
+   "order": 1,
+   "phraseIds": [
+    "hello",
+    "goodbye",
+    "how-are-you",
+    "fine",
+    "good-morning",
+    "good-night",
+    "nice-to-meet",
+    "welcome"
+   ]
+  },
+  {
+   "id": "thanks-sorry",
+   "title": "お礼・お詫び・返事",
+   "order": 2,
+   "phraseIds": [
+    "yes",
+    "thanks",
+    "sorry",
+    "no",
+    "welcome-reply",
+    "thanks-a-lot",
+    "ok",
+    "apologize"
+   ]
+  },
+  {
+   "id": "address",
+   "title": "呼びかけ",
+   "order": 3,
+   "phraseIds": [
+    "older-sibling",
+    "younger-sibling",
+    "mr",
+    "mrs",
+    "uncle",
+    "aunt"
+   ]
+  },
+  {
+   "id": "intro",
+   "title": "自己紹介",
+   "order": 4,
+   "phraseIds": [
+    "name-q",
+    "from-japan",
+    "japanese",
+    "learning-khmer",
+    "like-cambodia",
+    "came-to-visit"
+   ]
+  },
+  {
+   "id": "oneliners",
+   "title": "ひとこと表現",
+   "order": 5,
+   "phraseIds": [
+    "dont-understand",
+    "understand",
+    "say-again",
+    "slowly",
+    "how-much",
+    "too-expensive",
+    "toilet",
+    "very-good",
+    "water",
+    "help",
+    "wait",
+    "what-is-this"
+   ]
+  }
+ ],
+ "phrases": [
+  {
+   "id": "hello",
+   "scene": "greetings",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "សួស្តី",
+     "pron": "suə.sɗəj",
+     "full": "スアᵊㇲダᵊィ",
+     "lite": "スアᵊㇲダᵊィ",
+     "audio": "hello.m4a"
+    }
+   ],
+   "words": [
+    {
+     "text": "សួស្តី",
+     "pron": "suə.sɗəj"
+    }
+   ]
+  },
+  {
+   "id": "yes",
+   "scene": "thanks-sorry",
+   "variants": [
+    {
+     "speaker": "male",
+     "register": "polite",
+     "text": "បាទ",
+     "pron": "ɓaːt",
+     "full": "バーㇳ",
+     "lite": "バーㇳ",
+     "audio": "yes-m.m4a"
+    },
+    {
+     "speaker": "female",
+     "register": "polite",
+     "text": "ចាស",
+     "pron": "caːh",
+     "full": "チャーㇹ",
+     "lite": "チャーㇹ",
+     "audio": "yes-f.m4a"
+    }
+   ],
+   "words": [
+    {
+     "text": "បាទ",
+     "pron": "ɓaːt"
+    },
+    {
+     "text": "ចាស",
+     "pron": "caːh"
+    }
+   ]
+  },
+  {
+   "id": "thanks",
+   "scene": "thanks-sorry",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "អរគុណ",
+     "pron": "ʔɑː.kun",
+     "full": "オᵅークン",
+     "lite": "オᵅークン",
+     "audio": "thanks.m4a"
+    }
+   ],
+   "words": [
+    {
+     "text": "អរគុណ",
+     "pron": "ʔɑː.kun"
+    }
+   ]
+  },
+  {
+   "id": "sorry",
+   "scene": "thanks-sorry",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "សុំទោស",
+     "pron": "som.toːh",
+     "full": "ソㇺトーㇹ",
+     "lite": "ソㇺトーㇹ",
+     "audio": "sorry.m4a"
+    }
+   ],
+   "words": [
+    {
+     "text": "សុំទោស",
+     "pron": "som.toːh"
+    }
+   ]
+  },
+  {
+   "id": "goodbye",
+   "scene": "greetings",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "លាហើយ",
+     "pron": "liə.haəj",
+     "full": "リˡアᵊハアᵊィ",
+     "lite": "リˡアᵊハアᵊィ",
+     "audio": "goodbye.m4a"
+    }
+   ],
+   "words": [
+    {
+     "text": "លាហើយ",
+     "pron": "liə.haəj"
+    }
+   ]
+  },
+  {
+   "id": "how-are-you",
+   "scene": "greetings",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "សុខសប្បាយជាទេ",
+     "pron": "sok.sap.ɓaːj.ciə.tei",
+     "full": "ソㇰサㇷ゚バーィ チアᵊ テイ",
+     "lite": "ソㇰサㇷ゚バーィ チアᵊ テイ",
+     "audio": "how-are-you.m4a",
+     "parts": [
+      {
+       "text": "សុខសប្បាយ",
+       "pron": "sok.sap.ɓaːj",
+       "full": "ソㇰサㇷ゚バーィ",
+       "lite": "ソㇰサㇷ゚バーィ"
+      },
+      {
+       "text": "ជា",
+       "pron": "ciə",
+       "full": "チアᵊ",
+       "lite": "チアᵊ"
+      },
+      {
+       "text": "ទេ",
+       "pron": "tei",
+       "full": "テイ",
+       "lite": "テイ"
+      }
+     ]
+    }
+   ],
+   "words": [
+    {
+     "text": "សុខសប្បាយជាទេ",
+     "pron": "sok.sap.ɓaːj.ciə.tei"
+    }
+   ]
+  },
+  {
+   "id": "fine",
+   "scene": "greetings",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "សុខសប្បាយ",
+     "pron": "sok.sap.ɓaːj",
+     "full": "ソㇰ サㇷ゚バーィ",
+     "lite": "ソㇰ サㇷ゚バーィ",
+     "audio": "fine.m4a",
+     "parts": [
+      {
+       "text": "សុខ",
+       "pron": "sok",
+       "full": "ソㇰ",
+       "lite": "ソㇰ"
+      },
+      {
+       "text": "សប្បាយ",
+       "pron": "sap.ɓaːj",
+       "full": "サㇷ゚バーィ",
+       "lite": "サㇷ゚バーィ"
+      }
+     ]
+    }
+   ],
+   "words": [
+    {
+     "text": "សុខសប្បាយ",
+     "pron": "sok.sap.ɓaːj"
+    }
+   ]
+  },
+  {
+   "id": "good-morning",
+   "scene": "greetings",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "អរុណសួស្តី",
+     "pron": "ʔaʔ.run.suə.sɗəj",
+     "full": "アッルʳン スアᵊㇲダᵊィ",
+     "lite": "アッルʳン スアᵊㇲダᵊィ",
+     "audio": "good-morning.m4a",
+     "parts": [
+      {
+       "text": "អរុណ",
+       "pron": "ʔaʔ.run",
+       "full": "アッルʳン",
+       "lite": "アッルʳン"
+      },
+      {
+       "text": "សួស្តី",
+       "pron": "suə.sɗəj",
+       "full": "スアᵊㇲダᵊィ",
+       "lite": "スアᵊㇲダᵊィ"
+      }
+     ]
+    }
+   ],
+   "words": [
+    {
+     "text": "អរុណសួស្តី",
+     "pron": "ʔaʔ.run.suə.sɗəj"
+    }
+   ]
+  },
+  {
+   "id": "good-night",
+   "scene": "greetings",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "រាត្រីសួស្តី",
+     "pron": "riə.trəj.suə.sɗəj",
+     "full": "リʳアᵊㇳラʳᵊィ スアᵊㇲダᵊィ",
+     "lite": "リʳアᵊㇳラʳᵊィ スアᵊㇲダᵊィ",
+     "audio": "good-night.m4a",
+     "parts": [
+      {
+       "text": "រាត្រី",
+       "pron": "riə.trəj",
+       "full": "リʳアᵊㇳラʳᵊィ",
+       "lite": "リʳアᵊㇳラʳᵊィ"
+      },
+      {
+       "text": "សួស្តី",
+       "pron": "suə.sɗəj",
+       "full": "スアᵊㇲダᵊィ",
+       "lite": "スアᵊㇲダᵊィ"
+      }
+     ]
+    }
+   ],
+   "words": [
+    {
+     "text": "រាត្រីសួស្តី",
+     "pron": "riə.trəj.suə.sɗəj"
+    }
+   ]
+  },
+  {
+   "id": "nice-to-meet",
+   "scene": "greetings",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "រីករាយដែលបានស្គាល់",
+     "pron": "riːk.riəj.ɗael.ɓaːn.skŏəl",
+     "full": "リʳーㇰリʳアᵊィ ダエㇽˡ バーン ㇲコァᵊㇽˡ",
+     "lite": "リʳーㇰリʳアᵊィ ダエㇽˡ バーン ㇲコァᵊㇽˡ",
+     "audio": "nice-to-meet.m4a",
+     "parts": [
+      {
+       "text": "រីករាយ",
+       "pron": "riːk.riəj",
+       "full": "リʳーㇰリʳアᵊィ",
+       "lite": "リʳーㇰリʳアᵊィ"
+      },
+      {
+       "text": "ដែល",
+       "pron": "ɗael",
+       "full": "ダエㇽˡ",
+       "lite": "ダエㇽˡ"
+      },
+      {
+       "text": "បាន",
+       "pron": "ɓaːn",
+       "full": "バーン",
+       "lite": "バーン"
+      },
+      {
+       "text": "ស្គាល់",
+       "pron": "skŏəl",
+       "full": "ㇲコァᵊㇽˡ",
+       "lite": "ㇲコァᵊㇽˡ"
+      }
+     ]
+    }
+   ],
+   "words": [
+    {
+     "text": "រីករាយដែលបានស្គាល់",
+     "pron": "riːk.riəj.ɗael.ɓaːn.skŏəl"
+    }
+   ]
+  },
+  {
+   "id": "welcome",
+   "scene": "greetings",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "សូមស្វាគមន៍",
+     "pron": "soum.sʋaː.kum",
+     "full": "ソウㇺ ㇲヴァークㇺ",
+     "lite": "ソウㇺ ㇲヴァークㇺ",
+     "audio": "welcome.m4a",
+     "parts": [
+      {
+       "text": "សូម",
+       "pron": "soum",
+       "full": "ソウㇺ",
+       "lite": "ソウㇺ"
+      },
+      {
+       "text": "ស្វាគមន៍",
+       "pron": "sʋaː.kum",
+       "full": "ㇲヴァークㇺ",
+       "lite": "ㇲヴァークㇺ"
+      }
+     ]
+    }
+   ],
+   "words": [
+    {
+     "text": "សូមស្វាគមន៍",
+     "pron": "soum.sʋaː.kum"
+    }
+   ]
+  },
+  {
+   "id": "no",
+   "scene": "thanks-sorry",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "ទេ",
+     "pron": "tei",
+     "full": "テイ",
+     "lite": "テイ",
+     "audio": "no.m4a"
+    }
+   ],
+   "words": [
+    {
+     "text": "ទេ",
+     "pron": "tei"
+    }
+   ]
+  },
+  {
+   "id": "welcome-reply",
+   "scene": "thanks-sorry",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "អត់អីទេ",
+     "pron": "ʔɑt.ʔəj.tei",
+     "full": "オᵅㇳ アᵊィ テイ",
+     "lite": "オᵅㇳ アᵊィ テイ",
+     "audio": "welcome-reply.m4a",
+     "parts": [
+      {
+       "text": "អត់",
+       "pron": "ʔɑt",
+       "full": "オᵅㇳ",
+       "lite": "オᵅㇳ"
+      },
+      {
+       "text": "អី",
+       "pron": "ʔəj",
+       "full": "アᵊィ",
+       "lite": "アᵊィ"
+      },
+      {
+       "text": "ទេ",
+       "pron": "tei",
+       "full": "テイ",
+       "lite": "テイ"
+      }
+     ]
+    }
+   ],
+   "words": [
+    {
+     "text": "អត់អីទេ",
+     "pron": "ʔɑt.ʔəj.tei"
+    }
+   ]
+  },
+  {
+   "id": "thanks-a-lot",
+   "scene": "thanks-sorry",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "អរគុណច្រើន",
+     "pron": "ʔɑː.kun.craən",
+     "full": "オᵅークン チ̯ラʳアᵊン",
+     "lite": "オᵅークン チ̯ラʳアᵊン",
+     "audio": "thanks-a-lot.m4a",
+     "parts": [
+      {
+       "text": "អរគុណ",
+       "pron": "ʔɑː.kun",
+       "full": "オᵅークン",
+       "lite": "オᵅークン"
+      },
+      {
+       "text": "ច្រើន",
+       "pron": "craən",
+       "full": "チ̯ラʳアᵊン",
+       "lite": "チ̯ラʳアᵊン"
+      }
+     ]
+    }
+   ],
+   "words": [
+    {
+     "text": "អរគុណច្រើន",
+     "pron": "ʔɑː.kun.craən"
+    }
+   ]
+  },
+  {
+   "id": "ok",
+   "scene": "thanks-sorry",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "បាន",
+     "pron": "ɓaːn",
+     "full": "バーン",
+     "lite": "バーン",
+     "audio": "ok.m4a"
+    }
+   ],
+   "words": [
+    {
+     "text": "បាន",
+     "pron": "ɓaːn"
+    }
+   ]
+  },
+  {
+   "id": "apologize",
+   "scene": "thanks-sorry",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "ខ្ញុំសុំទោស",
+     "pron": "kɲom.som.toːh",
+     "full": "ㇰニョㇺ ソㇺ トーㇹ",
+     "lite": "ㇰニョㇺ ソㇺ トーㇹ",
+     "audio": "apologize.m4a",
+     "parts": [
+      {
+       "text": "ខ្ញុំ",
+       "pron": "kɲom",
+       "full": "ㇰニョㇺ",
+       "lite": "ㇰニョㇺ"
+      },
+      {
+       "text": "សុំ",
+       "pron": "som",
+       "full": "ソㇺ",
+       "lite": "ソㇺ"
+      },
+      {
+       "text": "ទោស",
+       "pron": "toːh",
+       "full": "トーㇹ",
+       "lite": "トーㇹ"
+      }
+     ]
+    }
+   ],
+   "words": [
+    {
+     "text": "ខ្ញុំសុំទោស",
+     "pron": "kɲom.som.toːh"
+    }
+   ]
+  },
+  {
+   "id": "older-sibling",
+   "scene": "address",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "បង",
+     "pron": "ɓɑːŋ",
+     "full": "ボᵅーンᵑ",
+     "lite": "ボᵅーンᵑ",
+     "audio": "older-sibling.m4a"
+    }
+   ],
+   "words": [
+    {
+     "text": "បង",
+     "pron": "ɓɑːŋ"
+    }
+   ]
+  },
+  {
+   "id": "younger-sibling",
+   "scene": "address",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "អូន",
+     "pron": "ʔoun",
+     "full": "オウン",
+     "lite": "オウン",
+     "audio": "younger-sibling.m4a"
+    }
+   ],
+   "words": [
+    {
+     "text": "អូន",
+     "pron": "ʔoun"
+    }
+   ]
+  },
+  {
+   "id": "mr",
+   "scene": "address",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "លោក",
+     "pron": "loːk",
+     "full": "ロˡーㇰ",
+     "lite": "ロˡーㇰ",
+     "audio": "mr.m4a"
+    }
+   ],
+   "words": [
+    {
+     "text": "លោក",
+     "pron": "loːk"
+    }
+   ]
+  },
+  {
+   "id": "mrs",
+   "scene": "address",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "លោកស្រី",
+     "pron": "loːk.srəj",
+     "full": "ロˡーㇰ ㇲラʳᵊィ",
+     "lite": "ロˡーㇰ ㇲラʳᵊィ",
+     "audio": "mrs.m4a",
+     "parts": [
+      {
+       "text": "លោក",
+       "pron": "loːk",
+       "full": "ロˡーㇰ",
+       "lite": "ロˡーㇰ"
+      },
+      {
+       "text": "ស្រី",
+       "pron": "srəj",
+       "full": "ㇲラʳᵊィ",
+       "lite": "ㇲラʳᵊィ"
+      }
+     ]
+    }
+   ],
+   "words": [
+    {
+     "text": "លោកស្រី",
+     "pron": "loːk.srəj"
+    }
+   ]
+  },
+  {
+   "id": "uncle",
+   "scene": "address",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "ពូ",
+     "pron": "puː",
+     "full": "プー",
+     "lite": "プー",
+     "audio": "uncle.m4a"
+    }
+   ],
+   "words": [
+    {
+     "text": "ពូ",
+     "pron": "puː"
+    }
+   ]
+  },
+  {
+   "id": "aunt",
+   "scene": "address",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "មីង",
+     "pron": "miːŋ",
+     "full": "ミーンᵑ",
+     "lite": "ミーンᵑ",
+     "audio": "aunt.m4a"
+    }
+   ],
+   "words": [
+    {
+     "text": "មីង",
+     "pron": "miːŋ"
+    }
+   ]
+  },
+  {
+   "id": "name-q",
+   "scene": "intro",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "អ្នកឈ្មោះអ្វី",
+     "pron": "nĕəʔ.cʰmŭəh.ʔʋəj",
+     "full": "ネァᵊッ チ̯ムァᵊㇹ ˀヴァᵊィ",
+     "lite": "ネァᵊッ チ̯ムァᵊㇹ ヴァᵊィ",
+     "audio": "name-q.m4a",
+     "parts": [
+      {
+       "text": "អ្នក",
+       "pron": "nĕəʔ",
+       "full": "ネァᵊッ",
+       "lite": "ネァᵊッ"
+      },
+      {
+       "text": "ឈ្មោះ",
+       "pron": "cʰmŭəh",
+       "full": "チ̯ムァᵊㇹ",
+       "lite": "チ̯ムァᵊㇹ"
+      },
+      {
+       "text": "អ្វី",
+       "pron": "ʔʋəj",
+       "full": "ˀヴァᵊィ",
+       "lite": "ヴァᵊィ"
+      }
+     ]
+    }
+   ],
+   "words": [
+    {
+     "text": "អ្នកឈ្មោះអ្វី",
+     "pron": "nĕəʔ.cʰmŭəh.ʔʋəj"
+    }
+   ]
+  },
+  {
+   "id": "from-japan",
+   "scene": "intro",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "ខ្ញុំមកពីប្រទេសជប៉ុន",
+     "pron": "kɲom.mɔːʔ.piː.prɑ.teih.cĕəʔ.pon",
+     "full": "ㇰニョㇺ モᵓーッ ピー ㇷ゚ロʳᵅテイㇹ チェァᵊッポン",
+     "lite": "ㇰニョㇺ モーッ ピー ㇷ゚ロʳᵅテイㇹ チェァᵊッポン",
+     "audio": "from-japan.m4a",
+     "parts": [
+      {
+       "text": "ខ្ញុំ",
+       "pron": "kɲom",
+       "full": "ㇰニョㇺ",
+       "lite": "ㇰニョㇺ"
+      },
+      {
+       "text": "មក",
+       "pron": "mɔːʔ",
+       "full": "モᵓーッ",
+       "lite": "モーッ"
+      },
+      {
+       "text": "ពី",
+       "pron": "piː",
+       "full": "ピー",
+       "lite": "ピー"
+      },
+      {
+       "text": "ប្រទេស",
+       "pron": "prɑ.teih",
+       "full": "ㇷ゚ロʳᵅテイㇹ",
+       "lite": "ㇷ゚ロʳᵅテイㇹ"
+      },
+      {
+       "text": "ជប៉ុន",
+       "pron": "cĕəʔ.pon",
+       "full": "チェァᵊッポン",
+       "lite": "チェァᵊッポン"
+      }
+     ]
+    }
+   ],
+   "words": [
+    {
+     "text": "ខ្ញុំមកពីប្រទេសជប៉ុន",
+     "pron": "kɲom.mɔːʔ.piː.prɑ.teih.cĕəʔ.pon"
+    }
+   ]
+  },
+  {
+   "id": "japanese",
+   "scene": "intro",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "ខ្ញុំជាជនជាតិជប៉ុន",
+     "pron": "kɲom.ciə.cɔːn.ciət.cĕəʔ.pon",
+     "full": "ㇰニョㇺ チアᵊ チョᵓーンチアᵊㇳ チェァᵊッポン",
+     "lite": "ㇰニョㇺ チアᵊ チョーンチアᵊㇳ チェァᵊッポン",
+     "audio": "japanese.m4a",
+     "parts": [
+      {
+       "text": "ខ្ញុំ",
+       "pron": "kɲom",
+       "full": "ㇰニョㇺ",
+       "lite": "ㇰニョㇺ"
+      },
+      {
+       "text": "ជា",
+       "pron": "ciə",
+       "full": "チアᵊ",
+       "lite": "チアᵊ"
+      },
+      {
+       "text": "ជនជាតិ",
+       "pron": "cɔːn.ciət",
+       "full": "チョᵓーンチアᵊㇳ",
+       "lite": "チョーンチアᵊㇳ"
+      },
+      {
+       "text": "ជប៉ុន",
+       "pron": "cĕəʔ.pon",
+       "full": "チェァᵊッポン",
+       "lite": "チェァᵊッポン"
+      }
+     ]
+    }
+   ],
+   "words": [
+    {
+     "text": "ខ្ញុំជាជនជាតិជប៉ុន",
+     "pron": "kɲom.ciə.cɔːn.ciət.cĕəʔ.pon"
+    }
+   ]
+  },
+  {
+   "id": "learning-khmer",
+   "scene": "intro",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "ខ្ញុំកំពុងរៀនភាសាខ្មែរ",
+     "pron": "kɲom.kɑm.puŋ.riən.pʰiə.saː.kʰmae",
+     "full": "ㇰニョㇺ コᵅㇺプンᵑ リʳアᵊン ピʰアᵊサー ㇰマエ",
+     "lite": "ㇰニョㇺ コᵅㇺプンᵑ リʳアᵊン ピʰアᵊサー ㇰマエ",
+     "audio": "learning-khmer.m4a",
+     "parts": [
+      {
+       "text": "ខ្ញុំ",
+       "pron": "kɲom",
+       "full": "ㇰニョㇺ",
+       "lite": "ㇰニョㇺ"
+      },
+      {
+       "text": "កំពុង",
+       "pron": "kɑm.puŋ",
+       "full": "コᵅㇺプンᵑ",
+       "lite": "コᵅㇺプンᵑ"
+      },
+      {
+       "text": "រៀន",
+       "pron": "riən",
+       "full": "リʳアᵊン",
+       "lite": "リʳアᵊン"
+      },
+      {
+       "text": "ភាសា",
+       "pron": "pʰiə.saː",
+       "full": "ピʰアᵊサー",
+       "lite": "ピʰアᵊサー"
+      },
+      {
+       "text": "ខ្មែរ",
+       "pron": "kʰmae",
+       "full": "ㇰマエ",
+       "lite": "ㇰマエ"
+      }
+     ]
+    }
+   ],
+   "words": [
+    {
+     "text": "ខ្ញុំកំពុងរៀនភាសាខ្មែរ",
+     "pron": "kɲom.kɑm.puŋ.riən.pʰiə.saː.kʰmae"
+    }
+   ]
+  },
+  {
+   "id": "like-cambodia",
+   "scene": "intro",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "ខ្ញុំចូលចិត្តកម្ពុជា",
+     "pron": "kɲom.coul.cət.kam.pu.ciə",
+     "full": "ㇰニョㇺ チョウㇽˡチャᵊㇳ カㇺプチアᵊ",
+     "lite": "ㇰニョㇺ チョウㇽˡチャᵊㇳ カㇺプチアᵊ",
+     "audio": "like-cambodia.m4a",
+     "parts": [
+      {
+       "text": "ខ្ញុំ",
+       "pron": "kɲom",
+       "full": "ㇰニョㇺ",
+       "lite": "ㇰニョㇺ"
+      },
+      {
+       "text": "ចូលចិត្ត",
+       "pron": "coul.cət",
+       "full": "チョウㇽˡチャᵊㇳ",
+       "lite": "チョウㇽˡチャᵊㇳ"
+      },
+      {
+       "text": "កម្ពុជា",
+       "pron": "kam.pu.ciə",
+       "full": "カㇺプチアᵊ",
+       "lite": "カㇺプチアᵊ"
+      }
+     ]
+    }
+   ],
+   "words": [
+    {
+     "text": "ខ្ញុំចូលចិត្តកម្ពុជា",
+     "pron": "kɲom.coul.cət.kam.pu.ciə"
+    }
+   ]
+  },
+  {
+   "id": "came-to-visit",
+   "scene": "intro",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "ខ្ញុំមកលេង",
+     "pron": "kɲom.mɔːʔ.leːŋ",
+     "full": "ㇰニョㇺ モᵓーッ レˡーンᵑ",
+     "lite": "ㇰニョㇺ モーッ レˡーンᵑ",
+     "audio": "came-to-visit.m4a",
+     "parts": [
+      {
+       "text": "ខ្ញុំ",
+       "pron": "kɲom",
+       "full": "ㇰニョㇺ",
+       "lite": "ㇰニョㇺ"
+      },
+      {
+       "text": "មក",
+       "pron": "mɔːʔ",
+       "full": "モᵓーッ",
+       "lite": "モーッ"
+      },
+      {
+       "text": "លេង",
+       "pron": "leːŋ",
+       "full": "レˡーンᵑ",
+       "lite": "レˡーンᵑ"
+      }
+     ]
+    }
+   ],
+   "words": [
+    {
+     "text": "ខ្ញុំមកលេង",
+     "pron": "kɲom.mɔːʔ.leːŋ"
+    }
+   ]
+  },
+  {
+   "id": "dont-understand",
+   "scene": "oneliners",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "ខ្ញុំមិនយល់ទេ",
+     "pron": "kɲom.mɨn.jŭəl.tei",
+     "full": "ㇰニョㇺ ムᶤン ユァᵊㇽˡ テイ",
+     "lite": "ㇰニョㇺ ムン ユァᵊㇽˡ テイ",
+     "audio": "dont-understand.m4a",
+     "parts": [
+      {
+       "text": "ខ្ញុំ",
+       "pron": "kɲom",
+       "full": "ㇰニョㇺ",
+       "lite": "ㇰニョㇺ"
+      },
+      {
+       "text": "មិន",
+       "pron": "mɨn",
+       "full": "ムᶤン",
+       "lite": "ムン"
+      },
+      {
+       "text": "យល់",
+       "pron": "jŭəl",
+       "full": "ユァᵊㇽˡ",
+       "lite": "ユァᵊㇽˡ"
+      },
+      {
+       "text": "ទេ",
+       "pron": "tei",
+       "full": "テイ",
+       "lite": "テイ"
+      }
+     ]
+    }
+   ],
+   "words": [
+    {
+     "text": "ខ្ញុំមិនយល់ទេ",
+     "pron": "kɲom.mɨn.jŭəl.tei"
+    }
+   ]
+  },
+  {
+   "id": "understand",
+   "scene": "oneliners",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "ខ្ញុំយល់ហើយ",
+     "pron": "kɲom.jŭəl.haəj",
+     "full": "ㇰニョㇺ ユァᵊㇽˡ ハアᵊィ",
+     "lite": "ㇰニョㇺ ユァᵊㇽˡ ハアᵊィ",
+     "audio": "understand.m4a",
+     "parts": [
+      {
+       "text": "ខ្ញុំ",
+       "pron": "kɲom",
+       "full": "ㇰニョㇺ",
+       "lite": "ㇰニョㇺ"
+      },
+      {
+       "text": "យល់",
+       "pron": "jŭəl",
+       "full": "ユァᵊㇽˡ",
+       "lite": "ユァᵊㇽˡ"
+      },
+      {
+       "text": "ហើយ",
+       "pron": "haəj",
+       "full": "ハアᵊィ",
+       "lite": "ハアᵊィ"
+      }
+     ]
+    }
+   ],
+   "words": [
+    {
+     "text": "ខ្ញុំយល់ហើយ",
+     "pron": "kɲom.jŭəl.haəj"
+    }
+   ]
+  },
+  {
+   "id": "say-again",
+   "scene": "oneliners",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "សូមនិយាយម្តងទៀត",
+     "pron": "soum.ni.jiəj.mɗɑːŋ.tiət",
+     "full": "ソウㇺ ニイアᵊィ ㇺドᵅーンᵑ ティアᵊㇳ",
+     "lite": "ソウㇺ ニイアᵊィ ㇺドᵅーンᵑ ティアᵊㇳ",
+     "audio": "say-again.m4a",
+     "parts": [
+      {
+       "text": "សូម",
+       "pron": "soum",
+       "full": "ソウㇺ",
+       "lite": "ソウㇺ"
+      },
+      {
+       "text": "និយាយ",
+       "pron": "ni.jiəj",
+       "full": "ニイアᵊィ",
+       "lite": "ニイアᵊィ"
+      },
+      {
+       "text": "ម្តង",
+       "pron": "mɗɑːŋ",
+       "full": "ㇺドᵅーンᵑ",
+       "lite": "ㇺドᵅーンᵑ"
+      },
+      {
+       "text": "ទៀត",
+       "pron": "tiət",
+       "full": "ティアᵊㇳ",
+       "lite": "ティアᵊㇳ"
+      }
+     ]
+    }
+   ],
+   "words": [
+    {
+     "text": "សូមនិយាយម្តងទៀត",
+     "pron": "soum.ni.jiəj.mɗɑːŋ.tiət"
+    }
+   ]
+  },
+  {
+   "id": "slowly",
+   "scene": "oneliners",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "សូមនិយាយយឺតៗ",
+     "pron": "soum.ni.jiəj.jɨːt.jɨːt",
+     "full": "ソウㇺ ニイアᵊィ ユᶤーㇳユᶤーㇳ",
+     "lite": "ソウㇺ ニイアᵊィ ユーㇳユーㇳ",
+     "audio": "slowly.m4a",
+     "parts": [
+      {
+       "text": "សូម",
+       "pron": "soum",
+       "full": "ソウㇺ",
+       "lite": "ソウㇺ"
+      },
+      {
+       "text": "និយាយ",
+       "pron": "ni.jiəj",
+       "full": "ニイアᵊィ",
+       "lite": "ニイアᵊィ"
+      },
+      {
+       "text": "យឺតៗ",
+       "pron": "jɨːt.jɨːt",
+       "full": "ユᶤーㇳユᶤーㇳ",
+       "lite": "ユーㇳユーㇳ"
+      }
+     ]
+    }
+   ],
+   "words": [
+    {
+     "text": "សូមនិយាយយឺតៗ",
+     "pron": "soum.ni.jiəj.jɨːt.jɨːt"
+    }
+   ]
+  },
+  {
+   "id": "how-much",
+   "scene": "oneliners",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "ថ្លៃប៉ុន្មាន",
+     "pron": "tʰlaj.pon.maːn",
+     "full": "ㇳラˡィ ポンマーン",
+     "lite": "ㇳラˡィ ポンマーン",
+     "audio": "how-much.m4a",
+     "parts": [
+      {
+       "text": "ថ្លៃ",
+       "pron": "tʰlaj",
+       "full": "ㇳラˡィ",
+       "lite": "ㇳラˡィ"
+      },
+      {
+       "text": "ប៉ុន្មាន",
+       "pron": "pon.maːn",
+       "full": "ポンマーン",
+       "lite": "ポンマーン"
+      }
+     ]
+    }
+   ],
+   "words": [
+    {
+     "text": "ថ្លៃប៉ុន្មាន",
+     "pron": "tʰlaj.pon.maːn"
+    }
+   ]
+  },
+  {
+   "id": "too-expensive",
+   "scene": "oneliners",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "ថ្លៃពេក",
+     "pron": "tʰlaj.peik",
+     "full": "ㇳラˡィ ペイㇰ",
+     "lite": "ㇳラˡィ ペイㇰ",
+     "audio": "too-expensive.m4a",
+     "parts": [
+      {
+       "text": "ថ្លៃ",
+       "pron": "tʰlaj",
+       "full": "ㇳラˡィ",
+       "lite": "ㇳラˡィ"
+      },
+      {
+       "text": "ពេក",
+       "pron": "peik",
+       "full": "ペイㇰ",
+       "lite": "ペイㇰ"
+      }
+     ]
+    }
+   ],
+   "words": [
+    {
+     "text": "ថ្លៃពេក",
+     "pron": "tʰlaj.peik"
+    }
+   ]
+  },
+  {
+   "id": "toilet",
+   "scene": "oneliners",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "បង្គន់នៅឯណា",
+     "pron": "ɓɑŋ.kŭən.nɨw.ʔae.naː",
+     "full": "ボᵅンᵑクァᵊン ヌᶤゥ アエナー",
+     "lite": "ボᵅンᵑクァᵊン ヌゥ アエナー",
+     "audio": "toilet.m4a",
+     "parts": [
+      {
+       "text": "បង្គន់",
+       "pron": "ɓɑŋ.kŭən",
+       "full": "ボᵅンᵑクァᵊン",
+       "lite": "ボᵅンᵑクァᵊン"
+      },
+      {
+       "text": "នៅ",
+       "pron": "nɨw",
+       "full": "ヌᶤゥ",
+       "lite": "ヌゥ"
+      },
+      {
+       "text": "ឯណា",
+       "pron": "ʔae.naː",
+       "full": "アエナー",
+       "lite": "アエナー"
+      }
+     ]
+    }
+   ],
+   "words": [
+    {
+     "text": "បង្គន់នៅឯណា",
+     "pron": "ɓɑŋ.kŭən.nɨw.ʔae.naː"
+    }
+   ]
+  },
+  {
+   "id": "very-good",
+   "scene": "oneliners",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "ល្អណាស់",
+     "pron": "lʔɑː.nah",
+     "full": "ㇽˡオᵅー ナㇹ",
+     "lite": "ㇽˡオᵅー ナㇹ",
+     "audio": "very-good.m4a",
+     "parts": [
+      {
+       "text": "ល្អ",
+       "pron": "lʔɑː",
+       "full": "ㇽˡオᵅー",
+       "lite": "ㇽˡオᵅー"
+      },
+      {
+       "text": "ណាស់",
+       "pron": "nah",
+       "full": "ナㇹ",
+       "lite": "ナㇹ"
+      }
+     ]
+    }
+   ],
+   "words": [
+    {
+     "text": "ល្អណាស់",
+     "pron": "lʔɑː.nah"
+    }
+   ]
+  },
+  {
+   "id": "water",
+   "scene": "oneliners",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "សូមទឹក",
+     "pron": "soum.tɨk",
+     "full": "ソウㇺ トᶤㇰ",
+     "lite": "ソウㇺ トゥㇰ",
+     "audio": "water.m4a",
+     "parts": [
+      {
+       "text": "សូម",
+       "pron": "soum",
+       "full": "ソウㇺ",
+       "lite": "ソウㇺ"
+      },
+      {
+       "text": "ទឹក",
+       "pron": "tɨk",
+       "full": "トᶤㇰ",
+       "lite": "トゥㇰ"
+      }
+     ]
+    }
+   ],
+   "words": [
+    {
+     "text": "សូមទឹក",
+     "pron": "soum.tɨk"
+    }
+   ]
+  },
+  {
+   "id": "help",
+   "scene": "oneliners",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "ជួយផង",
+     "pron": "cuəj.pʰɑːŋ",
+     "full": "チュアᵊィ ポʰᵅーンᵑ",
+     "lite": "チュアᵊィ ポʰᵅーンᵑ",
+     "audio": "help.m4a",
+     "parts": [
+      {
+       "text": "ជួយ",
+       "pron": "cuəj",
+       "full": "チュアᵊィ",
+       "lite": "チュアᵊィ"
+      },
+      {
+       "text": "ផង",
+       "pron": "pʰɑːŋ",
+       "full": "ポʰᵅーンᵑ",
+       "lite": "ポʰᵅーンᵑ"
+      }
+     ]
+    }
+   ],
+   "words": [
+    {
+     "text": "ជួយផង",
+     "pron": "cuəj.pʰɑːŋ"
+    }
+   ]
+  },
+  {
+   "id": "wait",
+   "scene": "oneliners",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "រង់ចាំបន្តិច",
+     "pron": "rŭəŋ.cam.ɓɑn.təc",
+     "full": "ルʳァᵊンᵑチャㇺ ボᵅンタᵊィチ̯",
+     "lite": "ルʳァᵊンᵑチャㇺ ボᵅンタᵊィチ̯",
+     "audio": "wait.m4a",
+     "parts": [
+      {
+       "text": "រង់ចាំ",
+       "pron": "rŭəŋ.cam",
+       "full": "ルʳァᵊンᵑチャㇺ",
+       "lite": "ルʳァᵊンᵑチャㇺ"
+      },
+      {
+       "text": "បន្តិច",
+       "pron": "ɓɑn.təc",
+       "full": "ボᵅンタᵊィチ̯",
+       "lite": "ボᵅンタᵊィチ̯"
+      }
+     ]
+    }
+   ],
+   "words": [
+    {
+     "text": "រង់ចាំបន្តិច",
+     "pron": "rŭəŋ.cam.ɓɑn.təc"
+    }
+   ]
+  },
+  {
+   "id": "what-is-this",
+   "scene": "oneliners",
+   "variants": [
+    {
+     "speaker": "any",
+     "register": "polite",
+     "text": "តើនេះអ្វី",
+     "pron": "taə.nih.ʔʋəj",
+     "full": "タアᵊ ニㇹ ˀヴァᵊィ",
+     "lite": "タアᵊ ニㇹ ヴァᵊィ",
+     "audio": "what-is-this.m4a",
+     "parts": [
+      {
+       "text": "តើ",
+       "pron": "taə",
+       "full": "タアᵊ",
+       "lite": "タアᵊ"
+      },
+      {
+       "text": "នេះ",
+       "pron": "nih",
+       "full": "ニㇹ",
+       "lite": "ニㇹ"
+      },
+      {
+       "text": "អ្វី",
+       "pron": "ʔʋəj",
+       "full": "ˀヴァᵊィ",
+       "lite": "ヴァᵊィ"
+      }
+     ]
+    }
+   ],
+   "words": [
+    {
+     "text": "តើនេះអ្វី",
+     "pron": "taə.nih.ʔʋəj"
+    }
+   ]
+  }
+ ]
+}

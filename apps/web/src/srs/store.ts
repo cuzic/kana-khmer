@@ -10,7 +10,10 @@ export interface Store {
   prune(liveIds: Set<string>): Promise<void>;
 }
 
-const DB = "kana-khmer";
+import { course } from "../course";
+
+/** コースごとに別の DB(ADR-0022)。共有できる進捗はまだ無い */
+const DB = `kana:${course.id}`;
 const VERSION = 1; // schema を変えるときは onupgradeneeded に移行を書く
 
 function open(factory: IDBFactory): Promise<IDBDatabase> {

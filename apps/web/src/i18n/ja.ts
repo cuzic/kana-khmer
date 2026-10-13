@@ -1,0 +1,33 @@
+// UI の文言(学習者の言語 = 日本語)。他の言語は同じ形の辞書を足す(ko.ts)。ADR-0022。
+export const ja = {
+  notation: "表記",
+  lite: "ライト",
+  full: "詳細",
+  speakerGender: "自分の性別",
+  genderUnset: "未設定(両方)",
+  male: "男性",
+  female: "女性",
+  unreviewed: "未確認",
+  howWords: "単語のしくみ",
+  splitAria: "分かち書き",
+  casualForm: "くだけた形",
+  practiceToday: "今日の練習",
+  guideLink: "表記の読み方",
+  scenes: "シーン",
+  backToScenes: "← シーン一覧",
+  noPhrases: "公開できるフレーズがありません。",
+  remaining: (n: number) => `残り ${n} 枚`,
+  showAnswer: "答えを見る",
+  ratings: { again: "もう一度", hard: "難しい", good: "言えた", easy: "簡単" },
+  loading: "読み込み中…",
+  noCardsToday: "今日やるカードはありません。",
+  finishedToday: "今日の練習は終わりです。おつかれさまでした。",
+  saveError: (e: string) => `進捗を保存できません: ${e}`,
+  pos: {
+    noun: "名詞", pron: "代名詞", verb: "動詞", adj: "形容詞", adv: "副詞",
+    particle: "助詞", prep: "前置詞", question: "疑問詞", interj: "感動詞",
+  },
+  role: { S: "主語", V: "動詞", O: "目的語" },
+  wordOrder: (roles: string, to: string) => `語順: ${roles}${to === "km" ? "(クメール語は主語・動詞・目的語の順)" : ""}`,
+};
+export type Dict = typeof ja;

@@ -1,0 +1,17 @@
+{
+  "name": "ja-khmer",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json",
+    "gen": "tsx scripts/gen-table.ts",
+    "verify:readback": "tsx scripts/verify-readback.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.3",
+    "tsx": "^4.23.15"
+  }
+}

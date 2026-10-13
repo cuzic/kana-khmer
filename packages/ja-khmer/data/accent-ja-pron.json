@@ -1,0 +1,3101 @@
+{
+ "_license": "CC BY-SA 4.0 (Wiktionary の内容の抽出物。LICENSE-CC-BY-SA.txt を参照)",
+ "_schema": {
+  "word": "見出し語(Wiktionary のページ名)",
+  "kana": "読み(ひらがな。ー は長音)",
+  "moraCount": "拍数(ゃゅょ・小書きの母音は直前と合わせて1拍。っ ん ー は1拍)",
+  "accents[].nucleus": "下がり目の直前の拍の番号(1 始まり)。0=平板、1=頭高、moraCount=尾高、その間=中高",
+  "accents[].pattern": "辞書どおりの H/L 列(拍ごと)。平板は1拍目 L、頭高は H の後 L。1拍語の平板は \"L\"。語頭が重い音節の簡略化(ADR-0021 決定2)は含まない",
+  "accents[].afterPitch": "無核の1拍の助詞が続いたときの助詞の高さ(平板だけ H)",
+  "accents[].refs": "Wiktionary の acc_ref(NHK・DJR など。辞典本文は取り込まない)",
+  "accents[].verified": "人の確認済みか。当面すべて false(確認者は未定)",
+  "source": "出典ページの版(oldid)と取得日",
+  "nonTokyoOmitted": "acc_loc つき(東京以外)で取り込まなかった値"
+ },
+ "retrievedAt": "2026-09-29",
+ "entries": [
+  {
+   "word": "日本人",
+   "kana": "にほんじん",
+   "moraCount": 5,
+   "accents": [
+    {
+     "nucleus": 4,
+     "type": "nakadaka",
+     "pattern": "LHHHL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E6%97%A5%E6%9C%AC%E4%BA%BA?oldid=92276629",
+    "revid": 92276629,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "ありがとう",
+   "kana": "ありがとう",
+   "moraCount": 5,
+   "accents": [
+    {
+     "nucleus": 2,
+     "type": "nakadaka",
+     "pattern": "LHLLL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "nonTokyoOmitted": [
+    {
+     "tok": "3",
+     "loc": "Aichi"
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%81%82%E3%82%8A%E3%81%8C%E3%81%A8%E3%81%86?oldid=92197419",
+    "revid": 92197419,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "ごめんなさい",
+   "kana": "ごめんなさい",
+   "moraCount": 6,
+   "accents": [
+    {
+     "nucleus": 5,
+     "type": "nakadaka",
+     "pattern": "LHHHHL",
+     "afterPitch": "L",
+     "refs": [
+      "SKK8"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%81%94%E3%82%81%E3%82%93%E3%81%AA%E3%81%95%E3%81%84?oldid=92259822",
+    "revid": 92259822,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "すみません",
+   "kana": "すみません",
+   "moraCount": 5,
+   "accents": [
+    {
+     "nucleus": 4,
+     "type": "nakadaka",
+     "pattern": "LHHHL",
+     "afterPitch": "L",
+     "refs": [],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%81%99%E3%81%BF%E3%81%BE%E3%81%9B%E3%82%93?oldid=83882184",
+    "revid": 83882184,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "大丈夫",
+   "kana": "だいじょうぶ",
+   "moraCount": 5,
+   "accents": [
+    {
+     "nucleus": 3,
+     "type": "nakadaka",
+     "pattern": "LHHLL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%A4%A7%E4%B8%88%E5%A4%AB?oldid=92294411",
+    "revid": 92294411,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "元気",
+   "kana": "げんき",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HLL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%85%83%E6%B0%97?oldid=92202327",
+    "revid": 92202327,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "ゆっくり",
+   "kana": "ゆっくり",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 3,
+     "type": "nakadaka",
+     "pattern": "LHHL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "NHK",
+      "SMK2",
+      "ZAJ"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%82%86%E3%81%A3%E3%81%8F%E3%82%8A?oldid=92533709",
+    "revid": 92533709,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "おはよう",
+   "kana": "おはよう",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHHH",
+     "afterPitch": "H",
+     "refs": [],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%81%8A%E3%81%AF%E3%82%88%E3%81%86?oldid=92645125",
+    "revid": 92645125,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "名前",
+   "kana": "なまえ",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHH",
+     "afterPitch": "H",
+     "refs": [
+      "DJR",
+      "SMK5",
+      "NHK",
+      "JEL"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%90%8D%E5%89%8D?oldid=92203079",
+    "revid": 92203079,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "トイレ",
+   "kana": "といれ",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HLL",
+     "afterPitch": "L",
+     "refs": [
+      "NHK",
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%83%88%E3%82%A4%E3%83%AC?oldid=92700044",
+    "revid": 92700044,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "勉強",
+   "kana": "べんきょう",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHHH",
+     "afterPitch": "H",
+     "refs": [
+      "DJR",
+      "NHK",
+      "SMK5"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%8B%89%E5%BC%B7?oldid=92135163",
+    "revid": 92135163,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "旅行",
+   "kana": "りょこう",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHH",
+     "afterPitch": "H",
+     "refs": [
+      "NHK",
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E6%97%85%E8%A1%8C?oldid=92135418",
+    "revid": 92135418,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "さようなら",
+   "kana": "さようなら",
+   "moraCount": 5,
+   "accents": [
+    {
+     "nucleus": 4,
+     "type": "nakadaka",
+     "pattern": "LHHHL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%81%95%E3%82%88%E3%81%86%E3%81%AA%E3%82%89?oldid=92271003",
+    "revid": 92271003,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "下さい",
+   "kana": "ください",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 3,
+     "type": "nakadaka",
+     "pattern": "LHHL",
+     "afterPitch": "L",
+     "refs": [],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E4%B8%8B%E3%81%95%E3%81%84?oldid=91313207",
+    "revid": 91313207,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "助ける",
+   "kana": "たすける",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 3,
+     "type": "nakadaka",
+     "pattern": "LHHL",
+     "afterPitch": "L",
+     "refs": [
+      "SMK2",
+      "ZAJ"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%8A%A9%E3%81%91%E3%82%8B?oldid=92198746",
+    "revid": 92198746,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "いくら",
+   "kana": "いくら",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HLL",
+     "afterPitch": "L",
+     "refs": [
+      "SMK2",
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%81%84%E3%81%8F%E3%82%89?oldid=92159648",
+    "revid": 92159648,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "ようこそ",
+   "kana": "ようこそ",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HLLL",
+     "afterPitch": "L",
+     "refs": [
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%82%88%E3%81%86%E3%81%93%E3%81%9D?oldid=92259697",
+    "revid": 92259697,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "いいえ",
+   "kana": "いいえ",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 3,
+     "type": "odaka",
+     "pattern": "LHH",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "SMK2"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%81%84%E3%81%84%E3%81%88?oldid=92882939",
+    "revid": 92882939,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "私",
+   "kana": "わたし",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHH",
+     "afterPitch": "H",
+     "refs": [
+      "DJR",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E7%A7%81?oldid=92201237",
+    "revid": 92201237,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "話す",
+   "kana": "はなす",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 2,
+     "type": "nakadaka",
+     "pattern": "LHL",
+     "afterPitch": "L",
+     "refs": [
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E8%A9%B1%E3%81%99?oldid=92199735",
+    "revid": 92199735,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "いらっしゃいませ",
+   "kana": "いらっしゃいませ",
+   "moraCount": 7,
+   "accents": [
+    {
+     "nucleus": 6,
+     "type": "nakadaka",
+     "pattern": "LHHHHHL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%81%84%E3%82%89%E3%81%A3%E3%81%97%E3%82%83%E3%81%84%E3%81%BE%E3%81%9B?oldid=92227135",
+    "revid": 92227135,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "インターネット",
+   "kana": "いんたーねっと",
+   "moraCount": 7,
+   "accents": [
+    {
+     "nucleus": 5,
+     "type": "nakadaka",
+     "pattern": "LHHHHLL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%8D%E3%83%83%E3%83%88?oldid=92243920",
+    "revid": 92243920,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "会計",
+   "kana": "かいけい",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHHH",
+     "afterPitch": "H",
+     "refs": [
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E4%BC%9A%E8%A8%88?oldid=92160139",
+    "revid": 92160139,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "水",
+   "kana": "みず",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LH",
+     "afterPitch": "H",
+     "refs": [
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E6%B0%B4?oldid=92809995",
+    "revid": 92809995,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "お願い",
+   "kana": "おねがい",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHHH",
+     "afterPitch": "H",
+     "refs": [],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%81%8A%E9%A1%98%E3%81%84?oldid=92134770",
+    "revid": 92134770,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "カード",
+   "kana": "かーど",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HLL",
+     "afterPitch": "L",
+     "refs": [
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%82%AB%E3%83%BC%E3%83%89?oldid=92245101",
+    "revid": 92245101,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "ここ",
+   "kana": "ここ",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LH",
+     "afterPitch": "H",
+     "refs": [
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%81%93%E3%81%93?oldid=92159708",
+    "revid": 92159708,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "こちら",
+   "kana": "こちら",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHH",
+     "afterPitch": "H",
+     "refs": [
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%81%93%E3%81%A1%E3%82%89?oldid=92751368",
+    "revid": 92751368,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "これ",
+   "kana": "これ",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LH",
+     "afterPitch": "H",
+     "refs": [],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%81%93%E3%82%8C?oldid=89529272",
+    "revid": 89529272,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "できる",
+   "kana": "できる",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 2,
+     "type": "nakadaka",
+     "pattern": "LHL",
+     "afterPitch": "L",
+     "refs": [
+      "NHK",
+      "DJR",
+      "SMK5"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%81%A7%E3%81%8D%E3%82%8B?oldid=92159755",
+    "revid": 92159755,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "どうぞ",
+   "kana": "どうぞ",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HLL",
+     "afterPitch": "L",
+     "refs": [
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%81%A9%E3%81%86%E3%81%9E?oldid=92256242",
+    "revid": 92256242,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "どこ",
+   "kana": "どこ",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%81%A9%E3%81%93?oldid=92262118",
+    "revid": 92262118,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "はい",
+   "kana": "はい",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%81%AF%E3%81%84?oldid=92456008",
+    "revid": 92456008,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "パスポート",
+   "kana": "ぱすぽーと",
+   "moraCount": 5,
+   "accents": [
+    {
+     "nucleus": 3,
+     "type": "nakadaka",
+     "pattern": "LHHLL",
+     "afterPitch": "L",
+     "refs": [
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%83%91%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88?oldid=92198021",
+    "revid": 92198021,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "もう",
+   "kana": "もう",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "SMK5",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%82%82%E3%81%86?oldid=92159815",
+    "revid": 92159815,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "予約",
+   "kana": "よやく",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHH",
+     "afterPitch": "H",
+     "refs": [
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E4%BA%88%E7%B4%84?oldid=92136272",
+    "revid": 92136272,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "利用",
+   "kana": "りよう",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHH",
+     "afterPitch": "H",
+     "refs": [],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%88%A9%E7%94%A8?oldid=92135784",
+    "revid": 92135784,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "一度",
+   "kana": "いちど",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 3,
+     "type": "odaka",
+     "pattern": "LHH",
+     "afterPitch": "L",
+     "refs": [
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E4%B8%80%E5%BA%A6?oldid=92159950",
+    "revid": 92159950,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "二人",
+   "kana": "ふたり",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 3,
+     "type": "odaka",
+     "pattern": "LHH",
+     "afterPitch": "L",
+     "refs": [
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E4%BA%8C%E4%BA%BA?oldid=92235789",
+    "revid": 92235789,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "何時",
+   "kana": "なんじ",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HLL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E4%BD%95%E6%99%82?oldid=92289301",
+    "revid": 92289301,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "免税",
+   "kana": "めんぜい",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHHH",
+     "afterPitch": "H",
+     "refs": [],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%85%8D%E7%A8%8E?oldid=86456204",
+    "revid": 86456204,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "切符",
+   "kana": "きっぷ",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHH",
+     "afterPitch": "H",
+     "refs": [],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%88%87%E7%AC%A6?oldid=91655651",
+    "revid": 91655651,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "少々",
+   "kana": "しょうしょう",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HLLL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%B0%91%E3%80%85?oldid=92288997",
+    "revid": 92288997,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "日本語",
+   "kana": "にほんご",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHHH",
+     "afterPitch": "H",
+     "refs": [
+      "NHK",
+      "DJR",
+      "SMK5"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E6%97%A5%E6%9C%AC%E8%AA%9E?oldid=92645408",
+    "revid": 92645408,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "朝食",
+   "kana": "ちょうしょく",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHHH",
+     "afterPitch": "H",
+     "refs": [
+      "NKD2P",
+      "DJR",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E6%9C%9D%E9%A3%9F?oldid=92229362",
+    "revid": 92229362,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "病院",
+   "kana": "びょういん",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHHH",
+     "afterPitch": "H",
+     "refs": [],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E7%97%85%E9%99%A2?oldid=90956237",
+    "revid": 90956237,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "結構",
+   "kana": "けっこう",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHHH",
+     "afterPitch": "H",
+     "refs": [
+      "DJR",
+      "SMK5"
+     ],
+     "verified": false
+    },
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HLLL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "SMK5",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E7%B5%90%E6%A7%8B?oldid=92690830",
+    "revid": 92690830,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "荷物",
+   "kana": "にもつ",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HLL",
+     "afterPitch": "L",
+     "refs": [
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E8%8D%B7%E7%89%A9?oldid=92269699",
+    "revid": 92269699,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "行く",
+   "kana": "いく",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LH",
+     "afterPitch": "H",
+     "refs": [
+      "DJR",
+      "NHK",
+      "SMK5"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E8%A1%8C%E3%81%8F?oldid=92199538",
+    "revid": 92199538,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "袋",
+   "kana": "ふくろ",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 3,
+     "type": "odaka",
+     "pattern": "LHH",
+     "afterPitch": "L",
+     "refs": [
+      "NHK",
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E8%A2%8B?oldid=92162746",
+    "revid": 92162746,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "見る",
+   "kana": "みる",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E8%A6%8B%E3%82%8B?oldid=92162773",
+    "revid": 92162773,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "買う",
+   "kana": "かう",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LH",
+     "afterPitch": "H",
+     "refs": [
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E8%B2%B7%E3%81%86?oldid=92274755",
+    "revid": 92274755,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "駅",
+   "kana": "えき",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HL",
+     "afterPitch": "L",
+     "refs": [
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E9%A7%85?oldid=92509110",
+    "revid": 92509110,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "です",
+   "kana": "です",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HL",
+     "afterPitch": "L",
+     "refs": [],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%81%A7%E3%81%99?oldid=91761803",
+    "revid": 91761803,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "だけ",
+   "kana": "だけ",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 2,
+     "type": "odaka",
+     "pattern": "LH",
+     "afterPitch": "L",
+     "refs": [],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%81%A0%E3%81%91?oldid=92197614",
+    "revid": 92197614,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "から",
+   "kana": "から",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HL",
+     "afterPitch": "L",
+     "refs": [],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%81%8B%E3%82%89?oldid=89796382",
+    "revid": 89796382,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "まで",
+   "kana": "まで",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HL",
+     "afterPitch": "L",
+     "refs": [],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%81%BE%E3%81%A7?oldid=92159806",
+    "revid": 92159806,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "空港",
+   "kana": "くうこう",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHHH",
+     "afterPitch": "H",
+     "refs": [
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E7%A9%BA%E6%B8%AF?oldid=92162325",
+    "revid": 92162325,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "ホテル",
+   "kana": "ほてる",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HLL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%83%9B%E3%83%86%E3%83%AB?oldid=92198080",
+    "revid": 92198080,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "電車",
+   "kana": "でんしゃ",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHH",
+     "afterPitch": "H",
+     "refs": [
+      "NHK",
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E9%9B%BB%E8%BB%8A?oldid=92163163",
+    "revid": 92163163,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "地下鉄",
+   "kana": "ちかてつ",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHHH",
+     "afterPitch": "H",
+     "refs": [],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%9C%B0%E4%B8%8B%E9%89%84?oldid=89138442",
+    "revid": 89138442,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "バス",
+   "kana": "ばす",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HL",
+     "afterPitch": "L",
+     "refs": [
+      "NHK",
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%83%90%E3%82%B9?oldid=92508036",
+    "revid": 92508036,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "タクシー",
+   "kana": "たくしー",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HLLL",
+     "afterPitch": "L",
+     "refs": [
+      "NHK",
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%82%BF%E3%82%AF%E3%82%B7%E3%83%BC?oldid=92248963",
+    "revid": 92248963,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "新幹線",
+   "kana": "しんかんせん",
+   "moraCount": 6,
+   "accents": [
+    {
+     "nucleus": 3,
+     "type": "nakadaka",
+     "pattern": "LHHLLL",
+     "afterPitch": "L",
+     "refs": [
+      "NHK",
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E6%96%B0%E5%B9%B9%E7%B7%9A?oldid=92203412",
+    "revid": 92203412,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "出口",
+   "kana": "でぐち",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HLL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "SMK5",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%87%BA%E5%8F%A3?oldid=92297230",
+    "revid": 92297230,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "入口",
+   "kana": "いりぐち",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHHH",
+     "afterPitch": "H",
+     "refs": [
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%85%A5%E5%8F%A3?oldid=92160266",
+    "revid": 92160266,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "道",
+   "kana": "みち",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LH",
+     "afterPitch": "H",
+     "refs": [
+      "DJR",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E9%81%93?oldid=92525569",
+    "revid": 92525569,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "右",
+   "kana": "みぎ",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LH",
+     "afterPitch": "H",
+     "refs": [
+      "DJR",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%8F%B3?oldid=92490449",
+    "revid": 92490449,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "左",
+   "kana": "ひだり",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHH",
+     "afterPitch": "H",
+     "refs": [
+      "DJR",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%B7%A6?oldid=92200386",
+    "revid": 92200386,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "近い",
+   "kana": "ちかい",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 2,
+     "type": "nakadaka",
+     "pattern": "LHL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E8%BF%91%E3%81%84?oldid=92241335",
+    "revid": 92241335,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "遠い",
+   "kana": "とおい",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHH",
+     "afterPitch": "H",
+     "refs": [],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E9%81%A0%E3%81%84?oldid=87394881",
+    "revid": 87394881,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "高い",
+   "kana": "たかい",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 2,
+     "type": "nakadaka",
+     "pattern": "LHL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E9%AB%98%E3%81%84?oldid=92199043",
+    "revid": 92199043,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "安い",
+   "kana": "やすい",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 2,
+     "type": "nakadaka",
+     "pattern": "LHL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%AE%89%E3%81%84?oldid=92160873",
+    "revid": 92160873,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "大きい",
+   "kana": "おおきい",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 3,
+     "type": "nakadaka",
+     "pattern": "LHHL",
+     "afterPitch": "L",
+     "refs": [
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%A4%A7%E3%81%8D%E3%81%84?oldid=92160747",
+    "revid": 92160747,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "小さい",
+   "kana": "ちいさい",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 3,
+     "type": "nakadaka",
+     "pattern": "LHHL",
+     "afterPitch": "L",
+     "refs": [
+      "NHK",
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%B0%8F%E3%81%95%E3%81%84?oldid=92160949",
+    "revid": 92160949,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "熱い",
+   "kana": "あつい",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 2,
+     "type": "nakadaka",
+     "pattern": "LHL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E7%86%B1%E3%81%84?oldid=92241322",
+    "revid": 92241322,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "冷たい",
+   "kana": "つめたい",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHHH",
+     "afterPitch": "H",
+     "refs": [
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%86%B7%E3%81%9F%E3%81%84?oldid=92198653",
+    "revid": 92198653,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "辛い",
+   "kana": "からい",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 2,
+     "type": "nakadaka",
+     "pattern": "LHL",
+     "afterPitch": "L",
+     "refs": [
+      "SMK2"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E8%BE%9B%E3%81%84?oldid=92241334",
+    "revid": 92241334,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "食事",
+   "kana": "しょくじ",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHH",
+     "afterPitch": "H",
+     "refs": [
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E9%A3%9F%E4%BA%8B?oldid=92708221",
+    "revid": 92708221,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "昼食",
+   "kana": "ちゅうしょく",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHHH",
+     "afterPitch": "H",
+     "refs": [],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E6%98%BC%E9%A3%9F?oldid=86477934",
+    "revid": 86477934,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "夕食",
+   "kana": "ゆうしょく",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHHH",
+     "afterPitch": "H",
+     "refs": [
+      "JEL"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%A4%95%E9%A3%9F?oldid=92160732",
+    "revid": 92160732,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "レストラン",
+   "kana": "れすとらん",
+   "moraCount": 5,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HLLLL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "SMK5",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%83%AC%E3%82%B9%E3%83%88%E3%83%A9%E3%83%B3?oldid=92640861",
+    "revid": 92640861,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "メニュー",
+   "kana": "めにゅー",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HLL",
+     "afterPitch": "L",
+     "refs": [
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC?oldid=92222293",
+    "revid": 92222293,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "お茶",
+   "kana": "おちゃ",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LH",
+     "afterPitch": "H",
+     "refs": [
+      "SMK2",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%81%8A%E8%8C%B6?oldid=92736174",
+    "revid": 92736174,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "ビール",
+   "kana": "びーる",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HLL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "SMK5",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%83%93%E3%83%BC%E3%83%AB?oldid=92203766",
+    "revid": 92203766,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "肉",
+   "kana": "にく",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 2,
+     "type": "odaka",
+     "pattern": "LH",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "SMK7",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E8%82%89?oldid=92691790",
+    "revid": 92691790,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "野菜",
+   "kana": "やさい",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHH",
+     "afterPitch": "H",
+     "refs": [
+      "DJR",
+      "NHK",
+      "SMK5"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E9%87%8E%E8%8F%9C?oldid=92163061",
+    "revid": 92163061,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "薬",
+   "kana": "くすり",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHH",
+     "afterPitch": "H",
+     "refs": [
+      "DJR",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E8%96%AC?oldid=92201586",
+    "revid": 92201586,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "警察",
+   "kana": "けいさつ",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHHH",
+     "afterPitch": "H",
+     "refs": [
+      "DJR",
+      "NHK",
+      "SMK5"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E8%AD%A6%E5%AF%9F?oldid=92365379",
+    "revid": 92365379,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "銀行",
+   "kana": "ぎんこう",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHHH",
+     "afterPitch": "H",
+     "refs": [
+      "NHK",
+      "DJR",
+      "SMK5"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E9%8A%80%E8%A1%8C?oldid=92388921",
+    "revid": 92388921,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "両替",
+   "kana": "りょうがえ",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHHH",
+     "afterPitch": "H",
+     "refs": [],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E4%B8%A1%E6%9B%BF?oldid=92139462",
+    "revid": 92139462,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "財布",
+   "kana": "さいふ",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHH",
+     "afterPitch": "H",
+     "refs": [
+      "DJR",
+      "NHK",
+      "SMK5"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E8%B2%A1%E5%B8%83?oldid=92244999",
+    "revid": 92244999,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "携帯",
+   "kana": "けいたい",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHHH",
+     "afterPitch": "H",
+     "refs": [
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E6%90%BA%E5%B8%AF?oldid=92135640",
+    "revid": 92135640,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "明日",
+   "kana": "あした",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 3,
+     "type": "odaka",
+     "pattern": "LHH",
+     "afterPitch": "L",
+     "refs": [
+      "NHK",
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E6%98%8E%E6%97%A5?oldid=92161479",
+    "revid": 92161479,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "昨日",
+   "kana": "きのう",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 2,
+     "type": "nakadaka",
+     "pattern": "LHL",
+     "afterPitch": "L",
+     "refs": [
+      "NHK",
+      "DJR",
+      "SMK5"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E6%98%A8%E6%97%A5?oldid=92203074",
+    "revid": 92203074,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "今",
+   "kana": "いま",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E4%BB%8A?oldid=92199524",
+    "revid": 92199524,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "朝",
+   "kana": "あさ",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "SMK2"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E6%9C%9D?oldid=92199445",
+    "revid": 92199445,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "夜",
+   "kana": "よる",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%A4%9C?oldid=92493252",
+    "revid": 92493252,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "日本",
+   "kana": "にほん",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 2,
+     "type": "nakadaka",
+     "pattern": "LHL",
+     "afterPitch": "L",
+     "refs": [
+      "NHK",
+      "SMK5"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E6%97%A5%E6%9C%AC?oldid=92983824",
+    "revid": 92983824,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "英語",
+   "kana": "えいご",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHH",
+     "afterPitch": "H",
+     "refs": [
+      "NHK",
+      "DJR",
+      "SMK5"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E8%8B%B1%E8%AA%9E?oldid=92162631",
+    "revid": 92162631,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "友達",
+   "kana": "ともだち",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHHH",
+     "afterPitch": "H",
+     "refs": [
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%8F%8B%E9%81%94?oldid=92271206",
+    "revid": 92271206,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "外国人",
+   "kana": "がいこくじん",
+   "moraCount": 6,
+   "accents": [
+    {
+     "nucleus": 4,
+     "type": "nakadaka",
+     "pattern": "LHHHLL",
+     "afterPitch": "L",
+     "refs": [
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%A4%96%E5%9B%BD%E4%BA%BA?oldid=92160733",
+    "revid": 92160733,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "お土産",
+   "kana": "おみやげ",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHHH",
+     "afterPitch": "H",
+     "refs": [
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%81%8A%E5%9C%9F%E7%94%A3?oldid=92293328",
+    "revid": 92293328,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "写真",
+   "kana": "しゃしん",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHH",
+     "afterPitch": "H",
+     "refs": [
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%86%99%E7%9C%9F?oldid=92160308",
+    "revid": 92160308,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "地図",
+   "kana": "ちず",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "NHK16",
+      "SMK8"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%9C%B0%E5%9B%B3?oldid=92454919",
+    "revid": 92454919,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "部屋",
+   "kana": "へや",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 2,
+     "type": "odaka",
+     "pattern": "LH",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E9%83%A8%E5%B1%8B?oldid=92203262",
+    "revid": 92203262,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "鍵",
+   "kana": "かぎ",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 2,
+     "type": "odaka",
+     "pattern": "LH",
+     "afterPitch": "L",
+     "refs": [
+      "SMK2",
+      "NHK",
+      "DJR",
+      "SMK5"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E9%8D%B5?oldid=92983962",
+    "revid": 92983962,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "一",
+   "kana": "いち",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 2,
+     "type": "odaka",
+     "pattern": "LH",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E4%B8%80?oldid=92923652",
+    "revid": 92923652,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "二",
+   "kana": "に",
+   "moraCount": 1,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "H",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E4%BA%8C?oldid=92550636",
+    "revid": 92550636,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "三",
+   "kana": "さん",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LH",
+     "afterPitch": "H",
+     "refs": [
+      "DJR"
+     ],
+     "verified": false
+    },
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E4%B8%89?oldid=92536907",
+    "revid": 92536907,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "四",
+   "kana": "よん",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%9B%9B?oldid=92725273",
+    "revid": 92725273,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "五",
+   "kana": "ご",
+   "moraCount": 1,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "H",
+     "afterPitch": "L",
+     "refs": [],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E4%BA%94?oldid=92719862",
+    "revid": 92719862,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "六",
+   "kana": "ろく",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 2,
+     "type": "odaka",
+     "pattern": "LH",
+     "afterPitch": "L",
+     "refs": [
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%85%AD?oldid=92691732",
+    "revid": 92691732,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "七",
+   "kana": "なな",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E4%B8%83?oldid=92722445",
+    "revid": 92722445,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "八",
+   "kana": "はち",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 2,
+     "type": "odaka",
+     "pattern": "LH",
+     "afterPitch": "L",
+     "refs": [],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%85%AB?oldid=92707648",
+    "revid": 92707648,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "九",
+   "kana": "きゅう",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E4%B9%9D?oldid=92630836",
+    "revid": 92630836,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "十",
+   "kana": "じゅう",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%8D%81?oldid=92722508",
+    "revid": 92722508,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "百",
+   "kana": "ひゃく",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 2,
+     "type": "odaka",
+     "pattern": "LH",
+     "afterPitch": "L",
+     "refs": [
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E7%99%BE?oldid=92550558",
+    "revid": 92550558,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "千",
+   "kana": "せん",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%8D%83?oldid=92199568",
+    "revid": 92199568,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "万",
+   "kana": "まん",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "NHK",
+      "SMK5"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E4%B8%87?oldid=92199727",
+    "revid": 92199727,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "円",
+   "kana": "えん",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%86%86?oldid=92160305",
+    "revid": 92160305,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "はじめまして",
+   "kana": "はじめまして",
+   "moraCount": 6,
+   "accents": [
+    {
+     "nucleus": 4,
+     "type": "nakadaka",
+     "pattern": "LHHHLL",
+     "afterPitch": "L",
+     "refs": [],
+     "verified": false
+    }
+   ],
+   "via": "ja-see: 初めまして",
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%88%9D%E3%82%81%E3%81%BE%E3%81%97%E3%81%A6?oldid=80547907",
+    "revid": 80547907,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "分かる",
+   "kana": "わかる",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 2,
+     "type": "nakadaka",
+     "pattern": "LHL",
+     "afterPitch": "L",
+     "refs": [
+      "NHK",
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "via": "ja-see: わかる",
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%82%8F%E3%81%8B%E3%82%8B?oldid=92240105",
+    "revid": 92240105,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "おやすみなさい",
+   "kana": "おやすみなさい",
+   "moraCount": 7,
+   "accents": [
+    {
+     "nucleus": 6,
+     "type": "nakadaka",
+     "pattern": "LHHHHHL",
+     "afterPitch": "L",
+     "refs": [],
+     "verified": false
+    }
+   ],
+   "via": "ja-see: お休みなさい",
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%81%8A%E4%BC%91%E3%81%BF%E3%81%AA%E3%81%95%E3%81%84?oldid=92197480",
+    "revid": 92197480,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "こんにちは",
+   "kana": "こんにちは",
+   "moraCount": 5,
+   "accents": [
+    {
+     "nucleus": 5,
+     "type": "odaka",
+     "pattern": "LHHHH",
+     "afterPitch": "L",
+     "refs": [
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "via": "ja-see: 今日は",
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E4%BB%8A%E6%97%A5%E3%81%AF?oldid=92297474",
+    "revid": 92297474,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "こんばんは",
+   "kana": "こんばんは",
+   "moraCount": 5,
+   "accents": [
+    {
+     "nucleus": 5,
+     "type": "odaka",
+     "pattern": "LHHHH",
+     "afterPitch": "L",
+     "refs": [
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "via": "ja-see: 今晩は",
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E4%BB%8A%E6%99%A9%E3%81%AF?oldid=92280846",
+    "revid": 92280846,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "おいしい",
+   "kana": "おいしい",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHHH",
+     "afterPitch": "H",
+     "refs": [
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "via": "ja-see: 美味しい",
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E7%BE%8E%E5%91%B3%E3%81%97%E3%81%84?oldid=92290663",
+    "revid": 92290663,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "かかる",
+   "kana": "かかる",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 2,
+     "type": "nakadaka",
+     "pattern": "LHL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "via": "ja-see: 掛かる",
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E6%8E%9B%E3%81%8B%E3%82%8B?oldid=92274885",
+    "revid": 92274885,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "なくす",
+   "kana": "なくす",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHH",
+     "afterPitch": "H",
+     "refs": [],
+     "verified": false
+    }
+   ],
+   "via": "ja-see: 無くす",
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E7%84%A1%E3%81%8F%E3%81%99?oldid=87336330",
+    "revid": 87336330,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "よろしく",
+   "kana": "よろしく",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHHH",
+     "afterPitch": "H",
+     "refs": [
+      "DJR",
+      "ZAJ",
+      "NHK",
+      "DJS2",
+      "SMK8",
+      "SKK8"
+     ],
+     "verified": false
+    }
+   ],
+   "via": "ja-see: 宜しく",
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%AE%9C%E3%81%97%E3%81%8F?oldid=92287089",
+    "revid": 92287089,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "別々",
+   "kana": "べつべつ",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHHH",
+     "afterPitch": "H",
+     "refs": [
+      "DJR"
+     ],
+     "verified": false
+    }
+   ],
+   "via": "ja-see: 別別",
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%88%A5%E5%88%A5?oldid=92276143",
+    "revid": 92276143,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "預かる",
+   "kana": "あずかる",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 3,
+     "type": "nakadaka",
+     "pattern": "LHHL",
+     "afterPitch": "L",
+     "refs": [],
+     "verified": false
+    }
+   ],
+   "via": "ja-see: あずかる",
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%81%82%E3%81%9A%E3%81%8B%E3%82%8B?oldid=88219533",
+    "revid": 88219533,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "まっすぐ",
+   "kana": "まっすぐ",
+   "moraCount": 4,
+   "accents": [
+    {
+     "nucleus": 3,
+     "type": "nakadaka",
+     "pattern": "LHHL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "SMK8"
+     ],
+     "verified": false
+    }
+   ],
+   "via": "ja-see: 真っ直ぐ",
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E7%9C%9F%E3%81%A3%E7%9B%B4%E3%81%90?oldid=92257861",
+    "revid": 92257861,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "ご飯",
+   "kana": "ごはん",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HLL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "NHK"
+     ],
+     "verified": false
+    }
+   ],
+   "via": "ja-see: 御飯",
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E5%BE%A1%E9%A3%AF?oldid=92440808",
+    "revid": 92440808,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "魚",
+   "kana": "さかな",
+   "moraCount": 3,
+   "accents": [
+    {
+     "nucleus": 0,
+     "type": "heiban",
+     "pattern": "LHH",
+     "afterPitch": "H",
+     "refs": [
+      "DJR",
+      "ZAJ"
+     ],
+     "verified": false
+    }
+   ],
+   "via": "ja-see: さかな",
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%81%95%E3%81%8B%E3%81%AA?oldid=92724888",
+    "revid": 92724888,
+    "retrievedAt": "2026-09-29"
+   }
+  },
+  {
+   "word": "今日",
+   "kana": "きょう",
+   "moraCount": 2,
+   "accents": [
+    {
+     "nucleus": 1,
+     "type": "atamadaka",
+     "pattern": "HL",
+     "afterPitch": "L",
+     "refs": [
+      "DJR",
+      "NHK",
+      "SMK5"
+     ],
+     "verified": false
+    }
+   ],
+   "via": "ja-see: きょう",
+   "source": {
+    "url": "https://en.wiktionary.org/wiki/%E3%81%8D%E3%82%87%E3%81%86?oldid=92159697",
+    "revid": 92159697,
+    "retrievedAt": "2026-09-29"
+   }
+  }
+ ]
+}

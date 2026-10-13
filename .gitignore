@@ -4,3 +4,16 @@ dist
 *.log
 .env
 .env.*
+
+# 開発用のローカル証明書・秘密鍵(コミットしない)
+*.key
+dev.*.ts.net.crt
+
+# apps/web が読むコースの生成物(pnpm gen)
+apps/web/src/generated
+
+# en-prosody の辞書(pnpm --filter en-prosody gen:dict で生成)
+packages/en-prosody/data/cmudict.txt
+
+# Chrome 拡張のビルド出力
+apps/yt-prosody-ext/dist/

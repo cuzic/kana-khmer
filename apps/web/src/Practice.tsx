@@ -1,17 +1,21 @@
 import { useEffect, useRef, useState } from "react";
 import { Breakdown } from "./Breakdown";
+import { course } from "./course";
 import { data } from "./data";
+import { t } from "./i18n";
+import { PhraseImage } from "./PhraseImage";
 import type { Settings } from "./settings";
 import { advance, buildQueue, dateKey, type TodayQueue } from "./srs/queue";
 import { type PhraseProgress, type Rating, rate } from "./srs/scheduler";
 import { openStore, type Store } from "./srs/store";
 import { pickVariants } from "./variants";
+import { VariantLine } from "./VariantLine";
 
 const ratings: { r: Rating; label: string }[] = [
-  { r: 1, label: "もう一度" },
-  { r: 2, label: "難しい" },
-  { r: 3, label: "言えた" },
-  { r: 4, label: "簡単" },
+  { r: 1, label: t.ratings.again },
+  { r: 2, label: t.ratings.hard },
+  { r: 3, label: t.ratings.good },
+  { r: 4, label: t.ratings.easy },
 ];
 const order = data.scenes.flatMap((s) => s.phraseIds);
 
@@ -63,28 +67,23 @@ export function Practice({ settings, onBack }: { settings: Settings; onBack: () 
 
   return (
     <section>
-      <button className="back" onClick={onBack}>← シーン一覧</button>
-      <h2>今日の練習</h2>
-      {error && <p>進捗を保存できません: {error}</p>}
-      {!error && !queue && <p>読み込み中…</p>}
-      {queue && !phrase && <p>{total === 0 ? "今日やるカードはありません。" : "今日の練習は終わりです。おつかれさまでした。"}</p>}
+      <button className="back" onClick={onBack}>{t.backToScenes}</button>
+      <h2>{t.practiceToday}</h2>
+      {error && <p>{t.saveError(error)}</p>}
+      {!error && !queue && <p>{t.loading}</p>}
+      {queue && !phrase && <p>{total === 0 ? t.noCardsToday : t.finishedToday}</p>}
       {queue && phrase && (
         <div className="card practice">
-          <div className="sub">残り {queue.pending.length} 枚</div>
-          <div className="ja">{phrase.ja}</div>
+          <div className="sub">{t.remaining(queue.pending.length)}</div>
+          <PhraseImage key={phrase.id} id={phrase.id} className="phrase-img" />
+          <div className="phrase-gloss" lang={course.from}>{phrase.gloss}</div>
           {!shown ? (
-            <button className="reveal" onClick={() => setShown(true)}>答えを見る</button>
+            <button className="reveal" onClick={() => setShown(true)}>{t.showAnswer}</button>
           ) : (
             <>
-              {main.map((v) => (
-                <div key={`${v.speaker}/${v.register}`} className="variant">
-                  <span className="kana">{settings.notation === "lite" ? v.kanaLite : v.kanaFull}</span>
-                  <span className="khmer" lang="km">{v.khmer}</span>
-                  {settings.notation === "full" && <span className="ipa">/{v.ipa}/</span>}
-                </div>
-              ))}
+              {main.map((v) => <VariantLine key={`${v.speaker}/${v.register}`} variant={v} notation={settings.notation} />)}
               {main.map((v) => <Breakdown key={`${v.speaker}/${v.register}`} variant={v} notation={settings.notation} />)}
-              {usage && <div className="sub usage">{usage}</div>}
+              {usage && <div className="sub usage" lang={course.from}>{usage}</div>}
               <div className="rating">
                 {ratings.map(({ r, label }) => (
                   <button key={r} onClick={() => answer(r)}>{label}</button>

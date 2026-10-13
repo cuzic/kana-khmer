@@ -2,6 +2,10 @@
 
 クメール語の挨拶・日常会話を学ぶ日本人旅行者向けアプリ(PWA)と、その発音カナ表記ライブラリ。
 設計は `docs/design.md`。表記の元になる設計書(v0.2)は Claude Docs 上にある。
+主要な設計判断の経緯(なぜこの案にしたか・何を却下したか)は `docs/adr/` に ADR として残す。
+`docs/design.md` §8・`khmer-kana-spec.md` 冒頭の追記・`tone-notation.md` §8 のいずれかの決定を
+追加・変更するときは、`docs/adr/` に対応する ADR があるか確認し、無ければ起こす・覆るなら新しい ADR で
+supersede する(`docs/adr/README.md` と `.claude/rules/adr.md` を参照)。
 
 ## ルール
 - パッケージマネージャーは **pnpm のみ**(`npm` 禁止)。Python は **uv**。
@@ -10,6 +14,10 @@
 
 ## 構成
 - `packages/khmer-kana`  表記ライブラリ(IPA → 音節構造 → カナ詳細/ライト)
+- `packages/ja-hangul`    日本語の発音(かな)→ハングル表記(ADR-0018・0019)
+- `packages/ja-khmer`     日本語の発音(カタカナ)→クメール文字表記(設計書 `docs/ja-khmer-spec.md`、ADR-0023。表は設計書から `pnpm gen` で生成)
+- `packages/ja-thai`      日本語の発音(カタカナ)→タイ文字表記(設計書 `docs/ja-thai-spec.md`、ADR-0028 proposed。声調を中にそろえるため開音節は長母音、長音は母音を重ねる)
 - `packages/content`      フレーズデータ(phrases.yaml → phrases.json、prod/preview)
+- `courses/<from>-<to>`   学習コース(言語の組み合わせ。ko-ja は骨格のみ。ADR-0020)
 - `apps/web`              PWA(土台のみ: シーン一覧とフレーズカード。学習機能は未着手)
-- `tools/glyph-check`     iOS/Android での描画検証とフォント生成
+- `tools/glyph-check`     iOS/Android での描画検証とフォント生成(kana-hangul.woff2 を含む)

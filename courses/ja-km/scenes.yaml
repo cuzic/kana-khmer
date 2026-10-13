@@ -3,3 +3,4 @@
 - { id: address,     title: 呼びかけ,           order: 3 }
 - { id: intro,       title: 自己紹介,           order: 4 }
 - { id: oneliners,   title: ひとこと表現,       order: 5 }
+- { id: friendly,    title: 喜ばれるひとこと, order: 6 }

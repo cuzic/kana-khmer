@@ -1,0 +1,1127 @@
+# タイ語話者向けの日本語あいさつ 50 件(案・第2版。基本 40 件 + 「喜ばれるひとこと」10 件)。丁寧語のみ、1フレーズ=1カード(ADR-0020)。表示要素は ADR-0022 に準ずる:
+# 漢字かな交じり(text)・ふりがな(furigana、ひらがな。カタカナ語は かーど のようにひらがな+ー)・ローマ字(pron から生成)・タイ語訳(gloss)。
+# gloss・usage のタイ語(สำนวนภาษาไทยเป็นร่างที่ยังไม่ได้ให้เจ้าของภาษาตรวจ)、日本語の自然さ、furigana、pron(発音を確定したカタカナ)、語の切り方(parts)はすべて未確認(review: すべて false)。ネイティブ確認後に true にする。
+# parts は必須。連結すると text・furigana・pron が本文と一致する(content のビルドで検証)。助詞は独立した part。words は parts と同じ内容(単語タップ用)。
+# 聞き取り表現(相手が言うもの)は usage の先頭に「[ประโยคที่ได้ยิน]」。
+
+- id: hello
+  scene: greetings
+  gloss: "สวัสดี"
+  usage: "ใช้ทักทายตั้งแต่ช่วงกลางวันจนถึงเย็น เหมาะกับตอนเข้าร้านหรือเมื่อพบใครเป็นครั้งแรก ที่ญี่ปุ่นไม่มีการไหว้ แค่ก้มศีรษะเล็กน้อยก็พอ"
+  variants:
+    - speaker: any
+      register: polite
+      text: こんにちは
+      furigana: こんにちは
+      pron: コンニチワ
+      audio: hello.m4a
+      parts:
+        - { text: こんにちは, furigana: こんにちは, pron: コンニチワ, gloss: "สวัสดี", pos: interj }
+  words:
+    - { text: こんにちは, pron: コンニチワ, gloss: "สวัสดี" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: good-morning
+  scene: greetings
+  gloss: "สวัสดีตอนเช้า"
+  usage: "ใช้ทักทายตอนเช้า ในที่ทำงานหรือที่พักบางแห่งอาจใช้แม้เป็นช่วงบ่ายเมื่อพบกันครั้งแรกของวัน กับเพื่อนสนิทจะพูดสั้นๆ ว่า “おはよう”"
+  variants:
+    - speaker: any
+      register: polite
+      text: おはようございます
+      furigana: おはようございます
+      pron: オハヨーゴザイマス
+      audio: good-morning.m4a
+      parts:
+        - { text: おはよう, furigana: おはよう, pron: オハヨー, gloss: "อรุณสวัสดิ์", pos: interj }
+        - { text: ございます, furigana: ございます, pron: ゴザイマス, gloss: "(คำสุภาพ)", pos: verb }
+  words:
+    - { text: おはよう, pron: オハヨー, gloss: "อรุณสวัสดิ์" }
+    - { text: ございます, pron: ゴザイマス, gloss: "(คำสุภาพ)" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: good-evening
+  scene: greetings
+  gloss: "สวัสดีตอนเย็น"
+  usage: "ใช้ทักทายตั้งแต่เย็นจนถึงกลางคืน ตัว は ท้ายคำอ่านว่า “วา” ไม่ใช่ “ฮะ”"
+  variants:
+    - speaker: any
+      register: polite
+      text: こんばんは
+      furigana: こんばんは
+      pron: コンバンワ
+      audio: good-evening.m4a
+      parts:
+        - { text: こんばんは, furigana: こんばんは, pron: コンバンワ, gloss: "สวัสดีตอนเย็น", pos: interj }
+  words:
+    - { text: こんばんは, pron: コンバンワ, gloss: "สวัสดีตอนเย็น" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: nice-to-meet
+  scene: greetings
+  gloss: "ยินดีที่ได้รู้จัก (แนะนำตัวครั้งแรก)"
+  usage: "ใช้เป็นประโยคแรกเมื่อพบคนที่ไม่เคยรู้จักมาก่อน แล้วต่อด้วยชื่อและ “よろしくおねがいします”"
+  variants:
+    - speaker: any
+      register: polite
+      text: はじめまして
+      furigana: はじめまして
+      pron: ハジメマシテ
+      audio: nice-to-meet.m4a
+      parts:
+        - { text: はじめまして, furigana: はじめまして, pron: ハジメマシテ, gloss: "ยินดีที่ได้รู้จัก", pos: interj }
+  words:
+    - { text: はじめまして, pron: ハジメマシテ, gloss: "ยินดีที่ได้รู้จัก" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: yoroshiku
+  scene: greetings
+  gloss: "ฝากตัวด้วย (ขอความกรุณา)"
+  usage: "ใช้ตอนพบกันครั้งแรก หรือใช้ปิดท้ายเวลาขอให้ช่วยเหลือ ใช้ได้กว้างมากในหลายสถานการณ์"
+  variants:
+    - speaker: any
+      register: polite
+      text: よろしくお願いします
+      furigana: よろしくおねがいします
+      pron: ヨロシクオネガイシマス
+      audio: yoroshiku.m4a
+      parts:
+        - { text: よろしく, furigana: よろしく, pron: ヨロシク, gloss: "ด้วยดี", pos: adv }
+        - { text: お願いします, furigana: おねがいします, pron: オネガイシマス, gloss: "ขอร้อง", pos: verb }
+  words:
+    - { text: よろしく, pron: ヨロシク, gloss: "ด้วยดี" }
+    - { text: お願いします, pron: オネガイシマス, gloss: "ขอร้อง" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: sayonara
+  scene: greetings
+  gloss: "ลาก่อน"
+  usage: "ใช้ตอนแยกจากกัน แต่ให้ความรู้สึกว่าจะไม่ได้พบกันอีกนาน หรือค่อนข้างเป็นทางการ ถ้าแยกกันแบบเบาๆ มักใช้ “じゃあ、また” (แล้วพบกันใหม่)"
+  variants:
+    - speaker: any
+      register: polite
+      text: さようなら
+      furigana: さようなら
+      pron: サヨーナラ
+      audio: sayonara.m4a
+      parts:
+        - { text: さようなら, furigana: さようなら, pron: サヨーナラ, gloss: "ลาก่อน", pos: interj }
+  words:
+    - { text: さようなら, pron: サヨーナラ, gloss: "ลาก่อน" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: thanks
+  scene: thanks-sorry
+  gloss: "ขอบคุณ"
+  usage: "คำขอบคุณพื้นฐานที่ใช้ได้ทุกที่ เช่น ในร้าน ตอนกินอาหาร หรือเมื่อมีคนบอกทาง ภาษาญี่ปุ่นไม่มีคำลงท้ายแบบ ครับ/ค่ะ แต่ก้มศีรษะเล็กน้อยพร้อมพูดก็สุภาพแล้ว"
+  variants:
+    - speaker: any
+      register: polite
+      text: ありがとうございます
+      furigana: ありがとうございます
+      pron: アリガトーゴザイマス
+      audio: thanks.m4a
+      parts:
+        - { text: ありがとう, furigana: ありがとう, pron: アリガトー, gloss: "ขอบคุณ", pos: interj }
+        - { text: ございます, furigana: ございます, pron: ゴザイマス, gloss: "(คำสุภาพ)", pos: verb }
+  words:
+    - { text: ありがとう, pron: アリガトー, gloss: "ขอบคุณ" }
+    - { text: ございます, pron: ゴザイマス, gloss: "(คำสุภาพ)" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: sorry
+  scene: thanks-sorry
+  gloss: "ขอโทษ · ขออนุญาต (ขอโทษที่รบกวน)"
+  usage: "ใช้ได้หลายแบบ ทั้งขอโทษเบาๆ ทักคนเพื่อขอความช่วยเหลือ หรือกล่าวขอบคุณด้วยความเกรงใจ ใช้เรียกพนักงานในร้านได้ด้วย"
+  variants:
+    - speaker: any
+      register: polite
+      text: すみません
+      furigana: すみません
+      pron: スミマセン
+      audio: sorry.m4a
+      parts:
+        - { text: すみません, furigana: すみません, pron: スミマセン, gloss: "ขอโทษ · ขออนุญาต", pos: interj }
+  words:
+    - { text: すみません, pron: スミマセン, gloss: "ขอโทษ · ขออนุญาต" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: yes
+  scene: thanks-sorry
+  gloss: "ใช่ (ครับ/ค่ะ)"
+  usage: "เป็นคำรับที่สุภาพ ใช้ตอบเมื่อถูกเรียกชื่อหรือใช้รับลูกเวลาฟัง แต่บางครั้งแค่แสดงว่ากำลังฟังอยู่ ไม่ได้แปลว่าเห็นด้วยเสมอไป"
+  variants:
+    - speaker: any
+      register: polite
+      text: はい
+      furigana: はい
+      pron: ハイ
+      audio: yes.m4a
+      parts:
+        - { text: はい, furigana: はい, pron: ハイ, gloss: "ใช่ (ครับ/ค่ะ)", pos: interj }
+  words:
+    - { text: はい, pron: ハイ, gloss: "ใช่ (ครับ/ค่ะ)" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: no-thanks
+  scene: thanks-sorry
+  gloss: "ไม่เป็นไร ไม่ต้อง (ปฏิเสธอย่างสุภาพ)"
+  usage: "ใช้ปฏิเสธคำชวนหรือการเชียร์ขายของอย่างสุภาพ แต่บางสถานการณ์อาจฟังเป็น “ก็ดี” ได้ ควรโบกมือเบาๆ หรือส่ายหน้าประกอบเพื่อให้ชัดเจน"
+  variants:
+    - speaker: any
+      register: polite
+      text: 結構です
+      furigana: けっこうです
+      pron: ケッコーデス
+      audio: no-thanks.m4a
+      parts:
+        - { text: 結構, furigana: けっこう, pron: ケッコー, gloss: "พอแล้ว · ไม่เป็นไร", pos: adj }
+        - { text: です, furigana: です, pron: デス, gloss: "คือ (สุภาพ)", pos: particle }
+  words:
+    - { text: 結構, pron: ケッコー, gloss: "พอแล้ว · ไม่เป็นไร" }
+    - { text: です, pron: デス, gloss: "คือ (สุภาพ)" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: wait-a-moment
+  scene: thanks-sorry
+  gloss: "กรุณารอสักครู่"
+  usage: "[ประโยคที่ได้ยิน] พนักงานพูดเมื่อขอให้รอระหว่างตรวจสอบหรือเตรียมของ รอตรงนั้นได้เลย"
+  variants:
+    - speaker: any
+      register: polite
+      text: 少々お待ちください
+      furigana: しょうしょうおまちください
+      pron: ショーショーオマチクダサイ
+      audio: wait-a-moment.m4a
+      parts:
+        - { text: 少々, furigana: しょうしょう, pron: ショーショー, gloss: "สักครู่", pos: adv }
+        - { text: お待ち, furigana: おまち, pron: オマチ, gloss: "การรอ", pos: noun }
+        - { text: ください, furigana: ください, pron: クダサイ, gloss: "กรุณา", pos: verb }
+  words:
+    - { text: 少々, pron: ショーショー, gloss: "สักครู่" }
+    - { text: お待ち, pron: オマチ, gloss: "การรอ" }
+    - { text: ください, pron: クダサイ, gloss: "กรุณา" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: irasshaimase
+  scene: restaurant
+  gloss: "ยินดีต้อนรับ"
+  usage: "[ประโยคที่ได้ยิน] พนักงานพูดตอนลูกค้าเข้าร้าน ไม่ต้องตอบก็ได้ แค่พยักหน้าหรือก้มศีรษะเล็กน้อยก็พอ"
+  variants:
+    - speaker: any
+      register: polite
+      text: いらっしゃいませ
+      furigana: いらっしゃいませ
+      pron: イラッシャイマセ
+      audio: irasshaimase.m4a
+      parts:
+        - { text: いらっしゃいませ, furigana: いらっしゃいませ, pron: イラッシャイマセ, gloss: "ยินดีต้อนรับ", pos: interj }
+  words:
+    - { text: いらっしゃいませ, pron: イラッシャイマセ, gloss: "ยินดีต้อนรับ" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: come-this-way
+  scene: restaurant
+  gloss: "เชิญทางนี้"
+  usage: "[ประโยคที่ได้ยิน] พนักงานพูดตอนพาไปที่โต๊ะ เดินตามไปได้เลย ตัว へ ในที่นี้อ่านว่า “เอ”"
+  variants:
+    - speaker: any
+      register: polite
+      text: こちらへどうぞ
+      furigana: こちらへどうぞ
+      pron: コチラエドーゾ
+      audio: come-this-way.m4a
+      parts:
+        - { text: こちら, furigana: こちら, pron: コチラ, gloss: "ทางนี้", pos: pron }
+        - { text: へ, furigana: へ, pron: エ, gloss: "(คำบอกทิศทาง)", pos: particle }
+        - { text: どうぞ, furigana: どうぞ, pron: ドーゾ, gloss: "เชิญ", pos: adv }
+  words:
+    - { text: こちら, pron: コチラ, gloss: "ทางนี้" }
+    - { text: へ, pron: エ, gloss: "(คำบอกทิศทาง)" }
+    - { text: どうぞ, pron: ドーゾ, gloss: "เชิญ" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: table-for-two
+  scene: restaurant
+  gloss: "สองคน"
+  usage: "ใช้ตอบเมื่อพนักงานถามจำนวนคน หนึ่งคนพูดว่า “ひとり” สามคนพูดว่า “さんにん”"
+  variants:
+    - speaker: any
+      register: polite
+      text: 二人です
+      furigana: ふたりです
+      pron: フタリデス
+      audio: table-for-two.m4a
+      parts:
+        - { text: 二人, furigana: ふたり, pron: フタリ, gloss: "สองคน", pos: noun }
+        - { text: です, furigana: です, pron: デス, gloss: "คือ (สุภาพ)", pos: particle }
+  words:
+    - { text: 二人, pron: フタリ, gloss: "สองคน" }
+    - { text: です, pron: デス, gloss: "คือ (สุภาพ)" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: this-please
+  scene: restaurant
+  gloss: "ขออันนี้"
+  usage: "ใช้ตอนสั่งอาหารโดยชี้ที่เมนู ถ้าชี้รูปภาพหรือโมเดลอาหารที่ตั้งหน้าร้านก็สื่อสารได้ชัดเจน"
+  variants:
+    - speaker: any
+      register: polite
+      text: これをください
+      furigana: これをください
+      pron: コレオクダサイ
+      audio: this-please.m4a
+      parts:
+        - { text: これ, furigana: これ, pron: コレ, gloss: "อันนี้", pos: pron }
+        - { text: を, furigana: を, pron: オ, gloss: "(คำชี้กรรม)", pos: particle }
+        - { text: ください, furigana: ください, pron: クダサイ, gloss: "กรุณา", pos: verb }
+  words:
+    - { text: これ, pron: コレ, gloss: "อันนี้" }
+    - { text: を, pron: オ, gloss: "(คำชี้กรรม)" }
+    - { text: ください, pron: クダサイ, gloss: "กรุณา" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: water-please
+  scene: restaurant
+  gloss: "ขอน้ำหน่อย"
+  usage: "ร้านส่วนใหญ่เสิร์ฟน้ำให้ฟรี และมักเป็นน้ำเย็น ถ้าไม่มีมาให้ก็ขอได้ด้วยประโยคนี้"
+  variants:
+    - speaker: any
+      register: polite
+      text: お水をください
+      furigana: おみずをください
+      pron: オミズオクダサイ
+      audio: water-please.m4a
+      parts:
+        - { text: お水, furigana: おみず, pron: オミズ, gloss: "น้ำ", pos: noun }
+        - { text: を, furigana: を, pron: オ, gloss: "(คำชี้กรรม)", pos: particle }
+        - { text: ください, furigana: ください, pron: クダサイ, gloss: "กรุณา", pos: verb }
+  words:
+    - { text: お水, pron: オミズ, gloss: "น้ำ" }
+    - { text: を, pron: オ, gloss: "(คำชี้กรรม)" }
+    - { text: ください, pron: クダサイ, gloss: "กรุณา" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: delicious
+  scene: restaurant
+  gloss: "อร่อย"
+  usage: "ใช้บอกความรู้สึกหลังกินอาหาร ถ้าพูดกับคนในร้านเขาจะดีใจ"
+  variants:
+    - speaker: any
+      register: polite
+      text: おいしいです
+      furigana: おいしいです
+      pron: オイシーデス
+      audio: delicious.m4a
+      parts:
+        - { text: おいしい, furigana: おいしい, pron: オイシー, gloss: "อร่อย", pos: adj }
+        - { text: です, furigana: です, pron: デス, gloss: "คือ (สุภาพ)", pos: particle }
+  words:
+    - { text: おいしい, pron: オイシー, gloss: "อร่อย" }
+    - { text: です, pron: デス, gloss: "คือ (สุภาพ)" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: check-please
+  scene: restaurant
+  gloss: "ขอเช็กบิลหน่อย"
+  usage: "ใช้เรียกพนักงานเมื่อกินเสร็จและจะจ่ายเงิน บางร้านจ่ายที่โต๊ะ บางร้านต้องไปจ่ายที่แคชเชียร์ และที่ญี่ปุ่นไม่มีธรรมเนียมทิป"
+  variants:
+    - speaker: any
+      register: polite
+      text: お会計をお願いします
+      furigana: おかいけいをおねがいします
+      pron: オカイケーオオネガイシマス
+      audio: check-please.m4a
+      parts:
+        - { text: お会計, furigana: おかいけい, pron: オカイケー, gloss: "การคิดเงิน", pos: noun }
+        - { text: を, furigana: を, pron: オ, gloss: "(คำชี้กรรม)", pos: particle }
+        - { text: お願いします, furigana: おねがいします, pron: オネガイシマス, gloss: "ขอร้อง", pos: verb }
+  words:
+    - { text: お会計, pron: オカイケー, gloss: "การคิดเงิน" }
+    - { text: を, pron: オ, gloss: "(คำชี้กรรม)" }
+    - { text: お願いします, pron: オネガイシマス, gloss: "ขอร้อง" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: how-much
+  scene: shopping
+  gloss: "ราคาเท่าไร"
+  usage: "ใช้ถามราคาโดยชี้ที่สินค้า คำตอบจะเป็นตัวเลข เตรียมแอปเครื่องคิดเลขไว้จะสะดวก"
+  variants:
+    - speaker: any
+      register: polite
+      text: いくらですか
+      furigana: いくらですか
+      pron: イクラデスカ
+      audio: how-much.m4a
+      parts:
+        - { text: いくら, furigana: いくら, pron: イクラ, gloss: "เท่าไร", pos: question }
+        - { text: です, furigana: です, pron: デス, gloss: "คือ (สุภาพ)", pos: particle }
+        - { text: か, furigana: か, pron: カ, gloss: "(คำถาม)", pos: particle }
+  words:
+    - { text: いくら, pron: イクラ, gloss: "เท่าไร" }
+    - { text: です, pron: デス, gloss: "คือ (สุภาพ)" }
+    - { text: か, pron: カ, gloss: "(คำถาม)" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: just-looking
+  scene: shopping
+  gloss: "ขอดูเฉยๆ"
+  usage: "ใช้ปฏิเสธเบาๆ เมื่อพนักงานเข้ามาทัก ดูของได้ตามสบายโดยไม่ต้องเกรงใจ"
+  variants:
+    - speaker: any
+      register: polite
+      text: 見ているだけです
+      furigana: みているだけです
+      pron: ミテイルダケデス
+      audio: just-looking.m4a
+      parts:
+        - { text: 見ている, furigana: みている, pron: ミテイル, gloss: "กำลังดู", pos: verb }
+        - { text: だけ, furigana: だけ, pron: ダケ, gloss: "เท่านั้น", pos: particle }
+        - { text: です, furigana: です, pron: デス, gloss: "คือ (สุภาพ)", pos: particle }
+  words:
+    - { text: 見ている, pron: ミテイル, gloss: "กำลังดู" }
+    - { text: だけ, pron: ダケ, gloss: "เท่านั้น" }
+    - { text: です, pron: デス, gloss: "คือ (สุภาพ)" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: tax-free
+  scene: shopping
+  gloss: "ซื้อแบบปลอดภาษีได้ไหม"
+  usage: "นักท่องเที่ยวต่างชาติซื้อสินค้าแบบปลอดภาษีบริโภคได้ตามเงื่อนไข ควรถามก่อนชำระเงิน และอาจต้องใช้หนังสือเดินทาง"
+  variants:
+    - speaker: any
+      register: polite
+      text: 免税できますか
+      furigana: めんぜいできますか
+      pron: メンゼーデキマスカ
+      audio: tax-free.m4a
+      parts:
+        - { text: 免税, furigana: めんぜい, pron: メンゼー, gloss: "ปลอดภาษี", pos: noun }
+        - { text: できます, furigana: できます, pron: デキマス, gloss: "ทำได้", pos: verb }
+        - { text: か, furigana: か, pron: カ, gloss: "(คำถาม)", pos: particle }
+  words:
+    - { text: 免税, pron: メンゼー, gloss: "ปลอดภาษี" }
+    - { text: できます, pron: デキマス, gloss: "ทำได้" }
+    - { text: か, pron: カ, gloss: "(คำถาม)" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: card-ok
+  scene: shopping
+  gloss: "ใช้บัตรได้ไหม"
+  usage: "ใช้ถามก่อนชำระเงินว่าจ่ายด้วยบัตรได้หรือไม่ บางร้านรับเฉพาะเงินสด"
+  variants:
+    - speaker: any
+      register: polite
+      text: カードは使えますか
+      furigana: かーどはつかえますか
+      pron: カードワツカエマスカ
+      audio: card-ok.m4a
+      parts:
+        - { text: カード, furigana: かーど, pron: カード, gloss: "บัตร", pos: noun }
+        - { text: は, furigana: は, pron: ワ, gloss: "(คำบอกหัวข้อ)", pos: particle }
+        - { text: 使えます, furigana: つかえます, pron: ツカエマス, gloss: "ใช้ได้", pos: verb }
+        - { text: か, furigana: か, pron: カ, gloss: "(คำถาม)", pos: particle }
+  words:
+    - { text: カード, pron: カード, gloss: "บัตร" }
+    - { text: は, pron: ワ, gloss: "(คำบอกหัวข้อ)" }
+    - { text: 使えます, pron: ツカエマス, gloss: "ใช้ได้" }
+    - { text: か, pron: カ, gloss: "(คำถาม)" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: bag-ok
+  scene: shopping
+  gloss: "ต้องการถุงไหม"
+  usage: "[ประโยคที่ได้ยิน] พนักงานถามตอนคิดเงินว่าต้องการถุงหรือไม่ ถ้าต้องการตอบ “おねがいします” ถ้าไม่ต้องการตอบ “けっこうです” หลายร้านคิดค่าถุง"
+  variants:
+    - speaker: any
+      register: polite
+      text: 袋はご利用ですか
+      furigana: ふくろはごりようですか
+      pron: フクロワゴリヨーデスカ
+      audio: bag-ok.m4a
+      parts:
+        - { text: 袋, furigana: ふくろ, pron: フクロ, gloss: "ถุง", pos: noun }
+        - { text: は, furigana: は, pron: ワ, gloss: "(คำบอกหัวข้อ)", pos: particle }
+        - { text: ご利用, furigana: ごりよう, pron: ゴリヨー, gloss: "การใช้", pos: noun }
+        - { text: です, furigana: です, pron: デス, gloss: "คือ (สุภาพ)", pos: particle }
+        - { text: か, furigana: か, pron: カ, gloss: "(คำถาม)", pos: particle }
+  words:
+    - { text: 袋, pron: フクロ, gloss: "ถุง" }
+    - { text: は, pron: ワ, gloss: "(คำบอกหัวข้อ)" }
+    - { text: ご利用, pron: ゴリヨー, gloss: "การใช้" }
+    - { text: です, pron: デス, gloss: "คือ (สุภาพ)" }
+    - { text: か, pron: カ, gloss: "(คำถาม)" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: separate-bill
+  scene: shopping
+  gloss: "แยกจ่ายไหม"
+  usage: "[ประโยคที่ได้ยิน] พนักงานถามเมื่อมาหลายคนว่าจะแยกบิลหรือรวมบิล ตอบว่า “べつべつで” (แยก) หรือ “いっしょで” (รวม)"
+  variants:
+    - speaker: any
+      register: polite
+      text: お会計は別々ですか
+      furigana: おかいけいはべつべつですか
+      pron: オカイケーワベツベツデスカ
+      audio: separate-bill.m4a
+      parts:
+        - { text: お会計, furigana: おかいけい, pron: オカイケー, gloss: "การคิดเงิน", pos: noun }
+        - { text: は, furigana: は, pron: ワ, gloss: "(คำบอกหัวข้อ)", pos: particle }
+        - { text: 別々, furigana: べつべつ, pron: ベツベツ, gloss: "แยกกัน", pos: adj }
+        - { text: です, furigana: です, pron: デス, gloss: "คือ (สุภาพ)", pos: particle }
+        - { text: か, furigana: か, pron: カ, gloss: "(คำถาม)", pos: particle }
+  words:
+    - { text: お会計, pron: オカイケー, gloss: "การคิดเงิน" }
+    - { text: は, pron: ワ, gloss: "(คำบอกหัวข้อ)" }
+    - { text: 別々, pron: ベツベツ, gloss: "แยกกัน" }
+    - { text: です, pron: デス, gloss: "คือ (สุภาพ)" }
+    - { text: か, pron: カ, gloss: "(คำถาม)" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: where-station
+  scene: transport
+  gloss: "สถานีอยู่ที่ไหน"
+  usage: "ใช้ถามทางไปสถานีที่ใกล้ที่สุด เปลี่ยนคำว่า “สถานี” เป็นชื่อสถานที่อื่นก็ได้"
+  variants:
+    - speaker: any
+      register: polite
+      text: 駅はどこですか
+      furigana: えきはどこですか
+      pron: エキワドコデスカ
+      audio: where-station.m4a
+      parts:
+        - { text: 駅, furigana: えき, pron: エキ, gloss: "สถานี", pos: noun }
+        - { text: は, furigana: は, pron: ワ, gloss: "(คำบอกหัวข้อ)", pos: particle }
+        - { text: どこ, furigana: どこ, pron: ドコ, gloss: "ที่ไหน", pos: question }
+        - { text: です, furigana: です, pron: デス, gloss: "คือ (สุภาพ)", pos: particle }
+        - { text: か, furigana: か, pron: カ, gloss: "(คำถาม)", pos: particle }
+  words:
+    - { text: 駅, pron: エキ, gloss: "สถานี" }
+    - { text: は, pron: ワ, gloss: "(คำบอกหัวข้อ)" }
+    - { text: どこ, pron: ドコ, gloss: "ที่ไหน" }
+    - { text: です, pron: デス, gloss: "คือ (สุภาพ)" }
+    - { text: か, pron: カ, gloss: "(คำถาม)" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: where-toilet
+  scene: transport
+  gloss: "ห้องน้ำอยู่ที่ไหน"
+  usage: "ใช้ถามตำแหน่งห้องน้ำ ใช้ได้ทั้งในร้านและในสถานี ห้องน้ำในสถานีและห้างส่วนใหญ่ใช้ฟรี"
+  variants:
+    - speaker: any
+      register: polite
+      text: トイレはどこですか
+      furigana: といれはどこですか
+      pron: トイレワドコデスカ
+      audio: where-toilet.m4a
+      parts:
+        - { text: トイレ, furigana: といれ, pron: トイレ, gloss: "ห้องน้ำ", pos: noun }
+        - { text: は, furigana: は, pron: ワ, gloss: "(คำบอกหัวข้อ)", pos: particle }
+        - { text: どこ, furigana: どこ, pron: ドコ, gloss: "ที่ไหน", pos: question }
+        - { text: です, furigana: です, pron: デス, gloss: "คือ (สุภาพ)", pos: particle }
+        - { text: か, furigana: か, pron: カ, gloss: "(คำถาม)", pos: particle }
+  words:
+    - { text: トイレ, pron: トイレ, gloss: "ห้องน้ำ" }
+    - { text: は, pron: ワ, gloss: "(คำบอกหัวข้อ)" }
+    - { text: どこ, pron: ドコ, gloss: "ที่ไหน" }
+    - { text: です, pron: デス, gloss: "คือ (สุภาพ)" }
+    - { text: か, pron: カ, gloss: "(คำถาม)" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: want-go-here
+  scene: transport
+  gloss: "อยากไปที่นี่"
+  usage: "ใช้บอกจุดหมายปลายทางโดยยื่นแผนที่หรือหน้าจอสมาร์ตโฟนให้ดู ตัว へ ในที่นี้อ่านว่า “เอ”"
+  variants:
+    - speaker: any
+      register: polite
+      text: ここへ行きたいです
+      furigana: ここへいきたいです
+      pron: ココエイキタイデス
+      audio: want-go-here.m4a
+      parts:
+        - { text: ここ, furigana: ここ, pron: ココ, gloss: "ที่นี่", pos: pron }
+        - { text: へ, furigana: へ, pron: エ, gloss: "(คำบอกทิศทาง)", pos: particle }
+        - { text: 行きたい, furigana: いきたい, pron: イキタイ, gloss: "อยากไป", pos: adj }
+        - { text: です, furigana: です, pron: デス, gloss: "คือ (สุภาพ)", pos: particle }
+  words:
+    - { text: ここ, pron: ココ, gloss: "ที่นี่" }
+    - { text: へ, pron: エ, gloss: "(คำบอกทิศทาง)" }
+    - { text: 行きたい, pron: イキタイ, gloss: "อยากไป" }
+    - { text: です, pron: デス, gloss: "คือ (สุภาพ)" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: how-long
+  scene: transport
+  gloss: "ใช้เวลานานเท่าไร"
+  usage: "ใช้ถามเวลาที่ต้องใช้เดินทางไปถึงจุดหมาย มีประโยชน์ก่อนขึ้นแท็กซี่หรือรถบัส"
+  variants:
+    - speaker: any
+      register: polite
+      text: どのくらいかかりますか
+      furigana: どのくらいかかりますか
+      pron: ドノクライカカリマスカ
+      audio: how-long.m4a
+      parts:
+        - { text: どのくらい, furigana: どのくらい, pron: ドノクライ, gloss: "ประมาณเท่าไร", pos: adv }
+        - { text: かかります, furigana: かかります, pron: カカリマス, gloss: "ใช้เวลา", pos: verb }
+        - { text: か, furigana: か, pron: カ, gloss: "(คำถาม)", pos: particle }
+  words:
+    - { text: どのくらい, pron: ドノクライ, gloss: "ประมาณเท่าไร" }
+    - { text: かかります, pron: カカリマス, gloss: "ใช้เวลา" }
+    - { text: か, pron: カ, gloss: "(คำถาม)" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: where-ticket
+  scene: transport
+  gloss: "ซื้อตั๋วได้ที่ไหน"
+  usage: "ใช้ถามที่ซื้อตั๋วในสถานี ถ้าจะซื้อบัตรโดยสารแบบเติมเงินก็ใช้ประโยคนี้ได้เช่นกัน"
+  variants:
+    - speaker: any
+      register: polite
+      text: 切符はどこで買えますか
+      furigana: きっぷはどこでかえますか
+      pron: キップワドコデカエマスカ
+      audio: where-ticket.m4a
+      parts:
+        - { text: 切符, furigana: きっぷ, pron: キップ, gloss: "ตั๋ว", pos: noun }
+        - { text: は, furigana: は, pron: ワ, gloss: "(คำบอกหัวข้อ)", pos: particle }
+        - { text: どこ, furigana: どこ, pron: ドコ, gloss: "ที่ไหน", pos: question }
+        - { text: で, furigana: で, pron: デ, gloss: "(คำบอกสถานที่)", pos: particle }
+        - { text: 買えます, furigana: かえます, pron: カエマス, gloss: "ซื้อได้", pos: verb }
+        - { text: か, furigana: か, pron: カ, gloss: "(คำถาม)", pos: particle }
+  words:
+    - { text: 切符, pron: キップ, gloss: "ตั๋ว" }
+    - { text: は, pron: ワ, gloss: "(คำบอกหัวข้อ)" }
+    - { text: どこ, pron: ドコ, gloss: "ที่ไหน" }
+    - { text: で, pron: デ, gloss: "(คำบอกสถานที่)" }
+    - { text: 買えます, pron: カエマス, gloss: "ซื้อได้" }
+    - { text: か, pron: カ, gloss: "(คำถาม)" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: reservation
+  scene: hotel
+  gloss: "จองไว้แล้ว"
+  usage: "ใช้แจ้งตอนเช็กอินว่ามีการจองไว้ ควรยื่นอีเมลยืนยันการจองหรือบอกชื่อไปพร้อมกัน"
+  variants:
+    - speaker: any
+      register: polite
+      text: 予約しています
+      furigana: よやくしています
+      pron: ヨヤクシテイマス
+      audio: reservation.m4a
+      parts:
+        - { text: 予約しています, furigana: よやくしています, pron: ヨヤクシテイマス, gloss: "จองไว้แล้ว", pos: verb }
+  words:
+    - { text: 予約しています, pron: ヨヤクシテイマス, gloss: "จองไว้แล้ว" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: reserved-q
+  scene: hotel
+  gloss: "จองไว้หรือเปล่า"
+  usage: "[ประโยคที่ได้ยิน] พนักงานถามเมื่อเข้าที่พักหรือร้านอาหาร ตอบว่า “はい、よやくしています” แล้วยื่นเอกสารยืนยันหรือบอกชื่อ"
+  variants:
+    - speaker: any
+      register: polite
+      text: ご予約はされていますか
+      furigana: ごよやくはされていますか
+      pron: ゴヨヤクワサレテイマスカ
+      audio: reserved-q.m4a
+      parts:
+        - { text: ご予約, furigana: ごよやく, pron: ゴヨヤク, gloss: "การจอง", pos: noun }
+        - { text: は, furigana: は, pron: ワ, gloss: "(คำบอกหัวข้อ)", pos: particle }
+        - { text: されています, furigana: されています, pron: サレテイマス, gloss: "ได้ทำแล้ว (ยกย่อง)", pos: verb }
+        - { text: か, furigana: か, pron: カ, gloss: "(คำถาม)", pos: particle }
+  words:
+    - { text: ご予約, pron: ゴヨヤク, gloss: "การจอง" }
+    - { text: は, pron: ワ, gloss: "(คำบอกหัวข้อ)" }
+    - { text: されています, pron: サレテイマス, gloss: "ได้ทำแล้ว (ยกย่อง)" }
+    - { text: か, pron: カ, gloss: "(คำถาม)" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: keep-luggage
+  scene: hotel
+  gloss: "ฝากกระเป๋าไว้ได้ไหม"
+  usage: "ใช้ถามเมื่อจะฝากสัมภาระก่อนเช็กอินหรือหลังเช็กเอาต์ ในที่สาธารณะอาจใช้ตู้ล็อกเกอร์หยอดเหรียญได้ด้วย"
+  variants:
+    - speaker: any
+      register: polite
+      text: 荷物を預かってもらえますか
+      furigana: にもつをあずかってもらえますか
+      pron: ニモツオアズカッテモラエマスカ
+      audio: keep-luggage.m4a
+      parts:
+        - { text: 荷物, furigana: にもつ, pron: ニモツ, gloss: "สัมภาระ", pos: noun }
+        - { text: を, furigana: を, pron: オ, gloss: "(คำชี้กรรม)", pos: particle }
+        - { text: 預かってもらえます, furigana: あずかってもらえます, pron: アズカッテモラエマス, gloss: "ช่วยรับฝากได้", pos: verb }
+        - { text: か, furigana: か, pron: カ, gloss: "(คำถาม)", pos: particle }
+  words:
+    - { text: 荷物, pron: ニモツ, gloss: "สัมภาระ" }
+    - { text: を, pron: オ, gloss: "(คำชี้กรรม)" }
+    - { text: 預かってもらえます, pron: アズカッテモラエマス, gloss: "ช่วยรับฝากได้" }
+    - { text: か, pron: カ, gloss: "(คำถาม)" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: breakfast-time
+  scene: hotel
+  gloss: "อาหารเช้าเริ่มกี่โมง"
+  usage: "ใช้ถามเวลาในที่พักที่รวมอาหารเช้า เปลี่ยนเป็น “なんじまで” (ถึงกี่โมง) เพื่อถามเวลาสิ้นสุดได้"
+  variants:
+    - speaker: any
+      register: polite
+      text: 朝食は何時からですか
+      furigana: ちょうしょくはなんじからですか
+      pron: チョーショクワナンジカラデスカ
+      audio: breakfast-time.m4a
+      parts:
+        - { text: 朝食, furigana: ちょうしょく, pron: チョーショク, gloss: "อาหารเช้า", pos: noun }
+        - { text: は, furigana: は, pron: ワ, gloss: "(คำบอกหัวข้อ)", pos: particle }
+        - { text: 何時, furigana: なんじ, pron: ナンジ, gloss: "กี่โมง", pos: question }
+        - { text: から, furigana: から, pron: カラ, gloss: "(ตั้งแต่)", pos: particle }
+        - { text: です, furigana: です, pron: デス, gloss: "คือ (สุภาพ)", pos: particle }
+        - { text: か, furigana: か, pron: カ, gloss: "(คำถาม)", pos: particle }
+  words:
+    - { text: 朝食, pron: チョーショク, gloss: "อาหารเช้า" }
+    - { text: は, pron: ワ, gloss: "(คำบอกหัวข้อ)" }
+    - { text: 何時, pron: ナンジ, gloss: "กี่โมง" }
+    - { text: から, pron: カラ, gloss: "(ตั้งแต่)" }
+    - { text: です, pron: デス, gloss: "คือ (สุภาพ)" }
+    - { text: か, pron: カ, gloss: "(คำถาม)" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: internet-ok
+  scene: hotel
+  gloss: "ใช้อินเทอร์เน็ตได้ไหม"
+  usage: "ใช้ถามว่าใช้ไวไฟได้หรือไม่ ถ้าต้องใช้รหัสผ่านให้ขอ “パスワード” (รหัสผ่าน)"
+  variants:
+    - speaker: any
+      register: polite
+      text: インターネットは使えますか
+      furigana: いんたーねっとはつかえますか
+      pron: インターネットワツカエマスカ
+      audio: internet-ok.m4a
+      parts:
+        - { text: インターネット, furigana: いんたーねっと, pron: インターネット, gloss: "อินเทอร์เน็ต", pos: noun }
+        - { text: は, furigana: は, pron: ワ, gloss: "(คำบอกหัวข้อ)", pos: particle }
+        - { text: 使えます, furigana: つかえます, pron: ツカエマス, gloss: "ใช้ได้", pos: verb }
+        - { text: か, furigana: か, pron: カ, gloss: "(คำถาม)", pos: particle }
+  words:
+    - { text: インターネット, pron: インターネット, gloss: "อินเทอร์เน็ต" }
+    - { text: は, pron: ワ, gloss: "(คำบอกหัวข้อ)" }
+    - { text: 使えます, pron: ツカエマス, gloss: "ใช้ได้" }
+    - { text: か, pron: カ, gloss: "(คำถาม)" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: help
+  scene: trouble
+  gloss: "ช่วยด้วย"
+  usage: "ใช้ขอความช่วยเหลือเมื่อเดือดร้อน ถ้าเร่งด่วนพูดเสียงดังได้"
+  variants:
+    - speaker: any
+      register: polite
+      text: 助けてください
+      furigana: たすけてください
+      pron: タスケテクダサイ
+      audio: help.m4a
+      parts:
+        - { text: 助けて, furigana: たすけて, pron: タスケテ, gloss: "ช่วย", pos: verb }
+        - { text: ください, furigana: ください, pron: クダサイ, gloss: "กรุณา", pos: verb }
+  words:
+    - { text: 助けて, pron: タスケテ, gloss: "ช่วย" }
+    - { text: ください, pron: クダサイ, gloss: "กรุณา" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: again-please
+  scene: trouble
+  gloss: "ขอพูดอีกครั้งได้ไหม"
+  usage: "ใช้ขอให้พูดซ้ำอย่างสุภาพเมื่อฟังไม่ทัน"
+  variants:
+    - speaker: any
+      register: polite
+      text: もう一度お願いします
+      furigana: もういちどおねがいします
+      pron: モーイチドオネガイシマス
+      audio: again-please.m4a
+      parts:
+        - { text: もう, furigana: もう, pron: モー, gloss: "อีก", pos: adv }
+        - { text: 一度, furigana: いちど, pron: イチド, gloss: "หนึ่งครั้ง", pos: noun }
+        - { text: お願いします, furigana: おねがいします, pron: オネガイシマス, gloss: "ขอร้อง", pos: verb }
+  words:
+    - { text: もう, pron: モー, gloss: "อีก" }
+    - { text: 一度, pron: イチド, gloss: "หนึ่งครั้ง" }
+    - { text: お願いします, pron: オネガイシマス, gloss: "ขอร้อง" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: speak-slowly
+  scene: trouble
+  gloss: "ช่วยพูดช้าๆ หน่อย"
+  usage: "ใช้เมื่ออีกฝ่ายพูดเร็วเกินไป ถ้ายิ้มไปด้วยส่วนใหญ่เขาจะพูดช้าลงให้"
+  variants:
+    - speaker: any
+      register: polite
+      text: ゆっくり話してください
+      furigana: ゆっくりはなしてください
+      pron: ユックリハナシテクダサイ
+      audio: speak-slowly.m4a
+      parts:
+        - { text: ゆっくり, furigana: ゆっくり, pron: ユックリ, gloss: "ช้าๆ", pos: adv }
+        - { text: 話して, furigana: はなして, pron: ハナシテ, gloss: "พูด", pos: verb }
+        - { text: ください, furigana: ください, pron: クダサイ, gloss: "กรุณา", pos: verb }
+  words:
+    - { text: ゆっくり, pron: ユックリ, gloss: "ช้าๆ" }
+    - { text: 話して, pron: ハナシテ, gloss: "พูด" }
+    - { text: ください, pron: クダサイ, gloss: "กรุณา" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: dont-understand
+  scene: trouble
+  gloss: "ไม่เข้าใจภาษาญี่ปุ่น"
+  usage: "ใช้บอกว่าไม่เข้าใจภาษาญี่ปุ่น อีกฝ่ายอาจช่วยด้วยภาษาอังกฤษหรือท่าทาง"
+  variants:
+    - speaker: any
+      register: polite
+      text: 日本語が分かりません
+      furigana: にほんごがわかりません
+      pron: ニホンゴガワカリマセン
+      audio: dont-understand.m4a
+      parts:
+        - { text: 日本語, furigana: にほんご, pron: ニホンゴ, gloss: "ภาษาญี่ปุ่น", pos: noun }
+        - { text: が, furigana: が, pron: ガ, gloss: "(คำบอกประธาน)", pos: particle }
+        - { text: 分かりません, furigana: わかりません, pron: ワカリマセン, gloss: "ไม่เข้าใจ", pos: verb }
+  words:
+    - { text: 日本語, pron: ニホンゴ, gloss: "ภาษาญี่ปุ่น" }
+    - { text: が, pron: ガ, gloss: "(คำบอกประธาน)" }
+    - { text: 分かりません, pron: ワカリマセン, gloss: "ไม่เข้าใจ" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: lost-passport
+  scene: trouble
+  gloss: "ทำหนังสือเดินทางหาย"
+  usage: "ใช้แจ้งตำรวจหรือพนักงานที่พักเมื่อพาสปอร์ตหาย แทนที่ “パスポート” ด้วยชื่อสิ่งของอื่นได้"
+  variants:
+    - speaker: any
+      register: polite
+      text: パスポートをなくしました
+      furigana: ぱすぽーとをなくしました
+      pron: パスポートオナクシマシタ
+      audio: lost-passport.m4a
+      parts:
+        - { text: パスポート, furigana: ぱすぽーと, pron: パスポート, gloss: "หนังสือเดินทาง", pos: noun }
+        - { text: を, furigana: を, pron: オ, gloss: "(คำชี้กรรม)", pos: particle }
+        - { text: なくしました, furigana: なくしました, pron: ナクシマシタ, gloss: "ทำหาย", pos: verb }
+  words:
+    - { text: パスポート, pron: パスポート, gloss: "หนังสือเดินทาง" }
+    - { text: を, pron: オ, gloss: "(คำชี้กรรม)" }
+    - { text: なくしました, pron: ナクシマシタ, gloss: "ทำหาย" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: where-hospital
+  scene: trouble
+  gloss: "โรงพยาบาลอยู่ที่ไหน"
+  usage: "ใช้ถามที่ตั้งโรงพยาบาลเมื่อไม่สบาย ถ้าฉุกเฉินให้ใช้ “きゅうきゅうしゃをよんでください” (กรุณาเรียกรถพยาบาล) หรือโทร 119"
+  variants:
+    - speaker: any
+      register: polite
+      text: 病院はどこですか
+      furigana: びょういんはどこですか
+      pron: ビョーインワドコデスカ
+      audio: where-hospital.m4a
+      parts:
+        - { text: 病院, furigana: びょういん, pron: ビョーイン, gloss: "โรงพยาบาล", pos: noun }
+        - { text: は, furigana: は, pron: ワ, gloss: "(คำบอกหัวข้อ)", pos: particle }
+        - { text: どこ, furigana: どこ, pron: ドコ, gloss: "ที่ไหน", pos: question }
+        - { text: です, furigana: です, pron: デス, gloss: "คือ (สุภาพ)", pos: particle }
+        - { text: か, furigana: か, pron: カ, gloss: "(คำถาม)", pos: particle }
+  words:
+    - { text: 病院, pron: ビョーイン, gloss: "โรงพยาบาล" }
+    - { text: は, pron: ワ, gloss: "(คำบอกหัวข้อ)" }
+    - { text: どこ, pron: ドコ, gloss: "ที่ไหน" }
+    - { text: です, pron: デス, gloss: "คือ (สุภาพ)" }
+    - { text: か, pron: カ, gloss: "(คำถาม)" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: from-thailand
+  scene: friendly
+  gloss: "มาจากประเทศไทย"
+  usage: "ใช้แนะนำตัวเมื่อพบคนญี่ปุ่น เปลี่ยน “タイ” เป็นชื่อประเทศหรือเมืองอื่นได้ เช่น 台湾 (ไต้หวัน)"
+  variants:
+    - speaker: any
+      register: polite
+      text: タイから来ました
+      furigana: たいからきました
+      pron: タイカラキマシタ
+      audio: from-thailand.m4a
+      parts:
+        - { text: タイ, furigana: たい, pron: タイ, gloss: "ประเทศไทย", pos: noun }
+        - { text: から, furigana: から, pron: カラ, gloss: "จาก", pos: particle }
+        - { text: 来ました, furigana: きました, pron: キマシタ, gloss: "มา", pos: verb }
+  words:
+    - { text: タイ, pron: タイ, gloss: "ประเทศไทย" }
+    - { text: から, pron: カラ, gloss: "จาก" }
+    - { text: 来ました, pron: キマシタ, gloss: "มา" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: came-to-visit
+  scene: friendly
+  gloss: "มาท่องเที่ยว"
+  usage: "ใช้ตอบเมื่อถูกถามว่ามาญี่ปุ่นทำไม พูดสั้นๆ ก็ฟังดูเป็นกันเอง"
+  variants:
+    - speaker: any
+      register: polite
+      text: 旅行で来ました
+      furigana: りょこうできました
+      pron: リョコーデキマシタ
+      audio: came-to-visit.m4a
+      parts:
+        - { text: 旅行, furigana: りょこう, pron: リョコー, gloss: "การท่องเที่ยว", pos: noun }
+        - { text: で, furigana: で, pron: デ, gloss: "(ด้วย · เพื่อ)", pos: particle }
+        - { text: 来ました, furigana: きました, pron: キマシタ, gloss: "มา", pos: verb }
+  words:
+    - { text: 旅行, pron: リョコー, gloss: "การท่องเที่ยว" }
+    - { text: で, pron: デ, gloss: "(ด้วย · เพื่อ)" }
+    - { text: 来ました, pron: キマシタ, gloss: "มา" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: study-japanese
+  scene: friendly
+  gloss: "กำลังเรียนภาษาญี่ปุ่นอยู่"
+  usage: "เป็นประโยคที่คนญี่ปุ่นดีใจที่ได้ฟังที่สุดประโยคหนึ่ง แม้ยังไม่คล่องเขาก็ชื่นชมที่พยายาม"
+  variants:
+    - speaker: any
+      register: polite
+      text: 日本語を勉強しています
+      furigana: にほんごをべんきょうしています
+      pron: ニホンゴオベンキョーシテイマス
+      audio: study-japanese.m4a
+      parts:
+        - { text: 日本語, furigana: にほんご, pron: ニホンゴ, gloss: "ภาษาญี่ปุ่น", pos: noun }
+        - { text: を, furigana: を, pron: オ, gloss: "(คำชี้กรรม)", pos: particle }
+        - { text: 勉強しています, furigana: べんきょうしています, pron: ベンキョーシテイマス, gloss: "กำลังเรียน", pos: verb }
+  words:
+    - { text: 日本語, pron: ニホンゴ, gloss: "ภาษาญี่ปุ่น" }
+    - { text: を, pron: オ, gloss: "(คำชี้กรรม)" }
+    - { text: 勉強しています, pron: ベンキョーシテイマス, gloss: "กำลังเรียน" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: speak-little
+  scene: friendly
+  gloss: "พูดภาษาญี่ปุ่นได้นิดหน่อย"
+  usage: "“少し” แปลว่านิดหน่อย เป็นการพูดถ่อมตัว อีกฝ่ายจะพูดให้ง่ายและช้าลง"
+  variants:
+    - speaker: any
+      register: polite
+      text: 日本語を少し話せます
+      furigana: にほんごをすこしはなせます
+      pron: ニホンゴオスコシハナセマス
+      audio: speak-little.m4a
+      parts:
+        - { text: 日本語, furigana: にほんご, pron: ニホンゴ, gloss: "ภาษาญี่ปุ่น", pos: noun }
+        - { text: を, furigana: を, pron: オ, gloss: "(คำชี้กรรม)", pos: particle }
+        - { text: 少し, furigana: すこし, pron: スコシ, gloss: "นิดหน่อย", pos: adv }
+        - { text: 話せます, furigana: はなせます, pron: ハナセマス, gloss: "พูดได้", pos: verb }
+  words:
+    - { text: 日本語, pron: ニホンゴ, gloss: "ภาษาญี่ปุ่น" }
+    - { text: を, pron: オ, gloss: "(คำชี้กรรม)" }
+    - { text: 少し, pron: スコシ, gloss: "นิดหน่อย" }
+    - { text: 話せます, pron: ハナセマス, gloss: "พูดได้" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: love-japan
+  scene: friendly
+  gloss: "ชอบญี่ปุ่นมาก"
+  usage: "“大好き” แปลว่าชอบมาก การบอกความรู้สึกตรงๆ ทำให้บทสนทนาต่อเนื่องได้ลื่นไหล"
+  variants:
+    - speaker: any
+      register: polite
+      text: 日本が大好きです
+      furigana: にほんがだいすきです
+      pron: ニホンガダイスキデス
+      audio: love-japan.m4a
+      parts:
+        - { text: 日本, furigana: にほん, pron: ニホン, gloss: "ญี่ปุ่น", pos: noun }
+        - { text: が, furigana: が, pron: ガ, gloss: "(คำบอกประธาน)", pos: particle }
+        - { text: 大好き, furigana: だいすき, pron: ダイスキ, gloss: "ชอบมาก", pos: adj }
+        - { text: です, furigana: です, pron: デス, gloss: "คือ (สุภาพ)", pos: particle }
+  words:
+    - { text: 日本, pron: ニホン, gloss: "ญี่ปุ่น" }
+    - { text: が, pron: ガ, gloss: "(คำบอกประธาน)" }
+    - { text: 大好き, pron: ダイスキ, gloss: "ชอบมาก" }
+    - { text: です, pron: デス, gloss: "คือ (สุภาพ)" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: food-great
+  scene: friendly
+  gloss: "อาหารญี่ปุ่นอร่อย"
+  usage: "ใช้ชมหลังกินอาหารที่ร้านอาหารหรือที่พัก"
+  variants:
+    - speaker: any
+      register: polite
+      text: 日本の料理はおいしいです
+      furigana: にほんのりょうりはおいしいです
+      pron: ニホンノリョーリワオイシーデス
+      audio: food-great.m4a
+      parts:
+        - { text: 日本, furigana: にほん, pron: ニホン, gloss: "ญี่ปุ่น", pos: noun }
+        - { text: の, furigana: の, pron: ノ, gloss: "(ของ)", pos: particle }
+        - { text: 料理, furigana: りょうり, pron: リョーリ, gloss: "อาหาร", pos: noun }
+        - { text: は, furigana: は, pron: ワ, gloss: "(คำบอกหัวข้อ)", pos: particle }
+        - { text: おいしい, furigana: おいしい, pron: オイシー, gloss: "อร่อย", pos: adj }
+        - { text: です, furigana: です, pron: デス, gloss: "คือ (สุภาพ)", pos: particle }
+  words:
+    - { text: 日本, pron: ニホン, gloss: "ญี่ปุ่น" }
+    - { text: の, pron: ノ, gloss: "(ของ)" }
+    - { text: 料理, pron: リョーリ, gloss: "อาหาร" }
+    - { text: は, pron: ワ, gloss: "(คำบอกหัวข้อ)" }
+    - { text: おいしい, pron: オイシー, gloss: "อร่อย" }
+    - { text: です, pron: デス, gloss: "คือ (สุภาพ)" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: japanese-kind
+  scene: friendly
+  gloss: "คนญี่ปุ่นใจดี"
+  usage: "ใช้พูดหลังได้รับความช่วยเหลือ พูดคู่กับ “ありがとうございます” จะดี"
+  variants:
+    - speaker: any
+      register: polite
+      text: 日本の人は親切です
+      furigana: にほんのひとはしんせつです
+      pron: ニホンノヒトワシンセツデス
+      audio: japanese-kind.m4a
+      parts:
+        - { text: 日本, furigana: にほん, pron: ニホン, gloss: "ญี่ปุ่น", pos: noun }
+        - { text: の, furigana: の, pron: ノ, gloss: "(ของ)", pos: particle }
+        - { text: 人, furigana: ひと, pron: ヒト, gloss: "คน", pos: noun }
+        - { text: は, furigana: は, pron: ワ, gloss: "(คำบอกหัวข้อ)", pos: particle }
+        - { text: 親切, furigana: しんせつ, pron: シンセツ, gloss: "ใจดี", pos: adj }
+        - { text: です, furigana: です, pron: デス, gloss: "คือ (สุภาพ)", pos: particle }
+  words:
+    - { text: 日本, pron: ニホン, gloss: "ญี่ปุ่น" }
+    - { text: の, pron: ノ, gloss: "(ของ)" }
+    - { text: 人, pron: ヒト, gloss: "คน" }
+    - { text: は, pron: ワ, gloss: "(คำบอกหัวข้อ)" }
+    - { text: 親切, pron: シンセツ, gloss: "ใจดี" }
+    - { text: です, pron: デス, gloss: "คือ (สุภาพ)" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: japan-beautiful
+  scene: friendly
+  gloss: "ญี่ปุ่นสวยจังเนอะ"
+  usage: "“きれい” แปลได้ทั้งสวยและสะอาด ใช้เมื่อชื่นชมทิวทัศน์หรือบ้านเมือง “ね” ท้ายประโยคเป็นการชวนให้อีกฝ่ายเห็นด้วย เหมือน “เนอะ” ในภาษาไทย"
+  variants:
+    - speaker: any
+      register: polite
+      text: 日本はきれいですね
+      furigana: にほんはきれいですね
+      pron: ニホンワキレーデスネ
+      audio: japan-beautiful.m4a
+      parts:
+        - { text: 日本, furigana: にほん, pron: ニホン, gloss: "ญี่ปุ่น", pos: noun }
+        - { text: は, furigana: は, pron: ワ, gloss: "(คำบอกหัวข้อ)", pos: particle }
+        - { text: きれい, furigana: きれい, pron: キレー, gloss: "สวย · สะอาด", pos: adj }
+        - { text: です, furigana: です, pron: デス, gloss: "คือ (สุภาพ)", pos: particle }
+        - { text: ね, furigana: ね, pron: ネ, gloss: "(นะ · เนอะ)", pos: particle }
+  words:
+    - { text: 日本, pron: ニホン, gloss: "ญี่ปุ่น" }
+    - { text: は, pron: ワ, gloss: "(คำบอกหัวข้อ)" }
+    - { text: きれい, pron: キレー, gloss: "สวย · สะอาด" }
+    - { text: です, pron: デス, gloss: "คือ (สุภาพ)" }
+    - { text: ね, pron: ネ, gloss: "(นะ · เนอะ)" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: what-called
+  scene: friendly
+  gloss: "อันนี้เรียกว่าอะไรในภาษาญี่ปุ่น"
+  usage: "ใช้ถามโดยชี้ที่สิ่งของหรืออาหาร อีกฝ่ายจะรู้ว่าคุณอยากเรียนภาษาญี่ปุ่นและมักสอนให้อย่างใจดี"
+  variants:
+    - speaker: any
+      register: polite
+      text: これは日本語で何と言いますか
+      furigana: これはにほんごでなんといいますか
+      pron: コレワニホンゴデナントイーマスカ
+      audio: what-called.m4a
+      parts:
+        - { text: これ, furigana: これ, pron: コレ, gloss: "อันนี้", pos: pron }
+        - { text: は, furigana: は, pron: ワ, gloss: "(คำบอกหัวข้อ)", pos: particle }
+        - { text: 日本語, furigana: にほんご, pron: ニホンゴ, gloss: "ภาษาญี่ปุ่น", pos: noun }
+        - { text: で, furigana: で, pron: デ, gloss: "(ด้วย)", pos: particle }
+        - { text: 何, furigana: なん, pron: ナン, gloss: "อะไร", pos: question }
+        - { text: と, furigana: と, pron: ト, gloss: "(ว่า)", pos: particle }
+        - { text: 言いますか, furigana: いいますか, pron: イーマスカ, gloss: "พูดว่า", pos: verb }
+  words:
+    - { text: これ, pron: コレ, gloss: "อันนี้" }
+    - { text: は, pron: ワ, gloss: "(คำบอกหัวข้อ)" }
+    - { text: 日本語, pron: ニホンゴ, gloss: "ภาษาญี่ปุ่น" }
+    - { text: で, pron: デ, gloss: "(ด้วย)" }
+    - { text: 何, pron: ナン, gloss: "อะไร" }
+    - { text: と, pron: ト, gloss: "(ว่า)" }
+    - { text: 言いますか, pron: イーマスカ, gloss: "พูดว่า" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts
+
+- id: come-again
+  scene: friendly
+  gloss: "จะกลับมาอีก"
+  usage: "ใช้เป็นคำทักทายตอนจากลา เช่น ตอนออกจากร้านหรือที่พัก ทำให้อีกฝ่ายประทับใจ"
+  variants:
+    - speaker: any
+      register: polite
+      text: また来ます
+      furigana: またきます
+      pron: マタキマス
+      audio: come-again.m4a
+      parts:
+        - { text: また, furigana: また, pron: マタ, gloss: "อีก", pos: adv }
+        - { text: 来ます, furigana: きます, pron: キマス, gloss: "จะมา", pos: verb }
+  words:
+    - { text: また, pron: マタ, gloss: "อีก" }
+    - { text: 来ます, pron: キマス, gloss: "จะมา" }
+  review: { pron: false, audio: false, usage: false }
+  audioSource: tts

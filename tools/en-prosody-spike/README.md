@@ -1,0 +1,58 @@
+# en-prosody-spike
+
+英語字幕(YouTube)に、初学者向けの韻律情報を重ねて表示するスパイク(v0)。
+入力は **手動字幕 + 自動字幕(語ごとの時刻)+ 音声**。出力は目視確認用の HTML と JSON。
+**すべて規則による推定**で、正解データでの検証はしていない。経緯は `docs/research/2026-09-30-en-prosody-notation-catalog.md`。
+
+## 表示する情報(初学者向けの 3 つ)
+1. 意味のまとまり: 句読点 + 音声の無音(250ms 以上で `/`、600ms 以上で `//`)
+2. 強く読む語: 機能語リスト以外が内容語(太字)。まとまりの最後の内容語を核(赤い下線)とする規則
+3. 推定の発音: CMUdict + 弱形表 + 弾き音(T/D が母音間で弱母音の前)+ 語間の連結(`‿`)。カナ + 右肩の IPA(`src/kana.py`)
+
+## 構成: 分析 → 中間表現(IR, JSON)→ 各形式
+```
+MANUAL.json3 + AUTO.json3 + AUDIO.wav --build--> IR.json --convert--> .ass / .srt / .html
+```
+IR の形は `src/ir.py` の docstring。変換器(`to_ass.py` `to_srt.py` `to_html.py`)は IR だけを読む。
+語ごとに `prominence`(0 弱形 / 1 機能語 / 2 内容語 / 3 核)・`break_after`・`pause_ms`・`phones`・`kana`(詳細)・`kana_lite` を持つ。
+- **ASS**: 強勢・弱化を語ごとの `\fs`(倍率は `to_ass.PROFILE["size"]`)で表す。内容語は太字、核は色+下線。上の行=カナ、下の行=英語。
+- **SRT**: フォントサイズの標準が無いので、内容語=`<b>`、核=`<u>`+色、弱形=灰色で近似。
+- **HTML**: 目視確認用。ASS と同じ倍率で文字サイズを変える。
+
+## 音声による形(音素認識)
+`--phones PHONES.json` を渡すと、弱形・強形、弾き音・t、口蓋化を音声で決める(`observe.py`)。信頼度が低い語と観測できない語は規則に戻す。
+IR の `kana` が音声による形、`kana_rule` が規則だけの形。`phonecheck.py` は規則と音声の一致を現象ごとに測る(`out/phonecheck.txt`)。
+PHONES.json は wav2vec2 の espeak CTC(`facebook/wav2vec2-lv-60-espeak-cv-ft`、Apache-2.0、1.26GB)の貪欲デコード。CPU で実時間の約 0.8〜0.9 倍。
+作り方: transformers の `Wav2Vec2ForCTC` に 16kHz の音声を 20 秒ずつ渡し、argmax の系列から `{"t": 秒, "p": 音素}` を出す(`src/phone_rec.py`。依存は別の仮想環境に入れる)。
+
+## 見せる層の選択
+`src/layers.py`。IR には全部の層が入っていて、変換器が選んで出す。層: size bold nucleus weak breaks link beat kana ipa audio。
+プリセット: 入門 / 標準 / 詳細 / リズム。例: `convert IR.json --to ass --layers 標準`、`--layers 詳細,-ipa`、`--layers size,beat,kana`(`--lite` は `-ipa` と同じ)。
+ビートは ASS/SRT では語の直前の小さな ●(強い語)/◎(核を兼ねる)で出す(語に付くので位置がずれない)。カナと英語の語単位の位置合わせは HTML だけ。
+
+## 使い方
+```
+# 取得(開発サーバーの IP は YouTube の bot 判定で弾かれたため、別の PC(自宅回線)で動かしたプロキシ経由で yt-dlp を実行した。環境依存なので手順は置かない)
+yt-dlp --proxy ... --skip-download --write-subs --write-auto-subs --sub-langs "en,en-orig" --sub-format json3 -o "%(id)s.%(ext)s" URL
+uv run --with "yt-dlp[default]" yt-dlp --proxy ... --js-runtimes node -f bestaudio -x --audio-format wav --postprocessor-args "ffmpeg:-ar 16000 -ac 1" -o "%(id)s.%(ext)s" URL
+# IR を作る(--from/--to は秒)
+uv run python src/cli.py build ID.en.json3 ID.en-orig.json3 ID.wav out/ted.ir.json --from 60 --to 150
+# 変換(--lite で右肩の IPA を除く)。出力は IR と同じ場所
+uv run python src/cli.py convert out/ted.ir.json --to ass   # → out/ted.ir.ass
+# ASS の描画確認(libass)
+ffmpeg -f lavfi -i color=c=0x202428:s=1920x1080:d=200 -vf "ass=out/ted.ir.ass" -ss 67.5 -frames:v 1 frame.png
+```
+
+## 既知の制約
+- カナの右肩の IPA(ʳ ˡ ᶿ ᶞ ᵆ ᶺ ᶦ ᶷ ᵓ ᵊ ᵑ …)の描画は実機(iOS/Android)で未確認。`tools/glyph-check` で確認する。NFKC/NFKD は適用しない。
+- 数字・ハイフン語・固有名詞は発音を引けない(TED 1 本で 26 語)。
+- 核は「最後の内容語」という規則で、文脈(新情報・対比)は見ていない。ピッチは測っていない。
+- ASS はカナ行と英語行を別々に折り返す(カナを語の真上に置く位置合わせはしていない)。必要なら語ごとの `\\pos` とフォント計測が要る。
+
+## 無音の口形・フォントの埋め込み(ADR-0035)
+母音が付く l・r は、右肩の `ˡ` `ʳ` の代わりに、口の形のカナ(l=ナ行、r=ウ)を斜線で消して書ける(`src/mouth.py`)。
+`convert IR.json --to ass --mouth pua|lig`(環境変数 `EN_KANA_MOUTH`。既定 `off`)。`pua`=私用領域の 1 字、`lig`=カナ+U+0338 の合字。
+ASS には `kana-multi.woff2` の字幕用サブセットを埋め込む(`--embed-font`、既定 on。`src/ass_font.py`。元の woff2 は `EN_KANA_FONT` で指定)。
+小書きの濁音(ADR-0033)のグリフもこのフォントにあるので、埋め込まないと濁点が離れて見える。
+入力が残っていない古い IR は `src/refresh_ir.py IR.json` で新しい表記に移行する(作り直せるなら `build` で作り直す)。
+`uv run python src/mouth.py` で口形の規則の自己チェックが走る。

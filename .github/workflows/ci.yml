@@ -15,5 +15,8 @@ jobs:
         with: { node-version: 22, cache: pnpm }
       - run: pnpm install --frozen-lockfile
       - run: pnpm typecheck
+      # apps/web は COURSE でコースを選ぶ(ADR-0020)。既定の ja-km は上の typecheck。ko-ja も型と生成が通ること
+      - run: COURSE=ko-ja pnpm --filter web typecheck
       - run: pnpm test
-      - run: pnpm --filter content check
+      - run: pnpm --filter content check --course ja-km
+      - run: pnpm --filter content check --course ko-ja
