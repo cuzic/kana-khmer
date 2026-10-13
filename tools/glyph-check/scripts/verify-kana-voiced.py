@@ -9,7 +9,7 @@ the shipped file as is (woff2 -> ttf in a temp dir, because HarfBuzz does not re
   - each voiceless small kana + U+3099 ligates to ONE full-width glyph (ㇰ ㇱ ㇲ ㇳ ㇷ = グ ジ ズ ド ブ, ゥ = ヴ),
     and b (ㇷ + U+3099) and v (ゥ + U+3099) and p (ㇷ + U+309A) are three different glyphs;
   - each PUA mouth shape (U+E100..E106) and its kana + U+0338 form shape to the same single narrow glyph (a small
-    struck kana at the left shoulder of the next kana, advance 300-700);
+    kana in parentheses at the left shoulder of the next kana, advance 300-800, the SAME advance for all seven);
   - a kana with no mouth ligature + U+0338 degrades to the kana plus a zero-advance slash mark (2 glyphs).
 Shape and look still need an eye (docs/adr/0004): this only checks the wiring.
 
@@ -50,10 +50,12 @@ def main(path):
     check(len(set(ids)) == len(ids), f"voiced glyphs must be distinct from each other and from ㇷ゚ (b/v/p): {seen} {p}")
     for kana, pua in MOUTH:
         a, b = shape(pua), shape(kana + SL)
-        check(len(a) == 1 and 300 <= a[0][1] <= 700 and a[0][0] != 0, f"PUA {ord(pua):04X} should be one narrow (left-shoulder) glyph, got {a}")
+        check(len(a) == 1 and 300 <= a[0][1] <= 800 and a[0][0] != 0, f"PUA {ord(pua):04X} should be one narrow (left-shoulder) glyph, got {a}")
         check(a == b, f"PUA {ord(pua):04X} and {kana}+U+0338 should shape alike: {a} vs {b}")
         plain = shape(kana)
         check(a != plain, f"mouth shape for {kana} must differ from the plain kana")
+    advs = {shape(pua)[0][1] for _, pua in MOUTH}
+    check(len(advs) == 1, f"the seven mouth glyphs must share one advance, got {sorted(advs)}")
     d = shape("カ" + SL)
     check(len(d) == 2 and d[1][1] == 0 and d[1][0] != 0, f"カ+U+0338 should degrade to カ + a zero-advance slash, got {d}")
     for m in bad: print("FAIL", m)

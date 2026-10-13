@@ -18,7 +18,7 @@ PROFILE = {
     # prominence 0..3 → 基準サイズに対する倍率
     "size": {0: 0.72, 1: 0.86, 2: 1.0, 3: 1.22},
     "bold_from": 2,
-    # 無音の口形(斜線で消したナ行・ウ)は、淡く小さく(\1a \3a \4a は本文・縁・影の透明度。縁と影も淡くしないと、小さい口形が黒い縁に埋もれて暗く見える。戻すときは Style の値に。16 進で 78 ≒ 47%)。ADR-0035
+    # 口形(括弧で囲んだナ行・ウ)は、淡く(\1a \3a \4a は本文・縁・影の透明度。縁と影も淡くしないと、小さい口形が黒い縁に埋もれて暗く見える。戻すときは Style の値に。16 進で 78 ≒ 47%)。ADR-0035
     "mouth_alpha": "78", "mouth_scale": 1.0,   # 字形そのものが左肩の小さな字なので、大きさは変えない
     "style_alpha": {"outline": "00", "shadow": "80"},   # Style 行の OutlineColour / BackColour の alpha(戻すときの値)
     "colors": {"text": "FFFFFF", "weak": "A9AEB8", "nucleus": "FF6B5B", "kana": "8CC4FF", "brk": "9AA0A6", "note": "9AA0A6", "beat": "8CC4FF"},
@@ -48,7 +48,7 @@ _MOUTH_RE = re.compile("[\ue100-\ue106]|[ナニヌネノウㇴ]\u0338")
 
 
 def _style_mouth(txt: str, fs: int, p: dict) -> str:
-    """斜線で消した口形のカナを、淡く小さくする。"""
+    """括弧で囲んだ口形のカナを、淡くする(字形そのものが小さい左肩の字なので、大きさは変えない)。"""
     ms = round(fs * p["mouth_scale"])
     a, st = p["mouth_alpha"], p["style_alpha"]
     on = f"{{\\1a&H{a}&\\3a&H{a}&\\4a&H{a}&\\fs{ms}}}"

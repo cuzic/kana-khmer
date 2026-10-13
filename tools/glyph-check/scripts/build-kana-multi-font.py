@@ -53,8 +53,8 @@ ANCHOR_X = 500
 HANDAKUTEN_GAP, HANDAKUTEN_SCALE = 40, 0.8
 SMALL = list(range(0x31F0, 0x3200))
 MARK_H = 0x309A
-# Silent mouth shapes (ADR-0035): the mouth shape of an l / r that is not voiced, drawn as a small kana struck through
-# by two diagonal lines at the left shoulder of the next kana. Two encodings of the same glyph: one private-use code point each (PUA, robust in subtitle
+# Mouth shapes (ADR-0035): the mouth shape of an l / r that is not voiced, drawn as a small kana in parentheses at the
+# left shoulder of the next kana. Two encodings of the same glyph: one private-use code point each (PUA, robust in subtitle
 # renderers), or the kana + U+0338 (COMBINING LONG SOLIDUS OVERLAY), which ligates to the glyph and degrades to a
 # slashed kana without the font.
 MOUTH_SHAPES = [(0x30CA, 0xE100), (0x30CB, 0xE101), (0x30CC, 0xE102), (0x30CD, 0xE103), (0x30CE, 0xE104),   # ナニヌネノ
@@ -305,15 +305,42 @@ def main(jp_path, latin_path, out, keep_names=False):
     fgs2 = t.getGlyphSet()
     with_dakuten("sm_vu_base", "sm_vu", vu_base.yMax)
     vu_in = cmap0[0x30A5]   # the small ゥ the ligature starts from
-    # Silent mouth shapes (ADR-0035): a small struck kana at the LEFT shoulder of the l/r kana that follows it, the
-    # mirror image of the right-shoulder letters (raised, narrow advance). The glyph is the base kana scaled down and
-    # raised, plus two parallel diagonal strokes; both strokes wind the same way as the base's outer contours, so the
-    # nonzero fill unions them. Reached by a PUA code point or by kana + U+0338.
-    fgs3 = t.getGlyphSet()   # fresh: the small kana were redrawn above
-    mouth_names = []
-    MOUTH_SCALE, MOUTH_RAISE, MOUTH_PAD = 0.52, SUP_RAISE - 20, 40
-    MOUTH_STROKE, MOUTH_GAP = 46, 0.30
+    # Mouth shapes (ADR-0035): the gesture kana of an l/r that carries a vowel, in parentheses, as ONE narrow glyph at
+    # the LEFT shoulder of the l/r kana that follows it (the mirror of the right-shoulder letters): "(ナ)ラ". The kana is
+    # drawn from a lighter weight (wght 300), condensed and scaled down; the parentheses come from the Latin font. All
+    # seven glyphs have the SAME advance, computed so the widest kana still clears both parentheses (no overlap), and the
+    # kana is centred between them. Reached by a PUA code point, or by kana + U+0338 (see the ccmp rule below).
+    MOUTH_SCALE, MOUTH_COND, MOUTH_RAISE, MOUTH_WGHT = 0.52, 0.78, SUP_RAISE - 20, 300
+    MOUTH_SIDE, MOUTH_GAP, PAREN_TALL = 24, 26, 1.30
+    jp_raw = TTFont(jp_path)
+    jp_light = instancer.instantiateVariableFont(jp_raw, {"wght": MOUTH_WGHT}) if "fvar" in jp_raw else jp_raw
+    mg, mcmap = jp_light.getGlyphSet(), jp_light.getBestCmap()
 
+    def ink(gset, name):
+        bp = BoundsPen(gset); gset[name].draw(bp); return bp.bounds
+
+    kana_ink = {cp: ink(mg, mcmap[cp]) for cp, _ in MOUTH_SHAPES}
+    sy, sx = MOUTH_SCALE, MOUTH_SCALE * MOUTH_COND
+    kana_h = max((b[3] - b[1]) * sy for b in kana_ink.values())
+    cy = MOUTH_RAISE + sy * sum((b[1] + b[3]) / 2 for b in kana_ink.values()) / len(kana_ink)   # common vertical centre
+    lp, rp = lcmap[ord("(")], lcmap[ord(")")]
+    lx0, ly0, lx1, ly1 = ink(lgs, lp); rx0, ry0, rx1, ry1 = ink(lgs, rp)
+    ps = kana_h * PAREN_TALL / (ly1 - ly0)
+    max_ink = max((b[2] - b[0]) * sx for b in kana_ink.values())
+    adv = round(2 * MOUTH_SIDE + (lx1 - lx0) * ps + (rx1 - rx0) * ps + 2 * MOUTH_GAP + max_ink)
+    mouth_names = []
+    for base_cp, pua_cp in MOUTH_SHAPES:
+        ox0, oy0, ox1, oy1 = kana_ink[base_cp]
+        pen = TTGlyphPen(None)
+        r = DecomposingRecordingPen(mg); mg[mcmap[base_cp]].draw(r)
+        r.replay(TransformPen(pen, (sx, 0, 0, sy, adv / 2 - (ox0 + ox1) / 2 * sx, MOUTH_RAISE)))
+        r = DecomposingRecordingPen(lgs); lgs[lp].draw(r)
+        r.replay(TransformPen(pen, (ps, 0, 0, ps, MOUTH_SIDE - lx0 * ps, cy - (ly0 + ly1) / 2 * ps)))
+        r = DecomposingRecordingPen(lgs); lgs[rp].draw(r)
+        r.replay(TransformPen(pen, (ps, 0, 0, ps, adv - MOUTH_SIDE - rx1 * ps, cy - (ry0 + ry1) / 2 * ps)))
+        name = f"mouth_{base_cp:04X}"
+        put(name, pen.glyph(), adv, pua_cp)
+        mouth_names.append((cmap0[base_cp], name))
     def stroke(pen, xa, ya, xb, yb, w):
         pts = [(xa, ya), (xb, yb), (xb + w, yb), (xa + w, ya)]
         area = sum(pts[i][0] * pts[(i + 1) % 4][1] - pts[(i + 1) % 4][0] * pts[i][1] for i in range(4))
@@ -321,22 +348,6 @@ def main(jp_path, latin_path, out, keep_names=False):
         pen.moveTo(pts[0])
         for q in pts[1:]: pen.lineTo(q)
         pen.closePath()
-
-    for base_cp, pua_cp in MOUTH_SHAPES:
-        base = cmap0[base_cp]
-        bp2 = BoundsPen(fgs3); fgs3[base].draw(bp2); ox0, oy0, ox1, oy1 = bp2.bounds
-        bx0, by0 = MOUTH_PAD + ox0 * MOUTH_SCALE, MOUTH_RAISE + oy0 * MOUTH_SCALE
-        bx1, by1 = MOUTH_PAD + ox1 * MOUTH_SCALE, MOUTH_RAISE + oy1 * MOUTH_SCALE
-        pen = TTGlyphPen(None)
-        r = DecomposingRecordingPen(fgs3); fgs3[base].draw(r)
-        r.replay(TransformPen(pen, (MOUTH_SCALE, 0, 0, MOUTH_SCALE, MOUTH_PAD, MOUTH_RAISE)))
-        gap = (bx1 - bx0) * MOUTH_GAP
-        for k in (-1, 1):
-            off = k * gap / 2
-            stroke(pen, bx0 - 30 + off, by0 - 30, bx1 + 30 + off - MOUTH_STROKE, by1 + 30, MOUTH_STROKE)
-        name = f"mouth_{base_cp:04X}"
-        put(name, pen.glyph(), round(bx1 + MOUTH_PAD + 30), pua_cp)
-        mouth_names.append((base, name))
     # U+0338 as a real mark: one diagonal over the preceding kana (what the text shows where the ligature does not fire)
     pen = TTGlyphPen(None)
     stroke(pen, -950, -40, -100 - 62, 860, 62)
