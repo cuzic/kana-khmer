@@ -311,7 +311,7 @@ def main(jp_path, latin_path, out, keep_names=False):
     # seven glyphs have the SAME advance, computed so the widest kana still clears both parentheses (no overlap), and the
     # kana is centred between them. Reached by a PUA code point, or by kana + U+0338 (see the ccmp rule below).
     MOUTH_SCALE, MOUTH_COND, MOUTH_RAISE, MOUTH_WGHT = 0.52, 0.78, SUP_RAISE - 20, 300
-    MOUTH_SIDE, MOUTH_GAP, PAREN_TALL = 24, 26, 1.30
+    MOUTH_SIDE, MOUTH_GAP, PAREN_TALL, PAREN_COND = 18, 20, 1.12, 0.55   # parentheses: just taller than the kana, squeezed so the strokes are thin
     jp_raw = TTFont(jp_path)
     jp_light = instancer.instantiateVariableFont(jp_raw, {"wght": MOUTH_WGHT}) if "fvar" in jp_raw else jp_raw
     mg, mcmap = jp_light.getGlyphSet(), jp_light.getBestCmap()
@@ -325,9 +325,10 @@ def main(jp_path, latin_path, out, keep_names=False):
     cy = MOUTH_RAISE + sy * sum((b[1] + b[3]) / 2 for b in kana_ink.values()) / len(kana_ink)   # common vertical centre
     lp, rp = lcmap[ord("(")], lcmap[ord(")")]
     lx0, ly0, lx1, ly1 = ink(lgs, lp); rx0, ry0, rx1, ry1 = ink(lgs, rp)
-    ps = kana_h * PAREN_TALL / (ly1 - ly0)
+    ps = kana_h * PAREN_TALL / (ly1 - ly0)   # vertical scale
+    px = ps * PAREN_COND                       # horizontal scale: thinner strokes and a narrower pair
     max_ink = max((b[2] - b[0]) * sx for b in kana_ink.values())
-    adv = round(2 * MOUTH_SIDE + (lx1 - lx0) * ps + (rx1 - rx0) * ps + 2 * MOUTH_GAP + max_ink)
+    adv = round(2 * MOUTH_SIDE + (lx1 - lx0) * px + (rx1 - rx0) * px + 2 * MOUTH_GAP + max_ink)
     mouth_names = []
     for base_cp, pua_cp in MOUTH_SHAPES:
         ox0, oy0, ox1, oy1 = kana_ink[base_cp]
@@ -335,9 +336,9 @@ def main(jp_path, latin_path, out, keep_names=False):
         r = DecomposingRecordingPen(mg); mg[mcmap[base_cp]].draw(r)
         r.replay(TransformPen(pen, (sx, 0, 0, sy, adv / 2 - (ox0 + ox1) / 2 * sx, MOUTH_RAISE)))
         r = DecomposingRecordingPen(lgs); lgs[lp].draw(r)
-        r.replay(TransformPen(pen, (ps, 0, 0, ps, MOUTH_SIDE - lx0 * ps, cy - (ly0 + ly1) / 2 * ps)))
+        r.replay(TransformPen(pen, (px, 0, 0, ps, MOUTH_SIDE - lx0 * px, cy - (ly0 + ly1) / 2 * ps)))
         r = DecomposingRecordingPen(lgs); lgs[rp].draw(r)
-        r.replay(TransformPen(pen, (ps, 0, 0, ps, adv - MOUTH_SIDE - rx1 * ps, cy - (ry0 + ry1) / 2 * ps)))
+        r.replay(TransformPen(pen, (px, 0, 0, ps, adv - MOUTH_SIDE - rx1 * px, cy - (ry0 + ry1) / 2 * ps)))
         name = f"mouth_{base_cp:04X}"
         put(name, pen.glyph(), adv, pua_cp)
         mouth_names.append((cmap0[base_cp], name))
