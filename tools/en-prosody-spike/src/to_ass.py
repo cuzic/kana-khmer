@@ -5,14 +5,21 @@
 """
 from __future__ import annotations
 
+import re
+import sys
+
+from ass_font import FAMILY, fonts_section
 from ir import lite as strip_ipa
 from layers import Layers
+from mouth import resolve_mode, silent_mouth
 
 PROFILE = {
     "font": "Noto Sans JP", "play_res": (1920, 1080), "base_fs": 58, "kana_scale": 0.62, "margin_v": 70,
     # prominence 0..3 → 基準サイズに対する倍率
     "size": {0: 0.72, 1: 0.86, 2: 1.0, 3: 1.22},
     "bold_from": 2,
+    # 無音の口形(斜線で消したナ行・ウ)は、淡く小さく(\alpha は 16 進の透明度。78 ≒ 47%)。ADR-0035
+    "mouth_alpha": "78", "mouth_scale": 0.72,
     "colors": {"text": "FFFFFF", "weak": "A9AEB8", "nucleus": "FF6B5B", "kana": "8CC4FF", "brk": "9AA0A6", "note": "9AA0A6", "beat": "8CC4FF"},
 }
 
@@ -30,12 +37,22 @@ def _esc(s: str) -> str:
     return s.replace("\\", "").replace("{", "(").replace("}", ")")
 
 
-def _kana_of(w: dict, L: Layers) -> str:
+def _kana_of(w: dict, L: Layers, mouth: str = "off") -> str:
     k = w["kana"] if L.audio else w.get("kana_rule", w["kana"])
+    k = silent_mouth(k, mouth)   # 口形は右肩の字ではないので、ライトでも残る
     return k if L.ipa else strip_ipa(k)
 
 
-def _line(words: list[dict], kana: bool, p: dict, L: Layers) -> str:
+_MOUTH_RE = re.compile("[\ue100-\ue106]|[ナニヌネノウㇴ]\u0338")
+
+
+def _style_mouth(txt: str, fs: int, p: dict) -> str:
+    """斜線で消した口形のカナを、淡く小さくする。"""
+    ms = round(fs * p["mouth_scale"])
+    return _MOUTH_RE.sub(lambda m: f"{{\\alpha&H{p['mouth_alpha']}&\\fs{ms}}}{m.group(0)}{{\\alpha&H00&\\fs{fs}}}", txt)
+
+
+def _line(words: list[dict], kana: bool, p: dict, L: Layers, mouth: str = "off", fn: bool = False) -> str:
     c, out = p["colors"], []
     for w in words:
         pr = w["prominence"]
@@ -52,7 +69,7 @@ def _line(words: list[dict], kana: bool, p: dict, L: Layers) -> str:
                 if L.nucleus and pr == 3:
                     extra += r"\u1"
         if kana:
-            k = _kana_of(w, L)
+            k = _kana_of(w, L, mouth)
             if w["kind"] == "note" or not k:
                 continue
             txt = k
@@ -60,18 +77,27 @@ def _line(words: list[dict], kana: bool, p: dict, L: Layers) -> str:
             txt = w["text"]
             if L.beat and w["kind"] != "note" and w.get("beat", 0) > 0:
                 out.append(f"{{\\fs{round(p['base_fs'] * 0.5)}\\c{_bgr(c['beat'])}\\b0\\u0\\i0}}{'●◎'[w['beat'] - 1]}")
-        out.append(f"{{\\fs{fs}\\c{_bgr(col)}{extra}}}{_esc(txt)}")
+        fnt = f"\\fn{FAMILY if kana else p['font']}" if fn else ""
+        body = _style_mouth(_esc(txt), fs, p) if kana and mouth != "off" else _esc(txt)
+        out.append(f"{{\\fs{fs}\\c{_bgr(col)}{extra}{fnt}}}{body}")
         if kana and L.link and w["linked_next"]:
             out.append(f"{{\\fs{fs}\\c{_bgr(c['brk'])}\\b0\\u0}}‿")
         elif not kana and L.breaks and w["break_after"]:
             out.append(f"{{\\fs{p['base_fs']}\\c{_bgr(c['brk'])}\\b0\\u0}} {'//' if w['break_after'] == 2 else '/'}")
-        out.append("{\\u0\\b0\\i0\\c" + _bgr(c["text"]) + "} ")
+        out.append("{\\u0\\b0\\i0\\c" + _bgr(c["text"]) + (f"\\fn{p['font']}" if fn else "") + "} ")
     return "".join(out).rstrip()
 
 
-def to_ass(ir: dict, profile: dict | None = None, layers: Layers | None = None) -> str:
+def to_ass(ir: dict, profile: dict | None = None, layers: Layers | None = None, mouth: str | None = None, embed_font: bool = True) -> str:
     p = {**PROFILE, **(profile or {})}
     L = layers or Layers()
+    mouth = resolve_mode(mouth)
+    fonts = ""
+    if embed_font:   # 小書きの濁音・口形のグリフは kana-multi にしかないので、埋め込んで kana の行に使う
+        try:
+            fonts = fonts_section()
+        except FileNotFoundError as e:
+            print(f"warning: フォントを埋め込めません({e})", file=sys.stderr)
     w, h = p["play_res"]
     hdr = ("[Script Info]\nScriptType: v4.00+\nWrapStyle: 0\nScaledBorderAndShadow: yes\n"
            f"PlayResX: {w}\nPlayResY: {h}\n\n[V4+ Styles]\n"
@@ -82,8 +108,8 @@ def to_ass(ir: dict, profile: dict | None = None, layers: Layers | None = None) 
            "Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text\n")
     lines = []
     for ev in ir["events"]:
-        kana = _line(ev["words"], True, p, L) if L.kana else ""
-        eng = _line(ev["words"], False, p, L)
+        kana = _line(ev["words"], True, p, L, mouth, bool(fonts)) if L.kana else ""
+        eng = _line(ev["words"], False, p, L, mouth, bool(fonts))
         text = (kana + "\\N" if kana else "") + eng
         lines.append(f"Dialogue: 0,{_ts(ev['start_ms'])},{_ts(ev['end_ms'])},Default,,0,0,0,,{text}")
-    return hdr + "\n".join(lines) + "\n"
+    return hdr + "\n".join(lines) + "\n" + (("\n" + fonts) if fonts else "")

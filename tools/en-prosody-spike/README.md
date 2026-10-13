@@ -48,3 +48,11 @@ ffmpeg -f lavfi -i color=c=0x202428:s=1920x1080:d=200 -vf "ass=out/ted.ir.ass" -
 - 数字・ハイフン語・固有名詞は発音を引けない(TED 1 本で 26 語)。
 - 核は「最後の内容語」という規則で、文脈(新情報・対比)は見ていない。ピッチは測っていない。
 - ASS はカナ行と英語行を別々に折り返す(カナを語の真上に置く位置合わせはしていない)。必要なら語ごとの `\\pos` とフォント計測が要る。
+
+## 無音の口形・フォントの埋め込み(ADR-0035)
+母音が付く l・r は、右肩の `ˡ` `ʳ` の代わりに、口の形のカナ(l=ナ行、r=ウ)を斜線で消して書ける(`src/mouth.py`)。
+`convert IR.json --to ass --mouth pua|lig`(環境変数 `EN_KANA_MOUTH`。既定 `off`)。`pua`=私用領域の 1 字、`lig`=カナ+U+0338 の合字。
+ASS には `kana-multi.woff2` の字幕用サブセットを埋め込む(`--embed-font`、既定 on。`src/ass_font.py`。元の woff2 は `EN_KANA_FONT` で指定)。
+小書きの濁音(ADR-0033)のグリフもこのフォントにあるので、埋め込まないと濁点が離れて見える。
+入力が残っていない古い IR は `src/refresh_ir.py IR.json` で新しい表記に移行する(作り直せるなら `build` で作り直す)。
+`uv run python src/mouth.py` で口形の規則の自己チェックが走る。

@@ -52,6 +52,7 @@ ADR として記録する。**各設計の詳細・変換表・テスト計画�
 | [0032](0032-en-audio-informed-variants.md) | 音声の音素認識を先生役にして、語ごとの形(弱形・弾き音・口蓋化)を観測して選ぶ。サーバー側の任意の拡張とし、PoC の拡張には含めない | proposed | 2026-09-30 |
 | [0033](0033-en-kana-final-v-small-vu-glyph.md) | 英語の語末の有声子音は、無声の小書きカナ + 濁点を、小書きの ド ブ グ ズ ジ ヴ に合字して書く | proposed | 2026-10-13 |
 | [0034](0034-en-kana-actual-sound-over-japanese-convention.md) | 英語のカナ表記は、慣用的な日本語表現より、実際の音に近いカナを優先する | proposed | 2026-10-13 |
+| [0035](0035-en-kana-silent-mouth-shapes.md) | 母音が付く l・r は、口の形のカナを斜線で消した「無音の口形」で書く(PUA と合字を選べる) | proposed | 2026-10-13 |
 
 この表は各ファイル冒頭の frontmatter(`status`・`date`・`deciders`、任意で `note`)を手で転記したもの
 (`deciders` はこの表には出していない。各 ADR 本文を見る)。**状態・日付の正は frontmatter 側**とし、

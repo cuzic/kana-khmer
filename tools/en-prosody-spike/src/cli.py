@@ -47,7 +47,7 @@ def cmd_convert(a) -> None:
     if a.lite:
         L = replace(L, ipa=False)
     if a.to == "ass":
-        s = to_ass(ir, layers=L)
+        s = to_ass(ir, layers=L, mouth=a.mouth, embed_font=a.embed_font)
     elif a.to == "srt":
         s = to_srt(ir, layers=L)
     else:
@@ -69,6 +69,8 @@ def main() -> None:
     c.add_argument("ir"); c.add_argument("--to", required=True, choices=["ass", "srt", "html"])
     c.add_argument("--lite", action="store_true", help="右肩の IPA を除く(--layers -ipa と同じ)")
     c.add_argument("--layers", help=f"見せる層。プリセット({' / '.join(PRESETS)})、列挙(size,beat,kana)、差し引き(詳細,-ipa)。層: {', '.join(ALL)}")
+    c.add_argument("--mouth", choices=["off", "pua", "lig"], help="母音が付く l・r を無音の口形(斜線で消したナ行・ウ)で書く。pua=私用領域の 1 字、lig=カナ+U+0338 の合字。環境変数 EN_KANA_MOUTH でも指定できる(既定 off)。ADR-0035")
+    c.add_argument("--embed-font", action=argparse.BooleanOptionalAction, default=True, help="ASS に kana-multi の字幕用サブセットを埋め込む(既定 on。環境変数 EN_KANA_FONT で元の woff2 を指定)")
     c.add_argument("-o", "--output")
     c.set_defaults(fn=cmd_convert)
     a = ap.parse_args()
